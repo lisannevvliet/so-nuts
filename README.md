@@ -1,6 +1,6 @@
 # So Nuts
 
-![So Nuts](https://www.hva.nl/binaries/threecolumnlandscape/content/gallery/subsites/kc-fdmci/lectoratenfotos/digital-life-fotos/project-sonuts-websitedl.jpg)
+![So Nuts](https://www.hva.nl/binaries/threecolumnlandscape/content/gallery/subsites/urban-vitality/nieuws/go-nuts/gepensioneerde-man-etend-op-bank.jpeg)
 
 ## Inhoudsopgave
   * [Beschrijving](#beschrijving)
