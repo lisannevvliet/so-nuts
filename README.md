@@ -25,9 +25,16 @@ Bron: [https://www.hva.nl/urban-vitality/gedeelde-content/projecten/voeding-en-b
 ...
 
 ### User stories
-1 ...  
-2 ...  
-3 ...  
+1) Als gebruiker, moet ik drie vragenlijsten invullen als intake, zodat de antwoorden hiervoor gebruikt kunnen worden voor een aanbeveling (later in het proces).
+   - De drie vragenlijsten bevatten open, multiple choice en range vragen gericht op:
+     - Persoonlijke gegevens
+     - Vragen gericht op voeding en gezondheid 
+     - Beweging en krachtoefeningen
+
+2) Als gebruiker, wil ik na voltooien van de intake 2 lijsten met aanbevelingen krijgen (gericht op bewegen en voeding), zodat je op basis van deze lijst een keuze kan maken aan welke onderwerpen je moet gaan werken.
+   - Vragen met betrekking tot bewegen en voeding worden afgezet tegen de richtlijnen die gelden. De gebruiker voldoet niet een richtlijn als bijvoorbeeld 100 minuten bewogen wordt per week terwijl de richtlijn voorschrijft dat er minimaal 150 minuten moet worden bewogen.
+
+3) ...
 
 ## Data
 Relevante data is via een API te ontsluiten.
