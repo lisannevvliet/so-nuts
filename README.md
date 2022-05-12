@@ -34,7 +34,8 @@ Bron: [https://www.hva.nl/urban-vitality/gedeelde-content/projecten/voeding-en-b
 2) Als gebruiker, wil ik na voltooien van de intake 2 lijsten met aanbevelingen krijgen (gericht op bewegen en voeding), zodat je op basis van deze lijst een keuze kan maken aan welke onderwerpen je moet gaan werken.
    - Vragen met betrekking tot bewegen en voeding worden afgezet tegen de richtlijnen die gelden. De gebruiker voldoet niet een richtlijn als bijvoorbeeld 100 minuten bewogen wordt per week terwijl de richtlijn voorschrijft dat er minimaal 150 minuten moet worden bewogen.
 
-3) ...
+3) Als gebruiker, wil ik na het maken van een keuze om te werken aan minimaal 3 onderwerpen een planning kunnen maken, zodat de app mij kan helpen bij het creëren van nieuwe gewoontes.
+   - Om ervoor te zorgen dat je gaat voldoen aan de aanbeveling, bijvoorbeeld minimaal 150 minuten bewegen per week, ga je zelf een planning maken om aan deze aanbeveling te voldoen. De gebruiker kan aangeven welke sport, op welke dag, op welk moment van de dag hij of zij gaat uitvoeren gekoppeld aan een tijd. Deze tijd is belangrijk omdat de applicatie voor de start van de activiteit, erna of alleen aan het einde van de dag een notificatie moet sturen om te valideren of de activiteit is uitgevoerd.
 
 ## Data
 Relevante data is via een API te ontsluiten.
