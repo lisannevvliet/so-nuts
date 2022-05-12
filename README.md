@@ -22,7 +22,7 @@ Binnen de HvA wordt SO-NUTS uitgevoerd in de onderzoeksgroep ‘Mensen in Bewegi
 Bron: [https://www.hva.nl/urban-vitality/gedeelde-content/projecten/voeding-en-beweging/so-nuts.html](https://www.hva.nl/urban-vitality/gedeelde-content/projecten/voeding-en-beweging/so-nuts.html)
 
 ## Design challenge
-...
+Hoe kan een digitale tool ervoor zorgen dat gepensioneerden gestimuleerd worden om een duurzaam beweeg- en voedingspatroon aan te houden zodat sarcopenie, obesitas en sarcopene obesitas voorkomen kunnen worden?
 
 ### User stories
 1) Als gebruiker, moet ik drie vragenlijsten invullen als intake, zodat de antwoorden hiervoor gebruikt kunnen worden voor een aanbeveling (later in het proces).
