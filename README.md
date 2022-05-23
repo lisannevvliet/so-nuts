@@ -3,11 +3,15 @@
 
 ## Inhoudsopgave
 - [Debriefing](#debriefing)
+- [Live demo](#live-demo)
 - [Auteurs](#auteurs)
 - [Licentie](#licentie)
 
 ## Debriefing
 Zie het desbetreffende [Google Docs-document](https://docs.google.com/document/d/1R5HVgPdiCVJCGNbnVKR9X-X0atmrH7mgfbT267NiflY/edit?usp=sharing).
+
+## Live demo
+https://so-nuts.herokuapp.com/
 
 ## Auteurs
 De auteurs van dit project zijn [Farrahton Piers](https://github.com/farrahton) en [Lisanne van Vliet](https://github.com/lisannevvliet).
