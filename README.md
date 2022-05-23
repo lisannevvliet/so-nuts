@@ -1,4 +1,5 @@
-# So Nuts
+# SO-NUTS
+![](https://user-images.githubusercontent.com/90243819/169791205-bda89252-ade9-481a-bc4d-3426172338a6.png)
 
 ## Inhoudsopgave
 - [Debriefing](#debriefing)
