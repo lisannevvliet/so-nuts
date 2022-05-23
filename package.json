@@ -1,0 +1,19 @@
+{
+  "name": "so-nuts",
+  "version": "1.0.0",
+  "description": "![](https://user-images.githubusercontent.com/90243819/169791205-bda89252-ade9-481a-bc4d-3426172338a6.png)",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lisannevvliet/so-nuts.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lisannevvliet/so-nuts/issues"
+  },
+  "homepage": "https://github.com/lisannevvliet/so-nuts#readme"
+}
