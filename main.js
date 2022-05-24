@@ -32,6 +32,8 @@ app.get("/", async function (_req, res) {
     // const response = await fetch(url)
     // const data = await response.json()
 
-	// Load the index page.
-    res.render("index")
+	// Load the index page with the questionnaires.
+    res.render("index", {
+        questionnaires: questionnaires
+    })
 })
