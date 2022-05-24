@@ -4,6 +4,8 @@ import "dotenv/config"
 import express from "express"
 // Import Handlebars.
 import { engine } from "express-handlebars"
+// Import node-fetch.
+// import fetch from "node-fetch"
 // Import JSON file.
 import json from "./static/json/mib-swagger.json" assert { type: "json" }
 
@@ -25,7 +27,11 @@ app.listen(process.env.PORT, () => {
 })
 
 // Listen to all GET requests on /.
-app.get("/", (_req, res) => {
+app.get("/", async function (_req, res) {
+    // Get the data from the API.
+    // const response = await fetch(url)
+    // const data = await response.json()
+
 	// Load the index page.
     res.render("index")
 })
