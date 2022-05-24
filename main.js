@@ -1,9 +1,9 @@
 // Import Dotenv.
-require("dotenv").config()
+import "dotenv/config"
 // Import Express.
-const express = require("express")
+import express from "express"
 // Import Handlebars.
-const handlebars = require("express-handlebars")
+import { engine } from "express-handlebars"
 
 // Initialise Express.
 const app = express()
@@ -12,7 +12,7 @@ const app = express()
 app.use(express.static("static"))
 
 // Set the view engine to Handlebars.
-app.engine("handlebars", handlebars.engine())
+app.engine("handlebars", engine())
 app.set("view engine", "handlebars")
 
 // Set and log the port for Express.
