@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "type": "module",
   "scripts": {
-    "test": "nodemon --experimental-json-modules main.js",
-    "start": "node --experimental-json-modules main.js"
+    "test": "nodemon main.js",
+    "start": "node main.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +21,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-handlebars": "^6.0.6",
-    "node-fetch": "^3.2.4"
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"

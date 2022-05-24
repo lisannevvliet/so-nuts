@@ -1,13 +1,13 @@
 // Import Dotenv.
-import "dotenv/config"
+require("dotenv").config()
 // Import Express.
-import express from "express"
+const express = require('express')
 // Import Handlebars.
-import { engine } from "express-handlebars"
+const handlebars = require("express-handlebars")
 // Import node-fetch.
-// import fetch from "node-fetch"
 // Import JSON file.
 // import json from "./static/json/mib-swagger.json" assert { type: "json" }
+const fetch = require("node-fetch")
 
 // Initialise Express.
 const app = express()
@@ -16,7 +16,7 @@ const app = express()
 app.use(express.static("static"))
 
 // Set the view engine to Handlebars.
-app.engine("handlebars", engine())
+app.engine("handlebars", handlebars.engine())
 app.set("view engine", "handlebars")
 
 // Set and log the port for Express.
