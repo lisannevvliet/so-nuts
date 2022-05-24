@@ -1,7 +1,18 @@
 <h1>SO-NUTS</h1>
-<img src="images/so-nuts-logo-2.png" alt="SO-NUTS">
+{{!-- <img src="images/so-nuts-logo-2.png" alt="SO-NUTS"> --}}
+
+    <ol class="progress_Steps">
+        {{!-- Add the active classlist after answering all the questions from the category. --}}
+        <li class="gegevens_icon active" data-title="gegevens">Gegevens</li> 
+        <li class="voeding_icon" data-title="voeding">Voeding</li>
+        <li class="bewegen_icon" data-title="bewegen">Bewegen</li>
+    </ol>
+
+<main> 
 {{#each questionnaires}}
-    <p>{{this.text}}</p>
+<section>
+    <div class="question_number">Vraag <span class="question_counter">1</span>/6</div>
+    <h2>{{this.text}}</h2>
     {{#each ../questionnaireResponse}}
         {{#ifCond this.questionId ../this.id}}
             {{#if this.response}}
@@ -12,4 +23,15 @@
             {{/if}}
         {{/ifCond}}
     {{/each}}
+
+    <div class="button_wrapper"> 
+        <button class="vorige_question_button">Vorige</button>
+        <button class="volgende_question_button">Volgende</button>
+    </div>
+    {{!-- <div class="question_number">Q1</div>
+    <h2>{{this}}</h2>
+    <input type="text" class="answer_type_text">
+     --}}
+</section>
 {{/each}}
+</main>

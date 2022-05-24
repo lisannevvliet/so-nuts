@@ -1,21 +1,138 @@
 :root {
     --turquoise: #8CB4AA ;
     --purple: #AC99AD;
-    --yellow: #EDC85E ;
+    --yellow: #EDC85E;
     --white: #F2F3EE;
-    --black: #282727 ;
+    --black: #282727;
+    /* moet ff donkerder */
+    --grey: #ededed; 
 }
 
+/* misschien alleen aanzetten voor tablet mediaquery op app*/
 * {
     box-sizing: border-box;
+    font-family: "Nunito";
 }
 
 body {
-    font-family: "Nunito";
     margin-left: auto;
     margin-right: auto;
-    width: 768px;
-    background-color: var(--white) ;
-    padding: 1em;
+    max-width: 768px;
+    /* padding: 1em; */
+    background-color: var(--turquoise);
+    color: var(--black);
 }
 
+h1 {
+    text-align: center;
+    color: var(--white)
+    /* width: 100%; */
+}
+
+/*  ============
+    progress bar
+    ============ */
+
+
+ol {
+    margin-bottom: 2em;
+    text-align: center;
+    /* width: 43em; */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    counter-reset: step;
+}
+  
+ol li {
+    list-style-type: none;
+    color: var(--grey);
+    text-transform: none;
+    font-size: 1.1em;
+    width: 20%;
+    float: left;
+    position: relative;
+}
+  
+ol li:before {
+    counter-increment: step;
+    content: counter(step);
+    width: 1.5em;
+    height: 1.5em;
+    display: block;
+    font-size: 1em;
+    color: white;
+    background: var(--grey);
+    border-radius: 50%;
+    margin: 0 auto 5px auto;
+}
+  
+ol li:after {
+    content: attr(data-title);
+    content: '';
+    width: 100%;
+    height: .3em;
+    background: var(--grey);
+    position: absolute;
+    left: -50%;
+    top: .7em;
+    z-index:-1;
+}
+  
+ol li:first-child:after {
+    content: none;
+}
+  
+ol li.active:before,
+ol li.active:after {
+    background: var(--yellow);
+    color: var(--white);
+}
+
+ol li.active {
+      color: var(--yellow)
+}
+
+/*  ============
+    questionarre
+    ============ */
+
+main {
+    overflow-y: hidden;
+    height: 34em;
+} 
+    
+section {
+    border-radius: 20px;
+    text-align: center;
+    height: 33em;
+    margin: 1em;
+    padding: 1em;
+    background-color: white;
+    margin-bottom: 2em;
+}
+
+.question_number {
+    font-weight: 300;
+    color: lightgrey;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+button {
+    /* height: 3em; */
+    border-radius: 10px;
+    border: none;
+    background-color: var(--yellow);
+    padding: 1.5em;
+    font-weight: 500;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.vorige_question_button {
+    background-color: var(--grey);
+}
