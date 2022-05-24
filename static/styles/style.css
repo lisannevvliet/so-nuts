@@ -8,7 +8,6 @@
 
 * {
     box-sizing: border-box;
-<<<<<<< Updated upstream
 }
 
 body {
@@ -16,13 +15,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 768px;
-}
-=======
-    font-family: 'Nunito';
-}
-
-body {
-    background-color: #F2F3EE ;
+    background-color: var(--white) ;
+    padding: 1em;
 }
 
->>>>>>> Stashed changes
