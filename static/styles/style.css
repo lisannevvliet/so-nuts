@@ -1,5 +1,14 @@
+:root {
+    --turquoise: #8CB4AA ;
+    --purple: #AC99AD;
+    --yellow: #EDC85E ;
+    --white: #F2F3EE;
+    --black: #282727 ;
+}
+
 * {
     box-sizing: border-box;
+<<<<<<< Updated upstream
 }
 
 body {
@@ -8,3 +17,12 @@ body {
     margin-right: auto;
     width: 768px;
 }
+=======
+    font-family: 'Nunito';
+}
+
+body {
+    background-color: #F2F3EE ;
+}
+
+>>>>>>> Stashed changes
