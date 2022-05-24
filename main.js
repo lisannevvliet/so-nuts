@@ -4,6 +4,10 @@ import "dotenv/config"
 import express from "express"
 // Import Handlebars.
 import { engine } from "express-handlebars"
+// Import JSON file.
+import json from "./static/json/mib-swagger.json" assert { type: "json" }
+
+console.log(json)
 
 // Initialise Express.
 const app = express()
