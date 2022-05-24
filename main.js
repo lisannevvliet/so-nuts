@@ -7,9 +7,7 @@ import { engine } from "express-handlebars"
 // Import node-fetch.
 // import fetch from "node-fetch"
 // Import JSON file.
-import json from "./static/json/mib-swagger.json" assert { type: "json" }
-
-console.log(json)
+// import json from "./static/json/mib-swagger.json" assert { type: "json" }
 
 // Initialise Express.
 const app = express()
