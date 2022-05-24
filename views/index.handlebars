@@ -1,5 +1,15 @@
 <h1>SO-NUTS</h1>
 <img src="images/so-nuts-logo-2.png" alt="SO-NUTS">
 {{#each questionnaires}}
-    <p>{{this}}</p>
+    <p>{{this.text}}</p>
+    {{#each ../questionnaireResponse}}
+        {{#ifCond this.questionId ../this.id}}
+            {{#if this.response}}
+                <p>{{this.response}}</p>
+            {{/if}}
+            {{#if this.choiceOptionId}}
+                <p>{{this.choiceOptionId}}</p>
+            {{/if}}
+        {{/ifCond}}
+    {{/each}}
 {{/each}}
