@@ -26,6 +26,8 @@ app.listen(process.env.PORT, () => {
 
 // Listen to all GET requests on /.
 app.get("/", async function (_req, res) {
+    const questionnaires = ["Wat is uw Leeftijd?", "Wat is uw Geslacht? (multiple choice)", "In welk land bent u zelf geboren?", "In welk land is uw moeder geboren?", "In welk land is uw vader geboren?", "Welke van onderstaande beschrijvingen past het beste bij uw situatie? (multiple choice, alleenstaand, gehuwd, etc.)", "Heeft u kinderen? (multiple choice)", "Wat is de hoogste opleiding die u heeft afgerond? (multiple choice, vmbo, havo, vwo, HBO, etc.)", "Wat is uw arbeidspositie? (multiple choice, student, werken deeltijd, werken voltijd, etc.)", "Wat is uw lengte?", "Wat is uw gewicht?"]
+
     // Get the data from the API.
     // const response = await fetch(url)
     // const data = await response.json()
