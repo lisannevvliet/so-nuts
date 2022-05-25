@@ -13,6 +13,26 @@
 <section>
     <div class="question_number">Vraag <span class="question_counter">1</span>/6</div>
     <h2>{{this.text}}</h2>
+    {{#ifCond this.type "string"}}
+        <input type="text">
+    {{/ifCond}}
+    {{#ifCond this.type "choice"}}
+        {{#each this.options}}
+            <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+            <label for={{this.id}}>{{this.text}}</label><br>
+        {{/each}}
+    {{/ifCond}}
+    {{#ifCond this.type "open-choice"}}
+        {{#each this.options}}
+            <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+            <label for={{this.id}}>{{this.text}}</label>
+            {{#ifCond this.id "bs-an"}}
+                <input type="text">
+            {{else}}
+                <br>
+            {{/ifCond}}
+        {{/each}}
+    {{/ifCond}}
     {{#each ../questionnaireResponse}}
         {{#ifCond this.questionId ../this.id}}
             {{#if this.response}}
