@@ -54,7 +54,7 @@ ol li {
 
 ol li div {
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     /* width: 30em; */
     height: 26em;
@@ -93,7 +93,8 @@ ol li section h2 {
 }
 
 ol li section p {
-    font-size: 1.1250em
+    font-size: 1.1250em;
+    text-align: center;
 }
 
 /*  ======
