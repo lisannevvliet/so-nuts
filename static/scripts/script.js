@@ -3,6 +3,29 @@ function $(element) {
     return document.querySelector(element)
 }
 
+// ===========
+// onboarding (module later)
+// ===========
+
+// Start position onboarding.
+let onboardingIndex = 1; 
+
+const onboardingNext = $(`.next_button`)
+
+onboardingNext.addEventListener("click", function(){
+ if (onboardingIndex == 3) {
+    // Go to different route but idk how in clientside javascript.
+    onboardingNext.classList.add("disable_button")
+ }
+ else {
+    $(`.onboarding li:nth-child(${onboardingIndex})`).classList.remove("show_element")
+    onboardingIndex++
+    $(`.onboarding li:nth-child(${onboardingIndex})`).classList.add("show_element")
+ }
+})
+
+
+
 // ==============
 // progress steps
 // ==============
@@ -29,27 +52,5 @@ questionnaireNext.addEventListener("click", function(){
 })
 
 //  TO-DO: make the previous button work, maybe add a skip option & implement local storage the onboarding and questionnaire so only new users get to see it.
-
-// ===========
-// onboarding (module later)
-// ===========
-
-// Start position onboarding.
-let onboardingIndex = 1; 
-
-const onboardingNext = $(`.next_button`)
-
-onboardingNext.addEventListener("click", function(){
- if (onboardingIndex == 3) {
-    // Go to different route but idk how in clientside javascript.
-    onboardingNext.classList.add("disable_button")
- }
- else {
-    $(`ol>li:nth-child(${onboardingIndex})`).classList.remove("show_element")
-    onboardingIndex++
-    $(`ol>li:nth-child(${onboardingIndex})`).classList.add("show_element")
- }
-})
-
 
 
