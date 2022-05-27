@@ -35,8 +35,16 @@ app.get("/", async function (_req, res) {
     // const data = await response.json()
 
 	// Load the index page with the questionnaires.
-    res.render("index", {
+    res.render("questionnaires", {
+        style: "questionnaires.css",
         questionnaires: questionnaire.questions,
         questionnaireResponse: questionnaireResponse.questionResponses
+    })
+})
+
+// Listen to all GET requests on /.
+app.get("/onboarding", async function (_req, res) {
+    res.render("onboarding", {
+        style: "onboarding.css"
     })
 })
