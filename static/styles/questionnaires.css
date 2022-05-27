@@ -96,13 +96,24 @@ ol li.active {
 
 /*  ============
     questionarre
+    general
     ============ */
 
-main {
+/* main {
     overflow-y: hidden;
     height: 34em;
-} 
-    
+}  */
+
+article {
+    border-radius: 20px;
+    text-align: center;
+    height: 10em;
+    margin: 1em;
+    padding: 1em;
+    background-color: white;
+    margin-bottom: 2em;
+}
+
 section {
     border-radius: 20px;
     text-align: center;
@@ -111,6 +122,15 @@ section {
     padding: 1em;
     background-color: white;
     margin-bottom: 2em;
+    /* display: none; */
+}
+
+/* .hide_question {
+    display: none;
+} */
+
+.show_question {
+    display: block;
 }
 
 .question_number {
@@ -131,8 +151,43 @@ button {
     font-weight: 500;
     margin-left: 1em;
     margin-right: 1em;
+    cursor: pointer;
 }
 
-.vorige_question_button {
+.prev_button {
     background-color: var(--grey);
 }
+
+.next_button:focus {
+    border: 3px solid var(--black);
+    outline: none !important; 
+}
+
+
+/*  ============
+    input type
+    text
+    ============ */
+
+input[type=text] {
+    background-color: var(--grey);
+    border: solid var(--black) 1px;
+    border-radius: 5px;
+    height: 2em;
+}
+
+input:focus {
+    border: 3px solid var(--yellow);
+    outline: none !important;
+}
+
+button:focus {
+    border: 3px solid var(--yellow);
+    outline: none !important; 
+}
+
+input[type='radio']:checked {
+    color: var(--yellow);
+}
+
+

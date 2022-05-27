@@ -1,0 +1,130 @@
+:root {
+    /* --turquoise: #8CB4AA ;
+    --purple: #AC99AD;
+    --yellow: #EDC85E;
+    --white: #F2F3EE;
+    --black: #282727;
+    --grey: #ededed;  */
+    --main: #58c5b8;
+    --secundary: #F4FBFA;
+    --accent: #40B563;
+    --black: #282727;
+
+}
+
+/* misschien alleen aanzetten voor tablet mediaquery op app*/
+* {
+    /* box-sizing: border-box; */
+    font-family: "Nunito";
+}
+
+html {
+    margin: auto;
+}
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 768px;
+    /* padding: 0; */
+    margin-top: 0;
+    /* padding: 1em; */
+    background-color: var(--secundary);
+    color: var(--black);
+}
+
+/* ======
+illustration + text
+=========== */
+
+ol {
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ol li {
+    display: none;
+}
+
+.show_li {
+    display: block;
+}
+
+ol li div {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* width: 30em; */
+    height: 26em;
+    margin: 0;
+    padding: 0;
+}
+
+ol li .onboarding_pic_1 {
+    background-image: url("../images/onboarding_1.svg");
+}
+
+ol li .onboarding_pic_2 {
+    background-image: url("../images/onboarding_2.svg");
+}
+
+ol li .onboarding_pic_3 {
+    background-image: url("../images/onboarding_3.svg");
+}
+
+ol li section {
+    border-radius: 20px;
+    text-align: center;
+    /* height: 33em; */
+    margin: 1em;
+    padding: 1em;
+    /* margin-bottom: 2em; */
+    /* display: none; */
+}
+
+ol li section h2 {
+    text-align: center;
+    color: var(--main);
+    font-weight: bold;
+    /* width: 100%; */
+    font-size: 1.7em
+}
+
+ol li section p {
+    font-size: 1.1250em
+}
+
+/*  ======
+    button
+    ====== */
+    
+.button_wrapper {
+    display: grid;
+    justify-content: center;
+}
+
+button {
+    height: 5em;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--accent);
+    padding: 1.5em;
+    font-weight: 500;
+    margin-left: 1em;
+    margin-right: 1em;
+    cursor: pointer;
+    justify-content: center;
+    width: 10em;
+}
+
+.next_button:focus {
+    border: 3px solid var(--black);
+    outline: none !important; 
+}
+
+.disable_button {
+    display: none;
+}
+

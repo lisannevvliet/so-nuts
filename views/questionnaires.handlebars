@@ -1,5 +1,4 @@
 <h1>SO-NUTS</h1>
-{{!-- <img src="images/so-nuts-logo-2.png" alt="SO-NUTS"> --}}
 
     <ol class="progress_Steps">
         {{!-- Add the active classlist after answering all the questions from the category. --}}
@@ -9,6 +8,12 @@
     </ol>
 
 <main> 
+
+    <article> 
+        <p>Start vragenlijst</p>  
+        <button class="next_button">Volgende</button>
+    </article>
+
 {{#each questionnaires}}
 <section>
     <div class="question_number">Vraag <span class="question_counter">1</span>/6</div>
@@ -16,12 +21,14 @@
     {{#ifCond this.type "string"}}
         <input type="text">
     {{/ifCond}}
+
     {{#ifCond this.type "choice"}}
         {{#each this.options}}
             <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
             <label for={{this.id}}>{{this.text}}</label><br>
         {{/each}}
     {{/ifCond}}
+
     {{#ifCond this.type "open-choice"}}
         {{#each this.options}}
             <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
@@ -33,6 +40,7 @@
             {{/ifCond}}
         {{/each}}
     {{/ifCond}}
+
     {{#each ../questionnaireResponse}}
         {{#ifCond this.questionId ../this.id}}
             {{#if this.response}}
@@ -45,8 +53,8 @@
     {{/each}}
 
     <div class="button_wrapper"> 
-        <button class="vorige_question_button">Vorige</button>
-        <button class="volgende_question_button">Volgende</button>
+        <button class="prev_button">Vorige</button>
+        <button class="next_button">Volgende</button>
     </div>
     {{!-- <div class="question_number">Q1</div>
     <h2>{{this}}</h2>
