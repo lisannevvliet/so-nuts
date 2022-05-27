@@ -148,6 +148,15 @@ h2 {
     font-weight: 600;
 }
 
+/*  ======
+    button
+    ====== */
+    
+.button_wrapper {
+    display: flex;
+    justify-content: center;
+}
+    
 button {
     /* height: 3em; */
     border-radius: 10px;
@@ -169,6 +178,10 @@ button {
     outline: none !important; 
 }
 
+button:focus {
+    border: 3px solid var(--yellow);
+    outline: none !important; 
+}
 
 /*  ============
     input type
@@ -185,11 +198,6 @@ input[type=text] {
 input:focus {
     border: 3px solid var(--yellow);
     outline: none !important;
-}
-
-button:focus {
-    border: 3px solid var(--yellow);
-    outline: none !important; 
 }
 
 input[type='radio']:checked {
