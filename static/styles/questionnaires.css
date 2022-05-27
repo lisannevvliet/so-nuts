@@ -33,8 +33,7 @@ h1 {
     progress bar
     ============ */
 
-
-ol {
+.progress_steps {
     margin-bottom: 2em;
     text-align: center;
     /* width: 43em; */
@@ -45,7 +44,7 @@ ol {
     counter-reset: step;
 }
   
-ol li {
+.progress_steps li {
     list-style-type: none;
     color: var(--grey);
     text-transform: none;
@@ -55,7 +54,7 @@ ol li {
     position: relative;
 }
   
-ol li:before {
+.progress_steps li:before {
     counter-increment: step;
     content: counter(step);
     width: 1.5em;
@@ -68,7 +67,7 @@ ol li:before {
     margin: 0 auto 5px auto;
 }
   
-ol li:after {
+.progress_steps li:after {
     content: attr(data-title);
     content: '';
     width: 100%;
@@ -80,17 +79,17 @@ ol li:after {
     z-index:-1;
 }
   
-ol li:first-child:after {
+.progress_steps li:first-child:after {
     content: none;
 }
   
-ol li.active:before,
-ol li.active:after {
+.progress_steps li.active:before,
+.progress_steps li.active:after {
     background: var(--yellow);
     color: var(--white);
 }
 
-ol li.active {
+.progress_steps li.active {
       color: var(--yellow)
 }
 
@@ -113,11 +112,17 @@ article {
     background-color: white;
     margin-bottom: 2em;
 }
+.questionnaire {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-section {
+.questionnaire li {
+    text-decoration: none;
     border-radius: 20px;
     text-align: center;
-    height: 33em;
+    height: 27em;
     margin: 1em;
     padding: 1em;
     background-color: white;
@@ -125,11 +130,12 @@ section {
     /* display: none; */
 }
 
-/* .hide_question {
+/* Otherwise the display none is more specific which will overwrite the class name. */
+li {
     display: none;
-} */
+}
 
-.show_question {
+.show_element {
     display: block;
 }
 

@@ -1,65 +1,72 @@
 <h1>SO-NUTS</h1>
 
-    <ol class="progress_Steps">
-        {{!-- Add the active classlist after answering all the questions from the category. --}}
+
+    {{!-- <ol class="progress_steps">
+        Add the active classlist after answering all the questions from the category.
         <li class="gegevens_icon active" data-title="gegevens">Gegevens</li> 
         <li class="voeding_icon" data-title="voeding">Voeding</li>
         <li class="bewegen_icon" data-title="bewegen">Bewegen</li>
-    </ol>
+    </ol> --}}
 
 <main> 
-
+{{!-- 
     <article> 
         <p>Start vragenlijst</p>  
         <button class="next_button">Volgende</button>
-    </article>
+    </article> --}}
 
-{{#each questionnaires}}
-<section>
-    <div class="question_number">Vraag <span class="question_counter">1</span>/6</div>
-    <h2>{{this.text}}</h2>
-    {{#ifCond this.type "string"}}
-        <input type="text">
-    {{/ifCond}}
+<ul class="questionnaire">
+    {{#each questionnaires}}
+    <li>
+        {{!-- <div class="question_number">Vraag <span class="question_counter">1</span>/6</div> --}}
+        <h2>{{this.text}}</h2>
+        {{#ifCond this.type "string"}}
+            <input type="text">
+        {{/ifCond}}
 
-    {{#ifCond this.type "choice"}}
-        {{#each this.options}}
-            <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
-            <label for={{this.id}}>{{this.text}}</label><br>
-        {{/each}}
-    {{/ifCond}}
+        {{#ifCond this.type "choice"}}
+            {{#each this.options}}
+                <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+                <label for={{this.id}}>{{this.text}}</label><br>
+            {{/each}}
+        {{/ifCond}}
 
-    {{#ifCond this.type "open-choice"}}
-        {{#each this.options}}
-            <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
-            <label for={{this.id}}>{{this.text}}</label>
-            {{#ifCond this.id "bs-an"}}
-                <input type="text">
-            {{else}}
-                <br>
+        {{#ifCond this.type "open-choice"}}
+            {{#each this.options}}
+                <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+                <label for={{this.id}}>{{this.text}}</label>
+                {{#ifCond this.id "bs-an"}}
+                    <input type="text">
+                {{else}}
+                    <br>
+                {{/ifCond}}
+            {{/each}}
+        {{/ifCond}}
+
+        {{#each ../questionnaireResponse}}
+            {{#ifCond this.questionId ../this.id}}
+                {{#if this.response}}
+                    <p>{{this.response}}</p>
+                {{/if}}
+                {{#if this.choiceOptionId}}
+                    <p>{{this.choiceOptionId}}</p>
+                {{/if}}
             {{/ifCond}}
         {{/each}}
-    {{/ifCond}}
 
-    {{#each ../questionnaireResponse}}
-        {{#ifCond this.questionId ../this.id}}
-            {{#if this.response}}
-                <p>{{this.response}}</p>
-            {{/if}}
-            {{#if this.choiceOptionId}}
-                <p>{{this.choiceOptionId}}</p>
-            {{/if}}
-        {{/ifCond}}
+        {{!-- <div class="button_wrapper"> 
+            <button class="prev_button">Vorige</button>
+            <button class="next_button">Volgende</button>
+        </div> --}}
+        {{!-- <div class="question_number">Q1</div>
+        <h2>{{this}}</h2>
+        <input type="text" class="answer_type_text">
+        --}}
+    </li>
     {{/each}}
-
-    <div class="button_wrapper"> 
-        <button class="prev_button">Vorige</button>
-        <button class="next_button">Volgende</button>
-    </div>
-    {{!-- <div class="question_number">Q1</div>
-    <h2>{{this}}</h2>
-    <input type="text" class="answer_type_text">
-     --}}
-</section>
-{{/each}}
+</ul>
+<div class="button_wrapper"> 
+            <button class="prev_button">Vorige</button>
+            <button class="next_button">Volgende</button>
+        </div>
 </main>
