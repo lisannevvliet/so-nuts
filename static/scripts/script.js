@@ -14,8 +14,9 @@ const onboardingNext = $(`.next_button`)
 
 onboardingNext.addEventListener("click", function(){
  if (onboardingIndex == 3) {
-    // Go to different route but idk how in clientside javascript.
-    onboardingNext.classList.add("disable_button")
+    // TO-DO: fix the fact that it only changes it to vragenlijst after click.
+   $(".next_button").innerHTML = "Vragenlijst";
+   window.location.href = "/";
  }
  else {
     $(`.onboarding li:nth-child(${onboardingIndex})`).classList.remove("show_element")
@@ -23,8 +24,6 @@ onboardingNext.addEventListener("click", function(){
     $(`.onboarding li:nth-child(${onboardingIndex})`).classList.add("show_element")
  }
 })
-
-
 
 // ==============
 // progress steps
@@ -50,6 +49,7 @@ questionnaireNext.addEventListener("click", function(){
     $(`.questionnaire li:nth-child(${questionnaireIndex})`).classList.add("show_element")
  }
 })
+
 
 //  TO-DO: make the previous button work, maybe add a skip option & implement local storage the onboarding and questionnaire so only new users get to see it.
 
