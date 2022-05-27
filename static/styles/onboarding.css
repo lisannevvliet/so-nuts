@@ -1,20 +1,11 @@
 :root {
-    /* --turquoise: #8CB4AA ;
-    --purple: #AC99AD;
-    --yellow: #EDC85E;
-    --white: #F2F3EE;
+    --accent: #EDC85E;
     --black: #282727;
-    --grey: #ededed;  */
     --main: #58c5b8;
     --secundary: #F4FBFA;
-    --accent: #40B563;
-    --black: #282727;
-
 }
 
-/* misschien alleen aanzetten voor tablet mediaquery op app*/
 * {
-    /* box-sizing: border-box; */
     font-family: "Nunito";
 }
 
@@ -23,14 +14,12 @@ html {
 }
 
 body {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 768px;
-    /* padding: 0; */
-    margin-top: 0;
-    /* padding: 1em; */
     background-color: var(--secundary);
     color: var(--black);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    max-width: 768px;
 }
 
 /* ======
@@ -38,10 +27,10 @@ illustration + text
 =========== */
 
 ol {
-    text-decoration: none;
     list-style: none;
     margin: 0;
     padding: 0;
+    text-decoration: none;
 }
 
 ol li {
@@ -54,9 +43,8 @@ ol li {
 
 ol li div {
     background-position: center;
-    background-size: cover;
     background-repeat: no-repeat;
-    /* width: 30em; */
+    background-size: cover;
     height: 26em;
     margin: 0;
     padding: 0;
@@ -76,20 +64,17 @@ ol li .onboarding_pic_3 {
 
 ol li section {
     border-radius: 20px;
-    text-align: center;
-    /* height: 33em; */
-    margin: 1em;
     padding: 1em;
-    /* margin-bottom: 2em; */
-    /* display: none; */
+    text-align: center;
 }
 
 ol li section h2 {
-    text-align: center;
     color: var(--main);
+    font-size: 1.7em;
     font-weight: bold;
-    /* width: 100%; */
-    font-size: 1.7em
+    margin-left: .5em;
+    margin-right: .5em;
+    text-align: center;
 }
 
 ol li section p {
@@ -107,22 +92,22 @@ ol li section p {
 }
 
 button {
-    height: 5em;
+    background-color: var(--accent);
     border-radius: 10px;
     border: none;
-    background-color: var(--accent);
-    padding: 1.5em;
+    cursor: pointer;
     font-weight: 500;
+    height: 5em;
+    justify-content: center;
     margin-left: 1em;
     margin-right: 1em;
-    cursor: pointer;
-    justify-content: center;
+    padding: 1.5em;
     width: 10em;
 }
 
 .next_button:focus {
     border: 3px solid var(--black);
-    outline: none !important; 
+    outline: none !important;
 }
 
 .disable_button {
