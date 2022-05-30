@@ -52,7 +52,9 @@ if ($(".questionnaire")) {
    })
 
    function update_display() {
-      $(".counter_display").textContent = questionnaire_index
+      document.querySelectorAll(".counter_display").forEach(counter => {
+         counter.textContent = questionnaire_index
+      })
 
       if (questionnaire_index == 1) {
          $(".prev_button").classList.add("disable_button")
