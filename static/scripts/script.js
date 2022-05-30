@@ -10,19 +10,18 @@ function $(element) {
 // Start position onboarding.
 let onboarding_index = 1
 
-const onboarding_next = $(`.next_button`)
+$(".next_button").addEventListener("click", () => {
+   if (onboarding_index < 3) {
+      $(`.onboarding li:nth-child(${onboarding_index})`).classList.remove("show_element")
+      onboarding_index++
+      $(`.onboarding li:nth-child(${onboarding_index})`).classList.add("show_element")
 
-onboarding_next.addEventListener("click", function(){
- if (onboarding_index == 3) {
-    // TO-DO: fix the fact that it only changes it to vragenlijst after click.
-   $(".next_button").innerHTML = "Vragenlijst"
-   window.location.href = "/questionnaire"
- }
- else {
-    $(`.onboarding li:nth-child(${onboarding_index})`).classList.remove("show_element")
-    onboarding_index++
-    $(`.onboarding li:nth-child(${onboarding_index})`).classList.add("show_element")
- }
+      if (onboarding_index == 3) {
+         $(".next_button").innerHTML = "Vragenlijst"
+      }
+   } else {
+      window.location.href = "/questionnaire"
+   }
 })
 
 
