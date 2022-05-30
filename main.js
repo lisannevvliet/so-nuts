@@ -48,3 +48,10 @@ app.get("/questionnaire", async function (_req, res) {
         questionnaireResponse: questionnaireResponse.questionResponses
     })
 })
+
+// Listen to all GET requests on /.
+app.get("/dashboard", (_req, res) => {
+    res.render("dashboard", {
+        style: "dashboard.css"
+    })
+})

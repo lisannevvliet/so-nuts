@@ -2,6 +2,7 @@
     --accent: #EDC85E;
     --beige: #eaebe6;
     --black: #282727;
+    --grey: #ededed;
     --main: #82bea8;
     --secundary: #F4FBFA;
 }
@@ -24,9 +25,9 @@ body {
     max-width: 414px;
 }
 
-/* ======
-illustration + text
-=========== */
+/*  ===================
+    illustration + text 
+    =================== */
 
 ol {
     list-style: none;
@@ -89,23 +90,23 @@ ol li section p {
     ====== */
     
 .button_wrapper {
-    position: absolute;
     bottom: 2em;
     left: 50%;
+    position: absolute;
     transform: translate(-50%);
 }
     
 
 button {
+    background-color: var(--accent);
     border-radius: 10px;
     border: none;
-    background-color: var(--accent);
-    padding: 1.5em;
+    color: var(--black);
+    cursor: pointer;
     font-weight: 500;
     margin-left: 1em;
     margin-right: 1em;
-    cursor: pointer;
-    color: var(--black);
+    padding: 1.5em;
 }
 
 .prev_button {
