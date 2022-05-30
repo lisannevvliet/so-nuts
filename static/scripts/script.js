@@ -72,24 +72,28 @@ if ($(".questionnaire")) {
       })
    })
 
-   $(".questionnaire li:nth-child(1)").classList.add("show_element")
-   update_buttons()
+   if (localStorage.getItem("progress")) {
+      questionnaire_index = localStorage.getItem("progress")
+   }
+
+   $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
+   update_display()
 
    $(".next_button").addEventListener("click", function() {
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
       questionnaire_index++
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-      update_buttons()
+      update_display()
    })
 
    $(".prev_button").addEventListener("click", function() {
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
       questionnaire_index--
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-      update_buttons()
+      update_display()
    })
 
-   function update_buttons() {
+   function update_display() {
       if (questionnaire_index == 1) {
          $(".prev_button").classList.add("disable_button")
       } else {
@@ -101,5 +105,7 @@ if ($(".questionnaire")) {
       } else {
          $(".next_button").classList.remove("disable_button")
       }
+
+      localStorage.setItem("progress", questionnaire_index)
    }
 }
