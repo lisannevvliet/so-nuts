@@ -18,10 +18,7 @@
 <ul class="questionnaire">
     {{#each questionnaires}}
     <li>
-        <div class="question_counter">
-            Vraag 
-            <span class="counter_display">{{inc @index}}</span>/6
-        </div>
+        <div class="question_counter">Vraag {{inc @index}}/{{../questionnaires.length}}</div>
         <h2>{{this.text}}</h2>
         {{#ifCond this.type "string"}}
             <input type="text">

@@ -63,7 +63,7 @@ if ($(".questionnaire")) {
          $(".prev_button").classList.remove("disable_button")
       }
 
-      if (questionnaire_index == 6) {
+      if (questionnaire_index == $(".question_counter").textContent.substring($(".question_counter").textContent.indexOf("/") + 1, $(".question_counter").textContent.length)) {
          $(".next_button").classList.add("disable_button")
       } else {
          $(".next_button").classList.remove("disable_button")
