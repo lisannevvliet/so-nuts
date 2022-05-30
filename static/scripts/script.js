@@ -7,22 +7,24 @@ function $(element) {
 // onboarding (module later)
 // ===========
 
-// Start position onboarding.
-let onboarding_index = 1
+if ($(".onboarding")) {
+   // Start position onboarding.
+   let onboarding_index = 1
 
-$(".next_button").addEventListener("click", () => {
-   if (onboarding_index < 3) {
-      $(`.onboarding li:nth-child(${onboarding_index})`).classList.remove("show_element")
-      onboarding_index++
-      $(`.onboarding li:nth-child(${onboarding_index})`).classList.add("show_element")
+   $(".next_button").addEventListener("click", () => {
+      if (onboarding_index < 3) {
+         $(`.onboarding li:nth-child(${onboarding_index})`).classList.remove("show_element")
+         onboarding_index++
+         $(`.onboarding li:nth-child(${onboarding_index})`).classList.add("show_element")
 
-      if (onboarding_index == 3) {
-         $(".next_button").innerHTML = "Vragenlijst"
+         if (onboarding_index == 3) {
+            $(".next_button").innerHTML = "Vragenlijst"
+         }
+      } else {
+         window.location.href = "/questionnaire"
       }
-   } else {
-      window.location.href = "/questionnaire"
-   }
-})
+   })
+}
 
 
 // ==================
