@@ -3,6 +3,7 @@
     --black: #282727;
     --main: #58c5b8;
     --secundary: #F4FBFA;
+    --background: #eaebe6;
 }
 
 * {
@@ -19,7 +20,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 0;
-    max-width: 768px;
+    max-height: 768px;
+    max-width: 414px;
 }
 
 /* ======
@@ -45,7 +47,7 @@ ol li div {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 26em;
+    height: 20em;
     margin: 0;
     padding: 0;
 }
@@ -97,12 +99,18 @@ button {
     border: none;
     cursor: pointer;
     font-weight: 500;
-    height: 5em;
+    /* height: 5em; */
     justify-content: center;
     margin-left: 1em;
     margin-right: 1em;
     padding: 1.5em;
     width: 10em;
+    color: var(--black);
+    font-size: 1em;
+}
+
+.prev_button {
+    background-color: var(--grey);
 }
 
 .next_button:focus {
@@ -113,4 +121,5 @@ button {
 .disable_button {
     display: none;
 }
+
 

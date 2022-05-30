@@ -6,6 +6,10 @@
     --black: #282727;
     /* moet ff donkerder */
     --grey: #ededed; 
+    --accent: #EDC85E;
+    --main: #58c5b8;
+    --secundary: #F4FBFA;
+    --background: #eaebe6;
 }
 
 /* misschien alleen aanzetten voor tablet mediaquery op app*/
@@ -17,7 +21,8 @@
 body {
     margin-left: auto;
     margin-right: auto;
-    max-width: 768px;
+    /* max-width: 768px; */
+    max-width: 414px;
     /* padding: 1em; */
     background-color: var(--turquoise);
     color: var(--black);
@@ -36,15 +41,14 @@ h1 {
 .progress_steps {
     margin-bottom: 2em;
     text-align: center;
-    /* width: 43em; */
+    width: 43em;
     overflow: hidden;
     display: flex;
-    justify-content: center;
     padding: 0;
     counter-reset: step;
 }
   
-.progress_steps li {
+.progress_steps article {
     list-style-type: none;
     color: var(--grey);
     text-transform: none;
@@ -54,7 +58,7 @@ h1 {
     position: relative;
 }
   
-.progress_steps li:before {
+.progress_steps article:before {
     counter-increment: step;
     content: counter(step);
     width: 1.5em;
@@ -67,7 +71,7 @@ h1 {
     margin: 0 auto 5px auto;
 }
   
-.progress_steps li:after {
+.progress_steps article:after {
     content: attr(data-title);
     content: '';
     width: 100%;
@@ -79,17 +83,17 @@ h1 {
     z-index:-1;
 }
   
-.progress_steps li:first-child:after {
+.progress_steps article:first-child:after {
     content: none;
 }
   
-.progress_steps li.active:before,
-.progress_steps li.active:after {
+.progress_steps article.active:before,
+.progress_steps article.active:after {
     background: var(--yellow);
     color: var(--white);
 }
 
-.progress_steps li.active {
+.progress_steps article.active {
       color: var(--yellow)
 }
 
@@ -103,7 +107,7 @@ h1 {
     height: 34em;
 }  */
 
-article {
+/* article {
     border-radius: 20px;
     text-align: center;
     height: 10em;
@@ -111,7 +115,7 @@ article {
     padding: 1em;
     background-color: white;
     margin-bottom: 2em;
-}
+} */
 .questionnaire {
     list-style-type: none;
     padding: 0;
@@ -139,13 +143,14 @@ li {
     display: block;
 }
 
-.question_number {
+.question_counter {
     font-weight: 300;
     color: lightgrey;
 }
 
 h2 {
     font-weight: 600;
+    font-size: 1.6em;
 }
 
 /*  ======
@@ -155,6 +160,10 @@ h2 {
 .button_wrapper {
     display: flex;
     justify-content: center;
+}
+
+.disable_button {
+    display: none;
 }
     
 button {
@@ -190,9 +199,10 @@ button:focus {
 
 input[type=text] {
     background-color: var(--grey);
-    border: solid var(--black) 1px;
+    border: solid darkgrey 1px;
     border-radius: 5px;
     height: 2em;
+    width: 90%;
 }
 
 input:focus {
@@ -200,8 +210,39 @@ input:focus {
     outline: none !important;
 }
 
-input[type='radio']:checked {
-    color: var(--yellow);
+/*  ============
+    input types
+    ============ */
+
+
+input[type="radio"],
+input[type="checkbox"]{
+    display: none;
+}   
+
+input[type="radio"]:checked+label,
+input[type="checkbox"]:checked+label {
+    background-color: var(--turquoise);
 }
 
+label {
+    display: inline-block;
+    background-color: var(--background);
+    padding: .4em;
+    height: 2em;
+    margin: .2em;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 90%;
+}      
+
+.options_container {
+    display: grid;
+    grid-template-columns: repeat(2, 10em);
+    /* grid-template-rows: repeat(2, 3em); */
+    /* grid-column-gap: 10px; */
+    /* grid-row-gap: 10px; */
+    justify-content: center;
+}
 

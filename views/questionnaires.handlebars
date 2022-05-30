@@ -1,12 +1,12 @@
 <h1>SO-NUTS</h1>
 
 
-    {{!-- <ol class="progress_steps">
-        Add the active classlist after answering all the questions from the category.
-        <li class="gegevens_icon active" data-title="gegevens">Gegevens</li> 
-        <li class="voeding_icon" data-title="voeding">Voeding</li>
-        <li class="bewegen_icon" data-title="bewegen">Bewegen</li>
-    </ol> --}}
+    <div class="progress_steps">
+        {{!-- Add the active classlist after answering all the questions from the category. --}}
+        <article class="gegevens_icon active" data-title="gegevens">Gegevens</article> 
+        <article class="voeding_icon" data-title="voeding">Voeding</article>
+        <article class="bewegen_icon" data-title="bewegen">Bewegen</article>
+    </div>
 
 <main> 
 {{!-- 
@@ -18,29 +18,39 @@
 <ul class="questionnaire">
     {{#each questionnaires}}
     <li>
-        {{!-- <div class="question_number">Vraag <span class="question_counter">1</span>/6</div> --}}
+        <div class="question_counter">
+            Vraag 
+            <span class="counter_display"></span>/6
+        </div>
         <h2>{{this.text}}</h2>
         {{#ifCond this.type "string"}}
             <input type="text">
         {{/ifCond}}
 
         {{#ifCond this.type "choice"}}
+        {{!-- <div class="options_container">  --}}
             {{#each this.options}}
+             
                 <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
                 <label for={{this.id}}>{{this.text}}</label><br>
+           
             {{/each}}
+             {{!-- </div> --}}
         {{/ifCond}}
 
         {{#ifCond this.type "open-choice"}}
+           <div class="options_container"> 
             {{#each this.options}}
                 <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
                 <label for={{this.id}}>{{this.text}}</label>
                 {{#ifCond this.id "bs-an"}}
                     <input type="text">
                 {{else}}
-                    <br>
+                    {{!-- <br> --}}
                 {{/ifCond}}
+               
             {{/each}}
+              </div>
         {{/ifCond}}
 
         {{#each ../questionnaireResponse}}

@@ -38,7 +38,7 @@ const questionnaire_next = $(`.next_button`)
 const questionnaire_prev = $(`.prev_button`)
 
 $(".questionnaire li:nth-child(1)").classList.add("show_element")
-// update_display()
+update_display()
 
 questionnaire_next.addEventListener("click", function(){
  if (questionnaire_index == 6) {
@@ -47,9 +47,8 @@ questionnaire_next.addEventListener("click", function(){
  else {
     $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
     questionnaire_index++
-   //  TO-DO: a counter for the corresponding question number.
     $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-   //  update_display()
+    update_display()
    //  console.log(questionnaire_index)
    }
 })
@@ -61,9 +60,9 @@ questionnaire_prev.addEventListener("click", function(){
    else { 
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
       questionnaire_index--
-     //  TO-DO: a counter for the corresponding question number.
+      update_display()
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-      //  update_display()
+       
    }
   })
 
