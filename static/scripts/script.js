@@ -42,7 +42,11 @@ if ($(".questionnaire")) {
 
    document.querySelectorAll("input[type=text]").forEach(element => {
       element.addEventListener("input", () => {
-         answers[questionnaire_index] = element.value
+         if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
+            answers[questionnaire_index + "_string"] = element.value
+         } else {
+            answers[questionnaire_index] = element.value
+         }
       })
    })
 
@@ -60,7 +64,11 @@ if ($(".questionnaire")) {
             checked.push(element.value)
          })
 
-         answers[questionnaire_index] = checked
+         if ($(`#question_${questionnaire_index} input[type=text]`)) {
+            answers[questionnaire_index + "_checkbox"] = checked
+         } else {
+            answers[questionnaire_index] = checked
+         }
       })
    })
 
