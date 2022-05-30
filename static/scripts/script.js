@@ -44,8 +44,10 @@ if ($(".questionnaire")) {
       element.addEventListener("input", () => {
          if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
             answers[questionnaire_index + "_string"] = element.value
+            localStorage.setItem("answers", JSON.stringify(answers))
          } else {
             answers[questionnaire_index] = element.value
+            localStorage.setItem("answers", JSON.stringify(answers))
          }
       })
    })
@@ -53,6 +55,7 @@ if ($(".questionnaire")) {
    document.querySelectorAll("input[type=radio]").forEach(element => {
       element.addEventListener("change", () => {
          answers[questionnaire_index] = element.value
+         localStorage.setItem("answers", JSON.stringify(answers))
       })
    })
 
@@ -66,8 +69,10 @@ if ($(".questionnaire")) {
 
          if ($(`#question_${questionnaire_index} input[type=text]`)) {
             answers[questionnaire_index + "_checkbox"] = checked
+            localStorage.setItem("answers", JSON.stringify(answers))
          } else {
             answers[questionnaire_index] = checked
+            localStorage.setItem("answers", JSON.stringify(answers))
          }
       })
    })
