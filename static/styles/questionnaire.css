@@ -203,7 +203,7 @@ input[type=text] {
     border-radius: 5px;
     border: solid darkgrey 1px;
     height: 2em;
-    width: 90%;
+    width: 50%;
 }
 
 input:focus {
