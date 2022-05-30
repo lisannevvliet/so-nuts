@@ -1,0 +1,252 @@
+:root {
+    --accent: #EDC85E;
+    --beige: #eaebe6;
+    --black: #282727;
+    --grey: #ededed;
+    --main: #82bea8;
+    --secundary: #F4FBFA;
+}
+
+* {
+    font-family: "Nunito";
+}
+
+html {
+    margin: auto;
+    overflow: hidden;
+}
+
+body {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    max-height: 768px;
+    max-width: 414px;
+    padding-top: 0;
+}
+
+main {
+    background-color: var(--main);
+    background-image: url("/images/bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.space {
+    margin-bottom: 3.5em;
+    padding: .5em;
+}
+
+.background {
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    height: 100vh;
+    padding-top: 1em;
+}
+
+/*  ============
+    progress bar
+    ============ */
+
+.progress_steps {
+    counter-reset: step;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2em;
+    margin-right: 0;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+}
+
+.progress_steps article {
+    color: var(--grey);
+    float: left;
+    font-size: 1.1em;
+    list-style-type: none;
+    position: relative;
+    text-transform: none;
+    width: 20%;
+}
+
+.progress_steps article:before {
+    background: var(--grey);
+    border-radius: 50%;
+    color: white;
+    content: counter(step);
+    counter-increment: step;
+    display: block;
+    font-size: 1em;
+    height: 1.5em;
+    margin: 0 auto 5px auto;
+    width: 1.5em;
+}
+
+.progress_steps article:after {
+    background: var(--grey);
+    content: '';
+    content: attr(data-title);
+    height: .3em;
+    left: -50%;
+    position: absolute;
+    top: .7em;
+    width: 100%;
+    z-index:-1;
+}
+
+.progress_steps article:first-child:after {
+    content: none;
+}
+
+.progress_steps article.active:before,
+.progress_steps article.active:after {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.progress_steps article.active {
+    color: var(--accent);
+}
+
+article.gegevens_icon.active:before {
+    color: white;
+}
+
+/*  =============
+    questionarre
+    general
+    ============ */
+
+.questionnaire {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.questionnaire li {
+    border-radius: 20px;
+    padding: 1em;
+    text-align: center;
+    text-decoration: none;
+}
+
+li {
+    display: none;
+}
+
+.show_element {
+    display: block;
+}
+
+.question_counter {
+    color: lightgrey;
+    font-weight: 300;
+}
+
+h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+/*  ======
+    button
+    ====== */
+
+.button_wrapper {
+    bottom: 2em;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%);
+}
+
+.disable_button {
+    display: none;
+}
+
+button {
+    background-color: var(--accent);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1.5em;
+}
+
+.prev_button {
+    background-color: var(--grey);
+}
+
+.next_button:focus {
+    border: 3px solid var(--black);
+    outline: none !important;
+}
+
+button:focus {
+    border: 3px solid var(--accent);
+    outline: none !important;
+}
+
+/*  ===========
+    input type
+    text
+    =========== */
+
+input[type=text] {
+    background-color: var(--grey);
+    border-radius: 5px;
+    border: solid darkgrey 1px;
+    height: 2em;
+    width: 90%;
+}
+
+input:focus {
+    border: 3px solid var(--accent);
+    outline: none !important;
+}
+
+/*  ============
+    input types
+    ============ */
+
+input[type="radio"],
+input[type="checkbox"]{
+    display: none;
+}   
+
+input[type="radio"]:checked+label,
+input[type="checkbox"]:checked+label {
+    background-color: var(--main);
+}
+
+label {
+    background-color: var(--beige);
+    border-radius: 5px;
+    cursor: pointer;
+    display: inherit;
+    font-size: 1.1em;
+    margin-bottom: 0em;
+    padding: 1em;
+}
+
+input[type="checkbox"] label {
+    background-color: var(--beige);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}      
+
+.options_container {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2, 10em);
+    justify-content: center;
+}
+

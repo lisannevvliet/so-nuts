@@ -1,9 +1,9 @@
 :root {
     --accent: #EDC85E;
+    --beige: #eaebe6;
     --black: #282727;
-    --main: #58c5b8;
+    --main: #82bea8;
     --secundary: #F4FBFA;
-    --background: #eaebe6;
 }
 
 * {
@@ -89,24 +89,22 @@ ol li section p {
     ====== */
     
 .button_wrapper {
-    display: grid;
-    justify-content: center;
+    position: absolute;
+    bottom: 8em;
+    left: 50%;
+    transform: translate(-50%);
 }
+    
 
 button {
-    background-color: var(--accent);
     border-radius: 10px;
     border: none;
-    cursor: pointer;
+    background-color: var(--accent);
+    padding: 1.5em;
     font-weight: 500;
-    /* height: 5em; */
-    justify-content: center;
     margin-left: 1em;
     margin-right: 1em;
-    padding: 1.5em;
-    width: 10em;
-    color: var(--black);
-    font-size: 1em;
+    cursor: pointer;
 }
 
 .prev_button {

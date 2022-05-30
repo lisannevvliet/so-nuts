@@ -157,11 +157,6 @@ h2 {
     button
     ====== */
     
-.button_wrapper {
-    display: flex;
-    justify-content: center;
-}
-
 .disable_button {
     display: none;
 }

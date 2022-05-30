@@ -43,7 +43,7 @@ app.get("/questionnaire", async function (_req, res) {
 
 	// Load the index page with the questionnaires.
     res.render("questionnaires", {
-        style: "questionnaires.css",
+        style: "questionnaire.css",
         questionnaires: questionnaire.questions,
         questionnaireResponse: questionnaireResponse.questionResponses
     })
