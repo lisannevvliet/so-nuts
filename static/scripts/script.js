@@ -43,7 +43,7 @@ if ($(".questionnaire")) {
    document.querySelectorAll("input[type=text]").forEach(element => {
       element.addEventListener("input", () => {
          if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
-            answers[questionnaire_index + "_string"] = element.value
+            answers[questionnaire_index + "_text"] = element.value
             localStorage.setItem("answers", JSON.stringify(answers))
          } else {
             answers[questionnaire_index] = element.value
@@ -112,5 +112,41 @@ if ($(".questionnaire")) {
       }
 
       localStorage.setItem("progress", questionnaire_index)
+
+      if (localStorage.getItem("answers")) {
+         answers = JSON.parse(localStorage.getItem("answers"))
+
+         if ($(`#question_${questionnaire_index} input[type=text]`) && $(`#question_${questionnaire_index} input[type=checkbox]`)) {
+            if (answers[questionnaire_index + "_text"] != undefined) {
+               $(`#question_${questionnaire_index} input[type=text]`).value = answers[questionnaire_index + "_text"]
+            }
+
+            if (answers[questionnaire_index + "_checkbox"] != undefined) {
+               document.querySelectorAll(`#question_${questionnaire_index} input[type=checkbox]`).forEach(element => {
+                  answers[questionnaire_index + "_checkbox"].forEach(checkbox => {
+                     if (checkbox == element.id) {
+                        element.checked = true
+                     }
+                  })
+               })
+            }
+         } else {
+            if (answers[questionnaire_index] != undefined) {
+               if ($(`#question_${questionnaire_index} input[type=text]`)) {
+                  $(`#question_${questionnaire_index} input[type=text]`).value = answers[questionnaire_index]
+               } else if ($(`#question_${questionnaire_index} input[type=radio]`)) {
+                  $(`#${answers[questionnaire_index]}`).checked = true
+               } else if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
+                  document.querySelectorAll(`#question_${questionnaire_index} input[type=checkbox]`).forEach(element => {
+                     answers[questionnaire_index].forEach(checkbox => {
+                        if (checkbox == element.id) {
+                           element.checked = true
+                        }
+                     })
+                  })
+               }
+            }
+         }
+      }
    }
 }
