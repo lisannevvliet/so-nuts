@@ -17,7 +17,7 @@
 
 <ul class="questionnaire">
     {{#each questionnaires}}
-    <li>
+    <li id="question_{{inc @index}}"">
         <div class="question_counter">Vraag {{inc @index}}/{{../questionnaires.length}}</div>
         <h2>{{this.text}}</h2>
         {{#ifCond this.type "string"}}
