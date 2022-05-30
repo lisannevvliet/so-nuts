@@ -35,27 +35,23 @@ if ($(".questionnaire")) {
    let questionnaire_index = 1
 
    $(".questionnaire li:nth-child(1)").classList.add("show_element")
-   update_display()
+   update_buttons()
 
    $(".next_button").addEventListener("click", function() {
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
       questionnaire_index++
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-      update_display()
+      update_buttons()
    })
 
    $(".prev_button").addEventListener("click", function() {
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
       questionnaire_index--
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-      update_display()
+      update_buttons()
    })
 
-   function update_display() {
-      document.querySelectorAll(".counter_display").forEach(counter => {
-         counter.textContent = questionnaire_index
-      })
-
+   function update_buttons() {
       if (questionnaire_index == 1) {
          $(".prev_button").classList.add("disable_button")
       } else {

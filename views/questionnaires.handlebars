@@ -20,7 +20,7 @@
     <li>
         <div class="question_counter">
             Vraag 
-            <span class="counter_display"></span>/6
+            <span class="counter_display">{{inc @index}}</span>/6
         </div>
         <h2>{{this.text}}</h2>
         {{#ifCond this.type "string"}}

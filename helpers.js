@@ -4,5 +4,8 @@ module.exports = {
             return options.fn(this)
         }
         return options.inverse(this)
-      }
+    },
+    inc: function(value) {
+        return parseInt(value) + 1
+    }
 }
