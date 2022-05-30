@@ -29,7 +29,7 @@ app.listen(process.env.PORT, () => {
 })
 
 // Listen to all GET requests on /.
-app.get("/", async function (_req, res) {
+app.get("/questionnaire", async function (_req, res) {
     // Get the data from the API.
     // const response = await fetch(url)
     // const data = await response.json()
@@ -43,7 +43,7 @@ app.get("/", async function (_req, res) {
 })
 
 // Listen to all GET requests on /.
-app.get("/onboarding", async function (_req, res) {
+app.get("/", async function (_req, res) {
     res.render("onboarding", {
         style: "onboarding.css"
     })
