@@ -30,43 +30,45 @@ onboarding_next.addEventListener("click", function(){
 // question multistep
 // ================== 
 
-// Start position questionnaire.
-let questionnaire_index = 1
+if ($(".questionnaire")) {
+   // Start position questionnaire.
+   let questionnaire_index = 1
 
-let counter_display = $(`.counter_display`)
-const questionnaire_next = $(`.next_button`)
-const questionnaire_prev = $(`.prev_button`)
+   let counter_display = $(`.counter_display`)
+   const questionnaire_next = $(`.next_button`)
+   const questionnaire_prev = $(`.prev_button`)
 
-$(".questionnaire li:nth-child(1)").classList.add("show_element")
-update_display()
+   $(".questionnaire li:nth-child(1)").classList.add("show_element")
+   update_display()
 
-questionnaire_next.addEventListener("click", function(){
- if (questionnaire_index == 6) {
-    questionnaire_next.classList.add("disable_button")
- }
- else {
-    $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
-    questionnaire_index++
-    $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-    update_display()
-   //  console.log(questionnaire_index)
-   }
-})
-
-questionnaire_prev.addEventListener("click", function(){
+   questionnaire_next.addEventListener("click", function(){
    if (questionnaire_index == 6) {
       questionnaire_next.classList.add("disable_button")
    }
-   else { 
+   else {
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
-      questionnaire_index--
-      update_display()
+      questionnaire_index++
       $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-       
+      update_display()
+      //  console.log(questionnaire_index)
+      }
+   })
+
+   questionnaire_prev.addEventListener("click", function(){
+      if (questionnaire_index == 6) {
+         questionnaire_next.classList.add("disable_button")
+      }
+      else { 
+         $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
+         questionnaire_index--
+         update_display()
+         $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
+         
+      }
+   })
+
+
+   function update_display(){
+      counter_display.innerHTML = questionnaire_index
    }
-  })
-
-
-function update_display(){
-   counter_display.innerHTML = questionnaire_index
 }
