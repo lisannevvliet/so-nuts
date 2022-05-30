@@ -28,7 +28,7 @@ app.listen(process.env.PORT, () => {
     console.log(`Express running at http://localhost:${process.env.PORT}.`)
 })
 
-// Listen to all GET requests on /.
+// Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", async function (_req, res) {
     // Get the data from the API.
     // const response = await fetch(url)
@@ -43,7 +43,7 @@ app.get("/questionnaire", async function (_req, res) {
 })
 
 // Listen to all GET requests on /.
-app.get("/", async function (_req, res) {
+app.get("/", (_req, res) => {
     res.render("onboarding", {
         style: "onboarding.css"
     })
