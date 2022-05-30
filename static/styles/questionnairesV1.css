@@ -4,7 +4,6 @@
     --yellow: #EDC85E;
     --white: #F2F3EE;
     --black: #282727;
-    /* moet ff donkerder */
     --grey: #ededed; 
     --accent: #EDC85E;
     --main: #58c5b8;
@@ -12,7 +11,6 @@
     --background: #eaebe6;
 }
 
-/* misschien alleen aanzetten voor tablet mediaquery op app*/
 * {
     box-sizing: border-box;
     font-family: "Nunito";
@@ -134,7 +132,6 @@ h1 {
     /* display: none; */
 }
 
-/* Otherwise the display none is more specific which will overwrite the class name. */
 li {
     display: none;
 }

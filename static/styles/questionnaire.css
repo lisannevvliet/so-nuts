@@ -176,6 +176,7 @@ button {
     margin-left: 1em;
     margin-right: 1em;
     padding: 1.5em;
+    color: var(--black);
 }
 
 .prev_button {
