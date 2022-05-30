@@ -28,6 +28,13 @@ app.listen(process.env.PORT, () => {
     console.log(`Express running at http://localhost:${process.env.PORT}.`)
 })
 
+// Listen to all GET requests on /.
+app.get("/", (_req, res) => {
+    res.render("onboarding", {
+        style: "onboarding.css"
+    })
+})
+
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", async function (_req, res) {
     // Get the data from the API.
@@ -39,12 +46,5 @@ app.get("/questionnaire", async function (_req, res) {
         style: "questionnaires.css",
         questionnaires: questionnaire.questions,
         questionnaireResponse: questionnaireResponse.questionResponses
-    })
-})
-
-// Listen to all GET requests on /.
-app.get("/", (_req, res) => {
-    res.render("onboarding", {
-        style: "onboarding.css"
     })
 })
