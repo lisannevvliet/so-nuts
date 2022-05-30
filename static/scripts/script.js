@@ -38,6 +38,31 @@ if ($(".onboarding")) {
 if ($(".questionnaire")) {
    // Start position questionnaire.
    let questionnaire_index = 1
+   let answers = { }
+
+   document.querySelectorAll("input[type=text]").forEach(element => {
+      element.addEventListener("input", () => {
+         answers[questionnaire_index] = element.value
+      })
+   })
+
+   document.querySelectorAll("input[type=radio]").forEach(element => {
+      element.addEventListener("change", () => {
+         answers[questionnaire_index] = element.value
+      })
+   })
+
+   document.querySelectorAll("input[type=checkbox]").forEach(element => {
+      element.addEventListener("change", () => {
+         let checked = []
+
+         document.querySelectorAll(`input[type=checkbox][name=${element.name}]:checked`).forEach(element => {
+            checked.push(element.value)
+         })
+
+         answers[questionnaire_index] = checked
+      })
+   })
 
    $(".questionnaire li:nth-child(1)").classList.add("show_element")
    update_buttons()
