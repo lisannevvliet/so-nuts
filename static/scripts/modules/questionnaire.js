@@ -54,10 +54,8 @@ export function update_display() {
        $(".prev_button").classList.remove("hide_button")
     }
 
-    var amount_of_questions = $("#amount_of_questions").textContent
-
     // Hide the next button for the last question.
-    if (questionnaire_index == amount_of_questions) {
+    if (questionnaire_index == $("#amount_of_questions").textContent) {
         $(".next_button").classList.add("hide_button")
     } else {
        $(".next_button").classList.remove("hide_button")
@@ -113,7 +111,7 @@ export function update_display() {
     }
 
     // Fill in the progress bar.
-    $$("#progress div")[questionnaire_index - 1].style.width = (questionnaire_index - 1) * 100 / amount_of_questions + "%"
+    $$("#progress div")[questionnaire_index - 1].style.width = (questionnaire_index - 1) * 100 / $("#amount_of_questions").textContent + "%"
 }
 
 export function save_answers_localStorage() {
