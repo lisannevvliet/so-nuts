@@ -50,18 +50,18 @@ if ($(".questionnaire")) {
 export function update_display() {
     // Hide the previous button for the first question.
     if (questionnaire_index == 1) {
-       $(".prev_button").classList.add("disable_button")
+       $(".prev_button").classList.add("hide_button")
     } else {
-       $(".prev_button").classList.remove("disable_button")
+       $(".prev_button").classList.remove("hide_button")
     }
 
     var amount_of_questions = $(".question_counter").textContent.substring($(".question_counter").textContent.indexOf("/") + 1, $(".question_counter").textContent.length)
 
     // Hide the next button for the last question.
     if (questionnaire_index == amount_of_questions) {
-       $(".next_button").classList.add("disable_button")
+       $(".next_button").classList.add("hide_button")
     } else {
-       $(".next_button").classList.remove("disable_button")
+       $(".next_button").classList.remove("hide_button")
     }
 
     // Save the current question in localStorage.
