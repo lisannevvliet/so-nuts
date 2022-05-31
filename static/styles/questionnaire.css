@@ -13,15 +13,11 @@
 
 html {
     margin: auto;
-    overflow: hidden;
 }
 
 body {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    max-height: 768px;
-    max-width: 414px;
+    margin: 0 auto;
+    max-width: 768px;
     padding-top: 0;
 }
 
@@ -30,21 +26,31 @@ main {
     background-image: url("/images/bg.svg");
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
     padding: 0;
 }
 
-.space {
-    margin-bottom: 3.5em;
-    padding: .5em;
+@supports (height: 100dvh) {
+    main {
+        height: 100dvh;
+    }
+}
+
+.header {
+    flex-shrink: 0;
+    height: 10%;
 }
 
 .background {
     background-color: white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     padding-top: 1em;
 }
 
@@ -55,6 +61,7 @@ main {
 .progress_steps {
     counter-reset: step;
     display: flex;
+    flex-shrink: 0;
     justify-content: space-around;
     margin-bottom: 2em;
     margin-right: 0;
@@ -122,14 +129,17 @@ article.gegevens_icon.active:before {
     ============ */
 
 .questionnaire {
+    flex: 1;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
 .questionnaire li {
+    align-items: center;
     border-radius: 20px;
-    padding: 1em;
+    flex-direction: column;
+    height: 100%;
     text-align: center;
     text-decoration: none;
 }
@@ -139,12 +149,16 @@ li {
 }
 
 .show_element {
-    display: block;
+    display: flex;
 }
 
 .question_counter {
     color: lightgrey;
     font-weight: 300;
+}
+
+#spacing {
+    flex-grow: 1;
 }
 
 h2 {
@@ -157,14 +171,14 @@ h2 {
     ====== */
 
 .button_wrapper {
-    bottom: 2em;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%);
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+    margin-top: 2em;
 }
 
-.disable_button {
-    display: none;
+.hide_button {
+    visibility: hidden;
 }
 
 button {
@@ -203,7 +217,6 @@ input[type=text] {
     border-radius: 5px;
     border: solid darkgrey 1px;
     height: 2em;
-    width: 50%;
 }
 
 input:focus {
@@ -231,8 +244,10 @@ label {
     cursor: pointer;
     display: inherit;
     font-size: 1.1em;
+    justify-content: center;
     margin-bottom: 0em;
     padding: 1em;
+    width: 50%;
 }
 
 input[type="checkbox"] label {
@@ -245,9 +260,13 @@ input[type="checkbox"] label {
 }      
 
 .options_container {
+    align-items: center;
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(2, 10em);
     justify-content: center;
 }
 
+.options_container label {
+    width: unset;
+}
