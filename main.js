@@ -60,7 +60,7 @@ app.get("/questionnaire", async function (_req, res) {
     // If it fails, use to the local JSON.
     } catch { }
 
-	// Load the index page with the questionnaires.
+    // Load the index page with the questionnaires.
     res.render("questionnaires", {
         style: "questionnaire.css",
         questionnaire: questionnaire.questions,
@@ -68,7 +68,7 @@ app.get("/questionnaire", async function (_req, res) {
     })
 })
 
-// Listen to all GET requests on /.
+// Listen to all GET requests on /dashboard.
 app.get("/dashboard", (_req, res) => {
     res.render("dashboard", {
         style: "dashboard.css"

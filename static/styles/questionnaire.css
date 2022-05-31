@@ -180,6 +180,7 @@ button {
     border-radius: 10px;
     border: none;
     cursor: pointer;
+    font-size: large;
     font-weight: 500;
     margin-left: 1em;
     margin-right: 1em;
