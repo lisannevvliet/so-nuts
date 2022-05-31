@@ -15,9 +15,9 @@ export function questionnaire_input_types() {
         type_radio()
         type_checkbox()
 
-        // Retrieve the current question from localStorage.
-        if (localStorage.getItem("progress")) {
-            questionnaire_index = localStorage.getItem("progress")
+        // Retrieve the index from localStorage and check if it is not greater than the amount of questions.
+        if (localStorage.getItem("index") && localStorage.getItem("index") <= $("#amount_of_questions").textContent) {
+            questionnaire_index = localStorage.getItem("index")
         }
 
         // Show the first question or the one saved in localStorage.
@@ -61,8 +61,8 @@ export function update_display() {
        $(".next_button").classList.remove("hide_button")
     }
 
-    // Save the current question in localStorage.
-    localStorage.setItem("progress", questionnaire_index)
+    // Save the index in localStorage.
+    localStorage.setItem("index", questionnaire_index)
 
     // Check if there are any answers stored in localStorage.
     if (localStorage.getItem("answers")) {
