@@ -1,82 +1,45 @@
-<main> 
-<div class="header"></div>
-
-<section class="background"> 
-    <div class="progress_steps">
-        {{!-- Add the active classlist after answering all the questions from the category. --}}
-        <article class="gegevens_icon active" data-title="gegevens">Gegevens</article> 
-        <article class="voeding_icon" data-title="voeding">Voeding</article>
-        <article class="bewegen_icon" data-title="bewegen">Bewegen</article>
-    </div>
-
-{{!-- 
-    <article> 
-        <p>Start vragenlijst</p>  
-        <button class="next_button">Volgende</button>
-    </article> --}}
-
-<ul class="questionnaire">
-    {{#each questionnaires}}
-    <li id="question_{{inc @index}}"">
-        <div class="question_counter">Vraag {{inc @index}}/{{../questionnaires.length}}</div>
-        <span id="spacing"></span>
-        <h2>{{this.text}}</h2>
-        {{#ifCond this.type "string"}}
-            <input type="text">
-        {{/ifCond}}
-
-        {{#ifCond this.type "choice"}}
-        {{!-- <div class="options_container">  --}}
-            {{#each this.options}}
-             
-                <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
-                <label for={{this.id}}>{{this.text}}</label><br>
-           
+<main>
+    <div class="header"></div>
+    <section class="background">
+        <div class="progress_steps">
+            {{!-- Add the active classlist after answering all the questions from the category. --}}
+            <article class="gegevens_icon active" data-title="gegevens">Gegevens</article>
+            <article class="voeding_icon" data-title="voeding">Voeding</article>
+            <article class="bewegen_icon" data-title="bewegen">Bewegen</article>
+        </div>
+        <ul class="questionnaire">
+            {{#each questionnaires}}
+                <li id="question_{{inc @index}}"">
+                    <div class="question_counter">Vraag {{inc @index}}/{{../questionnaires.length}}</div>
+                    <span id="spacing"></span>
+                    <h2>{{this.text}}</h2>
+                    {{#ifCond this.type "string"}}
+                        <input type="text">
+                    {{/ifCond}}
+                    {{#ifCond this.type "choice"}}
+                        {{#each this.options}}
+                            <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+                            <label for={{this.id}}>{{this.text}}</label><br>
+                        {{/each}}
+                    {{/ifCond}}
+                    {{#ifCond this.type "open-choice"}}
+                        <div class="options_container">
+                            {{#each this.options}}
+                                <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+                                <label for={{this.id}}>{{this.text}}</label>
+                                {{#ifCond this.id "bs-an"}}
+                                    <input type="text">
+                                {{/ifCond}}
+                            {{/each}}
+                        </div>
+                    {{/ifCond}}
+                    <span id="spacing"></span>
+                </li>
             {{/each}}
-             {{!-- </div> --}}
-        {{/ifCond}}
-
-        {{#ifCond this.type "open-choice"}}
-           <div class="options_container"> 
-            {{#each this.options}}
-                <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
-                <label for={{this.id}}>{{this.text}}</label>
-                {{#ifCond this.id "bs-an"}}
-                    <input type="text">
-                {{else}}
-                    {{!-- <br> --}}
-                {{/ifCond}}
-               
-            {{/each}}
-              </div>
-        {{/ifCond}}
-
-        {{!-- {{#each ../questionnaireResponse}}
-            {{#ifCond this.questionId ../this.id}}
-                {{#if this.response}}
-                    <p>{{this.response}}</p>
-                {{/if}}
-                {{#if this.choiceOptionId}}
-                    <p>{{this.choiceOptionId}}</p>
-                {{/if}}
-            {{/ifCond}}
-        {{/each}} --}}
-
-        {{!-- <div class="button_wrapper"> 
-            <button class="prev_button">Vorige</button>
-            <button class="next_button">Volgende</button>
-        </div> --}}
-        {{!-- <div class="question_number">Q1</div>
-        <h2>{{this}}</h2>
-        <input type="text" class="answer_type_text">
-        --}}
-        <span id="spacing"></span>
-    </li>
-    {{/each}}
-</ul>
-<div class="button_wrapper"> 
+        </ul>
+        <div class="button_wrapper">
             <button class="prev_button">Vorige</button>
             <button class="next_button">Volgende</button>
         </div>
-</section>
+    </section>
 </main>
