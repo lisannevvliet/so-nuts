@@ -44,7 +44,7 @@ app.get("/questionnaire", async function (_req, res) {
     // To use the old questionnaire, remove the two blocks of code below or disable the client's internet connection.
     // Try to get the questionnaire from the API.
     try {
-        let response = await fetch("https://mibplatform.nl:5001/api/Questionnaires/2", {
+        let response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2", {
             agent: agent
         })
         questionnaire = await response.json()
@@ -53,7 +53,7 @@ app.get("/questionnaire", async function (_req, res) {
 
     // Try to get the questionnaire response from the API.
     try {
-        response = await fetch("https://mibplatform.nl:5001/api/QuestionnaireResponses/3", {
+        response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses/3", {
             agent: agent
         })
         questionnaireResponse = await response.json()
