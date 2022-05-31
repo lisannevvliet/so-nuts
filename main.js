@@ -12,8 +12,8 @@ const agent = new https.Agent({
     rejectUnauthorized: false,
 })
 // Import JSON files.
-const questionnaire = require("./static/json/questionnaire.json")
-const questionnaireResponse = require("./static/json/questionnaireResponse.json")
+let questionnaire = require("./static/json/questionnaire.json")
+let questionnaireResponse = require("./static/json/questionnaireResponse.json")
 
 // Initialise Express.
 const app = express()
@@ -41,17 +41,23 @@ app.get("/", (_req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", async function (_req, res) {
-    // Get the data from the API.
-    const response = await fetch("https://mibplatform.nl:5001/api/Questionnaires/2", {
+    // To use the old questionnaire, remove the two blocks of code below.
+    // Get the questionnaire from the API.
+    let response = await fetch("https://mibplatform.nl:5001/api/Questionnaires/2", {
         agent: agent
     })
-    const data = await response.json()
+    questionnaire = await response.json()
+
+    // Get the questionnaire response from the API.
+    response = await fetch("https://mibplatform.nl:5001/api/QuestionnaireResponses/3", {
+        agent: agent
+    })
+    questionnaireResponse = await response.json()
 
 	// Load the index page with the questionnaires.
-    // To use the old questionnaires, change data.questions to questionnaire.questions.
     res.render("questionnaires", {
         style: "questionnaire.css",
-        questionnaires: data.questions,
+        questionnaire: questionnaire.questions,
         questionnaireResponse: questionnaireResponse.questionResponses
     })
 })
