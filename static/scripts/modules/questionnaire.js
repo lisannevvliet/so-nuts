@@ -1,6 +1,6 @@
 import $ from "./$.js"
 import $$ from "./$$.js"
-import update_display from "./update_display.js"
+import update_view from "./update_view.js"
 import { save_answer } from "./answers.js"
 
 export default function questionnaire() {
@@ -13,7 +13,7 @@ export default function questionnaire() {
 
     // Show the first question or the one saved in localStorage.
     $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-    update_display(questionnaire_index)
+    update_view(questionnaire_index)
 
     $$("input[type=text]").forEach(element => {
         element.addEventListener("input", () => {
@@ -36,20 +36,24 @@ export default function questionnaire() {
     $(".next_button").addEventListener("click", () => {
         // Hide the previous question.
         $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
-        // Increase the index.
-        questionnaire_index++
+
+        // Increase and save the index in localStorage.
+        localStorage.setItem("index", ++questionnaire_index)
+
         // Show the next question.
         $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-        update_display(questionnaire_index)
+        update_view(questionnaire_index)
     })
 
     $(".prev_button").addEventListener("click", () => {
         // Hide the previous question.
         $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
-        // Decrease the index.
-        questionnaire_index--
+
+        // Decrease and save the index in localStorage.
+        localStorage.setItem("index", --questionnaire_index)
+
         // Show the next question.
         $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-        update_display(questionnaire_index)
+        update_view(questionnaire_index)
     })
 }
