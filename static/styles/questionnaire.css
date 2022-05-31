@@ -93,24 +93,7 @@ main {
     width: 1.5em;
 }
 
-.progress_steps article:after {
-    background: var(--grey);
-    content: '';
-    content: attr(data-title);
-    height: .3em;
-    left: -50%;
-    position: absolute;
-    top: .7em;
-    width: 100%;
-    z-index:-1;
-}
-
-.progress_steps article:first-child:after {
-    content: none;
-}
-
-.progress_steps article.active:before,
-.progress_steps article.active:after {
+.progress_steps article.active:before {
     background: var(--accent);
 }
 

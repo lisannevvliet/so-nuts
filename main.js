@@ -9,7 +9,7 @@ const fetch = require("node-fetch")
 // Disable SSL validation.
 const https = require("https")
 const agent = new https.Agent({
-    rejectUnauthorized: false,
+    rejectUnauthorized: false
 })
 // Import JSON files.
 let questionnaire = require("./static/json/questionnaire.json")
