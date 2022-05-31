@@ -1,5 +1,6 @@
 import $ from "./$.js"
 import $$ from "./$$.js"
+import { update_answers } from "./answers.js"
 
 export default function update_display(questionnaire_index) {
     // Hide the previous button for the first question.
@@ -21,7 +22,8 @@ export default function update_display(questionnaire_index) {
 
     // Check if there are any answers stored in localStorage.
     if (localStorage.getItem("answers")) {
-        answers = JSON.parse(localStorage.getItem("answers"))
+        const answers = JSON.parse(localStorage.getItem("answers"))
+        update_answers(answers)
 
         // Check if there is both a textfield and checkboxes within the same question.
         if ($(`#question_${questionnaire_index} input[type=text]`) && $(`#question_${questionnaire_index} input[type=checkbox]`)) {
