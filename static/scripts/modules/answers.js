@@ -42,7 +42,48 @@ export function save_answer(type, element, questionnaire_index) {
     }
 }
 
-export function update_answers(localStorage_answers) {
+export function load_answers(questionnaire_index) {
     // Overwrite the answers with the localStorage answers.
-    answers = localStorage_answers
+    answers = JSON.parse(localStorage.getItem("answers"))
+
+    // Check if there is both a textfield and checkboxes within the same question.
+    if ($(`#question_${questionnaire_index} input[type=text]`) && $(`#question_${questionnaire_index} input[type=checkbox]`)) {
+        // Check if the stored value is not empty.
+        if (answers[questionnaire_index + "_text"] != undefined) {
+            // Fill in the stored value in the textfield.
+            $(`#question_${questionnaire_index} input[type=text]`).value = answers[questionnaire_index + "_text"]
+        }
+
+        // Check if the stored value is not empty.
+        if (answers[questionnaire_index + "_checkbox"] != undefined) {
+            $$(`#question_${questionnaire_index} input[type=checkbox]`).forEach(element => {
+                answers[questionnaire_index + "_checkbox"].forEach(checkbox => {
+                    // Check the stored checkboxes.
+                    if (checkbox == element.id) {
+                        element.checked = true
+                    }
+                })
+            })
+        }
+    } else {
+        // Check if the stored value is not empty.
+        if (answers[questionnaire_index] != undefined) {
+            if ($(`#question_${questionnaire_index} input[type=text]`)) {
+                // Fill in the stored value in the textfield.
+                $(`#question_${questionnaire_index} input[type=text]`).value = answers[questionnaire_index]
+            } else if ($(`#question_${questionnaire_index} input[type=radio]`)) {
+                // Check the stored radio button.
+                $(`#${answers[questionnaire_index]}`).checked = true
+            } else if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
+                $$(`#question_${questionnaire_index} input[type=checkbox]`).forEach(element => {
+                    answers[questionnaire_index].forEach(checkbox => {
+                        // Check the stored checkboxes.
+                        if (checkbox == element.id) {
+                            element.checked = true
+                        }
+                    })
+                })
+            }
+        }
+    }
 }

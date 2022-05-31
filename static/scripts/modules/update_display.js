@@ -1,6 +1,6 @@
 import $ from "./$.js"
 import $$ from "./$$.js"
-import { update_answers } from "./answers.js"
+import { load_answers } from "./answers.js"
 
 export default function update_display(questionnaire_index) {
     // Hide the previous button for the first question.
@@ -22,49 +22,7 @@ export default function update_display(questionnaire_index) {
 
     // Check if there are any answers stored in localStorage.
     if (localStorage.getItem("answers")) {
-        const answers = JSON.parse(localStorage.getItem("answers"))
-        update_answers(answers)
-
-        // Check if there is both a textfield and checkboxes within the same question.
-        if ($(`#question_${questionnaire_index} input[type=text]`) && $(`#question_${questionnaire_index} input[type=checkbox]`)) {
-            // Check if the stored value is not empty.
-            if (answers[questionnaire_index + "_text"] != undefined) {
-                // Fill in the stored value in the textfield.
-                $(`#question_${questionnaire_index} input[type=text]`).value = answers[questionnaire_index + "_text"]
-            }
-
-            // Check if the stored value is not empty.
-            if (answers[questionnaire_index + "_checkbox"] != undefined) {
-                $$(`#question_${questionnaire_index} input[type=checkbox]`).forEach(element => {
-                    answers[questionnaire_index + "_checkbox"].forEach(checkbox => {
-                        // Check the stored checkboxes.
-                        if (checkbox == element.id) {
-                            element.checked = true
-                        }
-                    })
-                })
-            }
-        } else {
-            // Check if the stored value is not empty.
-            if (answers[questionnaire_index] != undefined) {
-                if ($(`#question_${questionnaire_index} input[type=text]`)) {
-                    // Fill in the stored value in the textfield.
-                    $(`#question_${questionnaire_index} input[type=text]`).value = answers[questionnaire_index]
-                } else if ($(`#question_${questionnaire_index} input[type=radio]`)) {
-                    // Check the stored radio button.
-                    $(`#${answers[questionnaire_index]}`).checked = true
-                } else if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
-                    $$(`#question_${questionnaire_index} input[type=checkbox]`).forEach(element => {
-                        answers[questionnaire_index].forEach(checkbox => {
-                            // Check the stored checkboxes.
-                            if (checkbox == element.id) {
-                                element.checked = true
-                            }
-                        })
-                    })
-                }
-            }
-        }
+        load_answers(questionnaire_index)
     }
 
     // Fill in the progress bar.
