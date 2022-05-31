@@ -1,7 +1,7 @@
 // Import Dotenv.
 require("dotenv").config()
 // Import Express.
-const express = require('express')
+const express = require("express")
 // Import Handlebars.
 const handlebars = require("express-handlebars")
 // Import node-fetch.
