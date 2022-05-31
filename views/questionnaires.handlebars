@@ -10,7 +10,7 @@
         <ul class="questionnaire">
             {{#each questionnaire}}
                 <li id="question_{{inc @index}}">
-                    <div class="question_counter">Vraag {{inc @index}}/{{../questionnaire.length}}</div>
+                    <p id="amount_of_questions">{{../questionnaire.length}}</p>
                     <div id="progress">
                         <div></div>
                     </div>

@@ -134,9 +134,9 @@ li {
     display: flex;
 }
 
-.question_counter {
-    color: lightgrey;
-    font-weight: 300;
+#amount_of_questions {
+    position: fixed;
+    visibility: hidden;
 }
 
 #progress {

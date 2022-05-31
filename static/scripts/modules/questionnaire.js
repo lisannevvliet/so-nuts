@@ -54,7 +54,7 @@ export function update_display() {
        $(".prev_button").classList.remove("hide_button")
     }
 
-    var amount_of_questions = $(".question_counter").textContent.substring($(".question_counter").textContent.indexOf("/") + 1, $(".question_counter").textContent.length)
+    var amount_of_questions = $("#amount_of_questions").textContent
 
     // Hide the next button for the last question.
     if (questionnaire_index == amount_of_questions) {
