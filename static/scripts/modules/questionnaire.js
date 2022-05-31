@@ -111,6 +111,9 @@ export function update_display() {
              }
           }
        }
+
+      // Fill in the progress bar.
+      $$("#progress div")[questionnaire_index - 1].style.width = (questionnaire_index - 1) * 100 / amount_of_questions + "%"
     }
  }
 

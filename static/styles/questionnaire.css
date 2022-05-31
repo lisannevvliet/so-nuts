@@ -112,7 +112,6 @@ main {
 .progress_steps article.active:before,
 .progress_steps article.active:after {
     background: var(--accent);
-    color: var(--white);
 }
 
 .progress_steps article.active {
@@ -155,6 +154,18 @@ li {
 .question_counter {
     color: lightgrey;
     font-weight: 300;
+}
+
+#progress {
+    background: var(--grey);
+    height: 6px;
+    width: 100%;
+}
+
+#progress div {
+    background: var(--main);
+    height: 6px;
+    width: 0%;
 }
 
 #spacing {

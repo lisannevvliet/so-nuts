@@ -11,6 +11,9 @@
             {{#each questionnaire}}
                 <li id="question_{{inc @index}}"">
                     <div class="question_counter">Vraag {{inc @index}}/{{../questionnaire.length}}</div>
+                    <div id="progress">
+                        <div></div>
+                    </div>
                     <span id="spacing"></span>
                     {{#if this.questionText}}
                         <h2>{{this.questionText}}</h2>
