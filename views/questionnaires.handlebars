@@ -12,8 +12,12 @@
                 <li id="question_{{inc @index}}"">
                     <div class="question_counter">Vraag {{inc @index}}/{{../questionnaire.length}}</div>
                     <span id="spacing"></span>
-                    {{!-- To use the old questionnaire, change this.questionText to this.text. --}}
-                    <h2>{{this.questionText}}</h2>
+                    {{#if this.questionText}}
+                        <h2>{{this.questionText}}</h2>
+                    {{/if}}
+                    {{#if this.text}}
+                        <h2>{{this.text}}</h2>
+                    {{/if}}
                     {{#ifCond this.type "string"}}
                         <input type="text">
                     {{/ifCond}}

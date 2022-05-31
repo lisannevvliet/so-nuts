@@ -41,18 +41,24 @@ app.get("/", (_req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", async function (_req, res) {
-    // To use the old questionnaire, remove the two blocks of code below.
-    // Get the questionnaire from the API.
-    let response = await fetch("https://mibplatform.nl:5001/api/Questionnaires/2", {
-        agent: agent
-    })
-    questionnaire = await response.json()
+    // To use the old questionnaire, remove the two blocks of code below or disable the client's internet connection.
+    // Try to get the questionnaire from the API.
+    try {
+        let response = await fetch("https://mibplatform.nl:5001/api/Questionnaires/2", {
+            agent: agent
+        })
+        questionnaire = await response.json()
+    // If it fails, use the local JSON.
+    } catch { }
 
-    // Get the questionnaire response from the API.
-    response = await fetch("https://mibplatform.nl:5001/api/QuestionnaireResponses/3", {
-        agent: agent
-    })
-    questionnaireResponse = await response.json()
+    // Try to get the questionnaire response from the API.
+    try {
+        response = await fetch("https://mibplatform.nl:5001/api/QuestionnaireResponses/3", {
+            agent: agent
+        })
+        questionnaireResponse = await response.json()
+    // If it fails, use to the local JSON.
+    } catch { }
 
 	// Load the index page with the questionnaires.
     res.render("questionnaires", {
