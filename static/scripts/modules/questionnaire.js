@@ -124,7 +124,7 @@ export function show_one_question() {
     $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
 }
 
-export  function hide_previous_question() {
+export function hide_previous_question() {
     $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
 }
 
@@ -163,7 +163,7 @@ export function type_checkbox() {
             $$(`input[type=checkbox][name=${element.name}]:checked`).forEach(element => {
                 checked.push(element.value)
             })
-            
+
             // Check if there is a textfield within the same question and save the value in localStorage.
             if ($(`#question_${questionnaire_index} input[type=text]`)) {
                 // Add "_checkbox" to prevent overwriting the textfield with the checkboxes.
