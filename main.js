@@ -6,8 +6,12 @@ const express = require('express')
 const handlebars = require("express-handlebars")
 // Import node-fetch.
 const fetch = require("node-fetch")
+// Disable SSL validation.
+const https = require("https")
+const agent = new https.Agent({
+    rejectUnauthorized: false,
+})
 // Import JSON files.
-// const json = require("./static/json/mib-swagger.json")
 const questionnaire = require("./static/json/questionnaire.json")
 const questionnaireResponse = require("./static/json/questionnaireResponse.json")
 
@@ -38,13 +42,16 @@ app.get("/", (_req, res) => {
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", async function (_req, res) {
     // Get the data from the API.
-    // const response = await fetch(url)
-    // const data = await response.json()
+    const response = await fetch("https://mibplatform.nl:5001/api/Questionnaires/2", {
+        agent: agent
+    })
+    const data = await response.json()
 
 	// Load the index page with the questionnaires.
+    // To use the old questionnaires, change data.questions to questionnaire.questions.
     res.render("questionnaires", {
         style: "questionnaire.css",
-        questionnaires: questionnaire.questions,
+        questionnaires: data.questions,
         questionnaireResponse: questionnaireResponse.questionResponses
     })
 })

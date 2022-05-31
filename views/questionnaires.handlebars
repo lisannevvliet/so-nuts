@@ -12,7 +12,8 @@
                 <li id="question_{{inc @index}}"">
                     <div class="question_counter">Vraag {{inc @index}}/{{../questionnaires.length}}</div>
                     <span id="spacing"></span>
-                    <h2>{{this.text}}</h2>
+                    {{!-- To use the old questionnaires, change this.questionText to this.text. --}}
+                    <h2>{{this.questionText}}</h2>
                     {{#ifCond this.type "string"}}
                         <input type="text">
                     {{/ifCond}}
