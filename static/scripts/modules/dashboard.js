@@ -1,11 +1,13 @@
-export default function dashboard() {
-    var btns = document.getElementsByTagName("a")
+import $$ from "./$$.js"
 
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].addEventListener("click", function () {
-            var current = document.getElementsByClassName("active")
+export default function dashboard() {
+    const btns = $$("a")
+
+    btns.forEach(element => {
+        element.addEventListener("click", () => {
+            let current = $$(".active")
             current[0].className = current[0].className.replace("active")
             this.className += ""
         })
-    }
+    })
 }

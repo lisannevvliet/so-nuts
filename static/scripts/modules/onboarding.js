@@ -19,14 +19,14 @@ export default function onboarding() {
                 if (onboarding_index == 3) {
                     $(".next_button").textContent = "Vragenlijst"
                 }
-            // If the last page is displayed and the button is clicked, redirect to the questionnaire and save the completion in localStorage.
             } else {
+                // If the last page is displayed and the button is clicked, redirect to the questionnaire and save the completion in localStorage.
                 window.location.href = "/questionnaire"
                 localStorage.setItem("onboarding", "Completed")
             }
         })
-    // If the onboarding has already been completed, redirect to the questionnaire.
     } else {
+        // If the onboarding has already been completed, redirect to the questionnaire.
         window.location.href = "/questionnaire"
     }
 }
