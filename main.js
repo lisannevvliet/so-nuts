@@ -67,8 +67,28 @@ app.get("/dashboard", (_req, res) => {
 })
 
 // Listen to all GET requests on /profile.
-app.get("/profile", (_req, res) => {
+app.get("/profile", async function (_req, res) {
+    // To use the local JSON, comment out the two blocks of code below or disable the client's internet connection.
+    // Try to get the questionnaire from the API. If it fails, use the local JSON.
+    try {
+        let response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2", {
+            agent: agent
+        })
+        questionnaire = await response.json()
+    } catch { }
+
+    // Try to get the questionnaire response from the API. If it fails, use the local JSON.
+    try {
+        response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses/3", {
+            agent: agent
+        })
+        questionnaireResponse = await response.json()
+    } catch { }
+
+    // Load the profile page with the questionnaire response and stylesheet.
     res.render("profile", {
+        questionnaire: questionnaire.questions,
+        questionnaireResponse: questionnaireResponse.questionResponses,
         style: "profile.css"
     })
 })

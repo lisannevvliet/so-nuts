@@ -1,0 +1,18 @@
+<h1>Profile</h1>
+<ul>
+    {{#each questionnaireResponse}}
+        <li>
+            {{#each ../questionnaire}}
+                {{#ifCond this.id ../this.questionId}}
+                    {{#if this.questionText}}
+                        <p>{{this.questionText}}</p>
+                    {{/if}}
+                    {{#if this.text}}
+                        <p>{{this.text}}</p>
+                    {{/if}}
+                {{/ifCond}}
+            {{/each}}
+            <p>{{this.response}}</p>
+        </li>
+    {{/each}}
+</ul>
