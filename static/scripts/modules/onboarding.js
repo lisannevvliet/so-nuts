@@ -15,7 +15,7 @@ export default function onboarding() {
                 // Show the next question.
                 $(`.onboarding li:nth-child(${onboarding_index})`).classList.add("show_element")
 
-                // If the last page is displayed, change the value of the button.
+                // Change the next button text in the last page.
                 if (onboarding_index == 3) {
                     $(".next_button").textContent = "Vragenlijst"
                 }

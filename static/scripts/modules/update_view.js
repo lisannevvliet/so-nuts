@@ -11,17 +11,25 @@ export default function update_view(questionnaire_index) {
         load_answers(questionnaire_index)
     }
 
-    // Hide the previous button for the first question.
+    // Hide the previous button in the first question.
     if (questionnaire_index == 1) {
         $(".prev_button").classList.add("hide_button")
     } else {
         $(".prev_button").classList.remove("hide_button")
     }
 
-    // Hide the next button for the last question.
+    // Change the next button text in the last question.
     if (questionnaire_index == $("#amount_of_questions").textContent) {
-        $(".next_button").classList.add("hide_button")
+        $(".next_button").textContent = "Dashboard"
+
+        // Disable dashboard button (temporarily).
+        $(".next_button").disabled = true
+        $(".next_button").style.cursor = "auto"
     } else {
-        $(".next_button").classList.remove("hide_button")
+        $(".next_button").textContent = "Volgende"
+
+        // Enable dashboard button (temporarily).
+        $(".next_button").disabled = false
+        $(".next_button").style.cursor = "pointer"
     }
 }
