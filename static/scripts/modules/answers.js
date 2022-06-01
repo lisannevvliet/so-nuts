@@ -28,6 +28,7 @@ export function save_answer(type, element, questionnaire_index) {
             // Save the value in localStorage.
             answers[questionnaire_index] = element.value
             localStorage.setItem("answers", JSON.stringify(answers))
+
             break
         case "text":
             // Check if there are checkboxes within the same question and save the values in localStorage.

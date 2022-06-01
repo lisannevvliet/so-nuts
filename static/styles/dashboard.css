@@ -1,32 +1,13 @@
 :root {
-    --accent: #EDC85E;
-    --beige: #eaebe6;
-    --black: #282727;
-    --main: #82bea8;
     --secundary: white;
-    
-}
-
-* {
-    font-family: "Nunito";
-}
-
-html {
-    margin: auto;
 }
 
 body {
-    background-color:  var(--beige);
-    color: var(--black);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 0;max-height: 768px;
-    max-width: 414px;
+    background-color: var(--beige);
 }
 
 main {
-    background-color:  var(--secundary);
+    background-color: var(--secundary);
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -106,10 +87,9 @@ a:hover {
     color: var(--main);
 }
 
-i{
+i {
     font-size: 18px;
 }
-
 
 /*  =======
     section

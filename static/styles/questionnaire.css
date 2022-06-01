@@ -1,23 +1,4 @@
-:root {
-    --accent: #EDC85E;
-    --beige: #eaebe6;
-    --black: #282727;
-    --grey: #ededed;
-    --main: #82bea8;
-    --secundary: #F4FBFA;
-}
-
-* {
-    font-family: "Nunito";
-}
-
-html {
-    margin: auto;
-}
-
 body {
-    margin: 0 auto;
-    max-width: 768px;
     padding-top: 0;
 }
 
@@ -126,10 +107,6 @@ article.gegevens_icon.active:before {
     text-decoration: none;
 }
 
-li {
-    display: none;
-}
-
 .show_element {
     display: flex;
 }
@@ -175,28 +152,6 @@ h2 {
     visibility: hidden;
 }
 
-button {
-    background-color: var(--accent);
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: large;
-    font-weight: 600;
-    margin-left: 1em;
-    margin-right: 1em;
-    padding: 1.5em;
-    color: var(--black);
-}
-
-.prev_button {
-    background-color: var(--grey);
-}
-
-.next_button:focus {
-    border: 3px solid var(--black);
-    outline: none !important;
-}
-
 button:focus {
     border: 3px solid var(--accent);
     outline: none !important;
@@ -224,9 +179,9 @@ input:focus {
     ============ */
 
 input[type="radio"],
-input[type="checkbox"]{
+input[type="checkbox"] {
     display: none;
-}   
+}
 
 input[type="radio"]:checked+label,
 input[type="checkbox"]:checked+label {
@@ -252,7 +207,7 @@ input[type="checkbox"] label {
     font-size: 1.1em;
     padding-bottom: 1em;
     padding-top: 1em;
-}      
+}
 
 .options_container {
     align-items: center;
