@@ -1,7 +1,3 @@
-/*  ===================
-    illustration + text 
-    =================== */
-
 ol {
     list-style: none;
     margin: 0;
@@ -13,24 +9,26 @@ ol {
     display: block;
 }
 
-ol li div {
-    background-position: center;
+li:before {
+    content: "";
     background-repeat: no-repeat;
+
+    height: 48vh;
+    display: flex;
+    background-position: center;
     background-size: cover;
-    height: 20em;
-    margin: 0;
-    padding: 0;
+    justify-content: center;
 }
 
-ol li .onboarding_pic_1 {
+li:nth-of-type(1):before {
     background-image: url("../images/onboarding_1.svg");
 }
 
-ol li .onboarding_pic_2 {
+li:nth-of-type(2):before {
     background-image: url("../images/onboarding_2.svg");
 }
 
-ol li .onboarding_pic_3 {
+li:nth-of-type(3):before {
     background-image: url("../images/onboarding_3.svg");
 }
 
