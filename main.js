@@ -34,6 +34,7 @@ app.listen(process.env.PORT, () => {
 
 // Listen to all GET requests on /.
 app.get("/", (_req, res) => {
+    // Load the onboarding page with the stylesheet.
     res.render("onboarding", {
         style: "onboarding.css"
     })
@@ -41,33 +42,25 @@ app.get("/", (_req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", async function (_req, res) {
-    // To use the old questionnaire, remove the two blocks of code below or disable the client's internet connection.
+    // To use the local JSON, comment out the code below or disable the client's internet connection.
     // Try to get the questionnaire from the API. If it fails, use the local JSON.
     try {
-        let response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2", {
+        const response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2", {
             agent: agent
         })
         questionnaire = await response.json()
     } catch { }
 
-    // Try to get the questionnaire response from the API. If it fails, use to the local JSON.
-    try {
-        response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses/3", {
-            agent: agent
-        })
-        questionnaireResponse = await response.json()
-    } catch { }
-
-    // Load the index page with the questionnaires.
-    res.render("questionnaires", {
-        style: "questionnaire.css",
+    // Load the questionnaire page with the questionnaire and stylesheet.
+    res.render("questionnaire", {
         questionnaire: questionnaire.questions,
-        questionnaireResponse: questionnaireResponse.questionResponses
+        style: "questionnaire.css"
     })
 })
 
 // Listen to all GET requests on /dashboard.
 app.get("/dashboard", (_req, res) => {
+    // Load the dashboard page with the stylesheet.
     res.render("dashboard", {
         style: "dashboard.css"
     })
