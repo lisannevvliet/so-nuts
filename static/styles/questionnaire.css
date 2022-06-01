@@ -20,7 +20,7 @@ main {
     }
 }
 
-.header {
+header {
     flex-shrink: 0;
     height: 10%;
 }
