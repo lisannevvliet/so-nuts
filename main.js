@@ -42,22 +42,20 @@ app.get("/", (_req, res) => {
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", async function (_req, res) {
     // To use the old questionnaire, remove the two blocks of code below or disable the client's internet connection.
-    // Try to get the questionnaire from the API.
+    // Try to get the questionnaire from the API. If it fails, use the local JSON.
     try {
         let response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2", {
             agent: agent
         })
         questionnaire = await response.json()
-    // If it fails, use the local JSON.
     } catch { }
 
-    // Try to get the questionnaire response from the API.
+    // Try to get the questionnaire response from the API. If it fails, use to the local JSON.
     try {
         response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses/3", {
             agent: agent
         })
         questionnaireResponse = await response.json()
-    // If it fails, use to the local JSON.
     } catch { }
 
     // Load the index page with the questionnaires.
@@ -72,5 +70,12 @@ app.get("/questionnaire", async function (_req, res) {
 app.get("/dashboard", (_req, res) => {
     res.render("dashboard", {
         style: "dashboard.css"
+    })
+})
+
+// Listen to all GET requests on /profile.
+app.get("/profile", (_req, res) => {
+    res.render("profile", {
+        style: "profile.css"
     })
 })
