@@ -21,15 +21,7 @@ export default function update_view(questionnaire_index) {
     // Change the next button text in the last question.
     if (questionnaire_index == $("#amount_of_questions").textContent) {
         $(".next_button").textContent = "Dashboard"
-
-        // Disable dashboard button (temporarily).
-        $(".next_button").disabled = true
-        $(".next_button").style.cursor = "auto"
     } else {
         $(".next_button").textContent = "Volgende"
-
-        // Enable dashboard button (temporarily).
-        $(".next_button").disabled = false
-        $(".next_button").style.cursor = "pointer"
     }
 }

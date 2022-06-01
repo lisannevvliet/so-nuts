@@ -40,9 +40,14 @@ export default function questionnaire() {
         // Increase and save the index in localStorage.
         localStorage.setItem("index", ++questionnaire_index)
 
-        // Show the next question.
-        $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-        update_view(questionnaire_index)
+        // If the onboarding is complete, redirect to the dashboard.
+        if (questionnaire_index > $("#amount_of_questions").textContent) {
+            window.location.href = "/dashboard"
+        } else {
+            // Show the next question.
+            $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
+            update_view(questionnaire_index)
+        }
     })
 
     $(".prev_button").addEventListener("click", () => {
