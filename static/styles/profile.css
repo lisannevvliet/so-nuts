@@ -1,3 +1,8 @@
 li {
     display: unset;
 }
+
+input[type=text].changed {
+    border-color: var(--accent);
+    outline-color: var(--accent);
+}
