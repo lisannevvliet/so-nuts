@@ -82,6 +82,7 @@ nav {
     position: fixed;
     bottom: 0;
     width: 100%;
+    max-width: 768px;
     height: 6em;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
