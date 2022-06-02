@@ -18,10 +18,12 @@ export default function update_view(questionnaire_index) {
         $(".prev_button").classList.remove("hide_button")
     }
 
-    // Change the next button text in the last question.
+    // Change the next button text and background in the last question.
     if (questionnaire_index == $("#amount_of_questions").textContent) {
         $(".next_button").textContent = "Dashboard"
+        $(".next_button").classList.add("turquoise")
     } else {
         $(".next_button").textContent = "Volgende"
+        $(".next_button").classList.remove("turquoise")
     }
 }
