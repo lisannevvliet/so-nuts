@@ -91,10 +91,10 @@ app.get("/profile", async function (_req, res) {
         questionnaireResponse = await response.json()
     } catch { }
 
-    // Load the profile page with the questionnaire response and stylesheet.
+    // Load the profile page with the questionnaire, questionnaire response and stylesheet.
     res.render("profile", {
         questionnaire: questionnaire.questions,
         questionnaireResponse: questionnaireResponse.questionResponses,
-        style: "/dashboard_app/profile.css"
+        style: "/dashboard_app/dashboard.css"
     })
 })
