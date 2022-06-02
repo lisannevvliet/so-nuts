@@ -2,22 +2,78 @@
     --secundary: white;
 }
 
-body {
-    background-color: var(--beige);
-}
-
-main {
-    background-color: var(--secundary);
-    height: 100vh;
+header {
     margin: 0;
-    padding: 0;
+    padding-left: 1em;
+    padding-top: 1em;
+    background-image: url("/images/swirl_2.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* width: 50em; */
+    height: 6em;
+    margin-bottom: 0;
 }
 
 h1 {
     margin: 0;
-    padding-left: 1em;
+}
+
+main {
+    height: 44em;
+    background-color: var(--secundary);
+    border-top-right-radius: 19px;
+    border-top-left-radius: 20px;
+    margin-top: -1em;
+    display: flex;
+    flex-direction: column;
     padding-top: 1em;
-    font-size: 1.5em;
+    gap: 1em;
+}
+
+h2 {
+    margin-left: 1em;
+    margin-top: 0em;
+    margin-bottom: -0.5em;
+}
+
+article {
+    /* width: 90%; */
+    height: 6em;
+    background-color: var(--beige);
+    border-radius: 20px;
+    /* display: flex; */
+    /* justify-content: center; */
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 1em;
+    margin-right: 1em;
+    margin-left: 1em;
+    /* margin-top: 1.5em; */
+}
+
+article p {
+    margin: 1em;
+}
+
+section {
+    display: flex;
+}
+
+section article:nth-of-type(1) {
+    width: 12em;
+
+    height: 10em;
+    background-image: url("/images/food_bowl.svg");
+    background-size: 6em;
+    background-position: -.3em 5em;
+    background-repeat: no-repeat;
+    background-color: var(--accent);
+}
+
+section article:nth-of-type(2) {
+    width: 17em;
+    display: flex;
+    height: 10em;
 }
 
 /*  ====
@@ -55,11 +111,13 @@ nav {
     position: sticky;
     bottom: 0;
     width: 100%;
-    height: 55px;
+    height: 6em;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
     display: flex;
     overflow-x: auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 a {
@@ -81,36 +139,14 @@ a {
 
 a:hover {
     background-color: var(--beige);
+    color: var(--main);
 }
 
 .active {
+    background-color: var(--beige);
     color: var(--main);
 }
 
 i {
     font-size: 18px;
-}
-
-/*  =======
-    section
-    ======= */
-
-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1em;
-    margin-top: 1.5em;
-}
-
-section {
-    width: 90%;
-    height: 10em;
-    background-color: var(--beige);
-    border-radius: 20px;
-}
-
-section p {
-    margin: 1em;
 }

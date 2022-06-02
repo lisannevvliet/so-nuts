@@ -7,7 +7,7 @@
             <article class="voeding_icon" data-title="voeding">Voeding</article>
             <article class="bewegen_icon" data-title="bewegen">Bewegen</article>
         </div>
-        <ul class="questionnaire">
+        <ol class="questionnaire">
             {{#each questionnaire}}
                 <li id="question_{{inc @index}}">
                     <p id="amount_of_questions">{{../questionnaire.length}}</p>
@@ -44,7 +44,7 @@
                     <span id="spacing"></span>
                 </li>
             {{/each}}
-        </ul>
+        </ol>
         <div class="button_wrapper">
             <button class="prev_button">Vorige</button>
             <button class="next_button">Volgende</button>
