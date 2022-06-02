@@ -1,5 +1,6 @@
 <main class="profile">
     <h1>Profiel</h1>
+    <div class="grid_two_columns">
     {{#each questionnaireResponse}}
         {{#each ../questionnaire}}
             {{#ifCond this.id ../this.questionId}}
@@ -13,12 +14,13 @@
         {{/each}}
         <p>{{this.response}}</p>
     {{/each}}
+    </div>
 </main>
 <nav>
     <a href="/dashboard">
         <i class="material-icons nav__icon">dashboard</i>
     </a>
-    <a href="#" class="nav__link nav__link--active">
+    <a href="#">
         <i class="material-icons nav__icon">fitness_center</i>
     </a>
     <a href="#">

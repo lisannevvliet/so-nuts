@@ -31,7 +31,7 @@
                         {{/each}}
                     {{/ifCond}}
                     {{#ifCond this.type "open-choice"}}
-                        <div class="options_container">
+                        <div class="grid_two_columns">
                             {{#each this.options}}
                                 <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
                                 <label for={{this.id}}>{{this.text}}</label>

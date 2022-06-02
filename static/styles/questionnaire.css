@@ -209,14 +209,6 @@ input[type="checkbox"] label {
     padding-top: 1em;
 }
 
-.options_container {
-    align-items: center;
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(2, 10em);
-    justify-content: center;
-}
-
-.options_container label {
+.grid_two_columns label {
     width: unset;
 }
