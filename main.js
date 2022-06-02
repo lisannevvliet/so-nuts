@@ -55,26 +55,25 @@ app.get("/questionnaire", async function (_req, res) {
 app.get("/dashboard", (_req, res) => {
     // Load the dashboard page with the stylesheet.
     res.render("dashboard", {
-        style: "dashboard_app/dashboard.css"
+        style: "dashboard.css"
     })
 })
 
 // Listen to all GET requests on /dashboard.
 app.get("/fitness", (_req, res) => {
-    // Load the dashboard page with the stylesheet.
+    // Load the fitness page with the stylesheet.
     res.render("fitness", {
-        style: "/dashboard_app/fitness.css"
+        style: "dashboard.css"
     })
 })
 
 // Listen to all GET requests on /dashboard.
 app.get("/food", (_req, res) => {
-    // Load the dashboard page with the stylesheet.
+    // Load the food page with the stylesheet.
     res.render("food", {
-        style: "/dashboard_app/food.css"
+        style: "dashboard.css"
     })
 })
-
 
 // Listen to all GET requests on /profile.
 app.get("/profile", async function (_req, res) {
@@ -95,6 +94,6 @@ app.get("/profile", async function (_req, res) {
     res.render("profile", {
         questionnaire: questionnaire.questions,
         questionnaireResponse: questionnaireResponse.questionResponses,
-        style: "/dashboard_app/dashboard.css"
+        style: "dashboard.css"
     })
 })

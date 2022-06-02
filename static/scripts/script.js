@@ -1,7 +1,7 @@
 import $ from "./modules/$.js"
 import onboarding from "./modules/onboarding.js"
 import questionnaire from "./modules/questionnaire.js"
-// import dashboard from "./modules/dashboard.js"
+import dashboard from "./modules/dashboard.js"
 
 // Check if the onboarding is currently displayed.
 if ($(".onboarding")) {
@@ -15,5 +15,5 @@ if ($(".questionnaire")) {
 
 // Check if the dashboard is currently displayed.
 if ($(".dashboard")) {
-    dashboard()
+    // dashboard()
 }
