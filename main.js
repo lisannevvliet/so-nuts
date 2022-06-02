@@ -6,11 +6,6 @@ const express = require("express")
 const handlebars = require("express-handlebars")
 // Import node-fetch.
 const fetch = require("node-fetch")
-// Disable SSL validation.
-const https = require("https")
-const agent = new https.Agent({
-    rejectUnauthorized: false
-})
 // Import JSON files.
 let questionnaire = require("./static/json/questionnaire.json")
 let questionnaireResponse = require("./static/json/questionnaireResponse.json")
@@ -45,9 +40,7 @@ app.get("/questionnaire", async function (_req, res) {
     // To use the local JSON, comment out the code below or disable the client's internet connection.
     // Try to get the questionnaire from the API. If it fails, use the local JSON.
     try {
-        const response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2", {
-            agent: agent
-        })
+        const response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2")
         questionnaire = await response.json()
     } catch { }
 
@@ -71,17 +64,13 @@ app.get("/profile", async function (_req, res) {
     // To use the local JSON, comment out the two blocks of code below or disable the client's internet connection.
     // Try to get the questionnaire from the API. If it fails, use the local JSON.
     try {
-        let response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2", {
-            agent: agent
-        })
+        let response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2")
         questionnaire = await response.json()
     } catch { }
 
     // Try to get the questionnaire response from the API. If it fails, use the local JSON.
     try {
-        response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses/3", {
-            agent: agent
-        })
+        response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses/3")
         questionnaireResponse = await response.json()
     } catch { }
 
