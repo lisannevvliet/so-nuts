@@ -1,40 +1,34 @@
 <main class="profile">
     <h1>Profiel</h1>
-    <ul>
-        {{#each questionnaireResponse}}
-            <li>
-                {{#each ../questionnaire}}
-                    {{#ifCond this.id ../this.questionId}}
-                        {{#if this.questionText}}
-                            <p>{{this.questionText}}</p>
-                        {{/if}}
-                        {{#if this.text}}
-                            <p>{{this.text}}</p>
-                        {{/if}}
-                    {{/ifCond}}
-                {{/each}}
-                <input type="text" value={{this.response}}>
-            </li>
+    {{#each questionnaireResponse}}
+        {{#each ../questionnaire}}
+            {{#ifCond this.id ../this.questionId}}
+                {{#if this.questionText}}
+                    <p>{{this.questionText}}</p>
+                {{/if}}
+                {{#if this.text}}
+                    <p>{{this.text}}</p>
+                {{/if}}
+            {{/ifCond}}
         {{/each}}
-    </ul>
-    <button>Save</button>
+        <p>{{this.response}}</p>
+    {{/each}}
 </main>
-
- <nav>
-        <a href="/dashboard">
-            <i class="material-icons nav__icon">dashboard</i>
-            <span>Check-in</span>
-        </a>
-        <a href="/fitness">
-            <i class="material-icons nav__icon">fitness_center</i>
-            <span>Beweging</span>
-        </a>
-        <a href="/food">
-            <i class="material-icons nav__icon">fastfood</i>
-            <span>Voedselinname</span>
-        </a>
-        <a href="/profile" class="active">
-            <i class="material-icons nav__icon">person</i>
-            <span>Profiel</span>
-        </a>
-    </nav>
+<nav>
+    <a href="/dashboard">
+        <i class="material-icons nav__icon">dashboard</i>
+        <span>Check-in</span>
+    </a>
+    <a href="#" class="nav__link nav__link--active">
+        <i class="material-icons nav__icon">fitness_center</i>
+        <span>Beweging</span>
+    </a>
+    <a href="#">
+        <i class="material-icons nav__icon">fastfood</i>
+        <span>Voedselinname</span>
+    </a>
+    <a href="/profile" class="active">
+        <i class="material-icons nav__icon">person</i>
+        <span>Profiel</span>
+    </a>
+</nav>
