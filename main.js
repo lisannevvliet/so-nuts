@@ -55,9 +55,26 @@ app.get("/questionnaire", async function (_req, res) {
 app.get("/dashboard", (_req, res) => {
     // Load the dashboard page with the stylesheet.
     res.render("dashboard", {
-        style: "dashboard.css"
+        style: "dashboard_app/dashboard.css"
     })
 })
+
+// Listen to all GET requests on /dashboard.
+app.get("/fitness", (_req, res) => {
+    // Load the dashboard page with the stylesheet.
+    res.render("fitness", {
+        style: "/dashboard_app/fitness.css"
+    })
+})
+
+// Listen to all GET requests on /dashboard.
+app.get("/food", (_req, res) => {
+    // Load the dashboard page with the stylesheet.
+    res.render("food", {
+        style: "/dashboard_app/food.css"
+    })
+})
+
 
 // Listen to all GET requests on /profile.
 app.get("/profile", async function (_req, res) {
@@ -78,6 +95,6 @@ app.get("/profile", async function (_req, res) {
     res.render("profile", {
         questionnaire: questionnaire.questions,
         questionnaireResponse: questionnaireResponse.questionResponses,
-        style: "profile.css"
+        style: "/dashboard_app/profile.css"
     })
 })
