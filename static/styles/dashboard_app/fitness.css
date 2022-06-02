@@ -33,12 +33,12 @@ a {
 }
 
 a:hover {
-    background-color: var(--beige);
+    /* background-color: var(--beige); */
     color: var(--main);
 }
 
 .active {
-    background-color: var(--beige);
+    /* background-color: var(--beige); */
     color: var(--main);
 }
 
