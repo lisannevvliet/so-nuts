@@ -42,7 +42,6 @@ app.get("/questionnaire", async function (_req, res) {
     try {
         const response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2")
         questionnaire = await response.json()
-        console.log(questionnaire)
     } catch { }
 
     // Load the questionnaire page with the questionnaire and stylesheet.
