@@ -24,13 +24,37 @@
                     {{#ifCond this.type null}}
                         <input type="text">
                     {{/ifCond}}
+                    {{!-- Support for local JSON. --}}
+                    {{#ifCond this.type "string"}}
+                        <input type="text">
+                    {{/ifCond}}
                     {{#ifCond this.type "multiChoice"}}
                         {{#each this.answerOptions}}
                             <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
                             <label for={{this.id}}>{{this.text}}</label><br>
                         {{/each}}
                     {{/ifCond}}
+                    {{!-- Support for local JSON. --}}
+                    {{#ifCond this.type "choice"}}
+                        {{#each this.answerOptions}}
+                            <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+                            <label for={{this.id}}>{{this.text}}</label><br>
+                        {{/each}}
+                    {{/ifCond}}
                     {{#ifCond this.type "multiOpenChoice"}}
+                        <div class="grid_two_columns">
+                            {{#each this.answerOptions}}
+                                <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+                                <label for={{this.id}}>{{this.text}}</label>
+                            {{/each}}
+                            {{#if this.openLabel}}
+                                <p>{{this.openLabel}}</p>
+                                <input type="text">
+                            {{/if}}
+                        </div>
+                    {{/ifCond}}
+                    {{!-- Support for local JSON. --}}
+                    {{#ifCond this.type "openChoice"}}
                         <div class="grid_two_columns">
                             {{#each this.answerOptions}}
                                 <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
