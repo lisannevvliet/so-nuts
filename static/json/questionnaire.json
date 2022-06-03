@@ -12,7 +12,7 @@
             "id": "sex",
             "text": "Welke van onderstaande beschrijvingen past het beste bij uw situatie?",
             "type": "choice",
-            "options": [
+            "answerOptions": [
                 {
                     "text": "Man",
                     "selected": false,
@@ -48,8 +48,9 @@
         {
         "id": "burgerlijkeStaat",
         "text": "Welke van onderstaande beschrijvingen past het beste bij uw situatie?",
-        "type": "open-choice",
-        "options": [
+        "openLabel": "Anders nml:",
+        "type": "openChoice",
+        "answerOptions": [
             {
                 "text": "Alleenstaand",
                 "selected": false,
@@ -79,12 +80,6 @@
                 "text": "Gescheiden",
                 "selected": false,
                 "id": "bs-gs"
-            },
-            {
-                "type": "string",
-                "text": "Anders nml:",
-                "selected": false,
-                "id": "bs-an"
             }
         ]
         }

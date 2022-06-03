@@ -9,7 +9,7 @@
       },
       {
         "questionId": "sex",
-        "choiceOptionId": "sex-m"
+        "choiceOptionIds": ["sex-m"]
       },
       {
         "questionId": "geboorteLand",
@@ -25,7 +25,7 @@
       },
       {
         "questionId": "burgerlijkeStaat",
-        "choiceOptionId": "bs-an",
+        "choiceOptionIds": [],
         "response": "Het is gecompliceerd"
       }  
     ]
