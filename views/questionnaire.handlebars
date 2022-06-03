@@ -24,13 +24,14 @@
                     {{#ifCond this.type "string"}}
                         <input type="text">
                     {{/ifCond}}
-                    {{#ifCond this.type "choice"}}
+                    {{#ifCond this.type "multiChoice"}}
                         {{#each this.answerOptions}}
+                        
                             <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
                             <label for={{this.id}}>{{this.text}}</label><br>
                         {{/each}}
                     {{/ifCond}}
-                    {{#ifCond this.type "openChoice"}}
+                    {{#ifCond this.type "multiOpenChoice"}}
                         <div class="grid_two_columns">
                             {{#each this.answerOptions}}
                                 <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
