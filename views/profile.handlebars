@@ -1,5 +1,8 @@
-<main class="profile">
+<header> 
     <h1>Profiel</h1>
+</header>
+<main class="profile">
+   
     <div class="grid_two_columns">
         {{#each questionnaireResponse}}
             {{#each ../questionnaire}}
@@ -17,16 +20,34 @@
     </div>
 </main>
 <nav>
-    <a href="/dashboard">
-        <i class="material-icons nav__icon">dashboard</i>
-    </a>
-    <a href="/fitness">
-        <i class="material-icons nav__icon">fitness_center</i>
-    </a>
-    <a href="/food">
-        <i class="material-icons nav__icon">fastfood</i>
-    </a>
-    <a href="/profile" class="active">
-        <i class="material-icons nav__icon">person</i>
-    </a>
+      <ul>
+            <li class="list">
+                <a href="/dashboard" class="active">
+                    <i class="material-icons icon">dashboard</i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="list">
+                <a href="/fitness">
+                    <i class="material-icons icon">fitness_center</i>
+                    <span class="text">Beweging</span>
+                </a>
+            </li>
+
+            <li class="list">
+                <a href="/food">
+                    <i class="material-icons icon">fastfood</i>
+                    <span class="text">Voedselinname</span>
+                </a>
+            </li>
+
+            <li class="list active">
+                <a href="/profile">
+                    <i class="material-icons icon">person</i>
+                    <span class="text">Profiel</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
 </nav>

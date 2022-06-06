@@ -1,17 +1,53 @@
-<main>
-    <h1>Voedselinname</h1>
+<header> 
+     <h1>Voedselinname</h1>
+</header>
+
+<main class="food">
+    <h2>Doelen</h2>
+    <section>
+        <article>
+            <h3>200 eiwitten per dag</h3>
+        </article>
+    </section>
+
+    <h2>Ontbijt</h2>
+    <section>
+        <article>
+            <p></p>
+        </article>
+    </section>
+
+
     <nav>
-        <a href="/dashboard">
-            <i class="material-icons nav__icon">dashboard</i>
-        </a>
-        <a href="/fitness">
-            <i class="material-icons nav__icon">fitness_center</i>
-        </a>
-        <a href="/food" class="active">
-            <i class="material-icons nav__icon">fastfood</i>
-        </a>
-        <a href="/profile">
-            <i class="material-icons nav__icon">person</i>
-        </a>
+        <ul>
+            <li class="list">
+                <a href="/dashboard" class="active">
+                    <i class="material-icons icon">dashboard</i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="list">
+                <a href="/fitness">
+                    <i class="material-icons icon">fitness_center</i>
+                    <span class="text">Beweging</span>
+                </a>
+            </li>
+
+            <li class="list active">
+                <a href="/food">
+                    <i class="material-icons icon">fastfood</i>
+                    <span class="text">Voedselinname</span>
+                </a>
+            </li>
+
+            <li class="list">
+                <a href="/profile">
+                    <i class="material-icons icon">person</i>
+                    <span class="text">Profiel</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
     </nav>
 </main>
