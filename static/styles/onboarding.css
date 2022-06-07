@@ -57,13 +57,6 @@ ol li section p {
     button
     ====== */
 
-.button_wrapper {
-    bottom: 2em;
-    left: 50%;
-    position: absolute;
-    transform: translate(-50%);
-}
-
 .disable_button {
     display: none;
 }

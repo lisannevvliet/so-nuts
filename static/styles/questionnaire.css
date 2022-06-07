@@ -7,8 +7,6 @@ main {
     background-image: url("/images/bg.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    display: flex;
-    flex-direction: column;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -142,9 +140,6 @@ h2 {
     ====== */
 
 .button_wrapper {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2em;
     margin-top: 2em;
 }
 

@@ -148,8 +148,6 @@ main {
     background-color: var(--secundary);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    display: flex;
-    flex-direction: column;
     gap: 1em;
     margin-top: -1em;
     padding-top: 1em;

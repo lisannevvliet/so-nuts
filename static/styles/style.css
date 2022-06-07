@@ -19,6 +19,11 @@ body {
     max-width: 768px;
 }
 
+main {
+    display: flex;
+    flex-direction: column;
+}
+
 li {
     display: none;
 }
@@ -45,6 +50,12 @@ button {
     margin-left: 1em;
     margin-right: 1em;
     padding: 1.5em;
+}
+
+.button_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
 }
 
 .prev_button {
