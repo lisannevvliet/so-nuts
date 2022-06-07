@@ -75,11 +75,11 @@ app.get("/food", async function (_req, res) {
 
     // Get the food goals from the API.
     const response = await fetch("https://fhir.mibplatform.nl/api/Goals?domainId=voeding")
-    const goals = await response.json()
+    const food_goals = await response.json()
 
-    // Load the food page with the stylesheet.
+    // Load the food page with the food goals and stylesheet.
     res.render("food", {
-        goals: goals,
+        food_goals: food_goals,
         style: "dashboard.css"
     })
 })
