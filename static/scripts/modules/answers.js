@@ -13,15 +13,25 @@ export function save_answer(type, element, questionnaire_index) {
                 checked.push(element.value)
             })
 
-            // Check if there is a textfield within the same question and save the value in localStorage.
-            if ($(`#question_${questionnaire_index} input[type=text]`)) {
-                // Add "_checkbox" to prevent overwriting the textfield with the checkboxes.
-                answers[questionnaire_index + "_checkbox"] = checked
-                localStorage.setItem("answers", JSON.stringify(answers))
+            // Check if there are checked checkboxes. If there are not, remove the property from the object.
+            if (checked.length > 0) {
+                // Check if there is a textfield within the same question and save the value in localStorage.
+                if ($(`#question_${questionnaire_index} input[type=text]`)) {
+                    // Add "_checkbox" to prevent overwriting the textfield with the checkboxes.
+                    answers[questionnaire_index + "_checkbox"] = checked
+                } else {
+                    answers[questionnaire_index] = checked
+                }
             } else {
-                answers[questionnaire_index] = checked
-                localStorage.setItem("answers", JSON.stringify(answers))
+                // Check if there is a textfield within the same question and remove the property from the object.
+                if ($(`#question_${questionnaire_index} input[type=text]`)) {
+                    delete answers[questionnaire_index + "_checkbox"]
+                } else {
+                    delete answers[questionnaire_index]
+                }
             }
+
+            localStorage.setItem("answers", JSON.stringify(answers))
 
             break
         case "radio":
@@ -31,15 +41,25 @@ export function save_answer(type, element, questionnaire_index) {
 
             break
         case "text":
-            // Check if there are checkboxes within the same question and save the values in localStorage.
-            if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
-                // Add "_text" to prevent overwriting the checkboxes with the textfield.
-                answers[questionnaire_index + "_text"] = element.value
-                localStorage.setItem("answers", JSON.stringify(answers))
+            // Check if the value is not empty. If it is, remove the property from the object.
+            if (element.value != "") {
+                // Check if there are checkboxes within the same question and save the values in localStorage.
+                if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
+                    // Add "_text" to prevent overwriting the checkboxes with the textfield.
+                    answers[questionnaire_index + "_text"] = element.value
+                } else {
+                    answers[questionnaire_index] = element.value
+                }
             } else {
-                answers[questionnaire_index] = element.value
-                localStorage.setItem("answers", JSON.stringify(answers))
+                // Check if there are checkboxes within the same question and remove the property from the object.
+                if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
+                    delete answers[questionnaire_index + "_text"]
+                } else {
+                    delete answers[questionnaire_index]
+                }
             }
+
+            localStorage.setItem("answers", JSON.stringify(answers))
     }
 }
 
