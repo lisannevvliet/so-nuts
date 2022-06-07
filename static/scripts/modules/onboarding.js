@@ -15,9 +15,12 @@ export default function onboarding() {
                 // Show the next question.
                 $(`.onboarding li:nth-child(${onboarding_index})`).classList.add("show_element")
 
-                // Change the next button text in the last page.
+                // Change the next button text and background in the last page.
                 if (onboarding_index == 3) {
                     $(".next_button").textContent = "Vragenlijst"
+                    $(".next_button").classList.add("turquoise")
+                } else {
+                    $(".next_button").classList.remove("turquoise")
                 }
             } else {
                 // If the last page is displayed and the button is clicked, redirect to the questionnaire and save the completion in localStorage.

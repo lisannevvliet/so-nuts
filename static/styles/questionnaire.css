@@ -7,15 +7,8 @@ main {
     background-image: url("/images/bg.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     margin: 0;
     padding: 0;
-}
-
-@supports (height: 100dvh) {
-    main {
-        height: 100dvh;
-    }
 }
 
 header {
@@ -124,10 +117,6 @@ article.gegevens_icon.active:before {
     background: var(--main);
     height: 6px;
     width: 0%;
-}
-
-#spacing {
-    flex-grow: 1;
 }
 
 h2 {
