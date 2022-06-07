@@ -14,6 +14,6 @@ if ($(".questionnaire")) {
 }
 
 // Check if the dashboard is currently displayed.
-if ($("nav")) {
+// if ($("nav")) {
     // navigation()
-}
+// }
