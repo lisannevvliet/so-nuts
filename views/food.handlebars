@@ -5,9 +5,12 @@
 <main class="food">
     <h2>Doelen</h2>
     <section>
-        <article>
-            <h3>200 eiwitten per dag</h3>
-        </article>
+        {{#each goals}}
+            <article>
+                <h3>{{this.title}}</h3>
+                <p>{{this.text}}</p>
+            </article>
+        {{/each}}
     </section>
 
     <h2>Ontbijt</h2>

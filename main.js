@@ -68,9 +68,18 @@ app.get("/fitness", (_req, res) => {
 })
 
 // Listen to all GET requests on /dashboard.
-app.get("/food", (_req, res) => {
+app.get("/food", async function (_req, res) {
+    // Get the domains from the API.
+    // const response = await fetch("https://fhir.mibplatform.nl/api/Domains")
+    // const domains = await response.json()
+
+    // Get the food goals from the API.
+    const response = await fetch("https://fhir.mibplatform.nl/api/Goals?domainId=voeding")
+    const goals = await response.json()
+
     // Load the food page with the stylesheet.
     res.render("food", {
+        goals: goals,
         style: "dashboard.css"
     })
 })
