@@ -1,0 +1,70 @@
+<main class="goals_page">
+
+      <form class="add_goal">
+              {{#each food_goals}}
+                <input  type="checkbox" 
+                        id={{this.title}} 
+                        name="goal"
+                        value={{this.title}}>
+                <label for="goal">{{this.title}}
+                  <input  type="number" 
+                    name="repetition" 
+                    placeholder="Hoe vaak herhalen" 
+                    min="1"/>
+                <label for="timeframe">Tijdsduur: </label>
+                <select name="timeframe" 
+                        id="timeframe">
+                    <option value="Daily">Dagelijks</option>
+                    <option value="Weekly">Wekelijks</option>
+                    <option value="Monthly">Maandelijks</option>
+                </select>
+                </label>
+                {{!-- {{#ifCond this.selected true}} checked{{/ifCond}} --}}
+            {{/each}}
+                <input type="submit" value="+ Maak doel(en) aan" />
+        </form>
+          
+        <ul class="goal_list">
+            <li>Loading...</li>
+        </ul>
+
+</main>
+
+
+
+
+    {{!-- <form class="add_goal">
+        <input class="goal" type="text" name="goal" placeholder="Enter goal Name" required />
+        <input type="number" name="reps" placeholder="# of Repetitions" min="1" required />
+            <label for="length">Hoe vaak?</label>
+            <input type="checkbox" id="length">
+            <input type="checkbox" id="length">
+            <input type="checkbox" id="length">
+            <input type="checkbox" id="length">
+            <label for="time_reminder">Hoelaat wil je een herinnering krijgen?</label>
+            <input type="time" id="time_reminder" name="time_reminder" min="06:00" max="23:00">
+        <input type="submit" value="+ Add goal" />
+    </form>
+
+    <ul class="goals_list">
+        <li></li>
+    </ul> --}}
+    
+        {{!-- <form class="add_goal">
+            <input class="goal" type="text" name="goal" placeholder="Enter Habit Name" required />
+            <input type="number" name="repetitions" placeholder="# of Repetitions" min="1" required />
+            <div class="frequency">
+                <label for="timeframe">Frequentie: </label>
+                <select name="timeframe" id="timeframe">
+                    <option value="Daily">Dagelijks</option>
+                    <option value="Weekly">Wekelijks</option>
+                    <option value="Monthly">Maandelijks</option>
+                    <option value="Yearly">Jaarlijks</option>
+                </select>
+            </div>
+            <input type="submit" value="+ Add Habit" />
+        </form>
+
+        <ul class="goals">
+            <li></li>
+        </ul> --}}
