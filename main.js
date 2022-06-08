@@ -39,21 +39,27 @@ app.get("/", (_req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", async function (_req, res) {
-    // To use the local JSON, comment out the code below or disable the client's internet connection.
-    // Try to get the questionnaire from the API. If it fails, use the local JSON.
+    // Try to get the questionnaire from the API. If it fails, use the JSON.
     try {
+        // To use the JSON, comment out this line of code.
         const response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2")
-        questionnaire = await response.json()
+        const data = await response.json()
+
+        // Save the most recent data in the JSON.
+        fs.writeFileSync("static/json/questionnaire.json", JSON.stringify(data))
     } catch { }
 
-    // Load the questionnaire page with the questionnaire and stylesheet.
-    res.render("questionnaire", {
-        questionnaire: questionnaire.questions,
-        style: "questionnaire.css"
+    // Read the JSON with the most recent data available.
+    fs.readFile("static/json/questionnaire.json", "utf8", (_err, data) => {
+        // Check if the file exists.
+        if (data != undefined) {
+            // Load the page with the data and stylesheet.
+            res.render("questionnaire", {
+                questionnaire: JSON.parse(data).questions,
+                style: "questionnaire.css"
+            })
+        }
     })
-
-    // Save the most recent data in the JSON.
-    fs.writeFile("static/json/questionnaire.json", JSON.stringify(questionnaire), () => { })
 })
 
 // Listen to all GET requests on /dashboard.
@@ -91,14 +97,14 @@ app.get("/food", async function (_req, res) {
 
 // Listen to all GET requests on /profile.
 app.get("/profile", async function (_req, res) {
-    // To use the local JSON, comment out the two blocks of code below or disable the client's internet connection.
-    // Try to get the questionnaire from the API. If it fails, use the local JSON.
+    // To use the JSON, comment out the two blocks of code below or disable the client's internet connection.
+    // Try to get the questionnaire from the API. If it fails, use the JSON.
     try {
         let response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2")
         questionnaire = await response.json()
     } catch { }
 
-    // Try to get the questionnaire response from the API. If it fails, use the local JSON.
+    // Try to get the questionnaire response from the API. If it fails, use the JSON.
     try {
         response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses/3")
         questionnaireResponse = await response.json()
