@@ -6,6 +6,8 @@ const express = require("express")
 const handlebars = require("express-handlebars")
 // Import node-fetch.
 const fetch = require("node-fetch")
+// Import fs (file system).
+const fs = require("fs")
 // Import JSON files.
 let questionnaire = require("./static/json/questionnaire.json")
 let questionnaireResponse = require("./static/json/questionnaireResponse.json")
@@ -49,6 +51,9 @@ app.get("/questionnaire", async function (_req, res) {
         questionnaire: questionnaire.questions,
         style: "questionnaire.css"
     })
+
+    // Save the most recent data in the JSON.
+    fs.writeFile("static/json/questionnaire.json", JSON.stringify(questionnaire), () => { })
 })
 
 // Listen to all GET requests on /dashboard.
