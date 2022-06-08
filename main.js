@@ -38,28 +38,18 @@ app.get("/", (_req, res) => {
 })
 
 // Listen to all GET requests on /questionnaire.
-app.get("/questionnaire", async function (_req, res) {
-    // Try to get the questionnaire from the API. If it fails, use the JSON.
-    try {
-        // To use the JSON, comment out this line of code.
-        const response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2")
-        const data = await response.json()
-
-        // Save the most recent data in the JSON.
-        fs.writeFileSync("static/json/questionnaire.json", JSON.stringify(data))
-    } catch { }
-
-    // Read the JSON with the most recent data available.
-    fs.readFile("static/json/questionnaire.json", "utf8", (_err, data) => {
-        // Check if the file exists.
-        if (data != undefined) {
-            // Load the page with the data and stylesheet.
-            res.render("questionnaire", {
-                questionnaire: JSON.parse(data).questions,
-                style: "questionnaire.css"
-            })
-        }
-    })
+app.get("/questionnaire", (_req, res) => {
+    get("questionnaire", "https://fhir.mibplatform.nl/api/Questionnaires/2")
+        .then(data => {
+            // Check if the file exists.
+            if (data != undefined) {
+                // Load the questionnaire page with the questionnaire and stylesheet.
+                res.render("questionnaire", {
+                    questionnaire: data.questions,
+                    style: "questionnaire.css"
+                })
+            }
+        })
 })
 
 // Listen to all GET requests on /dashboard.
@@ -130,3 +120,21 @@ app.get("/goals", async (_req, res) => {
         style: "goals.css"
     })
 })
+
+async function get(name, url) {
+    // Try to get the questionnaire from the API. If it fails, use the JSON.
+    try {
+        // To use the JSON, comment out this line of code.
+        const response = await fetch(url)
+        const data = await response.json()
+
+        // Save the most recent data in the JSON.
+        fs.writeFileSync(`static/json/${name}.json`, JSON.stringify(data))
+    } catch { }
+
+    // Read the JSON with the most recent data available.
+    const data = fs.readFileSync(`static/json/${name}.json`)
+
+    // Return the data in a JSON format.
+    return JSON.parse(data)
+}
