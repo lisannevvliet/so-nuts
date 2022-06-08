@@ -8,9 +8,6 @@ const handlebars = require("express-handlebars")
 const fetch = require("node-fetch")
 // Import fs (file system).
 const fs = require("fs")
-// Import JSON files.
-let questionnaire = require("./static/json/questionnaire.json")
-let questionnaireResponse = require("./static/json/questionnaireResponse.json")
 
 // Initialise Express.
 const app = express()
@@ -39,13 +36,13 @@ app.get("/", (_req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", (_req, res) => {
-    get("questionnaire", "https://fhir.mibplatform.nl/api/Questionnaires/2")
-        .then(data => {
+    get("questionnaire", "Questionnaires/2")
+        .then(questionnaire => {
             // Check if the file exists.
-            if (data != undefined) {
+            if (questionnaire != undefined) {
                 // Load the questionnaire page with the questionnaire and stylesheet.
                 res.render("questionnaire", {
-                    questionnaire: data.questions,
+                    questionnaire: questionnaire.questions,
                     style: "questionnaire.css"
                 })
             }
@@ -69,63 +66,63 @@ app.get("/fitness", (_req, res) => {
 })
 
 // Listen to all GET requests on /dashboard.
-app.get("/food", async function (_req, res) {
-    // Get the domains from the API.
-    // const response = await fetch("https://fhir.mibplatform.nl/api/Domains")
-    // const domains = await response.json()
-
-    // Get the food goals from the API.
-    const response = await fetch("https://fhir.mibplatform.nl/api/Goals?domainId=voeding")
-    const food_goals = await response.json()
-
-    // Load the food page with the food goals and stylesheet.
-    res.render("food", {
-        food_goals: food_goals,
-        style: "dashboard.css"
-    })
+app.get("/food", (_req, res) => {
+    get("domains", "Domains")
+        .then(domains => {
+            get("food_goals", "Goals?domainId=voeding")
+                .then(food_goals => {
+                    // Check if the files exist.
+                    if (domains != undefined && food_goals != undefined) {
+                        // Load the food page with the domains, food goals and stylesheet.
+                        res.render("food", {
+                            domains: domains,
+                            food_goals: food_goals,
+                            style: "dashboard.css"
+                        })
+                    }
+                })
+        })
 })
 
 // Listen to all GET requests on /profile.
-app.get("/profile", async function (_req, res) {
-    // To use the JSON, comment out the two blocks of code below or disable the client's internet connection.
-    // Try to get the questionnaire from the API. If it fails, use the JSON.
-    try {
-        let response = await fetch("https://fhir.mibplatform.nl/api/Questionnaires/2")
-        questionnaire = await response.json()
-    } catch { }
-
-    // Try to get the questionnaire response from the API. If it fails, use the JSON.
-    try {
-        response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses/3")
-        questionnaireResponse = await response.json()
-    } catch { }
-
-    // Load the profile page with the questionnaire, questionnaire response and stylesheet.
-    res.render("profile", {
-        questionnaire: questionnaire.questions,
-        questionnaireResponse: questionnaireResponse.questionResponses,
-        style: "dashboard.css"
-    })
+app.get("/profile", (_req, res) => {
+    get("questionnaire", "Questionnaires/2")
+        .then(questionnaire => {
+            get("questionnaire_response", "QuestionnaireResponses/3")
+                .then(questionnaire_response => {
+                    // Check if the files exist.
+                    if (questionnaire != undefined && questionnaire_response != undefined) {
+                        // Load the profile page with the questionnaire, questionnaire response and stylesheet.
+                        res.render("profile", {
+                            questionnaire: questionnaire.questions,
+                            questionnaire_response: questionnaire_response.questionResponses,
+                            style: "dashboard.css"
+                        })
+                    }
+                })
+        })
 })
 
 // Listen to all GET requests on /goals.
-app.get("/goals", async (_req, res) => {
-    // Get the food goals from the API.
-    const response = await fetch("https://fhir.mibplatform.nl/api/Goals?domainId=voeding")
-    const food_goals = await response.json()
-
-    // Load the goals page with the stylesheet.
-    res.render("goals", {
-        food_goals: food_goals,
-        style: "goals.css"
-    })
+app.get("/goals", (_req, res) => {
+    get("food_goals", "Goals?domainId=voeding")
+        .then(food_goals => {
+            // Check if the file exists.
+            if (food_goals != undefined) {
+                // Load the goals page with the stylesheet.
+                res.render("goals", {
+                    food_goals: food_goals,
+                    style: "goals.css"
+                })
+            }
+        })
 })
 
 async function get(name, url) {
-    // Try to get the questionnaire from the API. If it fails, use the JSON.
+    // Try to get the data from the API. If it fails, use the JSON.
     try {
         // To use the JSON, comment out this line of code.
-        const response = await fetch(url)
+        const response = await fetch(`https://fhir.mibplatform.nl/api/${url}`)
         const data = await response.json()
 
         // Save the most recent data in the JSON.
