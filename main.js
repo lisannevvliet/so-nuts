@@ -55,59 +55,62 @@ app.get("/questionnaire", (_req, res) => {
 app.post("/questionnaire", async function (req, res) {
     let questionResponses = []
 
-    for (let [key, value] of Object.entries(JSON.parse(req.body.answers))) {
-        if (key.endsWith("_checkbox")) {
-            let duplicate = false
-            key = key.substring(0, key.indexOf("_checkbox"))
+    // Prevent the server from crashing when none of the answers are filled in.
+    if (Object.entries(req.body.answers).length > 0) {
+        for (let [key, value] of Object.entries(JSON.parse(req.body.answers))) {
+            if (key.endsWith("_checkbox")) {
+                let duplicate = false
+                key = key.substring(0, key.indexOf("_checkbox"))
 
-            questionResponses.forEach(element => {
-                // Check if the key already exists in the object.
-                if (key == element.questionId) {
-                    duplicate = true
-                    // Add the choice option IDs to the object.
-                    element.choiceOptionIds = value
+                questionResponses.forEach(element => {
+                    // Check if the key already exists in the object.
+                    if (key == element.questionId) {
+                        duplicate = true
+                        // Add the choice option IDs to the object.
+                        element.choiceOptionIds = value
+                    }
+                })
+
+                // Add the question reponse to the array if it is not a duplicate.
+                if (!duplicate) {
+                    questionResponses.push({
+                        "questionId": key,
+                        "choiceOptionIds": value
+                    })
                 }
-            })
+            } else if (key.endsWith("_text")) {
+                let duplicate = false
+                key = key.substring(0, key.indexOf("_text"))
 
-            // Add the question reponse to the array if it is not a duplicate.
-            if (!duplicate) {
-                questionResponses.push({
-                    "questionId": key,
-                    "choiceOptionIds": value
+                questionResponses.forEach(element => {
+                    // Check if the key already exists in the object.
+                    if (key == element.questionId) {
+                        duplicate = true
+                        // Add the reponse to the object.
+                        element.reponse = value
+                    }
                 })
-            }
-        } else if (key.endsWith("_text")) {
-            let duplicate = false
-            key = key.substring(0, key.indexOf("_text"))
 
-            questionResponses.forEach(element => {
-                // Check if the key already exists in the object.
-                if (key == element.questionId) {
-                    duplicate = true
-                    // Add the reponse to the object.
-                    element.reponse = value
+                // Add the question reponse to the array if it is not a duplicate.
+                if (!duplicate) {
+                    questionResponses.push({
+                        "questionId": key,
+                        "response": value
+                    })
                 }
-            })
-
-            // Add the question reponse to the array if it is not a duplicate.
-            if (!duplicate) {
-                questionResponses.push({
-                    "questionId": key,
-                    "response": value
-                })
-            }
-        } else {
-            // Add the question reponse to the array.
-            if (typeof value == "string") {
-                questionResponses.push({
-                    "questionId": key,
-                    "response": value
-                })
             } else {
-                questionResponses.push({
-                    "questionId": key,
-                    "choiceOptionIds": value
-                })
+                // Add the question reponse to the array.
+                if (typeof value == "string") {
+                    questionResponses.push({
+                        "questionId": key,
+                        "response": value
+                    })
+                } else {
+                    questionResponses.push({
+                        "questionId": key,
+                        "choiceOptionIds": value
+                    })
+                }
             }
         }
     }
