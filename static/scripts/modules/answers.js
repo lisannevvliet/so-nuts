@@ -111,3 +111,7 @@ export function load_answers(questionnaire_index) {
         }
     }
 }
+
+export function get_answers() {
+    return answers
+}
