@@ -99,7 +99,7 @@ app.post("/questionnaire", async function (req, res) {
             if (!duplicate) {
                 questionResponses.push({
                     "questionId": key,
-                    "reponse": value
+                    "response": value
                 })
             }
         } else {
@@ -107,7 +107,7 @@ app.post("/questionnaire", async function (req, res) {
             if (typeof value == "string") {
                 questionResponses.push({
                     "questionId": key,
-                    "reponse": value
+                    "response": value
                 })
             } else {
                 questionResponses.push({
