@@ -83,6 +83,10 @@ article.gegevens_icon.active:before {
     general
     ============ */
 
+li {
+    display: none;
+}
+
 .questionnaire {
     flex: 1;
     list-style-type: none;

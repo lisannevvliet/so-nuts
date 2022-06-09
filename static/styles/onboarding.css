@@ -12,6 +12,10 @@ ol {
     height: 100%;
 }
 
+li {
+    display: none;
+}
+
 li:before {
     content: "";
     background-repeat: no-repeat;

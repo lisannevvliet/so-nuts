@@ -35,10 +35,6 @@ main {
     flex-grow: 1;
 }
 
-li {
-    display: none;
-}
-
 .grid_two_columns {
     align-items: center;
     display: grid;

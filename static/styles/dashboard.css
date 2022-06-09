@@ -7,9 +7,16 @@ html {
     padding: 0;
 }
 
+main {
+    height: auto;
+}
+
 /*  ====
     nav
     ====*/
+.nav_dashboard {
+    position: sticky;
+}
 
 nav {
     align-items: center;
