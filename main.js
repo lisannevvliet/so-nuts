@@ -4,7 +4,6 @@ const express = require("express")
 const handlebars = require("express-handlebars")
 const fetch = require("node-fetch")
 const fs = require("fs")
-const request = require("request")
 
 // Initialise Express.
 const app = express()
@@ -28,13 +27,8 @@ app.listen(process.env.PORT, () => {
     console.log(`Express running at http://localhost:${process.env.PORT}.`)
 })
 
-// Set up a proxy for client-side requests to the API.
-app.all("/api/*", (req, res) => {
-    req.pipe(request(`https://fhir.mibplatform.nl${req.url}`)).pipe(res)
-})
-
-// Listen to all GET requests on /.
-app.get("/", (_req, res) => {
+// Listen to all GET requests on /onboarding.
+app.get("/onboarding", (_req, res) => {
     // Load the onboarding page with the stylesheet.
     res.render("onboarding", {
         style: "onboarding.css"
@@ -118,8 +112,6 @@ app.post("/questionnaire", async function (req, res) {
         }
     }
 
-    console.log(questionResponses)
-
     const response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses", {
         method: "POST",
         body: JSON.stringify({
@@ -138,11 +130,11 @@ app.post("/questionnaire", async function (req, res) {
     console.log(data)
 
     // Redirect to the dashboard page.
-    res.redirect("/dashboard")
+    res.redirect("/")
 })
 
-// Listen to all GET requests on /dashboard.
-app.get("/dashboard", (_req, res) => {
+// Listen to all GET requests on /.
+app.get("/", (_req, res) => {
     // Load the dashboard page with the stylesheet.
     res.render("dashboard", {
         style: "dashboard.css"

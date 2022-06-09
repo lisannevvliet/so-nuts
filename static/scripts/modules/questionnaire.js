@@ -1,13 +1,13 @@
 import $ from "./$.js"
 import $$ from "./$$.js"
 import update_view from "./update_view.js"
-import { save_answer, get_answers } from "./answers.js"
+import { save_answer } from "./answers.js"
 
 export default function questionnaire() {
     let questionnaire_index = 1
 
-    // Retrieve the index from localStorage and check if it is not greater than the amount of questions.
-    if (localStorage.getItem("index") && localStorage.getItem("index") <= $("#amount_of_questions").textContent) {
+    // Retrieve the index from localStorage and check if it is at least one and not greater than the amount of questions.
+    if (localStorage.getItem("index") && localStorage.getItem("index") > 0 && localStorage.getItem("index") <= $("#amount_of_questions").textContent) {
         questionnaire_index = localStorage.getItem("index")
     }
 
@@ -42,7 +42,10 @@ export default function questionnaire() {
             localStorage.setItem("index", ++questionnaire_index)
 
             // Check if the questionnaire is incomplete.
-            if (questionnaire_index <= $("#amount_of_questions").textContent) {
+            if (questionnaire_index > $("#amount_of_questions").textContent) {
+                // Save the completion in localStorage.
+                localStorage.setItem("questionnaire", "Completed")
+            } else {
                 // Show the next question.
                 $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
                 update_view(questionnaire_index)

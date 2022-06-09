@@ -120,7 +120,3 @@ export function load_answers(questionnaire_index) {
     // Set the answers as the value of the hidden input field.
     $("#answers").value = JSON.stringify(answers)
 }
-
-export function get_answers() {
-    return answers
-}
