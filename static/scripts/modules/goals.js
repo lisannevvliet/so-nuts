@@ -75,7 +75,8 @@ export default function goals() {
         $$(".repetition_change")[index].textContent = goal_array[index].repetition += 1
 
         // BUG: it can't get to this if for some reason? Probably had something to do with the bug above this.
-        if (goal_array[index].repetition === goal_array[index].total_repetition) {
+        // Use == instead of ===, because == is less strict and more similar to the way we humans compare values.
+        if (goal_array[index].repetition == goal_array[index].total_repetition) {
             goal_array[index].completed = true
         } else if (goal_array[index].repetition > goal_array[index].total_repetition) {
             goal_array[index].repetition = 0
