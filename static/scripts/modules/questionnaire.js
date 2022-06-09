@@ -101,32 +101,30 @@ export default function questionnaire() {
                 }
             }
 
-            fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses", {
+            fetch("/api/QuestionnaireResponses", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json; charset=UTF-8",
-                    "Accept": "*/*"
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     "id": "string",
                     "questionnaireId": "2",
                     "participantId": "1",
                     "questionResponses": questionResponses
-                }),
-                // Access to fetch at 'https://fhir.mibplatform.nl/api/QuestionnaireResponses' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.
-                mode: "no-cors"
+                })
             })
                 .then(response => {
                     return response.json()
                 })
                 .then(data => {
-                    console.log(`Success: ${data}`)
+                    console.log(data)
 
                     // Redirect to the dashboard page.
                     window.location.href = "/dashboard"
                 })
                 .catch(error => {
-                    console.error(`Error: ${error}`)
+                    console.error(error)
                 })
         } else {
             // Show the next question.

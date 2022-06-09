@@ -19,7 +19,6 @@ if ($(".questionnaire")) {
 // navigation()
 // }
 
-
 // Check if the questionnaire is currently displayed.
 if ($(".goals_page")) {
     goals()

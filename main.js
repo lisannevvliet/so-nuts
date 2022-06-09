@@ -1,13 +1,10 @@
-// Import Dotenv.
+// Import Node.js modules.
 require("dotenv").config()
-// Import Express.
 const express = require("express")
-// Import Handlebars.
 const handlebars = require("express-handlebars")
-// Import node-fetch.
 const fetch = require("node-fetch")
-// Import fs (file system).
 const fs = require("fs")
+const request = require("request")
 
 // Initialise Express.
 const app = express()
@@ -24,6 +21,11 @@ app.set("view engine", "handlebars")
 // Set and log the port for Express.
 app.listen(process.env.PORT, () => {
     console.log(`Express running at http://localhost:${process.env.PORT}.`)
+})
+
+// Set up a proxy for client-side requests to the API.
+app.all("/api/*", (req, res) => {
+    req.pipe(request(`https://fhir.mibplatform.nl${req.url}`)).pipe(res)
 })
 
 // Listen to all GET requests on /.
