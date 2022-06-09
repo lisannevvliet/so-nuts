@@ -1,31 +1,35 @@
 <main class="goals_page">
-
+    <h1>Doelen</h1>
       <form class="add_goal">
               {{#each food_goals}}
+              <section> 
+                  <label for="goal"> 
                 <input  type="checkbox" 
                         id={{this.title}} 
                         name="goal"
                         value={{this.title}}>
-                <label for="goal">{{this.title}}
-                  <input  type="number" 
+                <h3>{{this.title}} </h3> </label>
+
+                 <label for="repetition"><h3>Hoe vaak wil je het herhalen? </h3> </label>  
+                  <input type="number" 
                     name="repetition" 
-                    placeholder="Hoe vaak herhalen" 
+                    id="repetition_{{this.title}}"
+                    {{!-- placeholder="3"  --}}
                     min="1"/>
-                <label for="timeframe">Tijdsduur: </label>
+                
+                <label for="timeframe" id={{this.title}}><h3> Voor hoe lang wil je het volhouden?</h3> </label>
                 <select name="timeframe" 
-                        id="timeframe">
+                        id="timeframe_{{this.title}} ">
                     <option value="Daily">Dagelijks</option>
                     <option value="Weekly">Wekelijks</option>
                     <option value="Monthly">Maandelijks</option>
                 </select>
-                </label>
-                {{!-- {{#ifCond this.selected true}} checked{{/ifCond}} --}}
+              </section>
             {{/each}}
                 <input type="submit" value="+ Maak doel(en) aan" />
         </form>
           
         <ul class="unordered_goal_list">
-            <li></li>
         </ul>
 
 </main>
