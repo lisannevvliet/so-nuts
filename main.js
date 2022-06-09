@@ -129,7 +129,6 @@ app.post("/questionnaire", async function (req, res) {
         }
     })
     const data = await response.json()
-
     console.log(data)
 
     // Redirect to the dashboard page.

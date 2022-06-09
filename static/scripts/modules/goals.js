@@ -43,7 +43,8 @@ export default function goals() {
         for (let i = 0; i < goal_array.length; i++) {
             // console.log(goal_array)
             // console.log("goal_array[0][i]: " + goal_array[0][i])
-            unordered_goal_list.insertAdjacentHTML('afterbegin', `
+            // Before end, so that new goals are added underneath the existing ones and the index is ascending, not descending.
+            unordered_goal_list.insertAdjacentHTML('beforeend', `
                 <li>
                     <article>
                         <strong>${goal_array[i].name}</strong>
@@ -67,9 +68,11 @@ export default function goals() {
     function toggle_complete(e) {
         // All checkboxes control the textContent of only the first goal. Definitely has something to do with de selector. SelectorAll doesn't work
         if (!e.target.matches("input")) return
-        const index = e.target.dataset.index
+        // Only get the text after "goal_" using a substring. Start at index 5, because "goal_" consists of 4 characters (counting from 0).
+        const index = e.target.id.substring(5)
 
-        $(".repetition_change").textContent = goal_array[index].repetition += 1
+        // Change the correct span, using an array and index.
+        $$(".repetition_change")[index].textContent = goal_array[index].repetition += 1
 
         // BUG: it can't get to this if for some reason? Probably had something to do with the bug above this.
         if (goal_array[index].repetition === goal_array[index].total_repetition) {
