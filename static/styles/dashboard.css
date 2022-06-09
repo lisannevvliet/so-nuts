@@ -44,7 +44,6 @@ nav ul {
 nav ul li {
     display: flex;
     height: 4.5em;
-    list-style: none;
     position: relative;
     width: 4.5em;
     z-index: 1;

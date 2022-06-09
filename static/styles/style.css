@@ -42,6 +42,10 @@ main {
     grid-template-columns: repeat(2, 10em);
 }
 
+li {
+    list-style: none;
+}
+
 /*  ======
     button
     ====== */
