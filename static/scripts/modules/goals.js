@@ -71,8 +71,8 @@ export default function goals() {
         // Only get the text after "goal_" using a substring. Start at index 5, because "goal_" consists of 4 characters (counting from 0).
         const index = e.target.id.substring(5)
 
-        // Change the correct span, using an array and index.
-        $$(".repetition_change")[index].textContent = goal_array[index].repetition += 1
+        // Increment the repetition.
+        goal_array[index].repetition += 1
 
         // BUG: it can't get to this if for some reason? Probably had something to do with the bug above this.
         // Use == instead of ===, because == is less strict and more similar to the way we humans compare values.
@@ -82,6 +82,10 @@ export default function goals() {
             goal_array[index].repetition = 0
             goal_array[index].completed = false
         }
+
+        // Change the correct span, using an array and index.
+        $$(".repetition_change")[index].textContent = goal_array[index].repetition
+
         // Progress bar for goal.
         // $$("#goal_progress div")[goal_array[index] - 1].style.width = (goal_array[index] - 1) * 100 / $("#amount_of_repetitions").textContent + "%"
         // listHabits(goal_array, unordered_goal_list)
