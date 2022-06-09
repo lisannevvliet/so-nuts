@@ -3,35 +3,42 @@
       <form class="add_goal">
               {{#each food_goals}}
               <section> 
-                  <label for="goal"> 
+              <h3> 
                 <input  type="checkbox" 
                         id={{this.title}} 
                         name="goal"
+                        class="goal_input"
                         value={{this.title}}>
-                <h3>{{this.title}} </h3> </label>
-
-                 <label for="repetition"><h3>Hoe vaak wil je het herhalen? </h3> </label>  
-                  <input type="number" 
-                    name="repetition" 
-                    id="repetition_{{this.title}}"
-                    {{!-- placeholder="3"  --}}
-                    min="1"/>
-                
-                <label for="timeframe" id={{this.title}}><h3> Voor hoe lang wil je het volhouden?</h3> </label>
-                <select name="timeframe" 
-                        id="timeframe_{{this.title}} ">
-                    <option value="Daily">Dagelijks</option>
-                    <option value="Weekly">Wekelijks</option>
-                    <option value="Monthly">Maandelijks</option>
-                </select>
-              </section>
+                 <label for={{this.title}} ></label>
+                 {{this.title}}
+                 </h3>
+                 <article> 
+                    <label for="repetition"><h3>Hoe vaak wil je het herhalen? </h3> </label>  
+                    <input type="number" 
+                        name="repetition" 
+                        id="repetition_{{this.title}}"
+                        {{!-- placeholder="3"  --}}
+                        min="1"/>
+                    
+                    <label for="timeframe" id={{this.title}}><h3> Voor hoe lang wil je het volhouden?</h3> </label>
+                    <select name="timeframe" 
+                            id="timeframe_{{this.title}} ">
+                        <option value="Dagelijks">Dagelijks</option>
+                        <option value="Wekelijks">Wekelijks</option>
+                        <option value="Maandelijks">Maandelijks</option>
+                    </select>
+                </section>
+              </article>
             {{/each}}
                 <input type="submit" value="+ Maak doel(en) aan" />
         </form>
           
         <ul class="unordered_goal_list">
         </ul>
-
+        
+    <div class="button_wrapper">
+        <button><span>+</span></button>
+    </div>
 </main>
 
 

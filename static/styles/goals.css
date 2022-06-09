@@ -1,0 +1,208 @@
+form {
+    display: none;
+    background-color: var(--beige);
+    overflow-y: scroll;
+}
+
+.goals_page form.show_popup {
+    height: 80vh;
+    width: 75vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    padding: 1em;
+}
+
+.goals_page ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.unordered_goal_list li {
+    height: 8em;
+    width: 90%;
+    background-color: var(--beige);
+    margin: 1em;
+    border-radius: 20px;
+    /* padding: 1em; */
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* .unordered_goal_list label { */
+/* display: flex; */
+/* flex-direction: row; */
+/* justify-content: space-around; */
+/* } */
+
+.unordered_goal_list p {
+    position: relative;
+    top: 2em;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+
+.unordered_goal_list input[type=checkbox] {
+    position: relative;
+    top: 2.5em;
+    appearance: none;
+    width: 3em;
+    height: 3em;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#amount_of_repetitions {
+    position: fixed;
+    visibility: hidden;
+}
+
+#goal_progress {
+    background: var(--accent);
+    height: 11px;
+    width: 99%;
+    position: relative;
+    margin: 0;
+    /* left: -0.9em; */
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#goal_progress div {
+    background: var(--main);
+    height: 11px;
+    width: 100%;
+    position: absolute;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* .unordered_goal_list strong { */
+/* padding-left: 1em; */
+/* padding-top: 1em; */
+/* } */
+
+i {
+    position: relative;
+    top: 1em;
+    left: 2em;
+    z-index: 1;
+}
+
+.unordered_goal_list article {
+    margin-top: 1em;
+}
+
+.button_wrapper {
+    align-items: center;
+    /* background: var(--secundary); */
+    bottom: 0;
+    /* box-shadow: 0 0 3px rgb(0 0 0 / 20%); */
+    display: flex;
+    /* height: 4.5em; */
+    justify-content: center;
+    max-width: 768px;
+    position: fixed;
+    width: 100%;
+}
+
+button {
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+}
+
+button span {
+    font-size: 2em;
+}
+
+/* .button_wrapper.hide_create_button {
+    display: none;
+} */
+
+label {
+    cursor: pointer;
+    width: 6em;
+    height: 7em;
+}
+
+input[type=text] {
+    background-color: var(--grey);
+    border-radius: 5px;
+    border: solid darkgrey 1px;
+    height: 2em;
+}
+
+input:focus {
+    border: 3px solid var(--accent);
+    outline: none !important;
+}
+
+input[type="number"] {
+    width: 3em;
+}
+
+label[for=goal] h3 {
+    background-color: var(--secundary);
+    border-radius: 20px;
+    height: 4em;
+    text-align: center;
+}
+
+
+form input[type="checkbox"].goal_input {
+    display: none;
+}
+
+form input[type="checkbox"].goal_input+label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 1.5rem;
+    padding: 2px;
+    background-color: #c0ceda;
+    transition: all 0.5s;
+}
+
+form input[type="checkbox"].goal_input+label::before {
+    box-sizing: border-box;
+    display: block;
+    content: "";
+    height: calc(1.5rem - 4px);
+    width: calc(1.5rem - 4px);
+    border-radius: 50%;
+    background-color: var(--secundary);
+    transition: all 0.5s;
+}
+
+form input[type="checkbox"].goal_input:checked+label {
+    background-color: var(--main);
+}
+
+form input[type="checkbox"].goal_input:checked+label::before {
+    margin-left: 1.5rem;
+}
+
+form article {
+    display: none;
+}
+
+form article.show_extra {
+    display: block;
+}
+
+/* Doesn't work? */
+/* form input[type="checkbox"].goal_input:checked+article {
+    display: block;
+} */

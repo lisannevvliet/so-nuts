@@ -27,11 +27,15 @@ export default function goals() {
             })
         })
 
+
+
         // Save the goal array into the localStorage JSON.
         listHabits(goal_array, unordered_goal_list)
         // localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
         // Reset the form.
         this.reset()
+        // Close popup to create a goal.
+        $("form").classList.remove("show_popup")
     }
 
     // Render HTML. 
@@ -104,6 +108,8 @@ export default function goals() {
     //     listHabits(goal_array, unordered_goal_list)
     // localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
     // }
+
+
 
     $(".add_goal").addEventListener("submit", add_goal)
     $(".unordered_goal_list").addEventListener("click", toggle_complete)

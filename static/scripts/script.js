@@ -3,6 +3,7 @@ import onboarding from "./modules/onboarding.js"
 import questionnaire from "./modules/questionnaire.js"
 import navigation from "./modules/navigation.js"
 import goals from "./modules/goals.js"
+import create_goal_popup from "./modules/show_popup.js"
 
 // Check if the onboarding page is currently displayed.
 if ($(".onboarding")) {
@@ -22,4 +23,5 @@ if ($("nav")) {
 // Check if the goals page is currently displayed.
 if ($(".goals_page")) {
     goals()
+    create_goal_popup()
 }
