@@ -42,9 +42,10 @@ app.get("/questionnaire", (_req, res) => {
         .then(questionnaire => {
             // Check if the file exists.
             if (questionnaire != undefined) {
-                // Load the questionnaire page with the questionnaire and stylesheet.
+                // Load the questionnaire page with the questionnaire, length and stylesheet.
                 res.render("questionnaire", {
                     questionnaire: questionnaire.questions,
+                    length: questionnaire.questions.length - 1,
                     style: "questionnaire.css"
                 })
             }

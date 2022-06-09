@@ -10,20 +10,4 @@ export default function update_view(questionnaire_index) {
     if (localStorage.getItem("answers")) {
         load_answers(questionnaire_index)
     }
-
-    // Hide the previous button in the first question.
-    if (questionnaire_index == 1) {
-        $(".prev_button").classList.add("hide_button")
-    } else {
-        $(".prev_button").classList.remove("hide_button")
-    }
-
-    // Change the next button text and background in the last question.
-    if (questionnaire_index == $("#amount_of_questions").textContent) {
-        $(".next_button").textContent = "Dashboard"
-        $(".next_button").classList.add("turquoise")
-    } else {
-        $(".next_button").textContent = "Volgende"
-        $(".next_button").classList.remove("turquoise")
-    }
 }

@@ -40,12 +40,14 @@
                         </div>
                     {{/ifCond}}
                     <span id="spacing"></span>
+                    <div class="button_wrapper">
+                        {{!-- Hide the previous button in the first question. --}}
+                        <button class="prev_button{{#ifCond @index 0}} hide_button{{/ifCond}}">Vorige</button>
+                        {{!-- Change the next button text and background in the last question. --}}
+                        <button class="next_button{{#ifCond @index ../length}} turquoise">Dashboard</button>{{else}}">Volgende</button>{{/ifCond}}
+                    </div>
                 </li>
             {{/each}}
         </ol>
-        <div class="button_wrapper">
-            <button class="prev_button">Vorige</button>
-            <button class="next_button">Volgende</button>
-        </div>
     </section>
 </main>
