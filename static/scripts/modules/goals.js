@@ -3,6 +3,7 @@ import $$ from "./$$.js"
 
 export default function goals() {
 
+    const goal_array = []
     const unordered_goal_list = $(".unordered_goal_list")
     const JSON_all_goals = JSON.parse(localStorage.getItem("all_goals")) || []
 
@@ -12,51 +13,26 @@ export default function goals() {
         e.preventDefault()
         // Only put the checked checkboxes in an array.
         let checkboxes = $$('input[name="goal"]:checked')
-        const goal_array = []
         let total_repetition = $$("[name=repetition]")
         let timeframe = $$("[name=timeframe]")
 
-
-        // Push each selected checkbox with a goal into the array with the objects.
-        checkboxes.forEach((checkbox) => {
-            total_repetition.forEach((tot_rep) => {
-                timeframe.forEach((timeframe_) => {
-                    goal_array.push({
-                        name: checkbox.value,
-                        repetition: 0,
-                        total_repetition: tot_rep.value,
-                        timeframe: timeframe_.value,
-                        completed: false,
-                    })
-                })
+        // Push the values of the inputs in the array.
+        checkboxes.forEach((checkbox, index) => {
+            goal_array.push({
+                name: checkbox.value,
+                repetition: 0,
+                total_repetition: total_repetition[index].value,
+                timeframe: timeframe[index].value,
+                completed: false,
             })
         })
 
         // Save the goal array into the localStorage JSON.
-        // JSON_all_goals.push(goal_array)
         listHabits(goal_array, unordered_goal_list)
-        localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
+        // localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
         // Reset the form.
         this.reset()
-        // console.log(goal_array)
     }
-
-    // // Render HTML. 
-    // function listHabits(goal = [], goal_list_item) {
-    //     goal_list_item.innerHTML = JSON_all_goals
-    //         .map((goal, i) => {
-    //             return `
-    //         <li>
-    //         <input type="checkbox" data-index=${i} id="goal${i}" ${goal.completed ? "checked" : ""
-    //                 } />
-    //         <label for="goal${i}"><span>${goal.repetition}/${goal.total_repetition} ${goal.timeframe
-    //                 }</span> ${goal.goal}</label>
-    //     <button class="delete" data-index=${i} id="delete${i}">Delete</button>
-    //     </li>
-    //     `
-    //         })
-    //     // .join("")
-    // }
 
     // Render HTML. 
     function listHabits(goal_array, unordered_goal_list) {
@@ -65,56 +41,66 @@ export default function goals() {
         // goal_array.flat()
 
         for (let i = 0; i < goal_array.length; i++) {
-            console.log(goal_array)
+            // console.log(goal_array)
             // console.log("goal_array[0][i]: " + goal_array[0][i])
             unordered_goal_list.insertAdjacentHTML('afterbegin', `
-            <li>
-            <input type="checkbox" data-index="${goal_array[i]}" name="goal" id=${goal_array[i].name} ${goal_array[i].completed ? "checked" : ""
-                } />
-            <label for="${goal_array[i]}"><span>${goal_array[i].repetition}/${goal_array[i].total_repetition} ${goal_array[i].timeframe
-                }</span> ${goal_array[i].name}</label>
-        <button class="delete" data-index="${goal_array[i]} id="delete${goal_array[i]}">Verwijder doel</button>
-        </li>`)
+                <li>
+                    <article>
+                        <strong>${goal_array[i].name}</strong>
+                        <p>
+                            <span class="repetition_change">${goal_array[i].repetition}</span>
+                            /${goal_array[i].total_repetition} ${goal_array[i].timeframe}
+                        </p> 
+                    </article>
+                    <label for="goal_${[i]}">
+                        <i>+</i>
+                        <input type="checkbox" data-index=${[i]} name="goal_${[i]}" id="goal_${[i]}" ${goal_array[i].completed ? "checked" : ""} />
+                    </label>
+                    <div id="goal_progress">
+                        <div></div>
+                    </div>
+                </li>`)
         }
-        // .join("")
     }
 
     // Toggle to complete.
     function toggle_complete(e) {
+        // All checkboxes control the textContent of only the first goal. Definitely has something to do with de selector. SelectorAll doesn't work
         if (!e.target.matches("input")) return
-        const el = e.target
-        const index = el.dataset.index
-        goal_array[index].repetition += 1
+        const index = e.target.dataset.index
 
-        if (JSON_all_goals[index].repetition === JSON_all_goals[index].total_repetition) {
-            JSON_all_goals[index].completed = true
-        } else if (JSON_all_goals[index].repetition > JSON_all_goals[index].total_repetition) {
-            JSON_all_goals[index].repetition = 0
-            JSON_all_goals[index].completed = false
+        $(".repetition_change").textContent = goal_array[index].repetition += 1
+
+        // BUG: it can't get to this if for some reason? Probably had something to do with the bug above this.
+        if (goal_array[index].repetition === goal_array[index].total_repetition) {
+            goal_array[index].completed = true
+        } else if (goal_array[index].repetition > goal_array[index].total_repetition) {
+            goal_array[index].repetition = 0
+            goal_array[index].completed = false
         }
-
-        listHabits(JSON_all_goals, unordered_goal_list)
-        localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
+        // Progress bar for goal.
+        // $$("#goal_progress div")[goal_array[index] - 1].style.width = (goal_array[index] - 1) * 100 / $("#amount_of_repetitions").textContent + "%"
+        // listHabits(goal_array, unordered_goal_list)
+        // localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
     }
 
-    // Delete habit.
-    function remove_goal(e) {
-        // If you click on the remove button,
-        if (!e.target.matches("button")) return
-        const el = e.target
-        const index = el.dataset.index
+    // // Delete habit.
+    // function remove_goal(e) {
+    //     // If you click on the remove button,
+    //     if (!e.target.matches("button")) return
+    //     const el = e.target
+    //     const index = el.dataset.index
 
-        JSON_all_goals.splice(index, 1)
+    //     goal_array.splice(index, 1)
 
-        listHabits(JSON_all_goals, unordered_goal_list)
-        localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
-    }
+    //     listHabits(goal_array, unordered_goal_list)
+    // localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
+    // }
 
     $(".add_goal").addEventListener("submit", add_goal)
     $(".unordered_goal_list").addEventListener("click", toggle_complete)
-    $(".unordered_goal_list").addEventListener("click", remove_goal)
+    // $(".unordered_goal_list").addEventListener("click", remove_goal)
 
-    listHabits(JSON_all_goals, unordered_goal_list)
+    listHabits(goal_array, unordered_goal_list)
 }
-
 
