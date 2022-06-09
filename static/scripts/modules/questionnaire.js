@@ -1,7 +1,7 @@
 import $ from "./$.js"
 import $$ from "./$$.js"
 import update_view from "./update_view.js"
-import { load_answers, save_answer, get_answers } from "./answers.js"
+import { save_answer, get_answers } from "./answers.js"
 
 export default function questionnaire() {
     let questionnaire_index = 1

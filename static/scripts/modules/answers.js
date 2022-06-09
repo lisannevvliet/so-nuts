@@ -61,6 +61,9 @@ export function save_answer(type, element, questionnaire_index) {
 
             localStorage.setItem("answers", JSON.stringify(answers))
     }
+
+    // Set the answers as the value of the hidden input field.
+    $("#answers").value = JSON.stringify(answers)
 }
 
 export function load_answers(questionnaire_index) {
@@ -94,8 +97,11 @@ export function load_answers(questionnaire_index) {
                 $(`#question_${questionnaire_index} input[type=text]`).value = answers[$(`#question_${questionnaire_index} input[type=text]`).name]
             }
         } else if ($(`#question_${questionnaire_index} input[type=radio]`)) {
-            // Check the stored radio button.
-            $(`#${answers[$(`#question_${questionnaire_index} input[type=radio]`).name]}`).checked = true
+            // Check if the stored value is not empty.
+            if (answers[$(`#question_${questionnaire_index} input[type=radio]`).name] != undefined) {
+                // Check the stored radio button.
+                $(`#${answers[$(`#question_${questionnaire_index} input[type=radio]`).name]}`).checked = true
+            }
         } else if ($(`#question_${questionnaire_index} input[type=checkbox]`)) {
             // Check if the stored value is not empty.
             if (answers[$(`#question_${questionnaire_index} input[type=checkbox]`).name] != undefined) {
@@ -110,6 +116,9 @@ export function load_answers(questionnaire_index) {
             }
         }
     }
+
+    // Set the answers as the value of the hidden input field.
+    $("#answers").value = JSON.stringify(answers)
 }
 
 export function get_answers() {

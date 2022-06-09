@@ -43,8 +43,11 @@
                     <div class="button_wrapper">
                         {{!-- Hide the previous button in the first question. --}}
                         <button class="prev_button{{#ifCond @index 0}} hide_button{{/ifCond}}">Vorige</button>
-                        {{!-- Change the next button text and background in the last question. --}}
-                        <button class="next_button{{#ifCond @index ../length}} turquoise">Dashboard</button>{{else}}">Volgende</button>{{/ifCond}}
+                        {{#ifCond @index ../length}}<form action="/questionnaire" method="post">
+                            <input type="hidden" id="answers" name="answers">{{/ifCond}}
+                            {{!-- Change the next button text and background in the last question. --}}
+                            <button class="next_button{{#ifCond @index ../length}} turquoise" type="submit">Dashboard</button>{{else}}">Volgende</button>{{/ifCond}}
+                        {{#ifCond @index ../length}}</form>{{/ifCond}}
                     </div>
                 </li>
             {{/each}}

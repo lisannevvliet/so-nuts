@@ -18,6 +18,11 @@ app.engine("handlebars", handlebars.engine({
 }))
 app.set("view engine", "handlebars")
 
+// Parse incoming requests.
+app.use(express.urlencoded({
+    extended: true
+}))
+
 // Set and log the port for Express.
 app.listen(process.env.PORT, () => {
     console.log(`Express running at http://localhost:${process.env.PORT}.`)
@@ -50,6 +55,14 @@ app.get("/questionnaire", (_req, res) => {
                 })
             }
         })
+})
+
+// Listen to all POST requests on /questionnaire.
+app.post("/questionnaire", (req, res) => {
+    console.log(req.body)
+
+    // Redirect to the dashboard page.
+    res.redirect("/dashboard")
 })
 
 // Listen to all GET requests on /dashboard.
