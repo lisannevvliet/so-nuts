@@ -58,8 +58,84 @@ app.get("/questionnaire", (_req, res) => {
 })
 
 // Listen to all POST requests on /questionnaire.
-app.post("/questionnaire", (req, res) => {
-    console.log(req.body)
+app.post("/questionnaire", async function (req, res) {
+    let questionResponses = []
+
+    for (let [key, value] of Object.entries(JSON.parse(req.body.answers))) {
+        if (key.endsWith("_checkbox")) {
+            let duplicate = false
+            key = key.substring(0, key.indexOf("_checkbox"))
+
+            questionResponses.forEach(element => {
+                // Check if the key already exists in the object.
+                if (key == element.questionId) {
+                    duplicate = true
+                    // Add the choice option IDs to the object.
+                    element.choiceOptionIds = value
+                }
+            })
+
+            // Add the question reponse to the array if it is not a duplicate.
+            if (!duplicate) {
+                questionResponses.push({
+                    "questionId": key,
+                    "choiceOptionIds": value
+                })
+            }
+        } else if (key.endsWith("_text")) {
+            let duplicate = false
+            key = key.substring(0, key.indexOf("_text"))
+
+            questionResponses.forEach(element => {
+                // Check if the key already exists in the object.
+                if (key == element.questionId) {
+                    duplicate = true
+                    // Add the reponse to the object.
+                    element.reponse = value
+                }
+            })
+
+            // Add the question reponse to the array if it is not a duplicate.
+            if (!duplicate) {
+                questionResponses.push({
+                    "questionId": key,
+                    "reponse": value
+                })
+            }
+        } else {
+            // Add the question reponse to the array.
+            if (typeof value == "string") {
+                questionResponses.push({
+                    "questionId": key,
+                    "reponse": value
+                })
+            } else {
+                questionResponses.push({
+                    "questionId": key,
+                    "choiceOptionIds": value
+                })
+            }
+        }
+    }
+
+    console.log(questionResponses)
+
+    const response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses", {
+        method: "POST",
+        body: JSON.stringify({
+            "id": "string",
+            "questionnaireId": "2",
+            "participantId": "1",
+            "questionResponses": questionResponses
+        }),
+        headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json"
+        }
+    })
+    const data = await response.json()
+
+    console.log(data)
 
     // Redirect to the dashboard page.
     res.redirect("/dashboard")
