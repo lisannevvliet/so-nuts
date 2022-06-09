@@ -4,7 +4,7 @@
 <main class="profile">
    
     <div class="grid_two_columns">
-        {{#each questionnaireResponse}}
+        {{#each questionnaire_response}}
             {{#each ../questionnaire}}
                 {{#ifCond this.id ../this.questionId}}
                     {{#if this.questionText}}
