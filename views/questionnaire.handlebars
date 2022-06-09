@@ -19,7 +19,7 @@
                         <h2>{{this.text}}</h2>
                     {{/if}}
                     {{#ifCond this.type null}}
-                        <input type="text">
+                        <input type="text" name={{this.id}}>
                     {{/ifCond}}
                     {{#ifCond this.type "multiChoice"}}
                         {{#each this.answerOptions}}
@@ -35,7 +35,7 @@
                             {{/each}}
                             {{#if this.openLabel}}
                                 <p>{{this.openLabel}}</p>
-                                <input type="text">
+                                <input type="text" name={{this.id}}>
                             {{/if}}
                         </div>
                     {{/ifCond}}
