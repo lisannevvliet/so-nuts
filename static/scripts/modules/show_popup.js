@@ -8,22 +8,17 @@ export default function create_goal_popup() {
         $("form").classList.add("show_popup")
     }
 
-    // After toggling a specific goal on you can see the inputs to customize this goal to your own liking.
-    function show_extra_inputs() {
-        let check = $('input[type="checkbox"]')
-
-        if (check.checked == true) {
-            // TO-DO: Make it the corresponding article for each of the checkboxes. 
-            // $("article").forEach((article, index) => {
-            $("article").classList.add("show_extra")
-            // })
-        } else {
-            // $("article").forEach((article, index) => {
-            $("article").classList.remove("show_extra")
-            // })
-        }
-    }
-
-    $("h3").addEventListener("click", show_extra_inputs)
+    $$("input[type=checkbox]").forEach((checkbox, index) => {
+        checkbox.addEventListener("click", () => {
+            // Check if the checkbox is checked.
+            if (checkbox.checked) {
+                // Show the options.
+                $$("article")[index].classList.add("show_extra")
+            } else {
+                // Hide the options.
+                $$("article")[index].classList.remove("show_extra")
+            }
+        })
+    })
     $("button").addEventListener("click", show_popup)
 }
