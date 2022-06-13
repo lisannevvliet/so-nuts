@@ -3,7 +3,9 @@ require("dotenv").config()
 const express = require("express")
 const handlebars = require("express-handlebars")
 const fetch = require("node-fetch")
-const fs = require("fs")
+
+// Import modules.
+const modules = require("./modules.js")
 
 // Initialise Express.
 const app = express()
@@ -37,7 +39,7 @@ app.get("/onboarding", (_req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", (_req, res) => {
-    get("questionnaire", "Questionnaires/2")
+    modules.get("questionnaire", "Questionnaires/2")
         .then(questionnaire => {
             // Check if the file exists.
             if (questionnaire != undefined) {
@@ -153,9 +155,9 @@ app.get("/fitness", (_req, res) => {
 
 // Listen to all GET requests on /dashboard.
 app.get("/food", (_req, res) => {
-    get("domains", "Domains")
+    modules.get("domains", "Domains")
         .then(domains => {
-            get("food_goals", "Goals?domainId=voeding")
+            modules.get("food_goals", "Goals?domainId=voeding")
                 .then(food_goals => {
                     // Check if the files exist.
                     if (domains != undefined && food_goals != undefined) {
@@ -172,9 +174,9 @@ app.get("/food", (_req, res) => {
 
 // Listen to all GET requests on /profile.
 app.get("/profile", (_req, res) => {
-    get("questionnaire", "Questionnaires/2")
+    modules.get("questionnaire", "Questionnaires/2")
         .then(questionnaire => {
-            get("questionnaire_response", "QuestionnaireResponses/3")
+            modules.get("questionnaire_response", "QuestionnaireResponses/3")
                 .then(questionnaire_response => {
                     // Check if the files exist.
                     if (questionnaire != undefined && questionnaire_response != undefined) {
@@ -191,7 +193,7 @@ app.get("/profile", (_req, res) => {
 
 // Listen to all GET requests on /goals.
 app.get("/goals", (_req, res) => {
-    get("food_goals", "Goals?domainId=voeding")
+    modules.get("food_goals", "Goals?domainId=voeding")
         .then(food_goals => {
             // Check if the file exists.
             if (food_goals != undefined) {
@@ -203,21 +205,3 @@ app.get("/goals", (_req, res) => {
             }
         })
 })
-
-async function get(name, url) {
-    // Try to get the data from the API. If it fails, use the JSON.
-    try {
-        // To use the JSON, comment out this line of code.
-        const response = await fetch(`https://fhir.mibplatform.nl/api/${url}`)
-        const data = await response.json()
-
-        // Save the most recent data in the JSON.
-        fs.writeFileSync(`static/json/${name}.json`, JSON.stringify(data))
-    } catch { }
-
-    // Read the JSON with the most recent data available.
-    const data = fs.readFileSync(`static/json/${name}.json`)
-
-    // Return the data in a JSON format.
-    return JSON.parse(data)
-}
