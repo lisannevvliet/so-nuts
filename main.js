@@ -2,7 +2,6 @@
 require("dotenv").config()
 const express = require("express")
 const handlebars = require("express-handlebars")
-const fetch = require("node-fetch")
 
 // Import modules.
 const modules = require("./modules.js")
@@ -117,21 +116,9 @@ app.post("/questionnaire", async function (req, res) {
         }
     }
 
-    const response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses", {
-        method: "POST",
-        body: JSON.stringify({
-            "id": "string",
-            "questionnaireId": "2",
-            "participantId": "1",
-            "questionResponses": questionResponses
-        }),
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        }
-    })
-    const data = await response.json()
-    console.log(data)
+    modules.post(questionResponses).then(data =>
+        console.log(data)
+    )
 
     // Redirect to the dashboard page.
     res.redirect("/")
