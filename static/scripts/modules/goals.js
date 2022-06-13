@@ -7,7 +7,7 @@ export default function goals() {
     // const JSON_all_goals = JSON.parse(localStorage.getItem("JSON_all_goals")) || []
 
     $(".add_goal").addEventListener("submit", add_goal)
-    $(".unordered_goal_list").addEventListener("click", toggle_complete, click_animation)
+    $(".unordered_goal_list").addEventListener("click", toggle_complete)
     // $(".unordered_goal_list").addEventListener("click", remove_goal)
 
     // render_goals(new_goals)
@@ -102,6 +102,8 @@ export default function goals() {
 
         // Update the goals in localStorage.
         localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
+
+        // click_animation()
     }
 
     function click_animation() {
