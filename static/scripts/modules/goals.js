@@ -9,7 +9,7 @@ export default function goals() {
         // Prevent the page from reloading.
         event.preventDefault()
 
-        // Add the input values to the array.
+        // Add the input values to the goals array.
         $$("input[name=goal]:checked").forEach((checkbox, index) => {
             goals.push({
                 name: checkbox.value,
@@ -21,9 +21,9 @@ export default function goals() {
         })
 
         // Render the goals in the HTML.
-        put_goal_in_list_item(goals)
+        render_goals(goals)
 
-        // Save the array in localStorage.
+        // Save the goals in localStorage.
         localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
 
         // Reset the form.
@@ -33,31 +33,27 @@ export default function goals() {
         $("form").classList.remove("show_popup")
     }
 
-    // Render HTML. 
-    function put_goal_in_list_item(goal_array) {
-        // TO-DO: add this to the localStorage to save the goals for when the person returns to the page.
-        for (let i = 0; i < goal_array.length; i++) {
-            console.log(goal_array)
-            // console.log("goal_array[0][i]: " + goal_array[0][i])
-            // Before end, so that new goals are added underneath the existing ones and the index is ascending, not descending.
+    function render_goals(goals) {
+        // Add the goals to the bottom of the HTML list.
+        goals.forEach((goal, index) => {
             $(".unordered_goal_list").insertAdjacentHTML('beforeend', `
                 <li>
                     <article>
-                        <strong>${goal_array[i].name}</strong>
+                        <strong>${goal.name}</strong>
                         <p>
-                            <span class="repetition_change">${goal_array[i].repetition}</span>
-                            /${goal_array[i].total_repetition} ${goal_array[i].timeframe}
+                            <span class="repetition_change">${goal.repetition}</span>
+                            /${goal.total_repetition} ${goal.timeframe}
                         </p> 
-                        <label for="goal_${[i]}">
+                        <label for="goal_${index}">
                             <i>+</i>
-                            <input type="checkbox" data-index=${[i]} name="goal_${[i]}" id="goal_${[i]}" ${goal_array[i].completed ? "checked" : ""} />
+                            <input type="checkbox" data-index=${index} name="goal_${index}" id="goal_${index}" ${goal.completed ? "checked" : ""} />
                         </label>
                     </article>
                     <div id="goal_progress">
                         <div></div>
                     </div>
                 </li>`)
-        }
+        })
     }
 
     // Toggle to complete.
@@ -112,6 +108,6 @@ export default function goals() {
     $(".unordered_goal_list").addEventListener("click", toggle_complete, click_animation)
     // $(".unordered_goal_list").addEventListener("click", remove_goal)
 
-    put_goal_in_list_item(goals)
+    render_goals(goals)
 }
 
