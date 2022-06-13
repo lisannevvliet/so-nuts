@@ -1,15 +1,15 @@
-// Import Node.js modules.
+// Import Node.js module.
 const fetch = require("node-fetch")
 
 module.exports = {
-    post: async function (questionResponses) {
+    post: async (reponses) => {
         const response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses", {
             method: "POST",
             body: JSON.stringify({
                 "id": "string",
                 "questionnaireId": "2",
                 "participantId": "1",
-                "questionResponses": questionResponses
+                "questionResponses": reponses
             }),
             headers: {
                 "Content-Type": "application/json",
