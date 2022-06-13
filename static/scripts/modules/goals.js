@@ -52,11 +52,11 @@ export default function goals() {
                             <span class="repetition_change">${goal_array[i].repetition}</span>
                             /${goal_array[i].total_repetition} ${goal_array[i].timeframe}
                         </p> 
+                        <label for="goal_${[i]}">
+                            <i>+</i>
+                            <input type="checkbox" data-index=${[i]} name="goal_${[i]}" id="goal_${[i]}" ${goal_array[i].completed ? "checked" : ""} />
+                        </label>
                     </article>
-                    <label for="goal_${[i]}">
-                        <i>+</i>
-                        <input type="checkbox" data-index=${[i]} name="goal_${[i]}" id="goal_${[i]}" ${goal_array[i].completed ? "checked" : ""} />
-                    </label>
                     <div id="goal_progress">
                         <div></div>
                     </div>
