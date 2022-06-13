@@ -2,11 +2,15 @@ import $ from "./$.js"
 import $$ from "./$$.js"
 
 export default function create_goal_popup() {
+    $("#add").addEventListener("click", () => {
+        // Hide all previously shown options.
+        $$(".add_goal article").forEach(article => {
+            article.classList.remove("show_extra")
+        })
 
-    // After clicking on the round button with "+" to add a goal it shows the popup.
-    function show_popup() {
+        // Show the pop-up.
         $("form").classList.add("show_popup")
-    }
+    })
 
     $$("input[type=checkbox]").forEach((checkbox, index) => {
         checkbox.addEventListener("click", () => {
@@ -20,5 +24,4 @@ export default function create_goal_popup() {
             }
         })
     })
-    $("button").addEventListener("click", show_popup)
 }
