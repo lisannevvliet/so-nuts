@@ -2,49 +2,45 @@ import $ from "./$.js"
 import $$ from "./$$.js"
 
 export default function goals() {
-
-    const goal_array = []
-    const unordered_goal_list = $(".unordered_goal_list")
+    let goals = []
     const JSON_all_goals = JSON.parse(localStorage.getItem("JSON_all_goals")) || []
 
-    // Add a goal.
-    function add_goal(e) {
-        // Prevent the submit from refreshing the page.
-        e.preventDefault()
-        // Only put the checked checkboxes in an array.
-        let checkboxes = $$('input[name="goal"]:checked')
-        let total_repetition = $$("[name=repetition]")
-        let timeframe = $$("[name=timeframe]")
+    function add_goal(event) {
+        // Prevent the page from reloading.
+        event.preventDefault()
 
-        // Push the values of the inputs in the array.
-        checkboxes.forEach((checkbox, index) => {
-            goal_array.push({
+        // Add the input values to the array.
+        $$("input[name=goal]:checked").forEach((checkbox, index) => {
+            goals.push({
                 name: checkbox.value,
                 repetition: 0,
-                total_repetition: total_repetition[index].value,
-                timeframe: timeframe[index].value,
-                completed: false,
+                total_repetition: $$("[name=repetition]")[index].value,
+                timeframe: $$("[name=timeframe]")[index].value,
+                completed: false
             })
         })
 
-        // Save the goal array into the localStorage JSON.
-        put_goal_in_list_item(goal_array, unordered_goal_list)
-        localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
+        // Render the goals in the HTML.
+        put_goal_in_list_item(goals)
+
+        // Save the array in localStorage.
+        localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
+
         // Reset the form.
         this.reset()
-        // Close the popup to create a goal.
+
+        // Hide the pop-up.
         $("form").classList.remove("show_popup")
-        console.log(goal_array)
     }
 
     // Render HTML. 
-    function put_goal_in_list_item(goal_array, unordered_goal_list) {
+    function put_goal_in_list_item(goal_array) {
         // TO-DO: add this to the localStorage to save the goals for when the person returns to the page.
         for (let i = 0; i < goal_array.length; i++) {
             console.log(goal_array)
             // console.log("goal_array[0][i]: " + goal_array[0][i])
             // Before end, so that new goals are added underneath the existing ones and the index is ascending, not descending.
-            unordered_goal_list.insertAdjacentHTML('beforeend', `
+            $(".unordered_goal_list").insertAdjacentHTML('beforeend', `
                 <li>
                     <article>
                         <strong>${goal_array[i].name}</strong>
@@ -72,25 +68,25 @@ export default function goals() {
         const index = e.target.id.substring(5)
 
         // Increment the repetition.
-        goal_array[index].repetition += 1
+        goals[index].repetition += 1
 
         // Use == instead of ===, because == is less strict and more similar to the way we humans compare values.
-        if (goal_array[index].repetition == goal_array[index].total_repetition) {
-            goal_array[index].completed = true
+        if (goals[index].repetition == goals[index].total_repetition) {
+            goals[index].completed = true
             $$("label i")[index].textContent = "✔︎"
-        } else if (goal_array[index].repetition > goal_array[index].total_repetition) {
-            goal_array[index].repetition = 0
-            goal_array[index].completed = false
+        } else if (goals[index].repetition > goals[index].total_repetition) {
+            goals[index].repetition = 0
+            goals[index].completed = false
             $$("label i")[index].textContent = "+"
         }
 
         // Change the correct span, using an array and index.
-        $$(".repetition_change")[index].textContent = goal_array[index].repetition
+        $$(".repetition_change")[index].textContent = goals[index].repetition
 
         // Progress bar for goal.
         // $$("#goal_progress div")[goal_array[index] - 1].style.width = (goal_array[index] - 1) * 100 / $("#amount_of_repetitions").textContent + "%"
         // put_goal_in_list_item(goal_array, unordered_goal_list)
-        localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
+        localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
     }
 
     // // // Delete goal.
@@ -116,6 +112,6 @@ export default function goals() {
     $(".unordered_goal_list").addEventListener("click", toggle_complete, click_animation)
     // $(".unordered_goal_list").addEventListener("click", remove_goal)
 
-    put_goal_in_list_item(goal_array, unordered_goal_list)
+    put_goal_in_list_item(goals)
 }
 
