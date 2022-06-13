@@ -25,6 +25,10 @@ main {
     height: 100vh;
 }
 
+h1 {
+    padding-left: 1em;
+}
+
 @supports (height: 100dvh) {
     main {
         height: 100dvh;
