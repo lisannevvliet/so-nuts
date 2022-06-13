@@ -57,39 +57,45 @@ export default function goals() {
     }
 
     // Toggle to complete.
-    function toggle_complete(e) {
-        // All checkboxes control the textContent of only the first goal. Definitely has something to do with de selector. SelectorAll doesn't work
-        if (!e.target.matches("input")) return
-        // Only get the text after "goal_" using a substring. Start at index 5, because "goal_" consists of 4 characters (counting from 0).
-        const index = e.target.id.substring(5)
+    function toggle_complete(event) {
+        // Get the number after "goal_" using a substring.
+        const index = event.target.id.substring(5)
 
         // Increment the repetition.
-        goals[index].repetition += 1
+        goals[index].repetition++
 
-        // Use == instead of ===, because == is less strict and more similar to the way we humans compare values.
+        // Check if the current repetition is the same as the total amount of repetitions.
         if (goals[index].repetition == goals[index].total_repetition) {
+            // Set the completed status to true.
             goals[index].completed = true
+
+            // Change the symbol to a check.
             $$("label i")[index].textContent = "✔︎"
-        } else if (goals[index].repetition > goals[index].total_repetition) {
+        }
+        // Check if the current repetition exceeds than the total amount of repetitions. 
+        else if (goals[index].repetition > goals[index].total_repetition) {
+            // Change the current repetition to zero.
             goals[index].repetition = 0
+
+            // Set the completed status to false.
             goals[index].completed = false
+
+            // Change the symbol back to a plus.
             $$("label i")[index].textContent = "+"
         }
 
-        // Change the correct span, using an array and index.
+        // Update the current repetition in the HTML.
         $$(".repetition_change")[index].textContent = goals[index].repetition
 
-        // Progress bar for goal.
-        // $$("#goal_progress div")[goal_array[index] - 1].style.width = (goal_array[index] - 1) * 100 / $("#amount_of_repetitions").textContent + "%"
-        // put_goal_in_list_item(goal_array, unordered_goal_list)
+        // Update the goals in localStorage.
         localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
     }
 
-    // // // Delete goal.
-    // function remove_goal(e) {
+    // Delete goal.
+    // function remove_goal(event) {
     //     // If you click on the remove button,
-    //     if (!e.target.matches("button")) return
-    //     const index = e.target.dataset
+    //     if (!event.target.matches("button")) return
+    //     const index = event.target.dataset
 
     //     goal_array.splice(index, 1)
     //     console.log()
@@ -98,8 +104,6 @@ export default function goals() {
     //     // localStorage.setItem("JSON_all_goals", JSON.stringify(JSON_all_goals))
     // }
 
-
-    // 
     function click_animation() {
         $$("label").classList.add(".pulse")
     }
