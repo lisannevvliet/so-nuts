@@ -3,7 +3,7 @@ const fetch = require("node-fetch")
 const fs = require("fs")
 
 module.exports = {
-    get: async function (name, url) {
+    get: async (name, url) => {
         // Try to get the data from the API. If it fails, use the JSON.
         try {
             // To use the JSON, comment out this line of code.
