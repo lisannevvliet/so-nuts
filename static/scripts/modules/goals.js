@@ -3,25 +3,35 @@ import $$ from "./$$.js"
 
 export default function goals() {
     let goals = []
-    const JSON_all_goals = JSON.parse(localStorage.getItem("JSON_all_goals")) || []
+    let new_goals = []
+    // const JSON_all_goals = JSON.parse(localStorage.getItem("JSON_all_goals")) || []
+
+    $(".add_goal").addEventListener("submit", add_goal)
+    $(".unordered_goal_list").addEventListener("click", toggle_complete, click_animation)
+    // $(".unordered_goal_list").addEventListener("click", remove_goal)
+
+    // render_goals(new_goals)
 
     function add_goal(event) {
-        // Prevent the page from reloading.
-        event.preventDefault()
+        // Clear the new goals array.
+        new_goals = []
 
-        // Add the input values to the goals array.
         $$("input[name=goal]:checked").forEach((checkbox, index) => {
-            goals.push({
+            const goal = {
                 name: checkbox.value,
                 repetition: 0,
                 total_repetition: $$("[name=repetition]")[index].value,
                 timeframe: $$("[name=timeframe]")[index].value,
                 completed: false
-            })
+            }
+
+            // Add the input values to the goals and new goals arrays.
+            goals.push(goal)
+            new_goals.push(goal)
         })
 
-        // Render the goals in the HTML.
-        render_goals(goals)
+        // Render the new goals in the HTML.
+        render_goals(new_goals)
 
         // Save the goals in localStorage.
         localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
@@ -31,6 +41,9 @@ export default function goals() {
 
         // Hide the pop-up.
         $("form").classList.remove("show_popup")
+
+        // Prevent the page from reloading.
+        event.preventDefault()
     }
 
     function render_goals(goals) {
@@ -91,6 +104,10 @@ export default function goals() {
         localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
     }
 
+    function click_animation() {
+        $$("label").classList.add(".pulse")
+    }
+
     // Delete goal.
     // function remove_goal(event) {
     //     // If you click on the remove button,
@@ -103,15 +120,4 @@ export default function goals() {
     //     put_goal_in_list_item(goal_array, unordered_goal_list)
     //     // localStorage.setItem("JSON_all_goals", JSON.stringify(JSON_all_goals))
     // }
-
-    function click_animation() {
-        $$("label").classList.add(".pulse")
-    }
-
-    $(".add_goal").addEventListener("submit", add_goal)
-    $(".unordered_goal_list").addEventListener("click", toggle_complete, click_animation)
-    // $(".unordered_goal_list").addEventListener("click", remove_goal)
-
-    render_goals(goals)
 }
-
