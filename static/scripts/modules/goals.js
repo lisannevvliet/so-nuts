@@ -5,7 +5,7 @@ export default function goals() {
 
     const goal_array = []
     const unordered_goal_list = $(".unordered_goal_list")
-    const JSON_all_goals = JSON.parse(localStorage.getItem("all_goals")) || []
+    const JSON_all_goals = JSON.parse(localStorage.getItem("JSON_all_goals")) || []
 
     // Add a goal.
     function add_goal(e) {
@@ -27,25 +27,21 @@ export default function goals() {
             })
         })
 
-
-
         // Save the goal array into the localStorage JSON.
-        listHabits(goal_array, unordered_goal_list)
-        // localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
+        put_goal_in_list_item(goal_array, unordered_goal_list)
+        localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
         // Reset the form.
         this.reset()
-        // Close popup to create a goal.
+        // Close the popup to create a goal.
         $("form").classList.remove("show_popup")
+        console.log(goal_array)
     }
 
     // Render HTML. 
-    function listHabits(goal_array, unordered_goal_list) {
-        // console.log("goal_array[0]: " + goal_array[0])
-        // console.log(goal_array[0].length)
-        // goal_array.flat()
-
+    function put_goal_in_list_item(goal_array, unordered_goal_list) {
+        // TO-DO: add this to the localStorage to save the goals for when the person returns to the page.
         for (let i = 0; i < goal_array.length; i++) {
-            // console.log(goal_array)
+            console.log(goal_array)
             // console.log("goal_array[0][i]: " + goal_array[0][i])
             // Before end, so that new goals are added underneath the existing ones and the index is ascending, not descending.
             unordered_goal_list.insertAdjacentHTML('beforeend', `
@@ -78,13 +74,14 @@ export default function goals() {
         // Increment the repetition.
         goal_array[index].repetition += 1
 
-        // BUG: it can't get to this if for some reason? Probably had something to do with the bug above this.
         // Use == instead of ===, because == is less strict and more similar to the way we humans compare values.
         if (goal_array[index].repetition == goal_array[index].total_repetition) {
             goal_array[index].completed = true
+            $$("label i")[index].textContent = "✔︎"
         } else if (goal_array[index].repetition > goal_array[index].total_repetition) {
             goal_array[index].repetition = 0
             goal_array[index].completed = false
+            $$("label i")[index].textContent = "+"
         }
 
         // Change the correct span, using an array and index.
@@ -92,29 +89,33 @@ export default function goals() {
 
         // Progress bar for goal.
         // $$("#goal_progress div")[goal_array[index] - 1].style.width = (goal_array[index] - 1) * 100 / $("#amount_of_repetitions").textContent + "%"
-        // listHabits(goal_array, unordered_goal_list)
-        // localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
+        // put_goal_in_list_item(goal_array, unordered_goal_list)
+        localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
     }
 
-    // // Delete habit.
+    // // // Delete goal.
     // function remove_goal(e) {
     //     // If you click on the remove button,
     //     if (!e.target.matches("button")) return
-    //     const el = e.target
-    //     const index = el.dataset.index
+    //     const index = e.target.dataset
 
     //     goal_array.splice(index, 1)
+    //     console.log()
 
-    //     listHabits(goal_array, unordered_goal_list)
-    // localStorage.setItem("JSON_all_goals", JSON.stringify(goal_array))
+    //     put_goal_in_list_item(goal_array, unordered_goal_list)
+    //     // localStorage.setItem("JSON_all_goals", JSON.stringify(JSON_all_goals))
     // }
 
 
+    // 
+    function click_animation() {
+        $$("label").classList.add(".pulse")
+    }
 
     $(".add_goal").addEventListener("submit", add_goal)
-    $(".unordered_goal_list").addEventListener("click", toggle_complete)
+    $(".unordered_goal_list").addEventListener("click", toggle_complete, click_animation)
     // $(".unordered_goal_list").addEventListener("click", remove_goal)
 
-    listHabits(goal_array, unordered_goal_list)
+    put_goal_in_list_item(goal_array, unordered_goal_list)
 }
 

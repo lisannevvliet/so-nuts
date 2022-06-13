@@ -61,30 +61,6 @@ form {
     cursor: pointer;
 }
 
-#amount_of_repetitions {
-    position: fixed;
-    visibility: hidden;
-}
-
-#goal_progress {
-    background: var(--accent);
-    height: 11px;
-    width: 99%;
-    position: relative;
-    margin: 0;
-    /* left: -0.9em; */
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-#goal_progress div {
-    background: var(--main);
-    height: 11px;
-    width: 100%;
-    position: absolute;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
 
 /* .unordered_goal_list strong { */
 /* padding-left: 1em; */
@@ -96,6 +72,24 @@ i {
     top: 1em;
     left: 2em;
     z-index: 1;
+}
+
+label.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 40px rgba(204, 169, 44, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+    }
 }
 
 .unordered_goal_list article {
@@ -134,6 +128,11 @@ label {
     cursor: pointer;
     width: 6em;
     height: 7em;
+}
+
+.disable {
+    pointer-events: none;
+    cursor: none;
 }
 
 input[type=text] {
@@ -206,3 +205,46 @@ form article.show_extra {
 /* form input[type="checkbox"].goal_input:checked+article {
     display: block;
 } */
+
+
+input[type="submit"] {
+    background-color: var(--main);
+    border-radius: 10px;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 1.5em;
+}
+
+
+/*  =============
+    progress bar
+ /* ============  */
+
+
+#amount_of_repetitions {
+    position: fixed;
+    visibility: hidden;
+}
+
+#goal_progress {
+    background: var(--accent);
+    height: 11px;
+    width: 99%;
+    position: relative;
+    margin: 0;
+    /* left: -0.9em; */
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#goal_progress div {
+    background: var(--main);
+    height: 11px;
+    width: 100%;
+    position: absolute;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
