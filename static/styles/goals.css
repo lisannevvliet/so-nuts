@@ -6,7 +6,8 @@ form {
 
 .goals_page form.show_popup {
     height: 80vh;
-    width: 75vw;
+    width: 80%;
+    max-width: 768px;
     display: block;
     margin-left: auto;
     margin-right: auto;
