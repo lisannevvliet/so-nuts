@@ -4,19 +4,26 @@ import $$ from "./$$.js"
 export default function goals() {
     let goals = []
     let new_goals = []
-    // const JSON_all_goals = JSON.parse(localStorage.getItem("JSON_all_goals")) || []
+    const saved_goals = JSON.parse(localStorage.getItem("goals")) || []
 
     $(".add_goal").addEventListener("submit", add_goal)
     $(".unordered_goal_list").addEventListener("click", toggle_complete)
     // $(".unordered_goal_list").addEventListener("click", remove_goal)
 
-    // render_goals(new_goals)
+    // Retrieve the goals from localStorage and render them in the HTML.
+    render_goals(saved_goals)
+
+    // Add the goals from localStorage to the goals array.
+    saved_goals.forEach(element => {
+        goals.push(element)
+    })
 
     function add_goal(event) {
         // Clear the new goals array.
         new_goals = []
 
         $$("input[name=goal]:checked").forEach((checkbox, index) => {
+            // Create a goal object from the input values.
             const goal = {
                 name: checkbox.value,
                 repetition: 0,
@@ -25,7 +32,7 @@ export default function goals() {
                 completed: false
             }
 
-            // Add the input values to the goals and new goals arrays.
+            // Add the goal to the goals and new goals arrays.
             goals.push(goal)
             new_goals.push(goal)
         })
@@ -34,7 +41,7 @@ export default function goals() {
         render_goals(new_goals)
 
         // Save the goals in localStorage.
-        localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
+        localStorage.setItem("goals", JSON.stringify(goals))
 
         // Reset the form.
         this.reset()
@@ -101,7 +108,7 @@ export default function goals() {
         $$(".repetition_change")[index].textContent = goals[index].repetition
 
         // Update the goals in localStorage.
-        localStorage.setItem("JSON_all_goals", JSON.stringify(goals))
+        localStorage.setItem("goals", JSON.stringify(goals))
 
         // click_animation()
     }
