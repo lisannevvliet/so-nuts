@@ -2,10 +2,10 @@
 require("dotenv").config()
 const express = require("express")
 const handlebars = require("express-handlebars")
-const fetch = require("node-fetch")
 
 // Import modules.
-const modules = require("./modules.js")
+const get = require("./modules/get.js")
+const post = require("./modules/post.js")
 
 // Initialise Express.
 const app = express()
@@ -39,7 +39,7 @@ app.get("/onboarding", (_req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", (_req, res) => {
-    modules.get("questionnaire", "Questionnaires/2")
+    get.get("questionnaire", "Questionnaires/2")
         .then(questionnaire => {
             // Check if the file exists.
             if (questionnaire != undefined) {
@@ -117,21 +117,9 @@ app.post("/questionnaire", async function (req, res) {
         }
     }
 
-    const response = await fetch("https://fhir.mibplatform.nl/api/QuestionnaireResponses", {
-        method: "POST",
-        body: JSON.stringify({
-            "id": "string",
-            "questionnaireId": "2",
-            "participantId": "1",
-            "questionResponses": questionResponses
-        }),
-        headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        }
-    })
-    const data = await response.json()
-    console.log(data)
+    post.post(questionResponses).then(data =>
+        console.log(data)
+    )
 
     // Redirect to the dashboard page.
     res.redirect("/")
@@ -155,9 +143,9 @@ app.get("/fitness", (_req, res) => {
 
 // Listen to all GET requests on /dashboard.
 app.get("/food", (_req, res) => {
-    modules.get("domains", "Domains")
+    get.get("domains", "Domains")
         .then(domains => {
-            modules.get("food_goals", "Goals?domainId=voeding")
+            get.get("food_goals", "Goals?domainId=voeding")
                 .then(food_goals => {
                     // Check if the files exist.
                     if (domains != undefined && food_goals != undefined) {
@@ -174,9 +162,9 @@ app.get("/food", (_req, res) => {
 
 // Listen to all GET requests on /profile.
 app.get("/profile", (_req, res) => {
-    modules.get("questionnaire", "Questionnaires/2")
+    get.get("questionnaire", "Questionnaires/2")
         .then(questionnaire => {
-            modules.get("questionnaire_response", "QuestionnaireResponses/3")
+            get.get("questionnaire_response", "QuestionnaireResponses/3")
                 .then(questionnaire_response => {
                     // Check if the files exist.
                     if (questionnaire != undefined && questionnaire_response != undefined) {
@@ -193,7 +181,7 @@ app.get("/profile", (_req, res) => {
 
 // Listen to all GET requests on /goals.
 app.get("/goals", (_req, res) => {
-    modules.get("food_goals", "Goals?domainId=voeding")
+    get.get("food_goals", "Goals?domainId=voeding")
         .then(food_goals => {
             // Check if the file exists.
             if (food_goals != undefined) {
