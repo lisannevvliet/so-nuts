@@ -205,12 +205,12 @@ section {
 
 .first_row article:nth-of-type(1) {
     background-color: var(--accent);
-    background-image: url("/images/food_bowl.svg");
+    background-image: url("/images/dashboard/food_bowl.svg");
 }
 
 .first_row article:nth-of-type(2) {
     background-color: var(--purple);
-    background-image: url("/images/steps.svg");
+    background-image: url("/images/dashboard/steps.svg");
 }
 
 h3 {
@@ -227,12 +227,12 @@ h3 {
 
 .second_row article:nth-of-type(1) {
     background-color: var(--main);
-    background-image: url("/images/water.svg");
+    background-image: url("/images/dashboard/water.svg");
 }
 
 .second_row article:nth-of-type(2) {
     background-color: var(--beige);
-    background-image: url("/images/weight.svg");
+    background-image: url("/images/dashboard/weight.svg");
 }
 
 
@@ -281,11 +281,11 @@ h3 {
 }
 
 .third_row article:nth-of-type(1):before {
-    background-image: url(/images/fitness_illustraiton.webp);
+    background-image: url(/images/dashboard/fitness_illustraiton.webp);
 }
 
 .third_row article:nth-of-type(2):before {
-    background-image: url(/images/food_illustration.webp);
+    background-image: url(/images/dashboard/food_illustration.webp);
 }
 
 /*  ========

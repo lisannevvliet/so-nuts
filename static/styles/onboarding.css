@@ -26,15 +26,15 @@ li:before {
 }
 
 li:nth-of-type(1):before {
-    background-image: url("../images/onboarding_1.svg");
+    background-image: url("../images/onboarding/onboarding_1.svg");
 }
 
 li:nth-of-type(2):before {
-    background-image: url("../images/onboarding_2.svg");
+    background-image: url("../images/onboarding/onboarding_2.svg");
 }
 
 li:nth-of-type(3):before {
-    background-image: url("../images/onboarding_3.svg");
+    background-image: url("../images/onboarding/onboarding_3.svg");
 }
 
 ol li section {
