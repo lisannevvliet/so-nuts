@@ -2,11 +2,26 @@
 require("dotenv").config()
 const express = require("express")
 const handlebars = require("express-handlebars")
+const { createClient } = require("@supabase/supabase-js")
 
 // Import modules.
 const get = require("./modules/get.js")
 const reponses = require("./modules/reponses.js")
 const post = require("./modules/post.js")
+
+const SUPABASE_URL = "https://depctutsufqakltbwctd.supabase.co"
+const supabase = createClient(SUPABASE_URL, process.env.SERVICE_KEY)
+
+async function getData() {
+    return { data: users, error } = await supabase
+        .from("goals")
+        .select("*")
+}
+
+getData()
+    .then(data => {
+        console.log(data)
+    })
 
 // Initialise Express.
 const app = express()
