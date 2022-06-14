@@ -9,16 +9,17 @@ const get = require("./modules/get.js")
 const reponses = require("./modules/reponses.js")
 const post = require("./modules/post.js")
 
-const SUPABASE_URL = "https://depctutsufqakltbwctd.supabase.co"
-const supabase = createClient(SUPABASE_URL, process.env.SERVICE_KEY)
+// Initialise Supabase with a service key, to have full access to the data.
+const supabase = createClient("https://depctutsufqakltbwctd.supabase.co", process.env.SERVICE_KEY)
 
-async function getData() {
-    return { data: users, error } = await supabase
+async function get_data() {
+    return { data: goals, error } = await supabase
         .from("goals")
         .select("*")
 }
 
-getData()
+// Get the goals from the database.
+get_data()
     .then(data => {
         console.log(data)
     })
