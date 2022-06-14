@@ -35,7 +35,8 @@ export default function questionnaire() {
 
     $$(".next_button").forEach(element => {
         element.addEventListener("click", () => {
-            const inputs = $$(`.questionnaire li:nth-child(${questionnaire_index}) input`)
+            // Add all visible input fields to an array.
+            const inputs = $$(`.questionnaire li:nth-child(${questionnaire_index}) input:not([type=hidden])`)
 
             if (inputs.length > 1) {
                 let types = []
@@ -47,33 +48,46 @@ export default function questionnaire() {
 
                 // If all input fields are of the same type, validate the first one. This will automatically validate all options.
                 if (new Set(types).size == 1) {
-                    validate(inputs[0])
-                } else {
-                    console.log("Different input field types.")
-                }
-            } else {
-                validate(inputs[0])
-            }
-
-            function validate(input) {
-                if (input.checkValidity()) {
-                    // Hide the previous question.
-                    $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
-
-                    // Increase and save the index in localStorage.
-                    localStorage.setItem("index", ++questionnaire_index)
-
-                    // Check if the questionnaire is incomplete.
-                    if (questionnaire_index > $("#amount_of_questions").textContent) {
-                        // Save the completion in localStorage.
-                        localStorage.setItem("questionnaire", "Completed")
+                    if (inputs[0].checkValidity()) {
+                        next_question()
                     } else {
-                        // Show the next question.
-                        $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-                        update_view(questionnaire_index)
+                        console.log(inputs[0].validationMessage)
                     }
                 } else {
-                    console.log(input.validationMessage)
+                    // Check if at least one checkbox or select is checked.
+                    if ($$(`input[name=${inputs[0].name}]:checked`).length > 0) {
+                        next_question()
+                    }
+                    // Check if the input field is not empty.
+                    else if (inputs[inputs.length - 1].value != "") {
+                        next_question()
+                    } else {
+                        console.log("Please select one of these options or fill in this field.")
+                    }
+                }
+            } else {
+                if (inputs[0].checkValidity()) {
+                    next_question()
+                } else {
+                    console.log(inputs[0].validationMessage)
+                }
+            }
+
+            function next_question() {
+                // Hide the previous question.
+                $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
+
+                // Increase and save the index in localStorage.
+                localStorage.setItem("index", ++questionnaire_index)
+
+                // Check if the questionnaire is incomplete.
+                if (questionnaire_index > $("#amount_of_questions").textContent) {
+                    // Save the completion in localStorage.
+                    localStorage.setItem("questionnaire", "Completed")
+                } else {
+                    // Show the next question.
+                    $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
+                    update_view(questionnaire_index)
                 }
             }
         })
