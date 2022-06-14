@@ -14,10 +14,6 @@ main {
 /*  ====
     nav
     ====*/
-.nav_dashboard {
-    position: sticky;
-}
-
 nav {
     align-items: center;
     background: var(--secundary);
@@ -242,6 +238,7 @@ h3 {
 
 .third_row {
     flex-direction: row;
+    margin-bottom: 5.5em;
     overflow-x: scroll;
     overflow-y: hidden;
 }
