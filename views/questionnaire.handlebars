@@ -19,12 +19,12 @@
                         <h2>{{this.text}}</h2>
                     {{/if}}
                     {{#ifCond this.type null}}
-                        <input type="text" name={{this.id}}>
+                        <input type="text" name={{this.id}} required>
                     {{/ifCond}}
                     {{#ifCond this.type "multiChoice"}}
                         {{#each this.answerOptions}}
                             <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond
-                                this.selected true}} checked{{/ifCond}}>
+                                this.selected true}} checked{{/ifCond}} required>
                             <label for={{this.id}}>{{this.text}}</label><br>
                         {{/each}}
                     {{/ifCond}}
