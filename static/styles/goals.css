@@ -5,78 +5,20 @@ form {
 }
 
 .goals_page form.show_popup {
-    height: 80vh;
-    width: 80%;
-    max-width: 768px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 2;
     border-radius: 20px;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
-    padding: 1em;
+    display: block;
+    height: 80vh;
     left: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 768px;
+    padding: 1em;
     position: fixed;
     top: 50%;
     transform: translate(-50%, -50%);
-}
-
-/* .goals_page ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-} */
-
-/* .unordered_goal_list li {
-    height: 8em;
-    width: 90%;
-    background-color: var(--beige);
-    margin: 1em;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap; */
-/* padding: 1em; */
-/* } */
-
-/* .unordered_goal_list label {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-} */
-
-.unordered_goal_list p {
-    position: relative;
-    top: 2em;
-    text-align: left;
-    margin: 0;
-    padding: 0;
-}
-
-.unordered_goal_list input[type=checkbox] {
-    position: relative;
-    top: 2.5em;
-    appearance: none;
-    width: 3em;
-    height: 3em;
-    background-color: var(--main);
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-
-/* .unordered_goal_list strong { */
-/* padding-left: 1em; */
-/* padding-top: 1em; */
-/* } */
-
-i {
-    position: relative;
-    top: 1em;
-    left: 2em;
-    z-index: 1;
+    width: 80%;
+    z-index: 2;
 }
 
 /* label.pulse {
@@ -96,44 +38,40 @@ i {
         box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
     }
 } */
-/* 
-.unordered_goal_list article {
-    margin-top: 1em;
-} */
 
 .button_wrapper {
     align-items: center;
-    /* background: var(--secundary); */
+    background-image: linear-gradient(to bottom, transparent, white);
     bottom: 0;
-    /* box-shadow: 0 0 3px rgb(0 0 0 / 20%); */
     display: flex;
-    /* height: 4.5em; */
     justify-content: center;
     max-width: 768px;
+    padding-bottom: .8em;
     position: fixed;
     width: 100%;
 }
 
-button {
+#add {
+    background-image: url("/images/goals/add_more.svg");
+    background-position-x: .9em;
+    background-position-y: 1em;
     border-radius: 50%;
-    width: 5em;
-    height: 5em;
+    background-repeat: no-repeat;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
-}
-
-button span {
-    font-size: 2em;
+    background-size: 2.2em;
+    height: 4em;
+    width: 4em;
 }
 
 /* .button_wrapper.hide_create_button {
     display: none;
 } */
 
-label {
+/* label {
     cursor: pointer;
     width: 6em;
     height: 7em;
-}
+} */
 
 .disable {
     pointer-events: none;
@@ -260,47 +198,73 @@ input[type="submit"] {
     ========== */
 
 .unordered_goal_list {
-    /* margin-left: 2em; */
-    /* margin-right: 2em; */
-    /* margin-bottom: 1em; */
-    height: 80%;
-    padding: 1em;
-    overflow-y: scroll;
     display: grid;
     gap: 1.5em;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 1em;
 }
 
 .unordered_goal_list li {
+    align-items: flex-end;
     background-color: var(--main);
-    border-radius: 20px;
-    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
-    height: 10em;
-    width: 99%;
     background-image: url("/images/goals/voeding_doel_header.svg");
-    background-repeat: no-repeat;
     background-position-x: 90%;
     background-position-y: .6em;
-    display: inline-flex;
-    align-items: flex-end;
-}
-
-.unordered_goal_list article {
-    height: 7.5em;
     border-radius: 20px;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    display: inline-flex;
+    height: 10em;
+    width: 99%;
+}
+
+.unordered_goal_list section {
+    align-items: center;
     background-color: white;
-    width: 100%;
-    padding: 1em;
+    border-radius: 20px;
+    display: inline-flex;
+    height: 7.5em;
+    justify-content: space-between;
     line-height: normal;
+    padding: 1em;
+    width: 100%;
 }
 
-.unordered_goal_list article strong {
-    font-weight: 500;
-    font-style: normal;
+.unordered_goal_list article h2 {
     font-size: 23px;
+    font-weight: 500;
+    margin: 0;
     padding: 0;
 }
 
-.unordered_goal_list article strong p {
+.unordered_goal_list article p {
+    line-height: .5em;
     padding: 0;
-    margin: 0;
+}
+
+.unordered_goal_list input[type=checkbox] {
+    background-image: url("/images/goals/plus_sign.svg");
+    background-size: 1.8em;
+    background-repeat: no-repeat;
+    background-position-y: 1.1em;
+    background-position-x: 1.1em;
+    position: relative;
+    right: 1.5em;
+    appearance: none;
+    width: 4em;
+    height: 4em;
+    background-color: var(--main);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.unordered_goal_list input[type=checkbox].checkmark {
+    background-image: url("/images/goals/check.svg");
+    background-color: var(--main_lighter);
+
+}
+
+.unordered_goal_list input[type=checkbox]:focus {
+    border: none;
 }

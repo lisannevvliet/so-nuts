@@ -23,14 +23,16 @@
                     {{/ifCond}}
                     {{#ifCond this.type "multiChoice"}}
                         {{#each this.answerOptions}}
-                            <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+                            <input type="radio" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond
+                                this.selected true}} checked{{/ifCond}}>
                             <label for={{this.id}}>{{this.text}}</label><br>
                         {{/each}}
                     {{/ifCond}}
                     {{#ifCond this.type "multiOpenChoice"}}
                         <div class="grid_two_columns">
                             {{#each this.answerOptions}}
-                                <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond this.selected true}} checked{{/ifCond}}>
+                                <input type="checkbox" id={{this.id}} name={{../this.id}} value={{this.id}}{{#ifCond
+                                    this.selected true}} checked{{/ifCond}}>
                                 <label for={{this.id}}>{{this.text}}</label>
                             {{/each}}
                             {{#if this.openLabel}}
@@ -43,11 +45,15 @@
                     <div class="button_wrapper">
                         {{!-- Hide the previous button in the first question. --}}
                         <button class="prev_button{{#ifCond @index 0}} hide_button{{/ifCond}}">Vorige</button>
-                        {{#ifCond @index ../length}}<form action="/questionnaire" method="post">
-                            <input type="hidden" id="answers" name="answers">{{/ifCond}}
-                            {{!-- Change the next button text and background in the last question. --}}
-                            <button class="next_button{{#ifCond @index ../length}} turquoise" type="submit">Dashboard</button>{{else}}">Volgende</button>{{/ifCond}}
-                        {{#ifCond @index ../length}}</form>{{/ifCond}}
+                        {{#ifCond @index ../length}}
+                            <form action="/questionnaire" method="post">
+                                <input type="hidden" id="answers" name="answers">
+                        {{/ifCond}}
+                        {{!-- Change the next button text and background in the last question. --}}
+                        <button class="next_button{{#ifCond @index ../length}} turquoise"
+                            type="submit">Dashboard</button>
+            {{else}}">Volgende</button>{{/ifCond}}
+                {{#ifCond @index ../length}}</form>{{/ifCond}}
                     </div>
                 </li>
             {{/each}}

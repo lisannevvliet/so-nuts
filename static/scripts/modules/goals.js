@@ -81,17 +81,18 @@ export default function goals() {
         goals.forEach((goal, index) => {
             $(".unordered_goal_list").insertAdjacentHTML('beforeend', `
                 <li>
-                    <article>
-                        <strong>${goal.name}</strong>
-                        <p>
-                            <span class="repetition_change">${goal.repetition}</span>
-                            /${goal.total_repetition} ${goal.timeframe}
-                        </p> 
+                    <section>
+                        <article> 
+                            <h2>${goal.name}</h2>
+                            <p>
+                                <span class="repetition_change">${goal.repetition}</span>
+                                /${goal.total_repetition} ${goal.timeframe}
+                            </p> 
+                        </article>
                         <label for="goal_${index}">
-                            <i>+</i>
                             <input type="checkbox" data-index=${index} name="goal_${index}" id="goal_${index}" ${goal.completed ? "checked" : ""} />
                         </label>
-                    </article>
+                    </section>
                     <div id="goal_progress">
                         <div></div>
                     </div>
@@ -113,7 +114,8 @@ export default function goals() {
             goals[index].completed = true
 
             // Change the symbol to a check.
-            $$("label i")[index].textContent = "✔︎"
+            $$(".unordered_goal_list label input[type=checkbox]")[index].classList.add("checkmark")
+            // $$("label i")[index].textContent = "✔︎"
         }
         // Check if the current repetition exceeds than the total amount of repetitions. 
         else if (goals[index].repetition > goals[index].total_repetition) {
@@ -124,7 +126,8 @@ export default function goals() {
             goals[index].completed = false
 
             // Change the symbol back to a plus.
-            $$("label i")[index].textContent = "+"
+            $$(".unordered_goal_list label input[type=checkbox]")[index].classList.remove("checkmark")
+            // $$("label i")[index].textContent = "+"
         }
 
         // Update the current repetition in the HTML.

@@ -1,9 +1,11 @@
 :root {
     --accent: #edc85e;
+    --accent_lighter: #f7e3a9;
     --beige: #eaebe6;
     --black: #282727;
     --grey: #ededed;
     --main: #82bea8;
+    --main_lighter: #bad1c8;
     --secundary: #f4fbfA;
     --purple: #ac99ad;
 }
@@ -27,6 +29,7 @@ main {
 
 h1 {
     padding-left: 1em;
+    margin-bottom: 0;
 }
 
 @supports (height: 100dvh) {
