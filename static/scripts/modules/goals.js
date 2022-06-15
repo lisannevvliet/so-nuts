@@ -20,7 +20,7 @@ export default function goals() {
     })
 
     $(".close_popup").addEventListener("click", () => {
-        // hide the pop-up.
+        // Hide the pop-up.
         $("form").classList.remove("show_popup")
     })
 
