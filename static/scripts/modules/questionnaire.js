@@ -4,39 +4,39 @@ import update_view from "./update_view.js"
 import { save_answer } from "./answers.js"
 
 export default function questionnaire() {
-    let questionnaire_index = 1
+    let index = 1
 
     // Retrieve the index from localStorage and check if it is at least one and not greater than the amount of questions.
     if (localStorage.getItem("index") && localStorage.getItem("index") > 0 && localStorage.getItem("index") <= $("#amount_of_questions").textContent) {
-        questionnaire_index = localStorage.getItem("index")
+        index = localStorage.getItem("index")
     }
 
     // Show the first question or the one saved in localStorage.
-    $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
     update_view(questionnaire_index)
+    $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
 
     $$("input[type=text]").forEach(element => {
         element.addEventListener("input", () => {
-            save_answer("text", element, questionnaire_index)
+            save_answer("text", element, index)
         })
     })
 
     $$("input[type=radio]").forEach(element => {
         element.addEventListener("change", () => {
-            save_answer("radio", element, questionnaire_index)
+            save_answer("radio", element, index)
         })
     })
 
     $$("input[type=checkbox]").forEach(element => {
         element.addEventListener("change", () => {
-            save_answer("checkbox", element, questionnaire_index)
+            save_answer("checkbox", element, index)
         })
     })
 
     $$(".next_button").forEach(element => {
         element.addEventListener("click", () => {
             // Add all visible input fields to an array.
-            const inputs = $$(`.questionnaire li:nth-child(${questionnaire_index}) input:not([type=hidden])`)
+            const inputs = $$(`.questionnaire li:nth-child(${index}) input:not([type=hidden])`)
 
             if (inputs.length > 1) {
                 let types = []
@@ -75,19 +75,19 @@ export default function questionnaire() {
 
             function next_question() {
                 // Hide the previous question.
-                $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
+                $(`.questionnaire li:nth-child(${index})`).classList.remove("show_element")
 
                 // Increase and save the index in localStorage.
-                localStorage.setItem("index", ++questionnaire_index)
+                localStorage.setItem("index", ++index)
 
                 // Check if the questionnaire is incomplete.
-                if (questionnaire_index > $("#amount_of_questions").textContent) {
+                if (index > $("#amount_of_questions").textContent) {
                     // Save the completion in localStorage.
                     localStorage.setItem("questionnaire", "Completed")
                 } else {
                     // Show the next question.
-                    $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-                    update_view(questionnaire_index)
+                    $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
+                    update_view(index)
                 }
             }
         })
@@ -96,14 +96,14 @@ export default function questionnaire() {
     $$(".prev_button").forEach(element => {
         element.addEventListener("click", () => {
             // Hide the previous question.
-            $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.remove("show_element")
+            $(`.questionnaire li:nth-child(${index})`).classList.remove("show_element")
 
             // Decrease and save the index in localStorage.
-            localStorage.setItem("index", --questionnaire_index)
+            localStorage.setItem("index", --index)
 
             // Show the next question.
-            $(`.questionnaire li:nth-child(${questionnaire_index})`).classList.add("show_element")
-            update_view(questionnaire_index)
+            $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
+            update_view(index)
         })
     })
 }
