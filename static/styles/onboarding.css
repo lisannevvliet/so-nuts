@@ -1,68 +1,32 @@
-ol {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-}
-
-.show_element {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-li {
-    display: none;
-}
-
-li:before {
+section:before {
     content: "";
-    background-repeat: no-repeat;
-    height: 100%;
-    display: flex;
+    background-image: url("../images/onboarding/onboarding_1.svg");
+    /* background-image: url("../images/onboarding/onboarding_2.svg"); */
+    /* background-image: url("../images/onboarding/onboarding_3.svg"); */
     background-position: center;
     background-size: cover;
-    justify-content: center;
-}
-
-li:nth-of-type(1):before {
-    background-image: url("../images/onboarding/onboarding_1.svg");
-}
-
-li:nth-of-type(2):before {
-    background-image: url("../images/onboarding/onboarding_2.svg");
-}
-
-li:nth-of-type(3):before {
-    background-image: url("../images/onboarding/onboarding_3.svg");
-}
-
-ol li section {
-    border-radius: 20px;
+    display: block;
     height: 50%;
-    padding: 1em;
-    text-align: center;
-    margin-top: 1.5em;
 }
 
-ol li section h2 {
+section {
+    height: 100%;
+    overflow: scroll;
+    text-align: center;
+}
+
+h2,
+p {
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+h2 {
     color: var(--main);
     font-size: 1.7em;
     font-weight: bold;
-    margin-left: .5em;
-    margin-right: .5em;
-    text-align: center;
 }
 
-ol li section p {
+p {
     font-size: 1.1250em;
-    text-align: center;
-}
-
-/*  ======
-    button
-    ====== */
-
-.disable_button {
-    display: none;
 }
