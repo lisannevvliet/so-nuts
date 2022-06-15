@@ -3,6 +3,9 @@ import $$ from "./$$.js"
 
 export default function goals() {
     let index = 0
+    let goals = []
+    let new_goals = []
+    const saved_goals = JSON.parse(localStorage.getItem("goals")) || []
 
     // Check if the onboarding and questionnaire have already been completed in localStorage. If not, redirect to the corresponding page.
     if (!localStorage.getItem("onboarding")) {
@@ -12,11 +15,6 @@ export default function goals() {
     }
 
     $("#add").addEventListener("click", () => {
-        // Hide all previously shown options.
-        $$(".add_goal article").forEach(article => {
-            article.classList.remove("show_extra")
-        })
-
         // Show the pop-up.
         $("form").classList.add("show_popup")
     })
@@ -25,23 +23,6 @@ export default function goals() {
         // Hide the pop-up.
         $("form").classList.remove("show_popup")
     })
-
-    $$("input[type=checkbox]").forEach((checkbox, index) => {
-        checkbox.addEventListener("click", () => {
-            // Check if the checkbox is checked.
-            if (checkbox.checked) {
-                // Show the options.
-                $$("article")[index].classList.add("show_extra")
-            } else {
-                // Hide the options.
-                $$("article")[index].classList.remove("show_extra")
-            }
-        })
-    })
-
-    let goals = []
-    let new_goals = []
-    const saved_goals = JSON.parse(localStorage.getItem("goals")) || []
 
     $(".add_goal").addEventListener("submit", add_goal)
     $$(".unordered_goal_list").forEach(element => {
@@ -68,15 +49,15 @@ export default function goals() {
         index = goals.length
 
         // Loop through all checkboxes.
-        $$("input[name=goal]").forEach((checkbox, index) => {
+        $$("input[name=goal]").forEach(checkbox => {
             // Check if the checkbox is checked.
             if (checkbox.checked) {
                 // Create a goal object from the input values.
                 const goal = {
                     name: checkbox.value,
                     repetition: 0,
-                    total_repetition: $$("input[name=repetition]")[index].value,
-                    timeframe: $$("select[name=timeframe]")[index].value,
+                    total_repetition: 21,
+                    timeframe: "dagelijks",
                     completed: false
                 }
 
@@ -114,8 +95,7 @@ export default function goals() {
                         <article> 
                             <h2>${goal.name}</h2>
                             <p>
-                                <span class="repetition_change">${goal.repetition}</span>
-                                /${goal.total_repetition} ${goal.timeframe}
+                                <span class="repetition_change">${goal.repetition}</span>/${goal.total_repetition} ${goal.timeframe}
                             </p> 
                         </article>
                         <label for="goal_${index}">
@@ -178,7 +158,6 @@ export default function goals() {
     //     const index = event.target.dataset
 
     //     goal_array.splice(index, 1)
-    //     console.log()
 
     //     put_goal_in_list_item(goal_array, unordered_goal_list)
     //     // localStorage.setItem("JSON_all_goals", JSON.stringify(JSON_all_goals))

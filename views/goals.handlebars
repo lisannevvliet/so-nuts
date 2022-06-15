@@ -9,26 +9,10 @@
                     <label for={{id}}></label>
                     {{name}}
                 </h3>
-                <article>
-                    <label for=" repetition">
-                        <h3>Hoe vaak wil je het herhalen? </h3>
-                    </label>
-                    <input type="number" name="repetition" id="repetition_{{id}}" {{!-- placeholder="3" --}} min="1" />
-
-                    <label for="timeframe" id={{id}}>
-                        <h3> Voor hoe lang wil je het volhouden?</h3>
-                    </label>
-                    <select name="timeframe" id="timeframe_{{id}} ">
-                        <option value="Dagelijks">Dagelijks</option>
-                        <option value="Wekelijks">Wekelijks</option>
-                        <option value="Maandelijks">Maandelijks</option>
-                    </select>
             </section>
-            </article>
         {{/each}}
         <input type="submit" value="Voeg toe" />
     </form>
-
     <ul class="unordered_goal_list">
         <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
         {{!-- <li>
@@ -47,7 +31,6 @@
                 <div></div>
             </div>
         </li>
-
         <li>
             <article>
                 <strong>Groente</strong>
@@ -64,7 +47,6 @@
                 <div></div>
             </div>
         </li>
-
         <li>
             <article>
                 <strong>Groente</strong>
@@ -81,7 +63,6 @@
                 <div></div>
             </div>
         </li>
-
         <li>
             <article>
                 <strong>Groente</strong>
@@ -99,11 +80,9 @@
             </div>
         </li> --}}
     </ul>
-
     <div class="button_wrapper">
         <button id="add"></button>
     </div>
 </main>
-
 {{!-- <label for="time_reminder">Hoelaat wil je een herinnering krijgen?</label>
 <input type="time" id="time_reminder" name="time_reminder" min="06:00" max="23:00"> --}}
