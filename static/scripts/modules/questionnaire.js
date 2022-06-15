@@ -12,7 +12,7 @@ export default function questionnaire() {
     }
 
     // Show the first question or the one saved in localStorage.
-    update_view(questionnaire_index)
+    update_view(index)
     $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
 
     $$("input[type=text]").forEach(element => {
