@@ -7,10 +7,10 @@
                 <article>{{this.name}}</article>
             {{/each}}
         </div>
+        <p id="amount_of_questions">{{questionnaire.length}}</p>
         <ol class="questionnaire">
             {{#each questionnaire}}
                 <li id="question_{{inc @index}}">
-                    <p id="amount_of_questions">{{../questionnaire.length}}</p>
                     <div id="progress">
                         <div></div>
                     </div>

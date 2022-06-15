@@ -74,10 +74,6 @@ header {
     color: var(--accent);
 }
 
-article.gegevens_icon.active:before {
-    color: white;
-}
-
 /*  =============
     questionarre
     general
