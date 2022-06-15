@@ -35,7 +35,9 @@ export default function goals() {
     const saved_goals = JSON.parse(localStorage.getItem("goals")) || []
 
     $(".add_goal").addEventListener("submit", add_goal)
-    $(".unordered_goal_list").addEventListener("click", toggle_complete)
+    $$(".unordered_goal_list").forEach(element => {
+        element.addEventListener("click", toggle_complete)
+    })
     // $(".unordered_goal_list").addEventListener("click", remove_goal)
 
     // Retrieve the goals from localStorage and render them in the HTML.
