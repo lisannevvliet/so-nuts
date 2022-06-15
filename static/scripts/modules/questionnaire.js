@@ -49,45 +49,27 @@ export default function questionnaire() {
                 // If all input fields are of the same type, validate the first one. This will automatically validate all options.
                 if (new Set(types).size == 1) {
                     if (inputs[0].checkValidity()) {
-                        next_question()
+                        index = update_view(index, "next")
                     } else {
                         console.log(inputs[0].validationMessage)
                     }
                 } else {
                     // Check if at least one checkbox or select is checked.
                     if ($$(`input[name=${inputs[0].name}]:checked`).length > 0) {
-                        next_question()
+                        index = update_view(index, "next")
                     }
                     // Check if the input field is not empty.
                     else if (inputs[inputs.length - 1].value != "") {
-                        next_question()
+                        index = update_view(index, "next")
                     } else {
                         console.log("Please select one of these options or fill in this field.")
                     }
                 }
             } else {
                 if (inputs[0].checkValidity()) {
-                    next_question()
+                    index = update_view(index, "next")
                 } else {
                     console.log(inputs[0].validationMessage)
-                }
-            }
-
-            function next_question() {
-                // Hide the previous question.
-                $(`.questionnaire li:nth-child(${index})`).classList.remove("show_element")
-
-                // Increase and save the index in localStorage.
-                localStorage.setItem("index", ++index)
-
-                // Check if the questionnaire is incomplete.
-                if (index > $("#amount_of_questions").textContent) {
-                    // Save the completion in localStorage.
-                    localStorage.setItem("questionnaire", "Completed")
-                } else {
-                    // Show the next question.
-                    $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
-                    update_view(index)
                 }
             }
         })
@@ -95,15 +77,7 @@ export default function questionnaire() {
 
     $$(".prev_button").forEach(element => {
         element.addEventListener("click", () => {
-            // Hide the previous question.
-            $(`.questionnaire li:nth-child(${index})`).classList.remove("show_element")
-
-            // Decrease and save the index in localStorage.
-            localStorage.setItem("index", --index)
-
-            // Show the next question.
-            $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
-            update_view(index)
+            index = update_view(index, "previous")
         })
     })
 }
