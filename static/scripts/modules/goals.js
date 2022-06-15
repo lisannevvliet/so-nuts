@@ -47,22 +47,29 @@ export default function goals() {
     })
 
     function add_goal(event) {
+        // Prevent the page from reloading.
+        event.preventDefault()
+
         // Clear the new goals array.
         new_goals = []
 
-        $$("input[name=goal]:checked").forEach((checkbox, index) => {
-            // Create a goal object from the input values.
-            const goal = {
-                name: checkbox.value,
-                repetition: 0,
-                total_repetition: $$("[name=repetition]")[index].value,
-                timeframe: $$("[name=timeframe]")[index].value,
-                completed: false
-            }
+        // Loop through all checkboxes.
+        $$("input[name=goal]").forEach((checkbox, index) => {
+            // Check if the checkbox is checked.
+            if (checkbox.checked) {
+                // Create a goal object from the input values.
+                const goal = {
+                    name: checkbox.value,
+                    repetition: 0,
+                    total_repetition: $$("input[name=repetition]")[index].value,
+                    timeframe: $$("select[name=timeframe]")[index].value,
+                    completed: false
+                }
 
-            // Add the goal to the goals and new goals arrays.
-            goals.push(goal)
-            new_goals.push(goal)
+                // Add the goal to the goals and new goals arrays.
+                goals.push(goal)
+                new_goals.push(goal)
+            }
         })
 
         // Render the new goals in the HTML.
@@ -76,9 +83,6 @@ export default function goals() {
 
         // Hide the pop-up.
         $("form").classList.remove("show_popup")
-
-        // Prevent the page from reloading.
-        event.preventDefault()
     }
 
     function render_goals(goals) {
