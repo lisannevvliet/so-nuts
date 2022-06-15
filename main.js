@@ -105,7 +105,6 @@ app.get("/", (_req, res) => {
     // Get the goals from the database.
     get_data()
         .then(food_goals => {
-            // console.log(food_goals.body[2].name)
             // Load the goals page with the stylesheet.
             res.render("goals", {
                 food_goals: food_goals.body,
@@ -123,4 +122,13 @@ app.get("/", (_req, res) => {
     //             })
     //         }
     //     })
+})
+
+
+// Listen to all GET requests on /dashboard.
+app.get("/login", (_req, res) => {
+    // Load the fitness page with the stylesheet.
+    res.render("login", {
+        style: "style.css"
+    })
 })
