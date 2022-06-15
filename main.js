@@ -18,12 +18,6 @@ async function get_data() {
         .select("*")
 }
 
-// Get the goals from the database.
-get_data()
-    .then(data => {
-        console.log(data)
-    })
-
 // Initialise Express.
 const app = express()
 
@@ -139,15 +133,25 @@ app.get("/profile", (_req, res) => {
 
 // Listen to all GET requests on /goals.
 app.get("/goals", (_req, res) => {
-    get.get("food_goals", "Goals?domainId=voeding")
+    // Get the goals from the database.
+    get_data()
         .then(food_goals => {
-            // Check if the file exists.
-            if (food_goals != undefined) {
-                // Load the goals page with the stylesheet.
-                res.render("goals", {
-                    food_goals: food_goals,
-                    style: "goals.css"
-                })
-            }
+            // console.log(food_goals.body[2].name)
+            // Load the goals page with the stylesheet.
+            res.render("goals", {
+                food_goals: food_goals.body,
+                style: "goals.css"
+            })
         })
+    // get.get("food_goals", "Goals?domainId=voeding")
+    //     .then(food_goals => {
+    //         // Check if the file exists.
+    //         if (food_goals != undefined) {
+    //             // Load the goals page with the stylesheet.
+    //             res.render("goals", {
+    //                 food_goals: food_goals,
+    //                 style: "goals.css"
+    //             })
+    //         }
+    //     })
 })

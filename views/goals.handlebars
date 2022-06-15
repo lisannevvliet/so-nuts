@@ -1,24 +1,24 @@
 <main class="goals_page">
     <h1>Doelen</h1>
     <form class="add_goal">
+        <div class="close_popup">X</div>
         {{#each food_goals}}
             <section>
                 <h3>
-                    <input type="checkbox" id={{this.title}} name="goal" class="goal_input" value={{this.title}}>
-                    <label for={{this.title}}></label>
-                    {{this.title}}
+                    <input type="checkbox" id={{id}} name="goal" class="goal_input" value="{{name}}">
+                    <label for={{id}}></label>
+                    {{name}}
                 </h3>
                 <article>
-                    <label for="repetition">
+                    <label for=" repetition">
                         <h3>Hoe vaak wil je het herhalen? </h3>
                     </label>
-                    <input type="number" name="repetition" id="repetition_{{this.title}}" {{!-- placeholder="3" --}}
-                        min="1" />
+                    <input type="number" name="repetition" id="repetition_{{id}}" {{!-- placeholder="3" --}} min="1" />
 
-                    <label for="timeframe" id={{this.title}}>
+                    <label for="timeframe" id={{id}}>
                         <h3> Voor hoe lang wil je het volhouden?</h3>
                     </label>
-                    <select name="timeframe" id="timeframe_{{this.title}} ">
+                    <select name="timeframe" id="timeframe_{{id}} ">
                         <option value="Dagelijks">Dagelijks</option>
                         <option value="Wekelijks">Wekelijks</option>
                         <option value="Maandelijks">Maandelijks</option>
@@ -30,6 +30,7 @@
     </form>
 
     <ul class="unordered_goal_list">
+        <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
         {{!-- <li>
             <article>
                 <strong>Groente</strong>
