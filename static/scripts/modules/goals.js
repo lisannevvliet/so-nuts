@@ -2,6 +2,8 @@ import $ from "./$.js"
 import $$ from "./$$.js"
 
 export default function goals() {
+    let index = 0
+
     // Check if the onboarding and questionnaire have already been completed in localStorage. If not, redirect to the corresponding page.
     if (!localStorage.getItem("onboarding")) {
         window.location.href = "/onboarding"
@@ -43,12 +45,12 @@ export default function goals() {
 
     $(".add_goal").addEventListener("submit", add_goal)
     $$(".unordered_goal_list").forEach(element => {
-        element.addEventListener("click", toggle_complete)
+        element.addEventListener("click", increment_repetition)
     })
     // $(".unordered_goal_list").addEventListener("click", remove_goal)
 
     // Retrieve the goals from localStorage and render them in the HTML.
-    render_goals(saved_goals)
+    render_goals(saved_goals, index)
 
     // Add the goals from localStorage to the goals array.
     saved_goals.forEach(element => {
@@ -61,6 +63,9 @@ export default function goals() {
 
         // Clear the new goals array.
         new_goals = []
+
+        // Set the index to the goals array length, so that new goals can be addressed correctly.
+        index = goals.length
 
         // Loop through all checkboxes.
         $$("input[name=goal]").forEach((checkbox, index) => {
@@ -82,7 +87,7 @@ export default function goals() {
         })
 
         // Render the new goals in the HTML.
-        render_goals(new_goals)
+        render_goals(new_goals, index)
 
         // Save the goals in localStorage.
         localStorage.setItem("goals", JSON.stringify(goals))
@@ -92,11 +97,17 @@ export default function goals() {
 
         // Hide the pop-up.
         $("form").classList.remove("show_popup")
+
+        $$(".unordered_goal_list").forEach(element => {
+            // Remove all previously added eventListeners, to prevent duplicates.
+            element.removeEventListener("click", increment_repetition)
+            element.addEventListener("click", increment_repetition)
+        })
     }
 
-    function render_goals(goals) {
+    function render_goals(goals, index) {
         // Add the goals to the bottom of the HTML list.
-        goals.forEach((goal, index) => {
+        goals.forEach(goal => {
             $(".unordered_goal_list").insertAdjacentHTML('beforeend', `
                 <li>
                     <section>
@@ -115,14 +126,15 @@ export default function goals() {
                         <div></div>
                     </div>
                 </li>`)
+
+            // Increment the index.
+            index++
         })
     }
 
-    // Toggle to complete.
-    function toggle_complete(event) {
+    function increment_repetition(event) {
         // Get the number after "goal_" using a substring.
         const index = event.target.id.substring(5)
-        console.log(event.target.id)
 
         // Increment the repetition.
         goals[index].repetition++
@@ -155,11 +167,8 @@ export default function goals() {
         // Update the goals in localStorage.
         localStorage.setItem("goals", JSON.stringify(goals))
 
-        // click_animation()
-    }
-
-    function click_animation() {
-        $$("label").classList.add(".pulse")
+        // Add a click animation.
+        // $$("label").classList.add(".pulse")
     }
 
     // Delete goal.
