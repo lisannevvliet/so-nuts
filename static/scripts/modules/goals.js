@@ -2,6 +2,13 @@ import $ from "./$.js"
 import $$ from "./$$.js"
 
 export default function goals() {
+    // Check if the onboarding and questionnaire have already been completed in localStorage. If not, redirect to the corresponding page.
+    if (!localStorage.getItem("onboarding")) {
+        window.location.href = "/onboarding"
+    } else if (!localStorage.getItem("questionnaire")) {
+        window.location.href = "/questionnaire"
+    }
+
     $("#add").addEventListener("click", () => {
         // Hide all previously shown options.
         $$(".add_goal article").forEach(article => {

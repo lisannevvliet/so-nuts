@@ -96,8 +96,8 @@ app.get("/profile", (_req, res) => {
         })
 })
 
-// Listen to all GET requests on /goals.
-app.get("/goals", (_req, res) => {
+// Listen to all GET requests on /.
+app.get("/", (_req, res) => {
     // Get the goals from the database.
     get_data()
         .then(food_goals => {
