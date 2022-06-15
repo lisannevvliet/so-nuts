@@ -52,15 +52,19 @@ app.get("/onboarding", (_req, res) => {
 app.get("/questionnaire", (_req, res) => {
     get.get("questionnaire", "Questionnaires/2")
         .then(questionnaire => {
-            // Check if the file exists.
-            if (questionnaire != undefined) {
-                // Load the questionnaire page with the questionnaire, length and stylesheet.
-                res.render("questionnaire", {
-                    questionnaire: questionnaire.questions,
-                    length: questionnaire.questions.length - 1,
-                    style: "questionnaire.css"
+            get.get("domains", "Domains")
+                .then(domains => {
+                    // Check if the files exist.
+                    if (questionnaire != undefined && domains != undefined) {
+                        // Load the questionnaire page with the domains, questionnaire, length and stylesheet.
+                        res.render("questionnaire", {
+                            domains: domains,
+                            questionnaire: questionnaire.questions,
+                            length: questionnaire.questions.length - 1,
+                            style: "questionnaire.css"
+                        })
+                    }
                 })
-            }
         })
 })
 
