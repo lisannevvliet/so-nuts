@@ -75,9 +75,8 @@ button {
     padding-bottom: 2em;
 }
 
-.prev_button,
-.grey_button {
-    background-color: white;
+.prev_button {
+    background-color: var(--grey);
 }
 
 .next_button:focus {
@@ -89,6 +88,46 @@ button {
     background-color: var(--main);
 }
 
+.white_button {
+    background-color: white;
+}
+
+/* ==========
+    onboarding
+    ========== */
+
+.onboarding section:before {
+    content: "";
+    background-image: url("../images/onboarding/onboarding_1.svg");
+    /* background-image: url("../images/onboarding/onboarding_2.svg"); */
+    /* background-image: url("../images/onboarding/onboarding_3.svg"); */
+    background-position: center;
+    background-size: cover;
+    display: block;
+    height: 50%;
+}
+
+.onboarding section {
+    height: 100%;
+    overflow: scroll;
+    text-align: center;
+}
+
+.onboarding h2,
+.onboarding p {
+    margin-left: .5em;
+    margin-right: .5em;
+}
+
+.onboarding h2 {
+    color: var(--main);
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.onboarding p {
+    font-size: 1.1250em;
+}
 
 /*  =========
     login page
@@ -161,4 +200,204 @@ button {
     font-size: 12px;
     left: 0;
     top: -20px;
+}
+
+
+/*  ==============
+    questionnaire
+    ============ */
+
+
+.questionnaire_page {
+    background-image: url("/images/bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+}
+
+.questionnaire_page header {
+    flex-shrink: 0;
+    height: 10%;
+}
+
+.questionnaire_page .background {
+    background-color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-top: 1em;
+}
+
+/*  ============
+    progress bar
+    ============ */
+
+.questionnaire_page .progress_steps {
+    counter-reset: step;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-around;
+    margin-bottom: 1.5em;
+    margin-right: 0;
+    margin-top: 1em;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+}
+
+.questionnaire_page .progress_steps article {
+    color: var(--grey);
+    float: left;
+    font-size: 1.1em;
+    list-style-type: none;
+    position: relative;
+    text-transform: none;
+    width: 20%;
+}
+
+.questionnaire_page .progress_steps article:before {
+    background: var(--grey);
+    border-radius: 50%;
+    color: white;
+    content: counter(step);
+    counter-increment: step;
+    display: block;
+    font-size: 1em;
+    height: 1.5em;
+    margin: 0 auto 5px auto;
+    width: 1.5em;
+}
+
+.questionnaire_page .progress_steps article.active:before {
+    background: var(--accent);
+}
+
+.questionnaire_page .progress_steps article.active {
+    color: var(--accent);
+}
+
+/*  =============
+    questionarre
+    general
+    ============ */
+
+.questionnaire_page li {
+    display: none;
+}
+
+.questionnaire_page .questionnaire {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.questionnaire_page .questionnaire li {
+    align-items: center;
+    border-radius: 20px;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.questionnaire_page .show_element {
+    display: flex;
+}
+
+#amount_of_questions {
+    position: fixed;
+    visibility: hidden;
+}
+
+#progress {
+    background: var(--grey);
+    height: 6px;
+    width: 100%;
+}
+
+#progress div {
+    background: var(--main);
+    height: 6px;
+    width: 0%;
+}
+
+.questionnaire_page h2 {
+    font-size: 1.6em;
+    font-weight: 600;
+}
+
+/*  ======
+    button
+    ====== */
+
+.questionnaire_page .button_wrapper {
+    margin-top: 2em;
+}
+
+.questionnaire_page .hide_button {
+    visibility: hidden;
+}
+
+.questionnaire_page button:focus {
+    border: 3px solid var(--accent);
+    outline: none !important;
+}
+
+/*  ===========
+    input type
+    text
+    =========== */
+
+.questionnaire_page input[type=text] {
+    background-color: var(--grey);
+    border-radius: 5px;
+    border: solid darkgrey 1px;
+    height: 2em;
+}
+
+.questionnaire_page input:focus {
+    border: 3px solid var(--accent);
+    outline: none !important;
+}
+
+/*  ============
+    input types
+    ============ */
+
+.questionnaire_page input[type="radio"],
+.questionnaire_page input[type="checkbox"] {
+    display: none;
+}
+
+.questionnaire_page input[type="radio"]:checked+label,
+.questionnaire_page input[type="checkbox"]:checked+label {
+    background-color: var(--main);
+}
+
+.questionnaire_page label {
+    background-color: var(--beige);
+    border-radius: 5px;
+    cursor: pointer;
+    display: inherit;
+    font-size: 1.1em;
+    justify-content: center;
+    margin-bottom: 0em;
+    padding: 1em;
+    width: 50%;
+}
+
+.questionnaire_page input[type="checkbox"] label {
+    background-color: var(--beige);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+.questionnaire_page .grid_two_columns label {
+    width: unset;
 }

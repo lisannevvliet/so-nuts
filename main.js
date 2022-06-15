@@ -44,7 +44,7 @@ app.listen(process.env.PORT, () => {
 app.get("/onboarding", (_req, res) => {
     // Load the onboarding page with the stylesheet.
     res.render("onboarding", {
-        style: "onboarding.css"
+        style: "style.css"
     })
 })
 
@@ -61,7 +61,7 @@ app.get("/questionnaire", (_req, res) => {
                             domains: domains,
                             questionnaire: questionnaire.questions,
                             length: questionnaire.questions.length - 1,
-                            style: "questionnaire.css"
+                            style: "style.css"
                         })
                     }
                 })
