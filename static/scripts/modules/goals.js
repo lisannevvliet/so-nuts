@@ -12,6 +12,11 @@ export default function goals() {
         $("form").classList.add("show_popup")
     })
 
+    $(".close_popup").addEventListener("click", () => {
+        // hide the pop-up.
+        $("form").classList.remove("show_popup")
+    })
+
     $$("input[type=checkbox]").forEach((checkbox, index) => {
         checkbox.addEventListener("click", () => {
             // Check if the checkbox is checked.
@@ -104,6 +109,7 @@ export default function goals() {
     function toggle_complete(event) {
         // Get the number after "goal_" using a substring.
         const index = event.target.id.substring(5)
+        console.log(event.target.id)
 
         // Increment the repetition.
         goals[index].repetition++
