@@ -77,41 +77,6 @@ app.post("/questionnaire", (req, res) => {
     res.redirect("/")
 })
 
-// Listen to all GET requests on /.
-app.get("/", (_req, res) => {
-    // Load the dashboard page with the stylesheet.
-    res.render("dashboard", {
-        style: "dashboard.css"
-    })
-})
-
-// Listen to all GET requests on /dashboard.
-app.get("/fitness", (_req, res) => {
-    // Load the fitness page with the stylesheet.
-    res.render("fitness", {
-        style: "dashboard.css"
-    })
-})
-
-// Listen to all GET requests on /dashboard.
-app.get("/food", (_req, res) => {
-    get.get("domains", "Domains")
-        .then(domains => {
-            get.get("food_goals", "Goals?domainId=voeding")
-                .then(food_goals => {
-                    // Check if the files exist.
-                    if (domains != undefined && food_goals != undefined) {
-                        // Load the food page with the domains, food goals and stylesheet.
-                        res.render("food", {
-                            domains: domains,
-                            food_goals: food_goals,
-                            style: "dashboard.css"
-                        })
-                    }
-                })
-        })
-})
-
 // Listen to all GET requests on /profile.
 app.get("/profile", (_req, res) => {
     get.get("questionnaire", "Questionnaires/2")
