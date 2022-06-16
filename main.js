@@ -97,8 +97,8 @@ app.get("/profile", (_req, res) => {
         })
 })
 
-// Listen to all GET requests on /.
-app.get("/", (_req, res) => {
+// Listen to all GET requests on /goals.
+app.get("/goals", (_req, res) => {
     // Get the goals from the database.
     get_data()
         .then(food_goals => {
@@ -121,9 +121,9 @@ app.get("/", (_req, res) => {
 })
 
 
-// Listen to all GET requests on /dashboard.
-app.get("/login", (_req, res) => {
-    // Load the fitness page with the stylesheet.
+// Listen to all GET requests on /.
+app.get("/", (_req, res) => {
+    // Load the login page with the stylesheet.
     res.render("login", {
     })
 })
