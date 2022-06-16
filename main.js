@@ -68,8 +68,8 @@ app.post("/questionnaire", (req, res) => {
             // Do not forget to remove this.
             console.log(data)
 
-            // Redirect to the dashboard page.
-            res.redirect("/")
+            // Redirect to the goals page.
+            res.redirect("/goals")
         })
 })
 
