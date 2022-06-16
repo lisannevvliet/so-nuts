@@ -64,13 +64,13 @@ app.get("/questionnaire", (_req, res) => {
 app.post("/questionnaire", (req, res) => {
     // Transform the answers to a compatible format and send a POST request with them.
     post.post(reponses.reponses(req.body.answers))
-        .then(data =>
+        .then(data => {
             // Do not forget to remove this.
             console.log(data)
-        )
 
-    // Redirect to the dashboard page.
-    res.redirect("/")
+            // Redirect to the dashboard page.
+            res.redirect("/")
+        })
 })
 
 // Listen to all GET requests on /profile.
@@ -172,4 +172,12 @@ async function insert_user(user) {
     await supabase
         .from("users")
         .insert([user])
+}
+
+async function update_user(user, value) {
+    await supabase
+        .from("users")
+        .update(value)
+        .eq("name", user.name)
+        .eq("email", user.email)
 }
