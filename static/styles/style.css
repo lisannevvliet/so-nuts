@@ -28,7 +28,7 @@ main {
 }
 
 h1 {
-    padding-left: 1em;
+    padding-left: .54em;
 }
 
 @supports (height: 100dvh) {
@@ -72,7 +72,8 @@ button {
 .button_wrapper {
     display: flex;
     justify-content: center;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
+    padding-top: 1em;
 }
 
 .prev_button {
@@ -406,6 +407,9 @@ button {
 /*  ========
     goals page
     ========== */
+.goals_page h1 {
+    margin-bottom: 0;
+}
 
 .add_goal {
     display: none;
@@ -414,20 +418,30 @@ button {
 }
 
 .goals_page form.show_popup {
-    border-radius: 20px;
+    /* border-radius: 20px; */
+    background-color: #fafafa;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
-    display: block;
-    height: 80vh;
-    left: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    display: grid;
+    row-gap: 1em;
+    grid-template-columns: repeat(2, .5fr);
+    height: 100%;
+    /* left: 50%; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
     max-width: 768px;
-    padding: 1em;
+    /* padding: 1em; */
     position: fixed;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
+    /* top: 50%; */
+    /* transform: translate(-50%, -50%); */
+    width: 100%;
     z-index: 2;
+    flex-wrap: wrap;
+    justify-items: center;
+}
+
+.goals_page form:nth-last-child(1) {
+    grid-template-columns: repeat(1, .5fr);
+    justify-content: center;
 }
 
 /* label.pulse {
@@ -448,39 +462,19 @@ button {
         }
     } */
 
-.goals_page .button_wrapper {
-    align-items: center;
-    background-image: linear-gradient(to bottom, transparent, white);
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    max-width: 768px;
-    padding-bottom: .8em;
-    position: fixed;
-    width: 100%;
-}
 
 .goals_page #add {
-    background-image: url("/images/goals/add_more.svg");
-    background-position-x: .9em;
-    background-position-y: 1em;
-    border-radius: 50%;
+    /* background-image: url("/images/goals/add_more.svg"); */
+    /* background-position-x: .9em; */
+    /* background-position-y: 1em; */
+    background-color: var(--grey);
     background-repeat: no-repeat;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
     background-size: 2.2em;
-    height: 4em;
-    width: 4em;
+    font-family: 'Nunito';
+    font-weight: 700;
+    width: 100%;
 }
-
-/* .button_wrapper.hide_create_button {
-        display: none;
-    } */
-
-/* label {
-        cursor: pointer;
-        width: 6em;
-        height: 7em;
-    } */
 
 .disable {
     pointer-events: none;
@@ -503,37 +497,30 @@ button {
     width: 3em;
 }
 
-.goals_page label[for=goal] h3 {
+.add_goal img {
+    margin: auto;
+    width: 5em;
+}
+
+.add_goal h3 {
+    margin: 0;
+    text-align: center;
+}
+
+input[name="goal"] {
+    display: none;
+}
+
+.goals_page label[for=goal] h {
     background-color: var(--secundary);
     border-radius: 20px;
     height: 4em;
     text-align: center;
 }
 
-.goals_page form input[type="checkbox"].goal_input {
-    display: none;
-}
-
-.goals_page form input[type="checkbox"].goal_input+label {
-    box-sizing: border-box;
-    display: inline-block;
-    width: 3rem;
-    height: 1.5rem;
-    border-radius: 1.5rem;
-    padding: 2px;
-    background-color: #c0ceda;
-    transition: all 0.5s;
-}
-
-.goals_page form input[type="checkbox"].goal_input+label::before {
-    box-sizing: border-box;
-    display: block;
-    content: "";
-    height: calc(1.5rem - 4px);
-    width: calc(1.5rem - 4px);
-    border-radius: 50%;
-    background-color: var(--secundary);
-    transition: all 0.5s;
+.close_popup {
+    margin-left: auto;
+    padding: 1em;
 }
 
 .goals_page form input[type="checkbox"].goal_input:checked+label {
@@ -552,13 +539,19 @@ button {
     display: block;
 }
 
-/* Doesn't work? */
-/* form input[type="checkbox"].goal_input:checked+article {
-        display: block;
-    } */
+.add_goal section {
+    background-color: #ffff;
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    display: flex;
+    height: 13em;
+    padding: 1em;
+    margin: 0;
+    width: 90%;
+    flex-direction: column;
+}
 
-
-.goals_page input[type="submit"] {
+.add_goal input[type="submit"] {
     background-color: var(--main);
     border-radius: 10px;
     border: none;
@@ -602,15 +595,11 @@ button {
 
 
 
-/*  =========
-        new style
-        ========== */
 
 .unordered_goal_list {
     display: grid;
     gap: 1.5em;
     margin: 0;
-    overflow-y: scroll;
     padding: 1em;
 }
 
@@ -670,42 +659,8 @@ button {
 .unordered_goal_list input[type=checkbox].checkmark {
     background-image: url("/images/goals/check.svg");
     background-color: var(--main_lighter);
-
 }
 
 .unordered_goal_list input[type=checkbox]:focus {
     border: none;
-}
-
-
-.slidecontainer {
-    width: 100%;
-}
-
-.slider {
-    width: 100%;
-    height: 25px;
-    background: var(--beige);
-    outline: none;
-    transition: opacity .2s;
-    accent-color: var(--main);
-}
-
-.slider:hover {
-    opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: var(--main);
-    cursor: pointer;
-}
-
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: var(--main);
-    cursor: pointer;
 }
