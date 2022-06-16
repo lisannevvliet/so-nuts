@@ -12,12 +12,6 @@ const post = require("./modules/post.js")
 // Initialise Supabase with a service key, to have full access to the data.
 const supabase = createClient("https://depctutsufqakltbwctd.supabase.co", process.env.SERVICE_KEY)
 
-async function get_data() {
-    return { data: goals, error } = await supabase
-        .from("goals")
-        .select("*")
-}
-
 // Initialise Express.
 const app = express()
 
@@ -100,11 +94,11 @@ app.get("/profile", (_req, res) => {
 // Listen to all GET requests on /goals.
 app.get("/goals", (_req, res) => {
     // Get the goals from the database.
-    get_data()
-        .then(food_goals => {
+    read_goals()
+        .then(data => {
             // Load the goals page with the stylesheet.
             res.render("goals", {
-                food_goals: food_goals.body
+                goals: data
             })
         })
     // get.get("food_goals", "Goals?domainId=voeding")
@@ -155,6 +149,14 @@ app.post("/", (req, res) => {
             }
         })
 })
+
+async function read_goals() {
+    const reponse = await supabase
+        .from("goals")
+        .select("*")
+
+    return reponse.data
+}
 
 async function read_user(user) {
     const reponse = await supabase
