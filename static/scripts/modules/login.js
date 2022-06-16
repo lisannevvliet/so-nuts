@@ -4,7 +4,7 @@ import $$ from "./$$.js"
 export default function login() {
     $("#register").addEventListener("click", () => {
         // Redirect to the questionnaire page.
-        window.location.href = "/questionnaire"
+        window.location.href = "/onboarding"
     })
 
     $("#login").addEventListener("click", () => {

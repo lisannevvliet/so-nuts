@@ -44,7 +44,6 @@ app.listen(process.env.PORT, () => {
 app.get("/onboarding", (_req, res) => {
     // Load the onboarding page with the stylesheet.
     res.render("onboarding", {
-        style: "style.css"
     })
 })
 
@@ -60,8 +59,7 @@ app.get("/questionnaire", (_req, res) => {
                         res.render("questionnaire", {
                             domains: domains,
                             questionnaire: questionnaire.questions,
-                            length: questionnaire.questions.length - 1,
-                            style: "style.css"
+                            length: questionnaire.questions.length - 1
                         })
                     }
                 })
@@ -92,8 +90,7 @@ app.get("/profile", (_req, res) => {
                         // Load the profile page with the questionnaire, questionnaire response and stylesheet.
                         res.render("profile", {
                             questionnaire: questionnaire.questions,
-                            questionnaire_response: questionnaire_response.questionResponses,
-                            style: "dashboard.css"
+                            questionnaire_response: questionnaire_response.questionResponses
                         })
                     }
                 })
@@ -107,8 +104,7 @@ app.get("/", (_req, res) => {
         .then(food_goals => {
             // Load the goals page with the stylesheet.
             res.render("goals", {
-                food_goals: food_goals.body,
-                style: "goals.css"
+                food_goals: food_goals.body
             })
         })
     // get.get("food_goals", "Goals?domainId=voeding")
@@ -129,6 +125,5 @@ app.get("/", (_req, res) => {
 app.get("/login", (_req, res) => {
     // Load the fitness page with the stylesheet.
     res.render("login", {
-        style: "style.css"
     })
 })
