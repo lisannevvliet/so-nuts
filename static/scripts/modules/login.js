@@ -1,14 +1,13 @@
 import $ from "./$.js"
-import $$ from "./$$.js"
 
 export default function login() {
-    $("#register").addEventListener("click", () => {
-        // Redirect to the questionnaire page.
-        window.location.href = "/onboarding"
+    $("#login").addEventListener("click", () => {
+        // Save the name and email in localStorage.
+        localStorage.setItem("user", JSON.stringify({ name: $("#name").value, email: $("#email").value }))
     })
 
-    $("#login").addEventListener("click", () => {
-        // Redirect to the goals page.
-        window.location.href = "/"
+    $("#register").addEventListener("click", () => {
+        // Save the name and email in localStorage.
+        localStorage.setItem("user", JSON.stringify({ name: $("#name").value, email: $("#email").value }))
     })
 }
