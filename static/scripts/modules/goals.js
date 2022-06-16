@@ -49,8 +49,6 @@ export default function goals() {
                 const goal = {
                     name: checkbox.value,
                     repetition: 0,
-                    total_repetition: 21,
-                    timeframe: "dagelijks",
                     completed: false
                 }
 
@@ -88,7 +86,7 @@ export default function goals() {
                         <article> 
                             <h2>${goal.name}</h2>
                             <p>
-                                <span class="repetition_change">${goal.repetition}</span>/${goal.total_repetition} ${goal.timeframe}
+                                <span class="repetition_change">${goal.repetition}</span>/21 dagelijks
                             </p> 
                         </article>
                         <label for="goal_${index}">
