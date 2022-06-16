@@ -127,3 +127,47 @@ app.get("/", (_req, res) => {
     res.render("login", {
     })
 })
+
+// Listen to all POST requests on /.
+app.post("/", (req, res) => {
+    // Check if the user already exists in the database.
+    read_user(req.body)
+        .then(data => {
+            // If not, create a new user in the database.
+            if (data.length == 0) {
+                insert_user(req.body)
+                    .then(
+                        // Redirect to the onboarding page.
+                        res.redirect("/onboarding")
+                    )
+            } else {
+                // Check if the onboarding and questionnaire have already been completed. If not, redirect to the corresponding page.
+                if (!data.onboarding) {
+                    // Redirect to the onboarding page.
+                    res.redirect("/onboarding")
+                } else if (!data.questionnaire) {
+                    // Redirect to the questionnaire page.
+                    res.redirect("/questionnaire")
+                } else {
+                    // Redirect to the goals page.
+                    res.redirect("/goals")
+                }
+            }
+        })
+})
+
+async function read_user(user) {
+    const reponse = await supabase
+        .from("users")
+        .select("*")
+        .eq("name", user.name)
+        .eq("email", user.email)
+
+    return reponse.data
+}
+
+async function insert_user(user) {
+    await supabase
+        .from("users")
+        .insert([user])
+}

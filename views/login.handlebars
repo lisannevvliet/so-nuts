@@ -1,19 +1,18 @@
 <main class="login_page">
     <h1>Welkom</h1>
-    <form id="user_input">
+    <form id="user_input" action="/" method="post">
         <h2>Login</h2>
         <article class="user_box">
-            <input type="text" id="name" required>
+            <input type="text" id="name" name="name" required>
             <label for="name">Roepnaam</label>
         </article>
-
         <article class="user_box">
-            <input type="text" id="email" required>
+            <input type="text" id="email" name="email" required>
             <label for="email">E-mailadres</label>
         </article>
     </form>
     <div class="button_wrapper">
-        <button class="white_button" id="login">Login</button>
-        <button id="register">Registreer</button>
+        <button type="submit" form="user_input" id="login" class="white_button">Login</button>
+        <button type="submit" form="user_input" id="register">Registreer</button>
     </div>
 </main>
