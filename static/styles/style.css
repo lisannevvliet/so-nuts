@@ -401,3 +401,311 @@ button {
 .questionnaire_page .grid_two_columns label {
     width: unset;
 }
+
+
+/*  ========
+    goals page
+    ========== */
+
+.add_goal {
+    display: none;
+    background-color: var(--beige);
+    overflow-y: scroll;
+}
+
+.goals_page form.show_popup {
+    border-radius: 20px;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    display: block;
+    height: 80vh;
+    left: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 768px;
+    padding: 1em;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    z-index: 2;
+}
+
+/* label.pulse {
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
+        }
+    
+        70% {
+            box-shadow: 0 0 0 40px rgba(204, 169, 44, 0);
+        }
+    
+        100% {
+            box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+        }
+    } */
+
+.goals_page .button_wrapper {
+    align-items: center;
+    background-image: linear-gradient(to bottom, transparent, white);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    max-width: 768px;
+    padding-bottom: .8em;
+    position: fixed;
+    width: 100%;
+}
+
+.goals_page #add {
+    background-image: url("/images/goals/add_more.svg");
+    background-position-x: .9em;
+    background-position-y: 1em;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    background-size: 2.2em;
+    height: 4em;
+    width: 4em;
+}
+
+/* .button_wrapper.hide_create_button {
+        display: none;
+    } */
+
+/* label {
+        cursor: pointer;
+        width: 6em;
+        height: 7em;
+    } */
+
+.disable {
+    pointer-events: none;
+    cursor: none;
+}
+
+.goals_page input[type=text] {
+    background-color: var(--grey);
+    border-radius: 5px;
+    border: solid darkgrey 1px;
+    height: 2em;
+}
+
+.goals_page input:focus {
+    border: 3px solid var(--accent);
+    outline: none !important;
+}
+
+.goals_page input[type="number"] {
+    width: 3em;
+}
+
+.goals_page label[for=goal] h3 {
+    background-color: var(--secundary);
+    border-radius: 20px;
+    height: 4em;
+    text-align: center;
+}
+
+.goals_page form input[type="checkbox"].goal_input {
+    display: none;
+}
+
+.goals_page form input[type="checkbox"].goal_input+label {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 3rem;
+    height: 1.5rem;
+    border-radius: 1.5rem;
+    padding: 2px;
+    background-color: #c0ceda;
+    transition: all 0.5s;
+}
+
+.goals_page form input[type="checkbox"].goal_input+label::before {
+    box-sizing: border-box;
+    display: block;
+    content: "";
+    height: calc(1.5rem - 4px);
+    width: calc(1.5rem - 4px);
+    border-radius: 50%;
+    background-color: var(--secundary);
+    transition: all 0.5s;
+}
+
+.goals_page form input[type="checkbox"].goal_input:checked+label {
+    background-color: var(--main);
+}
+
+.goals_page form input[type="checkbox"].goal_input:checked+label::before {
+    margin-left: 1.5rem;
+}
+
+.goals_page form article {
+    display: none;
+}
+
+.goals_page form article.show_extra {
+    display: block;
+}
+
+/* Doesn't work? */
+/* form input[type="checkbox"].goal_input:checked+article {
+        display: block;
+    } */
+
+
+.goals_page input[type="submit"] {
+    background-color: var(--main);
+    border-radius: 10px;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 1.5em;
+}
+
+
+/*  =============
+        progress bar
+     /* ============  */
+
+
+/* #amount_of_repetitions {
+        position: fixed;
+        visibility: hidden;
+    }
+    
+    #goal_progress {
+        background: var(--accent);
+        height: 11px;
+        width: 99%;
+        position: relative;
+        margin: 0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    
+    #goal_progress div {
+        background: var(--main);
+        height: 11px;
+        width: 100%;
+        position: absolute;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    } */
+
+
+
+
+/*  =========
+        new style
+        ========== */
+
+.unordered_goal_list {
+    display: grid;
+    gap: 1.5em;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 1em;
+}
+
+.unordered_goal_list li {
+    align-items: flex-end;
+    background-color: var(--main);
+    background-image: url("/images/goals/voeding_doel_header.svg");
+    background-position-x: 90%;
+    background-position-y: .6em;
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    display: inline-flex;
+    height: 10em;
+}
+
+.unordered_goal_list section {
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    display: inline-flex;
+    height: 7.5em;
+    justify-content: space-between;
+    line-height: normal;
+    padding: 1em;
+    width: 100%;
+}
+
+.unordered_goal_list article h2 {
+    font-size: 23px;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+.unordered_goal_list article p {
+    line-height: 1em;
+    padding: 0;
+}
+
+.unordered_goal_list input[type=checkbox] {
+    background-image: url("/images/goals/plus_sign.svg");
+    background-size: 1.8em;
+    background-repeat: no-repeat;
+    background-position-y: 1.1em;
+    background-position-x: 1.1em;
+    position: relative;
+    right: 1.5em;
+    appearance: none;
+    width: 4em;
+    height: 4em;
+    background-color: var(--main);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.unordered_goal_list input[type=checkbox].checkmark {
+    background-image: url("/images/goals/check.svg");
+    background-color: var(--main_lighter);
+
+}
+
+.unordered_goal_list input[type=checkbox]:focus {
+    border: none;
+}
+
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    width: 100%;
+    height: 25px;
+    background: var(--beige);
+    outline: none;
+    transition: opacity .2s;
+    accent-color: var(--main);
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: var(--main);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: var(--main);
+    cursor: pointer;
+}
