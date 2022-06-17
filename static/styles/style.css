@@ -116,8 +116,8 @@ button {
 
 .onboarding h2,
 .onboarding p {
-    margin-left: .5em;
-    margin-right: .5em;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 .onboarding h2 {
@@ -128,6 +128,7 @@ button {
 
 .onboarding p {
     font-size: 1.1250em;
+    font-weight: 600;
 }
 
 /*  =========
@@ -407,8 +408,33 @@ button {
 /*  ========
     goals page
     ========== */
+
+.goals_page header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1em;
+}
+
 .goals_page h1 {
-    margin-bottom: 0;
+    margin: 0;
+    /* justify-content: center; */
+    padding-left: .8em;
+}
+
+.goals_page header svg {
+    /* margin: 1em; */
+    margin-right: 2em;
+}
+
+.empty_state {
+    text-align: center;
+    padding-top: 1em;
+    font-weight: 600;
+}
+
+.empty_state.hide_state {
+    display: none;
 }
 
 .add_goal {
@@ -435,14 +461,14 @@ button {
     /* transform: translate(-50%, -50%); */
     width: 100%;
     z-index: 2;
-    flex-wrap: wrap;
     justify-items: center;
 }
 
-.goals_page form:nth-last-child(1) {
+
+/* .goals_page form:nth-last-child(1) {
     grid-template-columns: repeat(1, .5fr);
     justify-content: center;
-}
+} */
 
 /* label.pulse {
         animation: pulse 2s infinite;
@@ -503,43 +529,39 @@ button {
 }
 
 .add_goal h3 {
+    font-weight: 600;
+    font-style: normal;
     margin: 0;
     text-align: center;
 }
 
-input[name="goal"] {
+/* input[name="goal"] {
     display: none;
-}
+} */
 
-.goals_page label[for=goal] h {
+/* .goals_page label[for=goal] {
     background-color: var(--secundary);
     border-radius: 20px;
     height: 4em;
     text-align: center;
-}
+} */
 
 .close_popup {
     margin-left: auto;
     padding: 1em;
 }
 
-.goals_page form input[type="checkbox"].goal_input:checked+label {
-    background-color: var(--main);
-}
-
-.goals_page form input[type="checkbox"].goal_input:checked+label::before {
-    margin-left: 1.5rem;
-}
-
-.goals_page form article {
+form input[type="checkbox"].goal_input {
     display: none;
 }
 
-.goals_page form article.show_extra {
-    display: block;
+form input[type="checkbox"].goal_input:checked+label,
+form input[type="checkbox"].goal_input:checked+.goal_card h3 {
+    background-color: var(--main_lighter);
+    font-weight: 700;
 }
 
-.add_goal section {
+.goal_card {
     background-color: #ffff;
     border-radius: 20px;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
@@ -560,8 +582,8 @@ input[name="goal"] {
     font-size: 16px;
     font-weight: 600;
     padding: 1.5em;
+    grid-column: span 1;
 }
-
 
 /*  =============
         progress bar
@@ -663,4 +685,25 @@ input[name="goal"] {
 
 .unordered_goal_list input[type=checkbox]:focus {
     border: none;
+}
+
+
+/*  ============
+    profile page 
+    ============ */
+
+.profile {
+    background-image: url("/images/profile_bg.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.profile header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile svg {
+    margin-left: 1em;
 }

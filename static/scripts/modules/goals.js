@@ -31,6 +31,8 @@ export default function goals() {
         goals.push(element)
     })
 
+    delete_state()
+
     function add_goal(event) {
         // Prevent the page from reloading.
         event.preventDefault()
@@ -75,6 +77,8 @@ export default function goals() {
             element.removeEventListener("click", increment_repetition)
             element.addEventListener("click", increment_repetition)
         })
+
+        delete_state()
     }
 
     function render_goals(goals, index) {
@@ -153,4 +157,11 @@ export default function goals() {
     //     put_goal_in_list_item(goal_array, unordered_goal_list)
     //     // localStorage.setItem("JSON_all_goals", JSON.stringify(JSON_all_goals))
     // }
+
+    function delete_state() {
+        if (goals.length > 0) {
+            $(".empty_state").classList.add("hide_state")
+        }
+    }
 }
+
