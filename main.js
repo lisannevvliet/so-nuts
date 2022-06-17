@@ -94,8 +94,10 @@ app.get("/profile", (_req, res) => {
 // Listen to all GET requests on /goals.
 app.get("/goals", (_req, res) => {
     // Get the goals from the database.
-    read_goals()
+    read_user_goals("lisannevanvliet@mail.com")
         .then(data => {
+            console.log(data)
+
             // Load the goals page with the goals.
             res.render("goals", {
                 goals: data
@@ -145,10 +147,18 @@ app.post("/", (req, res) => {
         })
 })
 
-async function read_goals() {
+async function read_user_goals(email) {
     const reponse = await supabase
-        .from("goals")
-        .select("*")
+        .from("user_goals")
+        .select(`
+        id,
+        email,
+        goal,
+        streak,
+        user:email ( name ),
+        goal:goal ( name )
+        `)
+        .eq("email", email)
 
     return reponse.data
 }
