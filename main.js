@@ -61,15 +61,16 @@ app.get("/questionnaire", (_req, res) => {
 
 // Listen to all POST requests on /questionnaire.
 app.post("/questionnaire", (req, res) => {
-    // Transform the answers to a compatible format and send a POST request with them.
-    post.post(reponses.reponses(req.body.answers))
-        .then(data => {
-            // Do not forget to remove this.
-            console.log(data)
-
-            // Redirect to the goals page.
-            res.redirect("/goals")
-        })
+    const user = { name: req.body.name, email: req.body.email }
+    update_user(user, { questionnaire: true })
+        .then(
+            // Transform the answers to a compatible format and send a POST request with them.
+            post.post(reponses.reponses(req.body.answers))
+                .then(
+                    // Redirect to the goals page.
+                    res.redirect("/goals")
+                )
+        )
 })
 
 // Listen to all GET requests on /profile.
@@ -132,13 +133,10 @@ app.post("/", (req, res) => {
                         res.redirect("/onboarding")
                     )
             } else {
-                // Check if the onboarding and questionnaire have already been completed. If not, redirect to the corresponding page.
-                if (!data.onboarding) {
+                // Check if the questionnaire has already been completed.
+                if (!data.questionnaire) {
                     // Redirect to the onboarding page.
                     res.redirect("/onboarding")
-                } else if (!data.questionnaire) {
-                    // Redirect to the questionnaire page.
-                    res.redirect("/questionnaire")
                 } else {
                     // Redirect to the goals page.
                     res.redirect("/goals")

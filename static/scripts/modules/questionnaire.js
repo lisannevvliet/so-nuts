@@ -5,6 +5,11 @@ import { save_answer } from "./answers.js"
 
 export default function questionnaire() {
     let index = 1
+    const user = JSON.parse(localStorage.getItem("user"))
+
+    // Fill the hidden name and email input fields with localStorage data.
+    $("#name").value = user.name
+    $("#email").value = user.email
 
     // Retrieve the index from localStorage and check if it is at least one and not greater than the amount of questions.
     if (localStorage.getItem("index") && localStorage.getItem("index") > 0 && localStorage.getItem("index") <= $("#amount_of_questions").textContent) {
