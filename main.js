@@ -36,9 +36,8 @@ app.listen(process.env.PORT, () => {
 
 // Listen to all GET requests on /onboarding.
 app.get("/onboarding", (_req, res) => {
-    // Load the onboarding page with the stylesheet.
-    res.render("onboarding", {
-    })
+    // Load the onboarding page.
+    res.render("onboarding")
 })
 
 // Listen to all GET requests on /questionnaire.
@@ -49,7 +48,7 @@ app.get("/questionnaire", (_req, res) => {
                 .then(domains => {
                     // Check if the files exist.
                     if (questionnaire != undefined && domains != undefined) {
-                        // Load the questionnaire page with the domains, questionnaire, length and stylesheet.
+                        // Load the questionnaire page with the domains, questionnaire and questionnaire length.
                         res.render("questionnaire", {
                             domains: domains,
                             questionnaire: questionnaire.questions,
@@ -81,7 +80,7 @@ app.get("/profile", (_req, res) => {
                 .then(questionnaire_response => {
                     // Check if the files exist.
                     if (questionnaire != undefined && questionnaire_response != undefined) {
-                        // Load the profile page with the questionnaire, questionnaire response and stylesheet.
+                        // Load the profile page with the questionnaire and questionnaire response.
                         res.render("profile", {
                             questionnaire: questionnaire.questions,
                             questionnaire_response: questionnaire_response.questionResponses
@@ -96,7 +95,7 @@ app.get("/goals", (_req, res) => {
     // Get the goals from the database.
     read_goals()
         .then(data => {
-            // Load the goals page with the stylesheet.
+            // Load the goals page with the goals.
             res.render("goals", {
                 goals: data
             })
@@ -105,10 +104,9 @@ app.get("/goals", (_req, res) => {
     //     .then(food_goals => {
     //         // Check if the file exists.
     //         if (food_goals != undefined) {
-    //             // Load the goals page with the stylesheet.
+    //             // Load the goals page with the food goals.
     //             res.render("goals", {
-    //                 food_goals: food_goals,
-    //                 style: "goals.css"
+    //                 food_goals: food_goals
     //             })
     //         }
     //     })
@@ -117,9 +115,8 @@ app.get("/goals", (_req, res) => {
 
 // Listen to all GET requests on /.
 app.get("/", (_req, res) => {
-    // Load the login page with the stylesheet.
-    res.render("login", {
-    })
+    // Load the login page.
+    res.render("login")
 })
 
 // Listen to all POST requests on /.
