@@ -138,7 +138,7 @@ app.post("/", (req, res) => {
                     )
             } else {
                 // Check if the questionnaire has already been completed.
-                if (!user.questionnaire) {
+                if (user.questionnaire == false) {
                     // Redirect to the onboarding page.
                     res.redirect("/onboarding")
                 } else {
