@@ -66,8 +66,8 @@ app.post("/questionnaire", (req, res) => {
             // Transform the answers to a compatible format and send a POST request with them.
             post.post(reponses.reponses(req.body.answers))
                 .then(
-                    // Redirect to the goals page.
-                    res.redirect("/goals")
+                    // Redirect to the personalized goals page.
+                    res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
                 )
         )
 })
@@ -91,20 +91,23 @@ app.get("/profile", (_req, res) => {
 })
 
 // Listen to all GET requests on /goals.
-app.get("/goals", (_req, res) => {
+app.get("/goals", (req, res) => {
     // Get the goals from the database.
     read_goals()
         .then(goals => {
             // Get the user goals from the database.
-            read_user_goals("lisannevanvliet@mail.com")
+            read_user_goals(req.query.email)
                 .then(user_goals => {
-                    // Load the goals page with the user goals and goals.
+                    // Load the goals page with the name, whether the name ends with an s, user goals and goals.
                     res.render("goals", {
+                        name: req.query.name,
+                        s: req.query.name.slice(-1) == "s" || req.query.name.slice(-1) == "S",
                         user_goals: user_goals,
                         goals: goals
                     })
                 })
         })
+
     // get.get("food_goals", "Goals?domainId=voeding")
     //     .then(food_goals => {
     //         // Check if the file exists.
@@ -116,7 +119,6 @@ app.get("/goals", (_req, res) => {
     //         }
     //     })
 })
-
 
 // Listen to all GET requests on /.
 app.get("/", (_req, res) => {
@@ -142,8 +144,8 @@ app.post("/", (req, res) => {
                     // Redirect to the onboarding page.
                     res.redirect("/onboarding")
                 } else {
-                    // Redirect to the goals page.
-                    res.redirect("/goals")
+                    // Redirect to the personalized goals page.
+                    res.redirect(`/goals?name=${user[0].name}&email=${user[0].email}`)
                 }
             }
         })
