@@ -31,6 +31,10 @@ h1 {
     padding-left: .54em;
 }
 
+p {
+    overflow-wrap: break-word;
+}
+
 @supports (height: 100dvh) {
     main {
         height: 100dvh;
@@ -82,7 +86,7 @@ button {
 
 .next_button:focus {
     border: 3px solid var(--black);
-    outline: none !important;
+    outline: none;
 }
 
 .next_button.turquoise {
@@ -347,7 +351,7 @@ button {
 
 .questionnaire_page button:focus {
     border: 3px solid var(--accent);
-    outline: none !important;
+    outline: none;
 }
 
 /*  ===========
@@ -361,13 +365,18 @@ button {
     border-bottom: 1px solid var(--black);
     /* border-radius: 5px; */
     /* border: solid darkgrey 1px; */
-    height: 3em;
+    height: 2em;
+    font-size: 1em;
+    padding: 1em;
     width: 16em;
 }
 
 .questionnaire_page input:focus {
-    border: 2px solid var(--accent);
-    outline: none !important;
+    border-bottom: 2px solid var(--accent);
+    /* border-radius: 20px; */
+    /* padding: 1em; */
+    /* height: 3em; */
+    outline: none;
 }
 
 /*  ============
@@ -567,7 +576,7 @@ fieldset {
 
 .goals_page input:focus {
     border: 3px solid var(--accent);
-    outline: none !important;
+    outline: none;
 }
 
 .goals_page input[type="number"] {
@@ -733,7 +742,7 @@ fieldset {
     border: none;
 }
 
-.checkmark_circle {
+.checkmark_circle_test {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
     stroke-width: 2;
@@ -743,7 +752,7 @@ fieldset {
     animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
 }
 
-.checkmark {
+.checkmark_test {
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -759,7 +768,7 @@ fieldset {
     animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
 }
 
-.checkmark_check {
+.checkmark_check_test {
     transform-origin: 50% 50%;
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
@@ -896,6 +905,7 @@ fieldset {
     background-image: url("/images/profile_bg.svg");
     background-repeat: no-repeat;
     background-size: 100%;
+    background-color: #fafafa;
     height: auto;
 }
 
@@ -905,9 +915,17 @@ fieldset {
     align-items: center;
 }
 
+.profile a {
+    padding: 1em;
+}
+
 .profile svg {
     margin-left: 1em;
     cursor: pointer;
+}
+
+.profile h1 {
+    margin: auto;
 }
 
 .profile h2 {
@@ -917,27 +935,74 @@ fieldset {
 .profile_picture {
     background-color: var(--grey);
     border-radius: 50%;
-    height: 5em;
+    height: 6em;
     margin: auto;
+    margin-top: -2em;
+    width: 6em;
+}
+
+.quote {
+    display: block;
+    line-height: 1.5em;
+    padding: 1em;
+}
+
+.quote strong {
+    padding: 1em;
+}
+
+.quote em {
+    color: darkgray;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+cite {
+    padding: 2em;
+}
+
+.streak_record {
+    background-color: #E7E7E7;
+    background-image: url("/images/finish.svg");
+    border-radius: 20px;
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: bottom right;
+    height: 8.5em;
+    margin: 1em;
+    padding: 1em;
+    width: 9em;
+}
+
+.streak_record p {
+    overflow-wrap: break-word;
     width: 5em;
+    margin: 0;
+}
+
+
+.see_answers {
+    background-color: #E7E7E7;
+    border-radius: 20px;
+    height: 8.5em;
+    padding: 1em;
+    width: 14em;
 }
 
 .fyp_articles {
     flex-direction: row;
     overflow-x: scroll;
     overflow-y: hidden;
-}
-
-.profile section {
     display: flex;
     gap: 1em;
     padding-left: 1em;
     padding-right: 1em;
 }
 
+
 .fyp_articles article {
     align-items: center;
-    background-color: var(--beige);
+    background-color: #E7E7E7;
     border-radius: 20px;
     flex-direction: row;
     gap: 1em;

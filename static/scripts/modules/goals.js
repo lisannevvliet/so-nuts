@@ -164,12 +164,12 @@ export default function goals() {
         }
     }
 
-    $$(".checkmark").addEventListener("click", () => {
-        // Show the check animation
-        $$(".checkmark").classList.add("checkmark_animation")
-        $$(".checkmark_check").classList.add("checkmark_check_animation")
-        // $("li").classList.add("confetti")
-    })
+    // $$(".checkmark").addEventListener("click", () => {
+    //     // Show the check animation
+    //     $$(".checkmark").classList.add("checkmark_animation")
+    //     $$(".checkmark_check").classList.add("checkmark_check_animation")
+    //     // $("li").classList.add("confetti")
+    // })
 
 
 }

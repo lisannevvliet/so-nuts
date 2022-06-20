@@ -7,26 +7,32 @@
                     transform="translate(-40.544 -149.749) rotate(45)" fill="#282727" />
             </svg>
         </a>
-        <h1>Profiel</h1>
     </header>
     <section class="profile_picture"></section>
+    <h1>{{name}}farrahton'{{#ifCond s false}}s{{/ifCond}}</h1>
+
+    <section class="quote">
+        <strong>Motivatie voor vandaag</strong>
+
+        <p>
+            <em>“</em>
+            Lorem ipsum an inspirational quote of the day
+            Lorem ipsum an inspirational quote of the day
+            <em>”</em>
+        </p>
+        <cite>- Moi</cite>
+    </section>
 
     <article class="grid_two_columns">
-        {{#each questionnaire_response}}
-            {{#each ../questionnaire}}
-                {{#ifCond this.id ../this.questionId}}
-                    {{#if this.questionText}}
-                        <p>{{this.questionText}}</p>
-                    {{/if}}
-                    {{#if this.text}}
-                        <p>{{this.text}}</p>
-                    {{/if}}
-                {{/ifCond}}
-            {{/each}}
-            <p>{{this.response}}</p>
-        {{/each}}
-    </article>
+        <article class="streak_record">
+            <p>Hoogste streak</p>
+            <strong>24</strong>
+        </article>
 
+        <article class="see_answers">
+            <p>Bekijk de door jou ingevulde antwoorden op de vragenlijst</p>
+        </article>
+    </article>
     <h2>Voor jou geselecteerd</h2>
     <section class="fyp_articles">
         <article>
@@ -50,4 +56,23 @@
             <p>Lees meer...</p>
         </article>
     </section>
+
+    <article class="grid_two_columns">
+        {{#each questionnaire_response}}
+            {{#each ../questionnaire}}
+                {{#ifCond this.id ../this.questionId}}
+                    {{#if this.questionText}}
+                        <p>{{this.questionText}}</p>
+                    {{/if}}
+                    {{#if this.text}}
+                        <p>{{this.text}}</p>
+                    {{/if}}
+                {{/ifCond}}
+            {{/each}}
+            <p>{{this.response}}</p>
+        {{/each}}
+    </article>
+
+
+
 </main>
