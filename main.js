@@ -94,14 +94,17 @@ app.get("/profile", (_req, res) => {
 // Listen to all GET requests on /goals.
 app.get("/goals", (_req, res) => {
     // Get the goals from the database.
-    read_user_goals("lisannevanvliet@mail.com")
-        .then(data => {
-            console.log(data)
-
-            // Load the goals page with the goals.
-            res.render("goals", {
-                goals: data
-            })
+    read_goals()
+        .then(goals => {
+            // Get the user goals from the database.
+            read_user_goals("lisannevanvliet@mail.com")
+                .then(user_goals => {
+                    // Load the goals page with the user goals and goals.
+                    res.render("goals", {
+                        user_goals: user_goals,
+                        goals: goals
+                    })
+                })
         })
     // get.get("food_goals", "Goals?domainId=voeding")
     //     .then(food_goals => {
@@ -126,9 +129,9 @@ app.get("/", (_req, res) => {
 app.post("/", (req, res) => {
     // Check if the user already exists in the database.
     read_user(req.body)
-        .then(data => {
+        .then(user => {
             // If not, create a new user in the database.
-            if (data.length == 0) {
+            if (user.length == 0) {
                 insert_user(req.body)
                     .then(
                         // Redirect to the onboarding page.
@@ -136,7 +139,7 @@ app.post("/", (req, res) => {
                     )
             } else {
                 // Check if the questionnaire has already been completed.
-                if (!data.questionnaire) {
+                if (!user.questionnaire) {
                     // Redirect to the onboarding page.
                     res.redirect("/onboarding")
                 } else {
@@ -147,6 +150,17 @@ app.post("/", (req, res) => {
         })
 })
 
+async function read_goals() {
+    const reponse = await supabase
+        .from("goals")
+        .select(`
+        name,
+        icon
+        `)
+
+    return reponse.data
+}
+
 async function read_user_goals(email) {
     const reponse = await supabase
         .from("user_goals")
@@ -156,7 +170,7 @@ async function read_user_goals(email) {
         goal,
         streak,
         user:email ( name ),
-        goal:goal ( name )
+        goal ( name, icon )
         `)
         .eq("email", email)
 

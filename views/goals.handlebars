@@ -36,6 +36,23 @@
         </p>
     </section>
     <ul class="unordered_goal_list">
+        {{#each user_goals}}
+            <li>
+                <section>
+                    <article>
+                        <h2>{{goal.name}}</h2>
+                        <p><span class="repetition_change">{{streak}}</span>/21 dagelijks</p>
+                    </article>
+                    <label for="goal_{{id}}">
+                        <input type="checkbox" data-index={{id}} name="goal_{{id}}" id="goal_{{id}}" {{#ifCond streak
+                            21}} checked{{/ifCond}} />
+                    </label>
+                </section>
+                <div id="goal_progress">
+                    <div></div>
+                </div>
+            </li>
+        {{/each}}
     </ul>
     <div class="button_wrapper">
         <button id="add">
