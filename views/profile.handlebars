@@ -1,6 +1,6 @@
 <main class="profile">
     <header>
-        <a href="/goals">
+        <a href="/goals" alt="Ga terug naar doelen">
             <svg xmlns="http://www.w3.org/2000/svg" width="31.681" height="31.681" viewBox="0 0 31.681 31.681">
                 <path id="noun-plus-518521"
                     d="M164.13,80.113H153.9V69.884a4.113,4.113,0,0,0-8.2,0V80.113c.005,4.942,0,6.905-.023,8.147,0,.069,0,.052,0,.052,8.194-.01.04-.037,8.2.026H164.13a4.113,4.113,0,0,0,0-8.226Z"
@@ -9,8 +9,9 @@
         </a>
         <h1>Profiel</h1>
     </header>
+    <section class="profile_picture"></section>
 
-    <div class="grid_two_columns">
+    <article class="grid_two_columns">
         {{#each questionnaire_response}}
             {{#each ../questionnaire}}
                 {{#ifCond this.id ../this.questionId}}
@@ -24,7 +25,8 @@
             {{/each}}
             <p>{{this.response}}</p>
         {{/each}}
-    </div>
+    </article>
+
     <h2>Voor jou geselecteerd</h2>
     <section class="fyp_articles">
         <article>

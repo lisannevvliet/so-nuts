@@ -89,12 +89,12 @@ export default function goals() {
                     <section>
                         <article> 
                             <h2>${goal.name}</h2>
-                            <p>
-                                <span class="repetition_change">${goal.repetition}</span>/21 dagelijks
-                            </p> 
                         </article>
                         <label for="goal_${index}">
-                            <input type="checkbox" data-index=${index} name="goal_${index}" id="goal_${index}" ${goal.completed ? "checked" : ""} />
+                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none" />
+                            <path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                        </svg>
                         </label>
                     </section>
                     <div id="goal_progress">
@@ -163,5 +163,18 @@ export default function goals() {
             $(".empty_state").classList.add("hide_state")
         }
     }
+
+    $$(".checkmark").addEventListener("click", () => {
+        // Show the check animation
+        $$(".checkmark").classList.add("checkmark_animation")
+        $$(".checkmark_check").classList.add("checkmark_check_animation")
+        // $("li").classList.add("confetti")
+    })
+
+
 }
 
+/* <input type="checkbox" data-index=${index} name="goal_${index}" id="goal_${index}" ${goal.completed ? "checked" : ""} /> */
+/* <p>
+<span class="repetition_change">${goal.repetition}</span>/21 dagelijks
+</p>   */

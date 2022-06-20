@@ -5,36 +5,55 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="34.13" height="34.13" viewBox="0 0 34.13 34.13">
                 <path id="Path_85" data-name="Path 85"
                     d="M150.345,63.281A17.065,17.065,0,1,0,167.41,80.346,17.078,17.078,0,0,0,150.345,63.281Zm0,8.731a5.291,5.291,0,1,1-5.291,5.291A5.307,5.307,0,0,1,150.345,72.012Zm0,21.871a13.493,13.493,0,0,1-8.555-3.043,10.9,10.9,0,0,1,17.109,0A13.5,13.5,0,0,1,150.345,93.883Z"
-                    transform="translate(-133.28 -63.281)" />
+                    transform="translate(-133.28 -63.281)" fill="#282727" />
             </svg>
+
         </a>
     </header>
     <form class="add_goal">
         <h2>Kies uw doel uit</h2>
-        <div class="close_popup"><svg xmlns="http://www.w3.org/2000/svg" width="35.461" height="35.461"
-                viewBox="0 0 35.461 35.461">
+        <div class="close_popup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35.461" height="35.461" viewBox="0 0 35.461 35.461">
                 <path id="noun-plus-518521"
                     d="M158.27,75.663h-6.98v-6.98a2.807,2.807,0,0,0-5.6,0v6.98h-7a2.807,2.807,0,0,0,0,5.6h6.98v7a2.807,2.807,0,1,0,5.6,0v-6.98h7a2.807,2.807,0,0,0,0-5.613Z"
                     transform="translate(-31.697 -142.987) rotate(45)" fill="#282727" />
             </svg>
         </div>
-        {{#each goals}}
-            {{!-- <section class="goal_card"> --}}
-            <input type="checkbox" id="{{name}}" name="goal" class="goal_input" value="{{name}}">
-            <label for="{{name}}" class="goal_card">
-                <img src="{{icon}}">
-                <h3>{{name}}</h3>
-            </label>
-            {{!-- </section> --}}
-        {{/each}}
+        <fieldset>
+            {{#each goals}}
+
+                {{!-- <section class="goal_card"> --}}
+                <input type="checkbox" id="{{name}}" name="goal" class="goal_input" value="{{name}}">
+                <label for="{{name}}" class="goal_card">
+                    <img src="{{icon}}">
+                    <h3>{{name}}</h3>
+                </label>
+                {{!-- </section> --}}
+            {{/each}}
+        </fieldset>
         <input type="submit" value="Voeg toe" />
     </form>
+
     <section class="empty_state">
         <img src="/images/onboarding/onboarding_3.svg">
         <p>Begin met het aanmaken van doelen! Voor jou samengesteld. Het is aan te raden om er op 2 à 3te focussen.
             Empty state styling
         </p>
     </section>
+
+    <div class="confetti_container">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+    </div>
+
     <ul class="unordered_goal_list">
         {{#each user_goals}}
             <li>
@@ -67,3 +86,10 @@
 </main>
 {{!-- <label for="time_reminder">Hoelaat wil je een herinnering krijgen?</label>
 <input type="time" id="time_reminder" name="time_reminder" min="06:00" max="23:00"> --}}
+
+
+<svg xmlns="http://www.w3.org/2000/svg" width="29.472" height="25.187" viewBox="0 0 29.472 25.187">
+    <path id="Path_62" data-name="Path 62"
+        d="M136.248,105.171l-3.225-4.623a3.393,3.393,0,0,0-5.566,3.883l6,8.6a3.4,3.4,0,0,0,4.725.842,3.354,3.354,0,0,0,1.016-1.131h0l.014-.03a3.429,3.429,0,0,0,.2-.44c1.235-2.657,7.773-16.083,16.906-22.98,0,0-11.5.29-20.074,15.876Z"
+        transform="translate(-126.85 -89.294)" fill="#ebede9" />
+</svg>
