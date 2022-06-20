@@ -411,7 +411,7 @@ button {
 
 .goals_page header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-top: 1em;
 }
@@ -419,12 +419,62 @@ button {
 .goals_page h1 {
     margin: 0;
     /* justify-content: center; */
+    padding-left: 2em;
+    margin: auto;
+    text-align: center;
     padding-left: .8em;
+    font-size: 1.5em;
 }
 
 .goals_page header svg {
     /* margin: 1em; */
-    margin-right: 2em;
+    cursor: pointer;
+    margin-right: 1em;
+}
+
+.add_goal {
+    display: none;
+    background-color: var(--beige);
+    overflow-y: scroll;
+}
+
+.goals_page form.show_popup {
+    align-items: center;
+    /* border-radius: 20px; */
+    background-color: #fafafa;
+    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+    display: flex;
+    /* display: grid;
+    row-gap: 1em;
+    grid-template-columns: repeat(2, .5fr); */
+    height: 100%;
+    /* left: 50%; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    padding-bottom: 1.3em;
+    max-width: 768px;
+    /* padding: 1em; */
+    position: fixed;
+    /* top: 50%; */
+    /* transform: translate(-50%, -50%); */
+    width: 100%;
+    z-index: 2;
+    justify-items: center;
+    flex-wrap: wrap;
+}
+
+.add_goal h2 {
+    /* width: 100vh; */
+    padding-left: 2em;
+    margin: auto;
+    text-align: center;
+}
+
+.close_popup {
+    /* margin-left: 3em; */
+    cursor: pointer;
+    position: sticky;
+    padding: 1em;
 }
 
 .empty_state {
@@ -437,32 +487,28 @@ button {
     display: none;
 }
 
-.add_goal {
-    display: none;
-    background-color: var(--beige);
-    overflow-y: scroll;
-}
-
-.goals_page form.show_popup {
-    /* border-radius: 20px; */
-    background-color: #fafafa;
-    box-shadow: 0 0 5px rgb(0 0 0 / 20%);
+fieldset {
+    appearance: none;
+    border: none;
+    /* background-color: #fafafa; */
+    /* box-shadow: 0 0 5px rgb(0 0 0 / 20%); */
     display: grid;
     row-gap: 1em;
     grid-template-columns: repeat(2, .5fr);
-    height: 100%;
+    /* height: 100%; */
     /* left: 50%; */
     /* margin-left: auto; */
     /* margin-right: auto; */
     max-width: 768px;
     /* padding: 1em; */
-    position: fixed;
+    /* position: fixed; */
     /* top: 50%; */
     /* transform: translate(-50%, -50%); */
     width: 100%;
     z-index: 2;
     justify-items: center;
 }
+
 
 
 /* .goals_page form:nth-last-child(1) {
@@ -535,6 +581,7 @@ button {
     text-align: center;
 }
 
+
 /* input[name="goal"] {
     display: none;
 } */
@@ -546,17 +593,12 @@ button {
     text-align: center;
 } */
 
-.close_popup {
-    margin-left: auto;
-    padding: 1em;
-}
-
-form input[type="checkbox"].goal_input {
+.goals_page form input[type="checkbox"].goal_input {
     display: none;
 }
 
-form input[type="checkbox"].goal_input:checked+label,
-form input[type="checkbox"].goal_input:checked+.goal_card h3 {
+.goals_page form input[type="checkbox"].goal_input:checked+label,
+.goals_page form input[type="checkbox"].goal_input:checked+.goal_card h3 {
     background-color: var(--main_lighter);
     font-weight: 700;
 }
@@ -581,8 +623,11 @@ form input[type="checkbox"].goal_input:checked+.goal_card h3 {
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
+    margin: auto;
+    margin-top: 1em;
     padding: 1.5em;
-    grid-column: span 1;
+    /* grid-column: span 1; */
+    width: 50%;
 }
 
 /*  =============
@@ -613,10 +658,6 @@ form input[type="checkbox"].goal_input:checked+.goal_card h3 {
         border-bottom-left-radius: 20px;
         border-bottom-right-radius: 20px;
     } */
-
-
-
-
 
 .unordered_goal_list {
     display: grid;
@@ -687,6 +728,67 @@ form input[type="checkbox"].goal_input:checked+.goal_card h3 {
     border: none;
 }
 
+.checkmark_circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: var(--main);
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+}
+
+.checkmark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    margin: 10% auto;
+    box-shadow: inset 0px 0px 0px var(--main);
+}
+
+.checkmark_animation {
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+}
+
+.checkmark_check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+}
+
+.checkmark_check_animation {
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0
+    }
+}
+
+@keyframes scale {
+
+    0%,
+    100% {
+        transform: none
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1)
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px var(--main)
+    }
+}
+
+
 
 /*  ============
     profile page 
@@ -696,6 +798,7 @@ form input[type="checkbox"].goal_input:checked+.goal_card h3 {
     background-image: url("/images/profile_bg.svg");
     background-repeat: no-repeat;
     background-size: 100%;
+    height: auto;
 }
 
 .profile header {
@@ -706,4 +809,71 @@ form input[type="checkbox"].goal_input:checked+.goal_card h3 {
 
 .profile svg {
     margin-left: 1em;
+    cursor: pointer;
+}
+
+
+.profile h2 {
+    padding-left: 1em;
+}
+
+.fyp_articles {
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.profile section {
+    display: flex;
+    gap: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.fyp_articles article {
+    align-items: center;
+    background-color: var(--beige);
+    border-radius: 20px;
+    flex-direction: row;
+    gap: 1em;
+    height: auto;
+    padding: 1em;
+    width: 90%;
+}
+
+.fyp_articles h3 {
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-top: .5em;
+}
+
+.fyp_articles p {
+    padding-left: .5em;
+    padding-right: .5em;
+    padding-top: .5em;
+    margin: 0;
+}
+
+.fyp_articles article::before {
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 20px;
+    content: "";
+    display: block;
+    height: 18vh;
+    justify-content: center;
+    margin-bottom: .2em;
+    /* border-top-left-radius: 20px;
+        border-top-right-radius: 20px; 
+        deze aan en border radius + padding op article uit voor andere versie*/
+    width: 35vw;
+}
+
+.fyp_articles article:nth-of-type(1):before {
+    background-image: url(/images/fitness_illustraiton.webp);
+}
+
+.fyp_articles article:nth-of-type(2):before {
+    background-image: url(/images/food_illustration.webp);
 }

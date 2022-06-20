@@ -1,8 +1,15 @@
-<header> 
-    <h1>Profiel</h1>
-</header>
 <main class="profile">
-   
+    <header>
+        <a href="/goals">
+            <svg xmlns="http://www.w3.org/2000/svg" width="31.681" height="31.681" viewBox="0 0 31.681 31.681">
+                <path id="noun-plus-518521"
+                    d="M164.13,80.113H153.9V69.884a4.113,4.113,0,0,0-8.2,0V80.113c.005,4.942,0,6.905-.023,8.147,0,.069,0,.052,0,.052,8.194-.01.04-.037,8.2.026H164.13a4.113,4.113,0,0,0,0-8.226Z"
+                    transform="translate(-40.544 -149.749) rotate(45)" fill="#282727" />
+            </svg>
+        </a>
+        <h1>Profiel</h1>
+    </header>
+
     <div class="grid_two_columns">
         {{#each questionnaire_response}}
             {{#each ../questionnaire}}
@@ -18,36 +25,27 @@
             <p>{{this.response}}</p>
         {{/each}}
     </div>
+    <h2>Voor jou geselecteerd</h2>
+    <section class="fyp_articles">
+        <article>
+            <h3>Makkelijke oefeningen</h3>
+            <p>Lees meer...</p>
+        </article>
+        <article>
+            <h3>Alles over eiwitten</h3>
+            <p>Lees meer...</p>
+        </article>
+        <article>
+            <h3>Vegan eiwitten</h3>
+            <p>Lees meer...</p>
+        </article>
+        <article>
+            <h3>Snel gezond ontbijt</h3>
+            <p>Lees meer...</p>
+        </article>
+        <article>
+            <h3>Warming-up</h3>
+            <p>Lees meer...</p>
+        </article>
+    </section>
 </main>
-<nav>
-      <ul>
-            <li class="list">
-                <a href="/" class="active">
-                    <i class="material-icons icon">dashboard</i>
-                    <span class="text">Dashboard</span>
-                </a>
-            </li>
-
-            <li class="list">
-                <a href="/fitness">
-                    <i class="material-icons icon">fitness_center</i>
-                    <span class="text">Beweging</span>
-                </a>
-            </li>
-
-            <li class="list">
-                <a href="/food">
-                    <i class="material-icons icon">fastfood</i>
-                    <span class="text">Voedselinname</span>
-                </a>
-            </li>
-
-            <li class="list active">
-                <a href="/profile">
-                    <i class="material-icons icon">person</i>
-                    <span class="text">Profiel</span>
-                </a>
-            </li>
-            <div class="indicator"></div>
-        </ul>
-</nav>
