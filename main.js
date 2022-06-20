@@ -61,8 +61,7 @@ app.get("/questionnaire", (_req, res) => {
 
 // Listen to all POST requests on /questionnaire.
 app.post("/questionnaire", (req, res) => {
-    const user = { name: req.body.name, email: req.body.email }
-    update_user(user, { questionnaire: true })
+    update_user(req.body.email, { questionnaire: true })
         .then(
             // Transform the answers to a compatible format and send a POST request with them.
             post.post(reponses.reponses(req.body.answers))
@@ -128,7 +127,7 @@ app.get("/", (_req, res) => {
 // Listen to all POST requests on /.
 app.post("/", (req, res) => {
     // Check if the user already exists in the database.
-    read_user(req.body)
+    read_user(req.body.email)
         .then(user => {
             // If not, create a new user in the database.
             if (user.length == 0) {
@@ -177,12 +176,11 @@ async function read_user_goals(email) {
     return reponse.data
 }
 
-async function read_user(user) {
+async function read_user(email) {
     const reponse = await supabase
         .from("users")
         .select("*")
-        .eq("name", user.name)
-        .eq("email", user.email)
+        .eq("email", email)
 
     return reponse.data
 }
@@ -193,10 +191,9 @@ async function insert_user(user) {
         .insert([user])
 }
 
-async function update_user(user, value) {
+async function update_user(email, value) {
     await supabase
         .from("users")
         .update(value)
-        .eq("name", user.name)
-        .eq("email", user.email)
+        .eq("email", email)
 }
