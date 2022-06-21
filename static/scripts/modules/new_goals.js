@@ -21,7 +21,7 @@ export default function new_goals() {
 
     $$(".checkmark_test").forEach((element, index) => {
         element.addEventListener("click", (event) => {
-            console.log(event)
+            console.log(`ID of user goal: ${event.target.id}`)
 
             // Show the check animation.
             $$(".checkmark_test")[index].classList.add("checkmark_animation")
