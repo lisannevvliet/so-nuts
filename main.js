@@ -120,17 +120,16 @@ app.get("/goals", (req, res) => {
                     })
                 })
         })
+})
 
-    // get.get("food_goals", "Goals?domainId=voeding")
-    //     .then(food_goals => {
-    //         // Check if the file exists.
-    //         if (food_goals != undefined) {
-    //             // Load the goals page with the food goals.
-    //             res.render("goals", {
-    //                 food_goals: food_goals
-    //             })
-    //         }
-    //     })
+// Listen to all POST requests on /increase_streak.
+app.post("/increase_streak", (req, res) => {
+    // Increase the streak by one.
+    update_user_goal(req.body.id, { streak: parseInt(req.body.streak) + 1 })
+        .then(
+            // Redirect to the personalized goals page.
+            res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
+        )
 })
 
 // Listen to all POST requests on /add_goals.
@@ -207,8 +206,16 @@ async function read_user_goals(email) {
         goal ( name, icon )
         `)
         .eq("email", email)
+        .order("id", { ascending: false })
 
     return reponse.data
+}
+
+async function update_user_goal(id, value) {
+    await supabase
+        .from("user_goals")
+        .update(value)
+        .eq("id", id)
 }
 
 async function read_goals() {

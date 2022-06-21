@@ -29,8 +29,8 @@
                 {{!-- </section> --}}
             {{/each}}
         </fieldset>
-        <input type="hidden" id="name" name="name">
-        <input type="hidden" id="email" name="email">
+        <input type="hidden" class="name" name="name">
+        <input type="hidden" class="email" name="email">
         <input type="submit" value="Voeg toe" />
     </form>
     {{#ifCond user_goals.length 0}}
@@ -63,10 +63,17 @@
                     <label for="goal_{{id}}">
                         {{!-- <input type="checkbox" data-index={{id}} name="goal_{{id}}" id="goal_{{id}}" {{#ifCond streak 21}}
                         checked{{/ifCond}} /> --}}
-                        <svg id={{id}} class="checkmark_test" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <svg class="checkmark_test" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                             <circle class="checkmark_circle_test" cx="26" cy="26" r="25" fill="none" />
                             <path class="checkmark_check_test" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                         </svg>
+                        <form class="increase_streak" action="/increase_streak" method="post">
+                            <input type="hidden" name="id" value={{id}}>
+                            <input type="hidden" name="streak" value={{streak}}>
+                            <input type="hidden" class="name" name="name">
+                            <input type="hidden" class="email" name="email">
+                            <input type="submit" class="hide_state">
+                        </form>
                     </label>
                 </section>
                 <div id="goal_progress">

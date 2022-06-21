@@ -6,8 +6,13 @@ export default function new_goals() {
     const parameters = new URLSearchParams(window.location.search)
 
     // Fill the hidden input fields with the URL parameter values.
-    $("#name").value = parameters.get("name")
-    $("#email").value = parameters.get("email")
+    $$(".name").forEach(element => {
+        element.value = parameters.get("name")
+    })
+
+    $$(".email").forEach(element => {
+        element.value = parameters.get("email")
+    })
 
     $("#add").addEventListener("click", () => {
         // Show the pop-up.
@@ -20,8 +25,9 @@ export default function new_goals() {
     })
 
     $$(".checkmark_test").forEach((element, index) => {
-        element.addEventListener("click", (event) => {
-            console.log(`ID of user goal: ${event.target.id}`)
+        element.addEventListener("click", () => {
+            // Submit the hidden form.
+            $$(".increase_streak")[index].submit()
 
             // Show the check animation.
             $$(".checkmark_test")[index].classList.add("checkmark_animation")
