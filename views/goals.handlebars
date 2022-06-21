@@ -33,13 +33,13 @@
         <input type="hidden" id="email" name="email">
         <input type="submit" value="Voeg toe" />
     </form>
-
-    <section class="empty_state">
-        <img src="/images/onboarding_3.webp">
-        <p>Begin met het aanmaken van doelen! Voor jou samengesteld. Het is aan te raden om er op 2 à 3te focussen.
-        </p>
-    </section>
-
+    {{#ifCond user_goals.length 0}}
+        <section class="empty_state">
+            <img src="/images/onboarding_3.webp">
+            <p>Begin met het aanmaken van doelen! Voor jou samengesteld. Het is aan te raden om er op 2 à 3te focussen.
+            </p>
+        </section>
+    {{/ifCond}}
     <ul class="unordered_goal_list">
         {{#each user_goals}}
             <li>
