@@ -73,21 +73,21 @@ app.get("/onboarding", (_req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", (_req, res) => {
-    get.get("questionnaire", "Questionnaires/2")
-        .then(questionnaire => {
-            get.get("domains", "Domains")
-                .then(domains => {
-                    // Check if the files exist.
-                    if (questionnaire != undefined && domains != undefined) {
-                        // Load the questionnaire page with the domains, questionnaire and questionnaire length.
-                        res.render("questionnaire", {
-                            domains: domains,
-                            questionnaire: questionnaire.questions,
-                            length: questionnaire.questions.length - 1
-                        })
-                    }
-                })
-        })
+    // Queue all data dependencies in parallel
+    Promise.all([
+        get.get("questionnaire", "Questionnaires/2"),
+        get.get("domains", "Domains")
+    ]).then(([questionnaire, domains]) => {
+        // Check if the files exist.
+        if (questionnaire && domains) {
+            // Load the questionnaire page with the domains, questionnaire and questionnaire length.
+            res.render("questionnaire", {
+                domains: domains,
+                questionnaire: questionnaire.questions,
+                length: questionnaire.questions.length - 1
+            })
+        }
+    })
 })
 
 // Listen to all POST requests on /questionnaire.
@@ -105,21 +105,19 @@ app.post("/questionnaire", (req, res) => {
 
 // Listen to all GET requests on /goals.
 app.get("/goals", (req, res) => {
-    // Get the goals from the database.
-    read_goals()
-        .then(goals => {
-            // Get the user goals from the database.
-            read_user_goals(req.query.email)
-                .then(user_goals => {
-                    // Load the goals page with the name, whether the name ends with an s, user goals and goals.
-                    res.render("goals", {
-                        name: req.query.name,
-                        s: req.query.name.slice(-1) == "s" || req.query.name.slice(-1) == "S",
-                        user_goals: user_goals,
-                        goals: goals
-                    })
-                })
-        })
+    // Queue all data dependencies in parallel
+    Promise.all([
+        read_goals(),
+        read_user_goals(req.query.email)
+    ]).then(([goals, user_goals]) => {
+      // Load the goals page with the name, whether the name ends with an s, user goals and goals.
+      res.render("goals", {
+          name: req.query.name,
+          s: req.query.name.slice(-1) == "s" || req.query.name.slice(-1) == "S",
+          user_goals: user_goals,
+          goals: goals
+      })
+  })
 
     // get.get("food_goals", "Goals?domainId=voeding")
     //     .then(food_goals => {
@@ -135,42 +133,32 @@ app.get("/goals", (req, res) => {
 
 // Listen to all POST requests on /add_goals.
 app.post("/add_goals", (req, res) => {
-    if (Array.isArray(req.body.goal)) {
-        req.body.goal.forEach((goal, index) => {
-            add_user_goal(req.body.email, goal)
-                .then(() => {
-                    // Check if the last goal has been added.
-                    if (index == req.body.goal.length - 1) {
-                        // Redirect to the personalized goals page.
-                        res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
-                    }
-                })
-        })
-    } else {
-        add_user_goal(req.body.email, req.body.goal)
-            .then(
-                // Redirect to the personalized goals page.
-                res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
-            )
-    }
+  Promise.all( // Queue all goals in parralel
+    [req.body.goal].flatten() // Ensure req.body.goal is always an array
+      .map((goal) => add_user_goal(req.body.email, goal)) // Map every goal to a DB update and await it
+  ).then(() => {
+      // We don't track indexes, we know we're done after Promise.all resolves
+      // Redirect to the personalized goals page.
+      res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
+  })
 })
 
 // Listen to all GET requests on /profile.
 app.get("/profile", (_req, res) => {
-    get.get("questionnaire", "Questionnaires/2")
-        .then(questionnaire => {
-            get.get("questionnaire_response", "QuestionnaireResponses/3")
-                .then(questionnaire_response => {
-                    // Check if the files exist.
-                    if (questionnaire != undefined && questionnaire_response != undefined) {
-                        // Load the profile page with the questionnaire and questionnaire response.
-                        res.render("profile", {
-                            questionnaire: questionnaire.questions,
-                            questionnaire_response: questionnaire_response.questionResponses
-                        })
-                    }
-                })
+  // Queue all data dependencies in parallel
+  Promise.all([
+    get.get("questionnaire", "Questionnaires/2"),
+    get.get("questionnaire_response", "QuestionnaireResponses/3")
+  ]).then(([questionnaire, questionnaire_response]) => {
+    // Check if the files exist.
+    if (questionnaire && questionnaire_response) {
+        // Load the profile page with the questionnaire and questionnaire response.
+        res.render("profile", {
+            questionnaire: questionnaire.questions,
+            questionnaire_response: questionnaire_response.questionResponses
         })
+    }
+  })
 })
 
 async function read_user(email) {
