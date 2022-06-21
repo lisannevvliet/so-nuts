@@ -47,7 +47,7 @@ app.post("/", (req, res) => {
         .then(user => {
             // If not, create a new user in the database.
             if (user.length == 0) {
-                insert_user(req.body)
+                insert_user(req.body.email)
                     .then(
                         // Redirect to the onboarding page.
                         res.redirect("/onboarding")
@@ -181,10 +181,10 @@ async function read_user(email) {
     return reponse.data
 }
 
-async function insert_user(user) {
+async function insert_user(email) {
     await supabase
         .from("users")
-        .insert([user])
+        .insert([{ email: email }])
 }
 
 async function update_user(email, value) {
@@ -202,7 +202,6 @@ async function read_user_goals(email) {
         email,
         goal,
         streak,
-        user:email ( name ),
         goal ( name, icon )
         `)
         .eq("email", email)
