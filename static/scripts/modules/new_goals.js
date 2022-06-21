@@ -14,6 +14,9 @@ export default function new_goals() {
         element.value = parameters.get("email")
     })
 
+    // Clear the localStorage.
+    localStorage.clear()
+
     $("#add").addEventListener("click", () => {
         // Show the pop-up.
         $("form").classList.add("show_popup")
