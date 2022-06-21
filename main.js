@@ -59,7 +59,7 @@ app.post("/", (req, res) => {
                     res.redirect("/onboarding")
                 } else {
                     // Redirect to the personalized goals page.
-                    res.redirect(`/goals?name=${user[0].name}&email=${user[0].email}`)
+                    res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
                 }
             }
         })
