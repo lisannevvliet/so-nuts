@@ -17,9 +17,10 @@ if ($(".questionnaire")) {
 // Check if the goals page is currently displayed.
 if ($(".goals_page")) {
     goals()
-}
-
-// Check if the goals page is currently displayed.
-if ($(".goals_page")) {
     things()
 }
+
+// // Check if the profile page is currently displayed.
+// if ($(".profile")) {
+//     things()
+// }

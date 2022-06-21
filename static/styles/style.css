@@ -33,6 +33,7 @@ h1 {
 
 p {
     overflow-wrap: break-word;
+    margin: 0;
 }
 
 @supports (height: 100dvh) {
@@ -140,7 +141,7 @@ button {
     ========= */
 
 .login_page {
-    background-image: url("/images/bg_in.svg");
+    background-image: url("/images/login_bg.svg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -497,8 +498,13 @@ button {
     font-weight: 600;
 }
 
-.empty_state.hide_state {
+.hide_state {
     display: none;
+}
+
+.empty_state img {
+    height: auto;
+    width: 100%;
 }
 
 fieldset {
@@ -648,30 +654,30 @@ fieldset {
         progress bar
      /* ============  */
 
+/* 
+#amount_of_repetitions {
+    position: fixed;
+    visibility: hidden;
+}
 
-/* #amount_of_repetitions {
-        position: fixed;
-        visibility: hidden;
-    }
-    
-    #goal_progress {
-        background: var(--accent);
-        height: 11px;
-        width: 99%;
-        position: relative;
-        margin: 0;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-    }
-    
-    #goal_progress div {
-        background: var(--main);
-        height: 11px;
-        width: 100%;
-        position: absolute;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-    } */
+#goal_progress {
+    background: var(--accent);
+    height: 11px;
+    width: 99%;
+    position: absolute;
+    margin: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#goal_progress div {
+    background: var(--main);
+    height: 11px;
+    width: 100%;
+    position: absolute;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+} */
 
 .unordered_goal_list {
     display: grid;
@@ -902,10 +908,10 @@ fieldset {
     ============ */
 
 .profile {
-    background-image: url("/images/profile_bg.svg");
-    background-repeat: no-repeat;
-    background-size: 100%;
     background-color: #fafafa;
+    background-image: url("/images/profile_swirl.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
     height: auto;
 }
 
@@ -937,18 +943,19 @@ fieldset {
     border-radius: 50%;
     height: 6em;
     margin: auto;
-    margin-top: -2em;
     width: 6em;
 }
 
 .quote {
     display: block;
-    line-height: 1.5em;
     padding: 1em;
+    /* text-align: center; */
+    line-height: 1.5em;
 }
 
 .quote strong {
-    padding: 1em;
+    padding-left: 1.3em;
+    /* padding: 0; */
 }
 
 .quote em {
@@ -958,7 +965,7 @@ fieldset {
 }
 
 cite {
-    padding: 2em;
+    padding-left: 1.4em;
 }
 
 .streak_record {
@@ -966,12 +973,17 @@ cite {
     background-image: url("/images/finish.svg");
     border-radius: 20px;
     background-repeat: no-repeat;
-    background-size: 80%;
+    background-size: 55%;
     background-position: bottom right;
     height: 8.5em;
     margin: 1em;
     padding: 1em;
-    width: 9em;
+    width: auto;
+    /* width: 9em; */
+}
+
+.grid_streak {
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .streak_record p {
@@ -980,13 +992,20 @@ cite {
     margin: 0;
 }
 
+.streak_record strong {
+    font-size: 1.5em;
+}
 
 .see_answers {
     background-color: #E7E7E7;
+    background-image: url(/images/icons_questionnaire/questionnaire.svg);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 4em;
     border-radius: 20px;
     height: 8.5em;
     padding: 1em;
-    width: 14em;
+    width: auto;
 }
 
 .fyp_articles {
@@ -1041,9 +1060,10 @@ cite {
 }
 
 .fyp_articles article:nth-of-type(1):before {
-    background-image: url(/images/fitness_illustraiton.webp);
+    background-image: url(/images/fitness_illustration.webp);
 }
 
 .fyp_articles article:nth-of-type(2):before {
     background-image: url(/images/food_illustration.webp);
+    background-position: center;
 }
