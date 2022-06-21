@@ -1,21 +1,14 @@
 import $ from "./$.js"
-import $$ from "./$$.js"
 
 export default function profile() {
+    // Get the URL parameters.
+    const parameters = new URLSearchParams(window.location.search)
 
-    // $(".checkmark_test").addEventListener("click", () => {
-    //     // Show the check animation
-    //     $(".checkmark_test").classList.add("checkmark_animation")
-    //     $(".checkmark_check_test").classList.add("checkmark_check_animation")
-    //     // $("li").classList.add("confetti")
-    // })
-
-    // if complete {
-    // $("confetti_container").classList.remove("hide_state")
-    // }
+    // Fill the header with the URL parameter value.
+    $("#name").textContent = parameters.get("name")
 
     $(".see_answers").addEventListener("click", () => {
-        // Show the popup
+        // Show the pop-up.
         $(".questionnaire_answers").classList.remove("hide_state")
         $(".questionnaire_answers").classList.add("show_popup")
     })
