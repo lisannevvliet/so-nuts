@@ -1,9 +1,12 @@
 import $ from "./$.js"
-import $$ from "./$$.js"
 
 export default function new_goals() {
-    $("#name").value = "Lisanne"
-    $("#email").value = "lisannevanvliet@mail.com"
+    // Get the URL parameters.
+    const parameters = new URLSearchParams(window.location.search)
+
+    // Fill the hidden input fields with the URL parameter values.
+    $("#name").value = parameters.get("name")
+    $("#email").value = parameters.get("email")
 
     $("#add").addEventListener("click", () => {
         // Show the pop-up.
