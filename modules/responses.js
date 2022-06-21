@@ -1,5 +1,5 @@
 module.exports = {
-    reponses: (answers) => {
+    responses: (answers) => {
         let questionResponses = []
 
         // Prevent the server from crashing when none of the answers are filled in.
@@ -18,7 +18,7 @@ module.exports = {
                         }
                     })
 
-                    // Add the question reponse to the array if it is not a duplicate.
+                    // Add the question response to the array if it is not a duplicate.
                     if (!duplicate) {
                         questionResponses.push({
                             "questionId": key,
@@ -33,12 +33,12 @@ module.exports = {
                         // Check if the key already exists in the object.
                         if (key == element.questionId) {
                             duplicate = true
-                            // Add the reponse to the object.
-                            element.reponse = value
+                            // Add the response to the object.
+                            element.response = value
                         }
                     })
 
-                    // Add the question reponse to the array if it is not a duplicate.
+                    // Add the question response to the array if it is not a duplicate.
                     if (!duplicate) {
                         questionResponses.push({
                             "questionId": key,
@@ -46,7 +46,7 @@ module.exports = {
                         })
                     }
                 } else {
-                    // Add the question reponse to the array.
+                    // Add the question response to the array.
                     if (typeof value == "string") {
                         questionResponses.push({
                             "questionId": key,

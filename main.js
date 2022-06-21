@@ -6,7 +6,7 @@ const { createClient } = require("@supabase/supabase-js")
 
 // Import modules.
 const get = require("./modules/get.js")
-const reponses = require("./modules/reponses.js")
+const responses = require("./modules/responses.js")
 const post = require("./modules/post.js")
 
 // Initialise Supabase with a service key, to have full access to the data.
@@ -101,7 +101,7 @@ app.post("/questionnaire", (req, res) => {
     update_user(req.body.email, { questionnaire: true })
         .then(
             // Transform the answers to a compatible format and send a POST request with them.
-            post.post(reponses.reponses(req.body.answers))
+            post.post(responses.responses(req.body.answers))
                 .then(
                     // Redirect to the personalized goals page.
                     res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
@@ -185,12 +185,12 @@ app.get("/profile", (_req, res) => {
 })
 
 async function read_user(email) {
-    const reponse = await supabase
+    const response = await supabase
         .from("users")
         .select("*")
         .eq("email", email)
 
-    return reponse.data
+    return response.data
 }
 
 async function insert_user(email) {
@@ -207,7 +207,7 @@ async function update_user(email, value) {
 }
 
 async function read_user_goals(email) {
-    const reponse = await supabase
+    const response = await supabase
         .from("user_goals")
         .select(`
         id,
@@ -219,7 +219,7 @@ async function read_user_goals(email) {
         .eq("email", email)
         .order("id", { ascending: false })
 
-    return reponse.data
+    return response.data
 }
 
 async function update_user_goal(id, value) {
@@ -230,7 +230,7 @@ async function update_user_goal(id, value) {
 }
 
 async function read_goals() {
-    const reponse = await supabase
+    const response = await supabase
         .from("goals")
         .select(`
         name,
@@ -238,7 +238,7 @@ async function read_goals() {
         category
         `)
 
-    return reponse.data
+    return response.data
 }
 
 async function add_user_goal(email, goal) {
