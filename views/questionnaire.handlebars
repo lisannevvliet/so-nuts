@@ -48,6 +48,8 @@
                         {{#ifCond @index ../length}}
                             <form action="/questionnaire" method="post">
                                 <input type="hidden" id="answers" name="answers">
+                                <input type="hidden" id="name" name="name">
+                                <input type="hidden" id="email" name="email">
                         {{/ifCond}}
                         {{!-- Change the next button text and background in the last question. --}}
                         <button class="next_button{{#ifCond @index ../length}} turquoise"

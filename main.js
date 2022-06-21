@@ -50,13 +50,13 @@ app.post("/", (req, res) => {
                 insert_user(req.body.email)
                     .then(
                         // Redirect to the onboarding page.
-                        res.redirect("/onboarding")
+                        res.redirect(`/onboarding?name=${req.body.name}&email=${req.body.email}`)
                     )
             } else {
                 // Check if the questionnaire has already been completed.
                 if (user.questionnaire == false) {
                     // Redirect to the onboarding page.
-                    res.redirect("/onboarding")
+                    res.redirect(`/onboarding?name=${req.body.name}&email=${req.body.email}`)
                 } else {
                     // Redirect to the personalized goals page.
                     res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
@@ -69,6 +69,12 @@ app.post("/", (req, res) => {
 app.get("/onboarding", (_req, res) => {
     // Load the onboarding page.
     res.render("onboarding")
+})
+
+// Listen to all POST requests on /onboarding.
+app.post("/onboarding", (req, res) => {
+    // Redirect to the questionnaire.
+    res.redirect(`/questionnaire?name=${req.body.name}&email=${req.body.email}`)
 })
 
 // Listen to all GET requests on /questionnaire.

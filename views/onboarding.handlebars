@@ -6,6 +6,10 @@
     </section>
     <span id="spacing"></span>
     <div class="button_wrapper">
-        <a href="/questionnaire" class="next_button">Vragenlijst</button>
+        <form action="/onboarding" method="post">
+            <input type="hidden" id="name" name="name">
+            <input type="hidden" id="email" name="email">
+            <button type="submit" class="next_button">Vragenlijst</button>
+        </form>
     </div>
 </main>

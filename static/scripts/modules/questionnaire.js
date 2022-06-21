@@ -4,6 +4,13 @@ import update_view from "./update_view.js"
 import { save_answer } from "./answers.js"
 
 export default function questionnaire() {
+    // Get the URL parameters.
+    const parameters = new URLSearchParams(window.location.search)
+
+    // Fill the hidden input fields with the URL parameter values.
+    $("#name").value = parameters.get("name")
+    $("#email").value = parameters.get("email")
+
     let index = 1
 
     // Retrieve the index from localStorage and check if it is at least one and not greater than the amount of questions.
