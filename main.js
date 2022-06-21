@@ -124,12 +124,18 @@ app.get("/goals", (req, res) => {
 
 // Listen to all POST requests on /increase_streak.
 app.post("/increase_streak", (req, res) => {
-    // Increase the streak by one.
-    update_user_goal(req.body.id, { streak: parseInt(req.body.streak) + 1 })
-        .then(
-            // Redirect to the personalized goals page.
-            res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
-        )
+    // Check if the increased streak is not bigger than 21.
+    if (parseInt(req.body.streak) + 1 <= 21) {
+        // Increase the streak by one.
+        update_user_goal(req.body.id, { streak: parseInt(req.body.streak) + 1 })
+            .then(
+                // Redirect to the personalized goals page.
+                res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
+            )
+    } else {
+        // Redirect to the personalized goals page.
+        res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
+    }
 })
 
 // Listen to all POST requests on /add_goals.
