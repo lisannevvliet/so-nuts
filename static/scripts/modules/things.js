@@ -9,4 +9,9 @@ export default function things() {
         $(".checkmark_check_test").classList.add("checkmark_check_animation")
         // $("li").classList.add("confetti")
     })
+
+    // if complete {
+    // $("confetti_container").classList.remove("hide_state")
+    // }
+
 }

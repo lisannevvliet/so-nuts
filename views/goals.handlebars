@@ -1,7 +1,7 @@
 <main class="goals_page">
     <header>
         <h1>{{name}}'{{#ifCond s false}}s{{/ifCond}} doelen</h1>
-        <a href="/profile">
+        <a href="/profile" aria-label="Naar profielpagina">
             <svg xmlns="http://www.w3.org/2000/svg" width="34.13" height="34.13" viewBox="0 0 34.13 34.13">
                 <path id="Path_85" data-name="Path 85"
                     d="M150.345,63.281A17.065,17.065,0,1,0,167.41,80.346,17.078,17.078,0,0,0,150.345,63.281Zm0,8.731a5.291,5.291,0,1,1-5.291,5.291A5.307,5.307,0,0,1,150.345,72.012Zm0,21.871a13.493,13.493,0,0,1-8.555-3.043,10.9,10.9,0,0,1,17.109,0A13.5,13.5,0,0,1,150.345,93.883Z"
@@ -33,7 +33,7 @@
     </form>
 
     <section class="empty_state">
-        <img src="/images/onboarding/onboarding_3.svg">
+        <img src="/images/onboarding_3.webp">
         <p>Begin met het aanmaken van doelen! Voor jou samengesteld. Het is aan te raden om er op 2 à 3te focussen.
         </p>
     </section>
@@ -42,7 +42,7 @@
         {{!-- {{#each user_goals}} --}}
         <li>
             <section>
-                <div class="confetti_container">
+                <div class="confetti_container hide_state">
                     <div class="confetti"></div>
                     <div class="confetti"></div>
                     <div class="confetti"></div>
