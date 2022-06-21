@@ -1,7 +1,7 @@
 import $ from "./$.js"
 import $$ from "./$$.js"
 
-export default function new_goals() {
+export default function goals() {
     // Get the URL parameters.
     const parameters = new URLSearchParams(window.location.search)
 
