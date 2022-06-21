@@ -39,39 +39,39 @@
     </section>
 
     <ul class="unordered_goal_list">
-        {{!-- {{#each user_goals}} --}}
-        <li>
-            <section>
-                <div class="confetti_container hide_state">
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                    <div class="confetti"></div>
-                </div>
-                <article>
-                    <h2>{{goal.name}}</h2>
-                    <p><span class="repetition_change">{{streak}}</span>/21 dagelijks</p>
-                </article>
-                <label for="goal_{{id}}">
-                    {{!-- <input type="checkbox" data-index={{id}} name="goal_{{id}}" id="goal_{{id}}" {{#ifCond streak 21}}
+        {{#each user_goals}}
+            <li>
+                <section>
+                    <div class="confetti_container hide_state">
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                        <div class="confetti"></div>
+                    </div>
+                    <article>
+                        <h2>{{goal.name}}</h2>
+                        <p><span class="repetition_change">{{streak}}</span>/21 dagelijks</p>
+                    </article>
+                    <label for="goal_{{id}}">
+                        {{!-- <input type="checkbox" data-index={{id}} name="goal_{{id}}" id="goal_{{id}}" {{#ifCond streak 21}}
                         checked{{/ifCond}} /> --}}
-                    <svg class="checkmark_test" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                        <circle class="checkmark_circle_test" cx="26" cy="26" r="25" fill="none" />
-                        <path class="checkmark_check_test" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                    </svg>
-                </label>
-            </section>
-            <div id="goal_progress">
-                <div></div>
-            </div>
-        </li>
-        {{!-- {{/each}} --}}
+                        <svg class="checkmark_test" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark_circle_test" cx="26" cy="26" r="25" fill="none" />
+                            <path class="checkmark_check_test" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                        </svg>
+                    </label>
+                </section>
+                <div id="goal_progress">
+                    <div></div>
+                </div>
+            </li>
+        {{/each}}
     </ul>
     <div class="button_wrapper">
         <button id="add">
