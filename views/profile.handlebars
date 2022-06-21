@@ -1,32 +1,29 @@
 <main class="profile">
     <header>
-        <a href="/goals" aria-label="Ga terug naar doelen">
+        <button class="previous_url" aria-label="Ga terug naar doelen">
             <svg xmlns="http://www.w3.org/2000/svg" width="31.681" height="31.681" viewBox="0 0 31.681 31.681">
                 <path id="noun-plus-518521"
                     d="M164.13,80.113H153.9V69.884a4.113,4.113,0,0,0-8.2,0V80.113c.005,4.942,0,6.905-.023,8.147,0,.069,0,.052,0,.052,8.194-.01.04-.037,8.2.026H164.13a4.113,4.113,0,0,0,0-8.226Z"
                     transform="translate(-40.544 -149.749) rotate(45)" fill="#282727" />
             </svg>
-        </a>
+        </button>
     </header>
     <button class="profile_picture" aria-label="Stel een profielfoto in">
         {{!-- <input type="file" accept="image/*;capture=camera">--}}
     </button>
 
-    <h1>{{name}}farrahton'{{#ifCond s false}}s{{/ifCond}}</h1>
+    <h1>{{name}}Farrahton</h1>
 
-    <section class="quote">
+    <blockquote class="quote">
         <strong>Motivatie voor vandaag</strong>
-
         <p>
-            <em>“</em>
             Lorem ipsum an inspirational quote of the day
             Lorem ipsum an inspirational quote of the day
-            <em>”</em>
         </p>
         <cite>- Moi</cite>
-    </section>
+    </blockquote>
 
-    <article class="grid_two_columns grid_streak">
+    <section class="grid_two_columns grid_streak">
         <article class="streak_record">
             <p>Hoogste streak</p>
             <strong>24</strong>
@@ -35,7 +32,8 @@
         <article class="see_answers">
             <p>Bekijk de door jou ingevulde antwoorden op de vragenlijst</p>
         </article>
-    </article>
+    </section>
+
     <h2>Voor jou geselecteerd</h2>
     <section class="fyp_articles">
         <article>
@@ -60,22 +58,30 @@
         </article>
     </section>
 
-    <article class="grid_two_columns">
-        {{#each questionnaire_response}}
-            {{#each ../questionnaire}}
-                {{#ifCond this.id ../this.questionId}}
-                    {{#if this.questionText}}
-                        <p>{{this.questionText}}</p>
-                    {{/if}}
-                    {{#if this.text}}
-                        <p>{{this.text}}</p>
-                    {{/if}}
-                {{/ifCond}}
+    <section class="questionnaire_answers hide_state">
+        <h2>Uw ingevulde antwoorden</h2>
+        <div class="close_popup">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35.461" height="35.461" viewBox="0 0 35.461 35.461">
+                <path id="noun-plus-518521"
+                    d="M158.27,75.663h-6.98v-6.98a2.807,2.807,0,0,0-5.6,0v6.98h-7a2.807,2.807,0,0,0,0,5.6h6.98v7a2.807,2.807,0,1,0,5.6,0v-6.98h7a2.807,2.807,0,0,0,0-5.613Z"
+                    transform="translate(-31.697 -142.987) rotate(45)" fill="#282727" />
+            </svg>
+        </div>
+        <article class="grid_two_columns">
+            {{#each questionnaire_response}}
+                {{#each ../questionnaire}}
+                    {{#ifCond this.id ../this.questionId}}
+                        {{#if this.questionText}}
+                            <p>{{this.questionText}}</p>
+                        {{/if}}
+                        {{#if this.text}}
+                            <p>{{this.text}}</p>
+                        {{/if}}
+                    {{/ifCond}}
+                {{/each}}
+                <p>{{this.response}}</p>
             {{/each}}
-            <p>{{this.response}}</p>
-        {{/each}}
-    </article>
-
-
+        </article>
+    </section>
 
 </main>

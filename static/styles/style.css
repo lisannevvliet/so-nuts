@@ -27,13 +27,14 @@ main {
     height: 100vh;
 }
 
-h1 {
+.login_page h1 {
     padding-left: .54em;
 }
 
 p {
     overflow-wrap: break-word;
     margin: 0;
+    padding: 0;
 }
 
 @supports (height: 100dvh) {
@@ -453,7 +454,7 @@ button {
     overflow-y: scroll;
 }
 
-.goals_page form.show_popup {
+.show_popup {
     align-items: center;
     /* border-radius: 20px; */
     background-color: #fafafa;
@@ -628,6 +629,7 @@ fieldset {
     border-radius: 20px;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
     display: flex;
+    cursor: pointer;
     height: 13em;
     padding: 1em;
     margin: 0;
@@ -913,6 +915,7 @@ fieldset {
     background-repeat: no-repeat;
     background-size: contain;
     height: auto;
+    padding: 1em;
 }
 
 .profile header {
@@ -921,8 +924,15 @@ fieldset {
     align-items: center;
 }
 
-.profile a {
-    padding: 1em;
+.profile .previous_url {
+    background-color: transparent;
+    border: none;
+    color: var(--black);
+    cursor: pointer;
+    font-size: large;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
 }
 
 .profile svg {
@@ -935,7 +945,7 @@ fieldset {
 }
 
 .profile h2 {
-    padding-left: 1em;
+    padding-left: .5em;
 }
 
 .profile_picture {
@@ -943,29 +953,46 @@ fieldset {
     border-radius: 50%;
     height: 6em;
     margin: auto;
+    margin-top: 4%;
     width: 6em;
 }
 
-.quote {
-    display: block;
-    padding: 1em;
-    /* text-align: center; */
-    line-height: 1.5em;
+blockquote {
+    position: relative;
+    text-align: left;
+    padding: 1em 1.2em;
+    width: 80%;
+    color: var(--black);
+    margin: 1em auto 2em;
+    background-repeat: no-repeat;
 }
 
-.quote strong {
-    padding-left: 1.3em;
-    /* padding: 0; */
+blockquote:before,
+blockquote:after {
+    position: absolute;
+    color: darkgrey;
+    font-size: 4em;
 }
 
-.quote em {
-    color: darkgray;
-    font-size: 28px;
-    font-weight: 800;
+blockquote:before {
+    content: "“";
+    top: .4em;
+    /* margin-right: -0.25em; */
+    right: 100%;
 }
 
-cite {
-    padding-left: 1.4em;
+blockquote:after {
+    content: "”";
+    margin-left: -0.2em;
+    left: 100%;
+    top: auto;
+    bottom: -.4em;
+}
+
+blockquote p {
+    margin-bottom: 0.63em;
+    padding-top: .5em;
+    padding-left: 0;
 }
 
 .streak_record {
@@ -973,10 +1000,10 @@ cite {
     background-image: url("/images/finish.svg");
     border-radius: 20px;
     background-repeat: no-repeat;
-    background-size: 55%;
+    background-size: 8em;
     background-position: bottom right;
     height: 8.5em;
-    margin: 1em;
+    /* margin: 1em; */
     padding: 1em;
     width: auto;
     /* width: 9em; */
@@ -1003,8 +1030,10 @@ cite {
     background-repeat: no-repeat;
     background-size: 4em;
     border-radius: 20px;
+    cursor: pointer;
     height: 8.5em;
     padding: 1em;
+    /* margin-right: 1em; */
     width: auto;
 }
 
@@ -1014,8 +1043,8 @@ cite {
     overflow-y: hidden;
     display: flex;
     gap: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+    /* padding-left: 1em; */
+    /* padding-right: 1em; */
 }
 
 
