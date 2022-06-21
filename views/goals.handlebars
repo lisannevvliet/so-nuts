@@ -20,6 +20,7 @@
         </div>
         <fieldset>
             {{#each goals}}
+                <p>{{category}}</p>
                 {{!-- <section class="goal_card"> --}}
                 <input type="checkbox" id="{{name}}" name="goal" class="goal_input" value="{{name}}">
                 <label for="{{name}}" class="goal_card">
@@ -42,6 +43,7 @@
     {{/ifCond}}
     <ul class="unordered_goal_list">
         {{#each user_goals}}
+            <p>{{goal.category}}</p>
             <li>
                 <section>
                     <div class="confetti_container hide_state">

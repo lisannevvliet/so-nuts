@@ -214,7 +214,7 @@ async function read_user_goals(email) {
         email,
         goal,
         streak,
-        goal ( name, icon )
+        goal ( name, icon, category )
         `)
         .eq("email", email)
         .order("id", { ascending: false })
@@ -234,7 +234,8 @@ async function read_goals() {
         .from("goals")
         .select(`
         name,
-        icon
+        icon,
+        category
         `)
 
     return reponse.data
