@@ -34,6 +34,37 @@ app.listen(process.env.PORT, () => {
     console.log(`Express running at http://localhost:${process.env.PORT}.`)
 })
 
+// Listen to all GET requests on /.
+app.get("/", (_req, res) => {
+    // Load the login page.
+    res.render("login")
+})
+
+// Listen to all POST requests on /.
+app.post("/", (req, res) => {
+    // Check if the user already exists in the database.
+    read_user(req.body.email)
+        .then(user => {
+            // If not, create a new user in the database.
+            if (user.length == 0) {
+                insert_user(req.body)
+                    .then(
+                        // Redirect to the onboarding page.
+                        res.redirect("/onboarding")
+                    )
+            } else {
+                // Check if the questionnaire has already been completed.
+                if (user.questionnaire == false) {
+                    // Redirect to the onboarding page.
+                    res.redirect("/onboarding")
+                } else {
+                    // Redirect to the personalized goals page.
+                    res.redirect(`/goals?name=${user[0].name}&email=${user[0].email}`)
+                }
+            }
+        })
+})
+
 // Listen to all GET requests on /onboarding.
 app.get("/onboarding", (_req, res) => {
     // Load the onboarding page.
@@ -72,24 +103,6 @@ app.post("/questionnaire", (req, res) => {
         )
 })
 
-// Listen to all GET requests on /profile.
-app.get("/profile", (_req, res) => {
-    get.get("questionnaire", "Questionnaires/2")
-        .then(questionnaire => {
-            get.get("questionnaire_response", "QuestionnaireResponses/3")
-                .then(questionnaire_response => {
-                    // Check if the files exist.
-                    if (questionnaire != undefined && questionnaire_response != undefined) {
-                        // Load the profile page with the questionnaire and questionnaire response.
-                        res.render("profile", {
-                            questionnaire: questionnaire.questions,
-                            questionnaire_response: questionnaire_response.questionResponses
-                        })
-                    }
-                })
-        })
-})
-
 // Listen to all GET requests on /goals.
 app.get("/goals", (req, res) => {
     // Get the goals from the database.
@@ -120,63 +133,23 @@ app.get("/goals", (req, res) => {
     //     })
 })
 
-// Listen to all GET requests on /.
-app.get("/", (_req, res) => {
-    // Load the login page.
-    res.render("login")
-})
-
-// Listen to all POST requests on /.
-app.post("/", (req, res) => {
-    // Check if the user already exists in the database.
-    read_user(req.body.email)
-        .then(user => {
-            // If not, create a new user in the database.
-            if (user.length == 0) {
-                insert_user(req.body)
-                    .then(
-                        // Redirect to the onboarding page.
-                        res.redirect("/onboarding")
-                    )
-            } else {
-                // Check if the questionnaire has already been completed.
-                if (user.questionnaire == false) {
-                    // Redirect to the onboarding page.
-                    res.redirect("/onboarding")
-                } else {
-                    // Redirect to the personalized goals page.
-                    res.redirect(`/goals?name=${user[0].name}&email=${user[0].email}`)
-                }
-            }
+// Listen to all GET requests on /profile.
+app.get("/profile", (_req, res) => {
+    get.get("questionnaire", "Questionnaires/2")
+        .then(questionnaire => {
+            get.get("questionnaire_response", "QuestionnaireResponses/3")
+                .then(questionnaire_response => {
+                    // Check if the files exist.
+                    if (questionnaire != undefined && questionnaire_response != undefined) {
+                        // Load the profile page with the questionnaire and questionnaire response.
+                        res.render("profile", {
+                            questionnaire: questionnaire.questions,
+                            questionnaire_response: questionnaire_response.questionResponses
+                        })
+                    }
+                })
         })
 })
-
-async function read_goals() {
-    const reponse = await supabase
-        .from("goals")
-        .select(`
-        name,
-        icon
-        `)
-
-    return reponse.data
-}
-
-async function read_user_goals(email) {
-    const reponse = await supabase
-        .from("user_goals")
-        .select(`
-        id,
-        email,
-        goal,
-        streak,
-        user:email ( name ),
-        goal ( name, icon )
-        `)
-        .eq("email", email)
-
-    return reponse.data
-}
 
 async function read_user(email) {
     const reponse = await supabase
@@ -198,4 +171,31 @@ async function update_user(email, value) {
         .from("users")
         .update(value)
         .eq("email", email)
+}
+
+async function read_user_goals(email) {
+    const reponse = await supabase
+        .from("user_goals")
+        .select(`
+        id,
+        email,
+        goal,
+        streak,
+        user:email ( name ),
+        goal ( name, icon )
+        `)
+        .eq("email", email)
+
+    return reponse.data
+}
+
+async function read_goals() {
+    const reponse = await supabase
+        .from("goals")
+        .select(`
+        name,
+        icon
+        `)
+
+    return reponse.data
 }
