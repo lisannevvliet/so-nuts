@@ -3,7 +3,6 @@ import onboarding from "./modules/onboarding.js"
 import questionnaire from "./modules/questionnaire.js"
 // import goals from "./modules/goals.js"
 import new_goals from "./modules/new_goals.js"
-import things from "./modules/things.js"
 
 // Check if the onboarding page is currently displayed.
 if ($(".onboarding")) {
@@ -19,7 +18,6 @@ if ($(".questionnaire")) {
 if ($(".goals_page")) {
     // goals()
     new_goals()
-    things()
 }
 
 // // Check if the profile page is currently displayed.

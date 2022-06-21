@@ -1,4 +1,5 @@
 import $ from "./$.js"
+import $$ from "./$$.js"
 
 export default function new_goals() {
     // Get the URL parameters.
@@ -16,5 +17,21 @@ export default function new_goals() {
     $(".close_popup").addEventListener("click", () => {
         // Hide the pop-up.
         $("form").classList.remove("show_popup")
+    })
+
+    $$(".checkmark_test").forEach((element, index) => {
+        element.addEventListener("click", (event) => {
+            console.log(event)
+
+            // Show the check animation.
+            $$(".checkmark_test")[index].classList.add("checkmark_animation")
+            $$(".checkmark_check_test")[index].classList.add("checkmark_check_animation")
+
+            // $("li").classList.add("confetti")
+        })
+
+        // if complete {
+        // $("confetti_container").classList.remove("hide_state")
+        // }
     })
 }
