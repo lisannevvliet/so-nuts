@@ -9,7 +9,7 @@
             </svg>
         </a>
     </header>
-    <form class="add_goal">
+    <form class="add_goal" action="/add_goals" method="post">
         <h2>Kies uw doel uit</h2>
         <div class="close_popup">
             <svg xmlns="http://www.w3.org/2000/svg" width="35.461" height="35.461" viewBox="0 0 35.461 35.461">
@@ -29,6 +29,8 @@
                 {{!-- </section> --}}
             {{/each}}
         </fieldset>
+        <input type="hidden" id="name" name="name">
+        <input type="hidden" id="email" name="email">
         <input type="submit" value="Voeg toe" />
     </form>
 

@@ -133,6 +133,28 @@ app.get("/goals", (req, res) => {
     //     })
 })
 
+// Listen to all POST requests on /add_goals.
+app.post("/add_goals", (req, res) => {
+    if (Array.isArray(req.body.goal)) {
+        req.body.goal.forEach((goal, index) => {
+            add_user_goal(req.body.email, goal)
+                .then(() => {
+                    // Check if the last goal has been added.
+                    if (index == req.body.goal.length - 1) {
+                        // Redirect to the personalized goals page.
+                        res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
+                    }
+                })
+        })
+    } else {
+        add_user_goal(req.body.email, req.body.goal)
+            .then(
+                // Redirect to the personalized goals page.
+                res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
+            )
+    }
+})
+
 // Listen to all GET requests on /profile.
 app.get("/profile", (_req, res) => {
     get.get("questionnaire", "Questionnaires/2")
@@ -198,4 +220,10 @@ async function read_goals() {
         `)
 
     return reponse.data
+}
+
+async function add_user_goal(email, goal) {
+    await supabase
+        .from("user_goals")
+        .insert([{ email: email, goal: goal }])
 }
