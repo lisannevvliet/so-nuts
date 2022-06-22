@@ -30,8 +30,6 @@ module.exports = {
             .from("user_goals")
             .select(`
         id,
-        email,
-        goal,
         streak,
         goal ( name, icon, category )
         `)
