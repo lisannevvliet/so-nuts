@@ -5,7 +5,7 @@
         <form action="/goals" method="post">
             <input type="hidden" class="name" name="name">
             <input type="hidden" class="email" name="email">
-            <button type="submit" aria-label="Naar profielpagina">
+            <button type="submit" aria-label="Naar profielpagina" class="button_type_2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34.13" height="34.13" viewBox="0 0 34.13 34.13">
                     <g data-name="Group 188" transform="translate(-343.006 -30)">
                         <g>
@@ -74,6 +74,12 @@
         {{#each user_goals}}
             <li {{#ifCond goal.category "Beweging" }} class="exercise">{{else}}>{{/ifCond}}
                 <section>
+                    <form action="/delete_user_goal" method="post" class="delete">
+                        <input type="hidden" name="id" value={{id}}>
+                        <input type="hidden" class="name" name="name">
+                        <input type="hidden" class="email" name="email">
+                        <button type="submit" class="button_type_2"></button>
+                    </form>
                     <div class="confetti_container hide_state">
                         <div class="confetti"></div>
                         <div class="confetti"></div>
@@ -95,6 +101,7 @@
                         checked{{/ifCond}} /> --}}
                         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                             <circle class="checkmark_circle {{#ifCond goal.category "Beweging" }} exercise"{{else}}"{{/ifCond}} cx="26" cy="26" r="25" fill="none" />
+                              <path class="checkmark_plus" d="M158.27,75.663h-6.98v-6.98a2.807,2.807,0,0,0-5.6,0v6.98h-7a2.807,2.807,0,0,0,0,5.6h6.98v7a2.807,2.807,0,1,0,5.6,0v-6.98h7a2.807,2.807,0,0,0,0-5.613Z" transform="translate(-123 -53)" fill="var(--secundary)"/>      
                             <path class="checkmark_check {{#ifCond goal.category "Beweging" }} exercise"{{else}}"{{/ifCond}} fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                         </svg>
                         <form class="increase_streak" action="/increase_streak" method="post">
@@ -105,12 +112,6 @@
                             <input type="submit" class="hide_state">
                         </form>
                     </label>
-                    <form action="/delete_user_goal" method="post">
-                        <input type="hidden" name="id" value={{id}}>
-                        <input type="hidden" class="name" name="name">
-                        <input type="hidden" class="email" name="email">
-                        <button type="submit">&#128465;</button>
-                    </form>
                     <div id="progress">
                         <div {{#ifCond goal.category "Beweging" }} class="exercise">{{else}}>{{/ifCond}}</div>
                     </div>
@@ -141,3 +142,4 @@
         d="M136.248,105.171l-3.225-4.623a3.393,3.393,0,0,0-5.566,3.883l6,8.6a3.4,3.4,0,0,0,4.725.842,3.354,3.354,0,0,0,1.016-1.131h0l.014-.03a3.429,3.429,0,0,0,.2-.44c1.235-2.657,7.773-16.083,16.906-22.98,0,0-11.5.29-20.074,15.876Z"
         transform="translate(-126.85 -89.294)" fill="#ebede9" />
 </svg> --}}
+

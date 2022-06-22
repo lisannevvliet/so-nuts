@@ -325,9 +325,9 @@ button:disabled {
 
 #progress {
     background: var(--grey);
-    bottom: -5px;
-    height: 16px;
+    bottom: -7px;
     position: relative;
+    height: 16px;
     width: 100%;
 }
 
@@ -445,6 +445,14 @@ button:disabled {
     text-align: center;
     padding-left: .8em;
     font-size: 1.5em;
+}
+
+button.button_type_2 {
+    background-color: transparent;
+    border-radius: 0;
+    border: none;
+    margin: 0;
+    padding: 0;
 }
 
 .goals_page header svg {
@@ -646,6 +654,21 @@ fieldset {
     display: inline-flex;
     height: 10em;
     align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.delete {
+    background-image: url("/images/delete_dots.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1.5em;
+    width: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 0em;
+    position: relative;
+    margin-left: .3em;
+    top: -2em;
+    cursor: pointer;
 }
 
 .unordered_goal_list section {
@@ -657,8 +680,8 @@ fieldset {
     /* padding: 1em; */
     width: 100%;
     flex-wrap: wrap;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 .unordered_goal_list article h2 {
@@ -699,60 +722,62 @@ fieldset {
 }
 
 .unordered_goal_list li section article {
-    padding-left: 1em;
+    /* padding-left: 1em; */
+    margin-left: -1em;
+    margin-top: 1em;
+    width: 84%;
 }
 
 .unordered_goal_list li section label {
-    padding-right: 3em;
-    padding-top: 1em;
+    padding-top: 1.6em;
 }
 
-.checkmark_circle {
-    background-image: url("/images/goals/plus_sign.svg");
-    stroke-dasharray: 166;
-    stroke-dashoffset: 166;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-    stroke: var(--main);
-    fill: none;
-    animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) forwards
+.unordered_goal_list li form {
 }
 
 .checkmark {
-    width: 56px;
-    height: 56px;
+    width: 3em;
+    height: 3em;
     border-radius: 50%;
     cursor: pointer;
     display: block;
-    stroke-width: 2;
-    stroke: var(--secundary);
+    stroke-width: 4;
     stroke-miterlimit: 10;
     margin: 10% auto;
-    box-shadow: inset 0px 0px 0px var(--main);
     cursor: pointer;
 }
 
-.checkmark_animation {
-    animation: fill 0.1s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+.checkmark_circle {
+    fill: var(--main);
 }
 
-.checkmark_check {
+.checkmark_click_animation {
+    animation: click_scale .3s ease-in-out .5s both
+}
+
+.checkmark_check_icon {
     transform-origin: 50% 50%;
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
+    stroke-linecap: round;
 }
 
-.checkmark_check_animation {
-    animation: stroke 0.1s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+.checkmark_plus.hide_plus {
+    fill: none;
 }
 
-@keyframes stroke {
+.checkmark_check_icon_animation {
+    animation: draw_checkmark 0.1s cubic-bezier(0.65, 0, 0.45, 1) 0.3s forwards;
+    stroke: var(--secundary);
+}
+
+@keyframes draw_checkmark {
     100% {
         stroke-dashoffset: 0
     }
 }
 
-@keyframes scale {
+@keyframes click_scale {
 
     0%,
     100% {
@@ -761,12 +786,6 @@ fieldset {
 
     50% {
         transform: scale3d(1.1, 1.1, 1)
-    }
-}
-
-@keyframes fill {
-    100% {
-        box-shadow: inset 0px 0px 0px 30px var(--main)
     }
 }
 
@@ -1087,4 +1106,15 @@ blockquote p {
 .fyp_articles article:nth-of-type(2):before {
     background-image: url(/images/food_illustration.webp);
     background-position: center;
+}
+
+.unordered_goal_list section:not(:last-child) {
+    padding: 1em;
+}
+
+li section {
+}
+
+section div:not(:last-child) #progress {
+    padding: 1em;
 }
