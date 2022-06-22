@@ -901,6 +901,7 @@ fieldset {
     background-image: url("/images/profile_swirl.svg");
     background-repeat: no-repeat;
     background-size: contain;
+    height: auto;
     padding: 1em;
 }
 
