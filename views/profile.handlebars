@@ -83,7 +83,13 @@
                 <article>
                     <p>{{this.response}}</p>
                     {{#each this.choiceOptionIds}}
-                        <p>{{this}}</p>
+                        {{#each ../../questionnaire}}
+                            {{#each answerOptions}}
+                                {{#ifCond this.id ../../this}}
+                                    <p>{{this.text}}</p>
+                                {{/ifCond}}
+                            {{/each}}
+                        {{/each}}
                     {{/each}}
                 </article>
             {{/each}}
