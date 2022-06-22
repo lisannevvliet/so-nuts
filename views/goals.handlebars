@@ -1,7 +1,28 @@
 <main class="goals_page">
     <header>
         <h1>{{name}}'{{#ifCond s false}}s{{/ifCond}} doelen</h1>
-        <a href="/profile?name={{name}}" aria-label="Naar profielpagina">
+
+        <form action="/goals" method="post">
+            <input type="hidden" class="name" name="name">
+            <input type="hidden" class="email" name="email">
+            <button type="submit" aria-label="Naar profielpagina">
+                <svg xmlns="http://www.w3.org/2000/svg" width="34.13" height="34.13" viewBox="0 0 34.13 34.13">
+                    <g data-name="Group 188" transform="translate(-343.006 -30)">
+                        <g>
+                            <g>
+                                <circle data-name="Ellipse 12" cx="12" cy="12" r="12" transform="translate(348 38)"
+                                    fill="#a9a9a9" />
+                                <path
+                                    d="M150.345,63.281A17.065,17.065,0,1,0,167.41,80.346,17.078,17.078,0,0,0,150.345,63.281Zm0,8.731a5.291,5.291,0,1,1-5.291,5.291A5.307,5.307,0,0,1,150.345,72.012Zm0,21.871a13.493,13.493,0,0,1-8.555-3.043,10.9,10.9,0,0,1,17.109,0A13.5,13.5,0,0,1,150.345,93.883Z"
+                                    transform="translate(209.726 -33.281)" fill="#ededed" />
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </button>
+        </form>
+
+        {{!-- <a href="/profile?name={{name}}" aria-label="Naar profielpagina">
             <svg xmlns="http://www.w3.org/2000/svg" width="34.13" height="34.13" viewBox="0 0 34.13 34.13">
                 <g data-name="Group 188" transform="translate(-343.006 -30)">
                     <g>
@@ -15,7 +36,7 @@
                     </g>
                 </g>
             </svg>
-        </a>
+        </a> --}}
     </header>
     <form class="add_goal" action="/add_goals" method="post">
         <h2>Kies uw doel uit</h2>

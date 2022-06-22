@@ -134,7 +134,7 @@ app.post("/increase_streak", (req, res) => {
     }
 })
 
-// Listen to all POST requests on /increase_streak.
+// Listen to all POST requests on /delete_user_goal.
 app.post("/delete_user_goal", (req, res) => {
     database.remove_user_goal(req.body.id)
         .then(
@@ -165,8 +165,14 @@ app.post("/add_goals", (req, res) => {
     }
 })
 
+// Listen to all POST requests on /goals.
+app.post("/goals", (req, res) => {
+    // Redirect to the profile page.
+    res.redirect(`/profile?name=${req.body.name}&email=${req.body.email}`)
+})
+
 // Listen to all GET requests on /profile.
-app.get("/profile", (_req, res) => {
+app.get("/profile", (req, res) => {
     api.get("Questionnaires/2")
         .then(questionnaire => {
             api.get("QuestionnaireResponses/3")
@@ -174,8 +180,9 @@ app.get("/profile", (_req, res) => {
                     // Get ZenQuotes' daily quote.
                     api.quote()
                         .then(quote => {
-                            // Load the profile page with the quote, questionnaire and questionnaire response.
+                            // Load the profile page with the name, quote, questionnaire and questionnaire response.
                             res.render("profile", {
+                                name: req.query.name,
                                 quote: quote,
                                 questionnaire: questionnaire.questions,
                                 questionnaire_response: questionnaire_response.questionResponses
