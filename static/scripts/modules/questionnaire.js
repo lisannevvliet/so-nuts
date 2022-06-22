@@ -22,22 +22,15 @@ export default function questionnaire() {
     update_view(index)
     $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
 
-    if (validate() == true) {
-        $$(".next_button")[index - 1].disabled = false
-    } else {
-        $$(".next_button")[index - 1].disabled = true
-    }
+    // Enable the next button if the input field value is valid.
+    validate()
 
     $$("input[type=text]").forEach(element => {
         element.addEventListener("input", () => {
             save_answer("text", element, index)
 
-            if (validate() == true) {
-                $$(".next_button")[index - 1].disabled = false
-            } else {
-                $$(".next_button")[index - 1].disabled = true
-            }
-
+            // Enable the next button if the input field value is valid.
+            validate()
         })
     })
 
@@ -45,12 +38,8 @@ export default function questionnaire() {
         element.addEventListener("change", () => {
             save_answer("radio", element, index)
 
-            if (validate() == true) {
-                $$(".next_button")[index - 1].disabled = false
-            } else {
-                $$(".next_button")[index - 1].disabled = true
-            }
-
+            // Enable the next button if the input field value is valid.
+            validate()
         })
     })
 
@@ -58,26 +47,19 @@ export default function questionnaire() {
         element.addEventListener("change", () => {
             save_answer("checkbox", element, index)
 
-            if (validate() == true) {
-                $$(".next_button")[index - 1].disabled = false
-            } else {
-                $$(".next_button")[index - 1].disabled = true
-            }
-
+            // Enable the next button if the input field value is valid.
+            validate()
         })
     })
 
     $$(".next_button").forEach(element => {
         element.addEventListener("click", () => {
+            // Show the next question if the input field value is valid.
             if (validate() == true) {
                 index = update_view(index, "next")
 
-                if (validate() == true) {
-                    $$(".next_button")[index - 1].disabled = false
-
-                } else {
-                    $$(".next_button")[index - 1].disabled = true
-                }
+                // Enable the next button if the input field value is valid.
+                validate()
             }
         })
     })
@@ -86,11 +68,8 @@ export default function questionnaire() {
         element.addEventListener("click", () => {
             index = update_view(index, "previous")
 
-            if (validate() == true) {
-                $$(".next_button")[index - 1].disabled = false
-            } else {
-                $$(".next_button")[index - 1].disabled = true
-            }
+            // Enable the next button if the input field value is valid.
+            validate()
         })
     })
 
@@ -127,6 +106,13 @@ export default function questionnaire() {
             if (inputs[0].checkValidity()) {
                 valid = true
             }
+        }
+
+        // Enable the next button if the input field value is valid.
+        if (valid == true) {
+            $$(".next_button")[index - 1].disabled = false
+        } else {
+            $$(".next_button")[index - 1].disabled = true
         }
 
         return valid
