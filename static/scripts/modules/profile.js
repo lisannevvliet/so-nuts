@@ -5,20 +5,18 @@ export default function profile() {
     // Fill the header with the URL parameter value.
     $("#name").textContent = parameters.get("name")
 
+    $(".previous_url").addEventListener("click", () => {
+        // Go back to previous URL, which is the personalized goals page. 
+        history.back()
+    })
+
     $(".see_answers").addEventListener("click", () => {
         // Show the pop-up.
         $(".questionnaire_answers").classList.remove("hide_state")
-        $(".questionnaire_answers").classList.add("show_popup")
     })
 
     $(".close_popup").addEventListener("click", () => {
         // Hide the pop-up.
-        $(".questionnaire_answers").classList.remove("show_popup")
         $(".questionnaire_answers").classList.add("hide_state")
-    })
-
-    $(".previous_url").addEventListener("click", () => {
-        // Go back to goals/ previous personalized url. 
-        history.back()
     })
 }
