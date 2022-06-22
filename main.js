@@ -180,13 +180,17 @@ app.get("/profile", (req, res) => {
                     // Get ZenQuotes' daily quote.
                     api.quote()
                         .then(quote => {
-                            // Load the profile page with the name, quote, questionnaire and questionnaire response.
-                            res.render("profile", {
-                                name: req.query.name,
-                                quote: quote,
-                                questionnaire: questionnaire.questions,
-                                questionnaire_response: questionnaire_response.questionResponses
-                            })
+                            database.read_highest_streak(req.query.email)
+                                .then(streak => {
+                                    // Load the profile page with the name, quote, streak, questionnaire and questionnaire response.
+                                    res.render("profile", {
+                                        name: req.query.name,
+                                        quote: quote,
+                                        streak: streak,
+                                        questionnaire: questionnaire.questions,
+                                        questionnaire_response: questionnaire_response.questionResponses
+                                    })
+                                })
                         })
                 })
         })

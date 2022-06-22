@@ -28,11 +28,7 @@ module.exports = {
     read_user_goals: async (email) => {
         const response = await supabase
             .from("user_goals")
-            .select(`
-        id,
-        streak,
-        goal ( name, icon, category )
-        `)
+            .select("id, streak, goal ( name, icon, category )")
             .eq("email", email)
             .order("id", { ascending: false })
 
@@ -53,11 +49,7 @@ module.exports = {
     read_goals: async () => {
         const response = await supabase
             .from("goals")
-            .select(`
-        name,
-        icon,
-        category
-        `)
+            .select("name, icon, category")
 
         return response.data
     },
@@ -65,5 +57,16 @@ module.exports = {
         await supabase
             .from("user_goals")
             .insert([{ email: email, goal: goal }])
+    },
+    read_highest_streak: async (email) => {
+        const response = await supabase
+            .from("user_goals")
+            .select("streak")
+            .eq("email", email)
+            .order("streak", { ascending: false })
+            .limit(1)
+            .single()
+
+        return response.data.streak
     }
 }
