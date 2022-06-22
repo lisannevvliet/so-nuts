@@ -5,7 +5,7 @@
         <form action="/goals" method="post">
             <input type="hidden" class="name" name="name">
             <input type="hidden" class="email" name="email">
-            <button type="submit" aria-label="Naar profielpagina">
+            <button type="submit" aria-label="Naar profielpagina" class="new_button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="34.13" height="34.13" viewBox="0 0 34.13 34.13">
                     <g data-name="Group 188" transform="translate(-343.006 -30)">
                         <g>
@@ -94,7 +94,8 @@
                         {{!-- <input type="checkbox" data-index={{id}} name="goal_{{id}}" id="goal_{{id}}" {{#ifCond streak 21}}
                         checked{{/ifCond}} /> --}}
                         <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                            <circle class="checkmark_circle {{#ifCond goal.category "Beweging" }} exercise"{{else}}"{{/ifCond}} cx="26" cy="26" r="25" fill="none" />
+                            <circle class="checkmark_circle {{#ifCond goal.category "Beweging" }} exercise"{{else}}"{{/ifCond}} cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark_plus" d="M158.27,75.663h-6.98v-6.98a2.807,2.807,0,0,0-5.6,0v6.98h-7a2.807,2.807,0,0,0,0,5.6h6.98v7a2.807,2.807,0,1,0,5.6,0v-6.98h7a2.807,2.807,0,0,0,0-5.613Z" transform="translate(-123 -53)" fill="white"/>      
                             <path class="checkmark_check {{#ifCond goal.category "Beweging" }} exercise"{{else}}"{{/ifCond}} fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                         </svg>
                         <form class="increase_streak" action="/increase_streak" method="post">
@@ -105,12 +106,6 @@
                             <input type="submit" class="hide_state">
                         </form>
                     </label>
-                    <form action="/delete_user_goal" method="post">
-                        <input type="hidden" name="id" value={{id}}>
-                        <input type="hidden" class="name" name="name">
-                        <input type="hidden" class="email" name="email">
-                        <button type="submit">&#128465;</button>
-                    </form>
                     <div id="progress">
                         <div {{#ifCond goal.category "Beweging" }} class="exercise">{{else}}>{{/ifCond}}</div>
                     </div>
