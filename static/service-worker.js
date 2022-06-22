@@ -1,6 +1,6 @@
 // Change this variable to reregister the service worker (a.k.a. revisioning).
 const version = 1
-// Cache all static files, as well as the index.ejs and offline.ejs file.
+// Cache all static files, as well as the login.handlebars file.
 const files = [
     "/fonts/Nunito-Black.woff",
     "/fonts/Nunito-Black.woff2",
@@ -33,14 +33,13 @@ const files = [
     "/fonts/Nunito-SemiBold.woff",
     "/fonts/Nunito-SemiBold.woff2",
     "/fonts/Nunito-SemiBoldItalic.woff",
-    "/fonts/Nunito-SemiBoldItalic.woff2"
+    "/fonts/Nunito-SemiBoldItalic.woff2",
     // "/images/background.jpg",
     // "/images/placeholder.png",
     // "/images/search.png",
     // "/scripts/script.js",
-    // "/styles/style.css",
-    // "/",
-    // "/offline"
+    "/styles/style.css",
+    "/"
 ]
 
 // Install the service worker.
@@ -69,26 +68,28 @@ self.addEventListener("fetch", event => {
                 )
         )
     }
-    // Only request the HTML, all the other files are already in the cache.
+    // Only request the HTML, all the other files are already in the core-cache.
     else if (event.request.method == "GET" && (event.request.headers.get("accept") != null && event.request.headers.get("accept").includes("text/html"))) {
         event.respondWith(
-            // Stale-while-revalidate (see https://web.dev/offline-cookbook/#stale-while-revalidate).
             caches.open("dynamic-cache")
-                .then(cache => {
-                    return cache.match(event.request)
-                        // Retrieve, cache and serve the HTML.
-                        .then(response => {
-                            var fetchPromise = fetch(event.request)
-                                .then(networkResponse => {
-                                    cache.put(event.request, networkResponse.clone())
-                                    return networkResponse
-                                })
-                                .catch(() => {
-                                    return response
-                                })
+                .then(async cache => {
+                    // Retrieve the HTML from the dynamic-cache.
+                    const cache_response = await cache.match(event.request)
 
-                            return fetchPromise
+                    // Try to retrieve the HTML from the network.
+                    const response = fetch(event.request)
+                        .then(network_response => {
+                            // Save the HTML in the dynamic-cache.
+                            cache.put(event.request, network_response.clone())
+
+                            return network_response
                         })
+                        // If this fails, use the HTML from the dynamic-cache.
+                        .catch(() => {
+                            return cache_response
+                        })
+
+                    return await response
                 })
         )
     }
