@@ -664,14 +664,16 @@ fieldset {
 
 .unordered_goal_list article h2 {
     font-size: 23px;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
     padding: 0;
+    line-height: 2em;
 }
 
 .unordered_goal_list article p {
     line-height: 1em;
     padding: 0;
+    font-weight: 300;
 }
 
 .unordered_goal_list input[type=checkbox] {
@@ -896,7 +898,6 @@ fieldset {
     ============ */
 
 .profile {
-    background-color: #fafafa;
     background-image: url("/images/profile_swirl.svg");
     background-repeat: no-repeat;
     background-size: contain;
@@ -1079,11 +1080,25 @@ blockquote p {
 }
 
 .fyp_articles article:nth-of-type(1):before {
-    background-image: url(/images/fitness_illustration.webp);
+    background-image: url(/images/fyp/fitness.webp);
 }
 
 .fyp_articles article:nth-of-type(2):before {
-    background-image: url(/images/food_illustration.webp);
+    background-image: url(/images/fyp/food.webp);
+    background-position: center;
+}
+
+.fyp_articles article:nth-of-type(3):before {
+    background-image: url(/images/fyp/weight.webp);
+    background-position: center;
+}
+
+.fyp_articles article:nth-of-type(4):before {
+    background-image: url(/images/fyp/avocado.webp);
+    background-position: center;
+}
+.fyp_articles article:nth-of-type(5):before {
+    background-image: url(/images/fyp/couch.webp);
     background-position: center;
 }
 
@@ -1099,6 +1114,7 @@ blockquote p {
     padding: 1em;
     background-image: url(/images/delete_dots.svg);
     background-size: 1em;
+    background-position: center;
     background-repeat: no-repeat;
     width: 1em;
     margin: 1em;
@@ -1132,10 +1148,3 @@ blockquote p {
     display: block;
 }
 
-.click_away_screen {
-    background-color: red;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    z-index: -1;
-}
