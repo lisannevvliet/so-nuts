@@ -26,7 +26,7 @@ module.exports = {
         })
         const data = await response.json()
 
-        return data
+        return data.id
     },
     quote: async () => {
         // Get the daily quote from the ZenQuotes API.

@@ -89,14 +89,18 @@ app.get("/questionnaire", (_req, res) => {
 // Listen to all POST requests on /questionnaire.
 app.post("/questionnaire", (req, res) => {
     // Transform the answers to a compatible format and send a POST request with them.
-    Promise.all([
-        database.update_user(req.body.email, { questionnaire: true }),
-        api.post(responses.responses(req.body.answers))
-    ])
-        .then(
-            // Redirect to the goals page.
-            res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
-        )
+    api.post(responses.responses(req.body.answers))
+        .then(id => {
+            // Update the questionnaire completion status and add the ID to the database.
+            Promise.all([
+                database.update_user(req.body.email, { questionnaire: true }),
+                database.update_user(req.body.email, { id: id }),
+            ])
+                .then(
+                    // Redirect to the goals page.
+                    res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
+                )
+        })
 })
 
 // Listen to all GET requests on /goals.
