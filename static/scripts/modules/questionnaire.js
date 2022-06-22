@@ -1,6 +1,7 @@
 import $ from "./$.js"
 import $$ from "./$$.js"
 import update_view from "./update_view.js"
+import validate from "./validate.js"
 import { save_answer } from "./answers.js"
 
 export default function questionnaire() {
@@ -23,14 +24,14 @@ export default function questionnaire() {
     $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
 
     // Enable the next button if the input field value is valid.
-    validate()
+    validate(index)
 
     $$("input[type=text]").forEach(element => {
         element.addEventListener("input", () => {
             save_answer("text", element, index)
 
             // Enable the next button if the input field value is valid.
-            validate()
+            validate(index)
         })
     })
 
@@ -39,7 +40,7 @@ export default function questionnaire() {
             save_answer("radio", element, index)
 
             // Enable the next button if the input field value is valid.
-            validate()
+            validate(index)
         })
     })
 
@@ -48,18 +49,18 @@ export default function questionnaire() {
             save_answer("checkbox", element, index)
 
             // Enable the next button if the input field value is valid.
-            validate()
+            validate(index)
         })
     })
 
     $$(".next_button").forEach(element => {
         element.addEventListener("click", () => {
             // Show the next question if the input field value is valid.
-            if (validate() == true) {
+            if (validate(index) == true) {
                 index = update_view(index, "next")
 
                 // Enable the next button if the input field value is valid.
-                validate()
+                validate(index)
             }
         })
     })
@@ -69,52 +70,7 @@ export default function questionnaire() {
             index = update_view(index, "previous")
 
             // Enable the next button if the input field value is valid.
-            validate()
+            validate(index)
         })
     })
-
-    function validate() {
-        let valid = false
-
-        // Add all visible input fields to an array.
-        const inputs = $$(`.questionnaire li:nth-child(${index}) input:not([type=hidden])`)
-
-        if (inputs.length > 1) {
-            let types = []
-
-            // Add the types of all input fields to an array.
-            inputs.forEach(input => {
-                types.push(input.type)
-            })
-
-            // If all input fields are of the same type, validate the first one. This will automatically validate all options.
-            if (new Set(types).size == 1) {
-                if (inputs[0].checkValidity()) {
-                    valid = true
-                }
-            } else {
-                // Check if at least one checkbox or select is checked.
-                if ($$(`input[name=${inputs[0].name}]:checked`).length > 0) {
-                    valid = true
-                }
-                // Check if the input field is not empty.
-                else if (inputs[inputs.length - 1].value != "") {
-                    valid = true
-                }
-            }
-        } else {
-            if (inputs[0].checkValidity()) {
-                valid = true
-            }
-        }
-
-        // Enable the next button if the input field value is valid.
-        if (valid == true) {
-            $$(".next_button")[index - 1].disabled = false
-        } else {
-            $$(".next_button")[index - 1].disabled = true
-        }
-
-        return valid
-    }
 }
