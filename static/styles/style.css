@@ -27,10 +27,6 @@ main {
     height: 100vh;
 }
 
-.login_page h1 {
-    padding-left: .54em;
-}
-
 p {
     overflow-wrap: break-word;
     margin: 0;
@@ -52,6 +48,7 @@ p {
     display: grid;
     gap: 10px;
     grid-template-columns: repeat(2, 10em);
+    margin: auto;
 }
 
 li {
@@ -62,24 +59,26 @@ li {
     button
     ====== */
 
-button {
+.button_wrapper {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+button,
+.onboarding a {
     background-color: var(--accent);
     border-radius: 10px;
     border: none;
     color: var(--black);
     cursor: pointer;
     font-size: large;
-    font-weight: 600;
+    font-weight: 700;
     margin-left: 1em;
     margin-right: 1em;
     padding: 1.5em;
-}
-
-.button_wrapper {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 1em;
-    padding-top: 1em;
+    text-decoration: none;
 }
 
 .prev_button {
@@ -103,21 +102,19 @@ button {
     onboarding
     ========== */
 
-.onboarding section:before {
-    content: "";
-    background-image: url("../images/onboarding/onboarding_1.svg");
-    /* background-image: url("../images/onboarding/onboarding_2.svg"); */
-    /* background-image: url("../images/onboarding/onboarding_3.svg"); */
-    background-position: center;
-    background-size: cover;
-    display: block;
-    height: 50%;
-}
-
 .onboarding section {
     height: 100%;
     overflow: scroll;
     text-align: center;
+}
+
+.onboarding section:before {
+    content: "";
+    background-image: url("../images/onboarding/onboarding_1.svg");
+    background-position: center;
+    background-size: cover;
+    display: block;
+    height: 50%;
 }
 
 .onboarding h2,
@@ -150,6 +147,7 @@ button {
 .login_page h1 {
     margin-bottom: -.3em;
     padding-top: 2em;
+    padding-left: 1em;
 }
 
 .login_page form {
@@ -165,8 +163,6 @@ button {
     margin-top: 6em;
     width: 80%;
 }
-
-
 
 .login_page h2 {
     font-weight: 600;
@@ -469,7 +465,7 @@ button {
     /* margin-right: auto; */
     padding-bottom: 1.3em;
     max-width: 768px;
-    /* padding: 1em; */
+    padding: 1em;
     position: fixed;
     /* top: 50%; */
     /* transform: translate(-50%, -50%); */
@@ -490,7 +486,7 @@ button {
     /* margin-left: 3em; */
     cursor: pointer;
     position: sticky;
-    padding: 1em;
+    /* padding: 1em; */
 }
 
 .empty_state {
@@ -530,36 +526,7 @@ fieldset {
     justify-items: center;
 }
 
-
-
-/* .goals_page form:nth-last-child(1) {
-    grid-template-columns: repeat(1, .5fr);
-    justify-content: center;
-} */
-
-/* label.pulse {
-        animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-        0% {
-            box-shadow: 0 0 0 0 rgba(204, 169, 44, 0.4);
-        }
-    
-        70% {
-            box-shadow: 0 0 0 40px rgba(204, 169, 44, 0);
-        }
-    
-        100% {
-            box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
-        }
-    } */
-
-
-.goals_page #add {
-    /* background-image: url("/images/goals/add_more.svg"); */
-    /* background-position-x: .9em; */
-    /* background-position-y: 1em; */
+#add {
     background-color: var(--grey);
     background-repeat: no-repeat;
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
@@ -751,22 +718,24 @@ fieldset {
 }
 
 .checkmark_circle_test {
+    background-image: url("/images/goals/plus_sign.svg");
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
     stroke-width: 2;
     stroke-miterlimit: 10;
     stroke: var(--main);
     fill: none;
-    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards
+    animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) forwards
 }
 
 .checkmark_test {
     width: 56px;
     height: 56px;
     border-radius: 50%;
+    cursor: pointer;
     display: block;
     stroke-width: 2;
-    stroke: #fff;
+    stroke: var(--secundary);
     stroke-miterlimit: 10;
     margin: 10% auto;
     box-shadow: inset 0px 0px 0px var(--main);
@@ -774,7 +743,7 @@ fieldset {
 }
 
 .checkmark_animation {
-    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
+    animation: fill 0.1s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
 }
 
 .checkmark_check_test {
@@ -784,7 +753,7 @@ fieldset {
 }
 
 .checkmark_check_animation {
-    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
+    animation: stroke 0.1s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards
 }
 
 @keyframes stroke {
@@ -809,6 +778,29 @@ fieldset {
     100% {
         box-shadow: inset 0px 0px 0px 30px var(--main)
     }
+}
+
+
+/*  =================
+    exercise styling 
+    =================*/
+
+.goals_page form input[type="checkbox"].goal_input:checked+label.exercise,
+.goals_page form input[type="checkbox"].goal_input:checked+.goal_card h3.exercise {
+    background-color: var(--accent_lighter);
+}
+
+li.exercise {
+    background-color: var(--accent);
+    background-image: url("/images/goals/beweging_doel_header.svg");
+}
+
+.checkmark_circle_test.exercise {
+    stroke: var(--accent);
+}
+
+.checkmark_test.exercise {
+    box-shadow: inset 0px 0px 0px var(--accent);
 }
 
 .confetti {
@@ -943,14 +935,13 @@ fieldset {
 
 .profile h1 {
     margin: auto;
-}
-
-.profile h2 {
-    padding-left: .5em;
+    margin-top: .5em;
 }
 
 .profile_picture {
-    background-color: var(--grey);
+    background-color: darkgrey;
+    background-image: url(/images/profile_icon.svg);
+    background-size: cover;
     border-radius: 50%;
     height: 6em;
     margin: auto;
@@ -978,7 +969,6 @@ blockquote:after {
 blockquote:before {
     content: "“";
     top: .4em;
-    /* margin-right: -0.25em; */
     right: 100%;
 }
 
@@ -1004,10 +994,8 @@ blockquote p {
     background-size: 8em;
     background-position: bottom right;
     height: 8.5em;
-    /* margin: 1em; */
     padding: 1em;
     width: auto;
-    /* width: 9em; */
 }
 
 .grid_streak {
@@ -1034,8 +1022,12 @@ blockquote p {
     cursor: pointer;
     height: 8.5em;
     padding: 1em;
-    /* margin-right: 1em; */
     width: auto;
+}
+
+.questionnaire_answers.show_popup {
+    margin: -1em;
+    padding: 1em;
 }
 
 .fyp_articles {
@@ -1044,8 +1036,6 @@ blockquote p {
     overflow-y: hidden;
     display: flex;
     gap: 1em;
-    /* padding-left: 1em; */
-    /* padding-right: 1em; */
 }
 
 
@@ -1083,9 +1073,6 @@ blockquote p {
     height: 18vh;
     justify-content: center;
     margin-bottom: .2em;
-    /* border-top-left-radius: 20px;
-        border-top-right-radius: 20px; 
-        deze aan en border radius + padding op article uit voor andere versie*/
     width: 35vw;
 }
 
