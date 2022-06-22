@@ -72,49 +72,48 @@ app.get("/onboarding", (req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", (_req, res) => {
-    api.get("Questionnaires/2")
-        .then(questionnaire => {
-            api.get("Domains")
-                .then(domains => {
-                    // Load the questionnaire page with the domains, questionnaire and questionnaire length.
-                    res.render("questionnaire", {
-                        domains: domains,
-                        questionnaire: questionnaire.questions,
-                        length: questionnaire.questions.length - 1
-                    })
-                })
+    Promise.all([
+        api.get("Questionnaires/2"),
+        api.get("Domains")
+    ])
+        .then(([questionnaire, domains]) => {
+            // Load the questionnaire page with the domains, questionnaire and questionnaire length.
+            res.render("questionnaire", {
+                domains: domains,
+                questionnaire: questionnaire.questions,
+                length: questionnaire.questions.length - 1
+            })
         })
 })
 
 // Listen to all POST requests on /questionnaire.
 app.post("/questionnaire", (req, res) => {
-    database.update_user(req.body.email, { questionnaire: true })
+    // Transform the answers to a compatible format and send a POST request with them.
+    Promise.all([
+        database.update_user(req.body.email, { questionnaire: true }),
+        api.post(responses.responses(req.body.answers))
+    ])
         .then(
-            // Transform the answers to a compatible format and send a POST request with them.
-            api.post(responses.responses(req.body.answers))
-                .then(
-                    // Redirect to the goals page.
-                    res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
-                )
+            // Redirect to the goals page.
+            res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
         )
 })
 
 // Listen to all GET requests on /goals.
 app.get("/goals", (req, res) => {
-    // Get the goals from the database.
-    database.read_goals()
-        .then(goals => {
-            // Get the user goals from the database.
-            database.read_user_goals(req.query.email)
-                .then(user_goals => {
-                    // Load the goals page with the name, whether the name ends with an s, user goals and goals.
-                    res.render("goals", {
-                        name: req.query.name,
-                        s: req.query.name.slice(-1) == "s" || req.query.name.slice(-1) == "S",
-                        user_goals: user_goals,
-                        goals: goals
-                    })
-                })
+    // Get the goals and user goals from the database.
+    Promise.all([
+        database.read_goals(),
+        database.read_user_goals(req.query.email)
+    ])
+        .then(([goals, user_goals]) => {
+            // Load the goals page with the name, whether the name ends with an s, user goals and goals.
+            res.render("goals", {
+                name: req.query.name,
+                s: req.query.name.slice(-1) == "s" || req.query.name.slice(-1) == "S",
+                user_goals: user_goals,
+                goals: goals
+            })
         })
 })
 
@@ -173,25 +172,21 @@ app.post("/goals", (req, res) => {
 
 // Listen to all GET requests on /profile.
 app.get("/profile", (req, res) => {
-    api.get("Questionnaires/2")
-        .then(questionnaire => {
-            api.get("QuestionnaireResponses/3")
-                .then(questionnaire_response => {
-                    // Get ZenQuotes' daily quote.
-                    api.quote()
-                        .then(quote => {
-                            database.read_highest_streak(req.query.email)
-                                .then(streak => {
-                                    // Load the profile page with the name, quote, streak, questionnaire and questionnaire response.
-                                    res.render("profile", {
-                                        name: req.query.name,
-                                        quote: quote,
-                                        streak: streak,
-                                        questionnaire: questionnaire.questions,
-                                        questionnaire_response: questionnaire_response.questionResponses
-                                    })
-                                })
-                        })
-                })
+    // Get ZenQuotes' daily quote.
+    Promise.all([
+        api.get("Questionnaires/2"),
+        api.get("QuestionnaireResponses/3"),
+        api.quote(),
+        database.read_highest_streak(req.query.email)
+    ])
+        .then(([questionnaire, questionnaire_response, quote, streak]) => {
+            // Load the profile page with the name, quote, streak, questionnaire and questionnaire response.
+            res.render("profile", {
+                name: req.query.name,
+                quote: quote,
+                streak: streak,
+                questionnaire: questionnaire.questions,
+                questionnaire_response: questionnaire_response.questionResponses
+            })
         })
 })
