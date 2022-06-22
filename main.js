@@ -178,19 +178,22 @@ app.post("/goals", (req, res) => {
 app.get("/profile", (req, res) => {
     // Get ZenQuotes' daily quote.
     Promise.all([
-        api.get("Questionnaires/2"),
-        api.get("QuestionnaireResponses/3"),
+        database.read_user(req.query.email),
         api.quote(),
-        database.read_highest_streak(req.query.email)
+        database.read_highest_streak(req.query.email),
+        api.get("Questionnaires/2")
     ])
-        .then(([questionnaire, questionnaire_response, quote, streak]) => {
-            // Load the profile page with the name, quote, streak, questionnaire and questionnaire response.
-            res.render("profile", {
-                name: req.query.name,
-                quote: quote,
-                streak: streak,
-                questionnaire: questionnaire.questions,
-                questionnaire_response: questionnaire_response.questionResponses
-            })
+        .then(([user, quote, streak, questionnaire]) => {
+            api.get(`QuestionnaireResponses/${user.id}`)
+                .then(questionnaire_response =>
+                    // Load the profile page with the name, quote, streak, questionnaire and questionnaire response.
+                    res.render("profile", {
+                        name: req.query.name,
+                        quote: quote,
+                        streak: streak,
+                        questionnaire: questionnaire.questions,
+                        questionnaire_response: questionnaire_response.questionResponses
+                    })
+                )
         })
 })

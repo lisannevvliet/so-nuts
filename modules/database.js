@@ -9,7 +9,7 @@ module.exports = {
     read_user: async (email) => {
         const response = await supabase
             .from("users")
-            .select("*")
+            .select("questionnaire, id")
             .eq("email", email)
             .limit(1)
             .single()
@@ -69,7 +69,7 @@ module.exports = {
             .limit(1)
             .single()
 
-        // Return zero if the user has no goals yet.
+        // Return zero if the user has no goals.
         if (response.data == null) {
             return 0
         } else {
