@@ -2,6 +2,7 @@
 require("dotenv").config()
 const express = require("express")
 const handlebars = require("express-handlebars")
+const compression = require("compression")
 
 // Import modules.
 const api = require("./modules/api.js")
@@ -10,6 +11,9 @@ const database = require("./modules/database.js")
 
 // Initialise Express.
 const app = express()
+
+// Compress all responses.
+app.use(compression())
 
 // Render static files.
 app.use(express.static("static"))
