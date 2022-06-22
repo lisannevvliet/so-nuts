@@ -76,15 +76,12 @@ app.get("/questionnaire", (_req, res) => {
         .then(questionnaire => {
             api.get("Domains")
                 .then(domains => {
-                    // Check if the files exist.
-                    if (questionnaire != undefined && domains != undefined) {
-                        // Load the questionnaire page with the domains, questionnaire and questionnaire length.
-                        res.render("questionnaire", {
-                            domains: domains,
-                            questionnaire: questionnaire.questions,
-                            length: questionnaire.questions.length - 1
-                        })
-                    }
+                    // Load the questionnaire page with the domains, questionnaire and questionnaire length.
+                    res.render("questionnaire", {
+                        domains: domains,
+                        questionnaire: questionnaire.questions,
+                        length: questionnaire.questions.length - 1
+                    })
                 })
         })
 })
@@ -174,19 +171,16 @@ app.get("/profile", (_req, res) => {
         .then(questionnaire => {
             api.get("QuestionnaireResponses/3")
                 .then(questionnaire_response => {
-                    // Check if the files exist.
-                    if (questionnaire != undefined && questionnaire_response != undefined) {
-                        // Get ZenQuotes' daily quote.
-                        api.quote()
-                            .then(quote => {
-                                // Load the profile page with the quote, questionnaire and questionnaire response.
-                                res.render("profile", {
-                                    quote: quote,
-                                    questionnaire: questionnaire.questions,
-                                    questionnaire_response: questionnaire_response.questionResponses
-                                })
+                    // Get ZenQuotes' daily quote.
+                    api.quote()
+                        .then(quote => {
+                            // Load the profile page with the quote, questionnaire and questionnaire response.
+                            res.render("profile", {
+                                quote: quote,
+                                questionnaire: questionnaire.questions,
+                                questionnaire_response: questionnaire_response.questionResponses
                             })
-                    }
+                        })
                 })
         })
 })
