@@ -16,12 +16,12 @@ export default function goals() {
 
     $("#add").addEventListener("click", () => {
         // Show the pop-up.
-        $("form").classList.add("show_popup")
+        $(".add_goal").classList.add("show_popup")
     })
 
     $(".close_popup").addEventListener("click", () => {
         // Hide the pop-up.
-        $("form").classList.remove("show_popup")
+        $(".add_goal").classList.remove("show_popup")
     })
 
     $$(".checkmark").forEach((element, index) => {
