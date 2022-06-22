@@ -81,6 +81,11 @@ button,
     text-decoration: none;
 }
 
+button:disabled {
+    background-color: #f6e4af;
+    cursor: auto;
+}
+
 .prev_button {
     background-color: var(--grey);
 }

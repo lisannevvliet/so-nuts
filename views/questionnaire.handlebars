@@ -52,7 +52,7 @@
                                 <input type="hidden" id="email" name="email">
                         {{/ifCond}}
                         {{!-- Change the next button text and background in the last question. --}}
-                        <button class="next_button{{#ifCond @index ../length}} turquoise"
+                        <button disabled class="next_button{{#ifCond @index ../length}} turquoise"
                             type="submit">Dashboard</button>
             {{else}}">Volgende</button>{{/ifCond}}
                 {{#ifCond @index ../length}}</form>{{/ifCond}}

@@ -22,61 +22,61 @@ export default function questionnaire() {
     update_view(index)
     $(`.questionnaire li:nth-child(${index})`).classList.add("show_element")
 
+    if (validate() == true) {
+        $$(".next_button")[index - 1].disabled = false
+    } else {
+        $$(".next_button")[index - 1].disabled = true
+    }
+
     $$("input[type=text]").forEach(element => {
         element.addEventListener("input", () => {
             save_answer("text", element, index)
+
+            if (validate() == true) {
+                $$(".next_button")[index - 1].disabled = false
+            } else {
+                $$(".next_button")[index - 1].disabled = true
+            }
+
         })
     })
 
     $$("input[type=radio]").forEach(element => {
         element.addEventListener("change", () => {
             save_answer("radio", element, index)
+
+            if (validate() == true) {
+                $$(".next_button")[index - 1].disabled = false
+            } else {
+                $$(".next_button")[index - 1].disabled = true
+            }
+
         })
     })
 
     $$("input[type=checkbox]").forEach(element => {
         element.addEventListener("change", () => {
             save_answer("checkbox", element, index)
+
+            if (validate() == true) {
+                $$(".next_button")[index - 1].disabled = false
+            } else {
+                $$(".next_button")[index - 1].disabled = true
+            }
+
         })
     })
 
     $$(".next_button").forEach(element => {
         element.addEventListener("click", () => {
-            // Add all visible input fields to an array.
-            const inputs = $$(`.questionnaire li:nth-child(${index}) input:not([type=hidden])`)
+            if (validate() == true) {
+                index = update_view(index, "next")
 
-            if (inputs.length > 1) {
-                let types = []
+                if (validate() == true) {
+                    $$(".next_button")[index - 1].disabled = false
 
-                // Add the types of all input fields to an array.
-                inputs.forEach(input => {
-                    types.push(input.type)
-                })
-
-                // If all input fields are of the same type, validate the first one. This will automatically validate all options.
-                if (new Set(types).size == 1) {
-                    if (inputs[0].checkValidity()) {
-                        index = update_view(index, "next")
-                    } else {
-                        console.log(inputs[0].validationMessage)
-                    }
                 } else {
-                    // Check if at least one checkbox or select is checked.
-                    if ($$(`input[name=${inputs[0].name}]:checked`).length > 0) {
-                        index = update_view(index, "next")
-                    }
-                    // Check if the input field is not empty.
-                    else if (inputs[inputs.length - 1].value != "") {
-                        index = update_view(index, "next")
-                    } else {
-                        console.log("Please select one of these options or fill in this field.")
-                    }
-                }
-            } else {
-                if (inputs[0].checkValidity()) {
-                    index = update_view(index, "next")
-                } else {
-                    console.log(inputs[0].validationMessage)
+                    $$(".next_button")[index - 1].disabled = true
                 }
             }
         })
@@ -85,6 +85,50 @@ export default function questionnaire() {
     $$(".prev_button").forEach(element => {
         element.addEventListener("click", () => {
             index = update_view(index, "previous")
+
+            if (validate() == true) {
+                $$(".next_button")[index - 1].disabled = false
+            } else {
+                $$(".next_button")[index - 1].disabled = true
+            }
         })
     })
+
+    function validate() {
+        let valid = false
+
+        // Add all visible input fields to an array.
+        const inputs = $$(`.questionnaire li:nth-child(${index}) input:not([type=hidden])`)
+
+        if (inputs.length > 1) {
+            let types = []
+
+            // Add the types of all input fields to an array.
+            inputs.forEach(input => {
+                types.push(input.type)
+            })
+
+            // If all input fields are of the same type, validate the first one. This will automatically validate all options.
+            if (new Set(types).size == 1) {
+                if (inputs[0].checkValidity()) {
+                    valid = true
+                }
+            } else {
+                // Check if at least one checkbox or select is checked.
+                if ($$(`input[name=${inputs[0].name}]:checked`).length > 0) {
+                    valid = true
+                }
+                // Check if the input field is not empty.
+                else if (inputs[inputs.length - 1].value != "") {
+                    valid = true
+                }
+            }
+        } else {
+            if (inputs[0].checkValidity()) {
+                valid = true
+            }
+        }
+
+        return valid
+    }
 }
