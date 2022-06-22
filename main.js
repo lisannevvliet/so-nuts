@@ -62,15 +62,12 @@ app.post("/", (req, res) => {
 })
 
 // Listen to all GET requests on /onboarding.
-app.get("/onboarding", (_req, res) => {
+app.get("/onboarding", (req, res) => {
     // Load the onboarding page.
-    res.render("onboarding")
-})
-
-// Listen to all POST requests on /onboarding.
-app.post("/onboarding", (req, res) => {
-    // Redirect to the questionnaire.
-    res.redirect(`/questionnaire?name=${req.body.name}&email=${req.body.email}`)
+    res.render("onboarding", {
+        name: req.query.name,
+        email: req.query.email
+    })
 })
 
 // Listen to all GET requests on /questionnaire.
