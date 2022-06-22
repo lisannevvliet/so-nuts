@@ -42,7 +42,7 @@ app.post("/", (req, res) => {
     database.read_user(req.body.email)
         .then(user => {
             // If not, create a new user in the database.
-            if (user.length == 0) {
+            if (user == null) {
                 database.insert_user(req.body.email)
                     .then(
                         // Redirect to the onboarding page.

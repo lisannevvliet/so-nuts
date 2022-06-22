@@ -11,6 +11,8 @@ module.exports = {
             .from("users")
             .select("*")
             .eq("email", email)
+            .limit(1)
+            .single()
 
         return response.data
     },
