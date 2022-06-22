@@ -189,7 +189,7 @@ app.get("/profile", (req, res) => {
     ])
         .then(([user, quote, streak, questionnaire]) => {
             api.get(`QuestionnaireResponses/${user.id}`)
-                .then(questionnaire_response =>
+                .then(questionnaire_response => {
                     // Load the profile page with the name, quote, streak, questionnaire and questionnaire response.
                     res.render("profile", {
                         name: req.query.name,
@@ -198,6 +198,6 @@ app.get("/profile", (req, res) => {
                         questionnaire: questionnaire.questions,
                         questionnaire_response: questionnaire_response.questionResponses
                     })
-                )
+                })
         })
 })

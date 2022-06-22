@@ -1021,8 +1021,18 @@ blockquote p {
 }
 
 .questionnaire_answers.show_popup {
+    flex-direction: column;
     margin: -1em;
     padding: 1em;
+}
+
+.questionnaire_answers.show_popup article:first-of-type {
+    display: flex;
+}
+
+.questionnaire_answers.show_popup .close_popup {
+    align-items: center;
+    display: flex;
 }
 
 .fyp_articles {
