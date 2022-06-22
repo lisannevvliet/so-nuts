@@ -330,7 +330,7 @@ button:disabled {
 }
 
 #progress div {
-    background: var(--main);
+    background: var(--main_lighter);
     height: 6px;
     width: 0%;
 }
@@ -795,7 +795,7 @@ fieldset {
     background-color: var(--accent_lighter);
 }
 
-li.exercise {
+.unordered_goal_list li.exercise {
     background-color: var(--accent);
     background-image: url("/images/goals/beweging_doel_header.svg");
 }
@@ -807,6 +807,14 @@ li.exercise {
 .checkmark_test.exercise {
     box-shadow: inset 0px 0px 0px var(--accent);
 }
+
+#progress div.exercise {
+    background: var(--accent_lighter);
+}
+
+/*  =================
+    confetti styling 
+    =================*/
 
 .confetti {
     width: 15px;
