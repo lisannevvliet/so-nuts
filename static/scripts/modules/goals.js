@@ -24,14 +24,14 @@ export default function goals() {
         $("form").classList.remove("show_popup")
     })
 
-    $$(".checkmark_test").forEach((element, index) => {
+    $$(".checkmark").forEach((element, index) => {
         element.addEventListener("click", () => {
             // Submit the hidden form.
             $$(".increase_streak")[index].submit()
 
             // Show the check animation.
-            $$(".checkmark_test")[index].classList.add("checkmark_animation")
-            $$(".checkmark_check_test")[index].classList.add("checkmark_check_animation")
+            $$(".checkmark")[index].classList.add("checkmark_animation")
+            $$(".checkmark_check")[index].classList.add("checkmark_check_animation")
 
             // $("li").classList.add("confetti")
         })

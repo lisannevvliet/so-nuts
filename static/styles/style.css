@@ -325,13 +325,17 @@ button:disabled {
 
 #progress {
     background: var(--grey);
-    height: 6px;
+    bottom: -5px;
+    height: 16px;
+    position: relative;
     width: 100%;
 }
 
 #progress div {
     background: var(--main_lighter);
-    height: 6px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 16px;
     width: 0%;
 }
 
@@ -624,35 +628,6 @@ fieldset {
     width: 50%;
 }
 
-/*  =============
-        progress bar
-     /* ============  */
-
-/* 
-#amount_of_repetitions {
-    position: fixed;
-    visibility: hidden;
-}
-
-#goal_progress {
-    background: var(--accent);
-    height: 11px;
-    width: 99%;
-    position: absolute;
-    margin: 0;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-#goal_progress div {
-    background: var(--main);
-    height: 11px;
-    width: 100%;
-    position: absolute;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-} */
-
 .unordered_goal_list {
     display: grid;
     gap: 1.5em;
@@ -661,7 +636,6 @@ fieldset {
 }
 
 .unordered_goal_list li {
-    align-items: flex-end;
     background-color: var(--main);
     background-image: url("/images/goals/voeding_doel_header.svg");
     background-position-x: 90%;
@@ -671,18 +645,20 @@ fieldset {
     box-shadow: 0 0 5px rgb(0 0 0 / 20%);
     display: inline-flex;
     height: 10em;
+    align-items: flex-end;
 }
 
 .unordered_goal_list section {
-    align-items: center;
     background-color: white;
     border-radius: 20px;
     display: inline-flex;
     height: 7.5em;
-    justify-content: space-between;
     line-height: normal;
-    padding: 1em;
+    /* padding: 1em; */
     width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .unordered_goal_list article h2 {
@@ -722,7 +698,16 @@ fieldset {
     border: none;
 }
 
-.checkmark_circle_test {
+.unordered_goal_list li section article {
+    padding-left: 1em;
+}
+
+.unordered_goal_list li section label {
+    padding-right: 3em;
+    padding-top: 1em;
+}
+
+.checkmark_circle {
     background-image: url("/images/goals/plus_sign.svg");
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
@@ -733,7 +718,7 @@ fieldset {
     animation: stroke 0.4s cubic-bezier(0.65, 0, 0.45, 1) forwards
 }
 
-.checkmark_test {
+.checkmark {
     width: 56px;
     height: 56px;
     border-radius: 50%;
@@ -751,7 +736,7 @@ fieldset {
     animation: fill 0.1s ease-in-out .4s forwards, scale .3s ease-in-out .9s both
 }
 
-.checkmark_check_test {
+.checkmark_check {
     transform-origin: 50% 50%;
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
@@ -785,6 +770,12 @@ fieldset {
     }
 }
 
+.goals_page #progress,
+.goals_page #progress div {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
 
 /*  =================
     exercise styling 
@@ -800,11 +791,11 @@ fieldset {
     background-image: url("/images/goals/beweging_doel_header.svg");
 }
 
-.checkmark_circle_test.exercise {
+.checkmark_circle.exercise {
     stroke: var(--accent);
 }
 
-.checkmark_test.exercise {
+.checkmark.exercise {
     box-shadow: inset 0px 0px 0px var(--accent);
 }
 
