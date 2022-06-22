@@ -38,6 +38,13 @@ export default function questionnaire() {
             // Enable the next button if the input field value is valid.
             validate(index)
         })
+
+        element.addEventListener("keypress", (event) => {
+            // Click on the next button if the enter button is pressed.
+            if (event.key == "Enter") {
+                $$(".next_button")[index - 1].click()
+            }
+        })
     })
 
     $$("input[type=radio]").forEach(element => {
