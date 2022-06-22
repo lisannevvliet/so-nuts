@@ -72,9 +72,9 @@ app.get("/onboarding", (req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", (_req, res) => {
-    api.get("questionnaire", "Questionnaires/2")
+    api.get("Questionnaires/2")
         .then(questionnaire => {
-            api.get("domains", "Domains")
+            api.get("Domains")
                 .then(domains => {
                     // Check if the files exist.
                     if (questionnaire != undefined && domains != undefined) {
@@ -170,9 +170,9 @@ app.post("/add_goals", (req, res) => {
 
 // Listen to all GET requests on /profile.
 app.get("/profile", (_req, res) => {
-    api.get("questionnaire", "Questionnaires/2")
+    api.get("Questionnaires/2")
         .then(questionnaire => {
-            api.get("questionnaire_response", "QuestionnaireResponses/3")
+            api.get("QuestionnaireResponses/3")
                 .then(questionnaire_response => {
                     // Check if the files exist.
                     if (questionnaire != undefined && questionnaire_response != undefined) {
