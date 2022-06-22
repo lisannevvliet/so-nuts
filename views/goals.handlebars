@@ -73,6 +73,12 @@
     <ul class="unordered_goal_list">
         {{#each user_goals}}
             <li {{#ifCond goal.category "Beweging" }} class="exercise">{{else}}>{{/ifCond}}
+                  <form action="/delete_user_goal" method="post">
+                        <input type="hidden" name="id" value={{id}}>
+                        <input type="hidden" class="name" name="name">
+                        <input type="hidden" class="email" name="email">
+                        <button type="submit">&#128465;</button>
+                    </form>
                 <section>
                     <div class="confetti_container hide_state">
                         <div class="confetti"></div>
