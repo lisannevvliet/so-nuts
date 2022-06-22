@@ -36,5 +36,12 @@ module.exports = {
         })
 
         return await response.json()
+    },
+    quote: async () => {
+        // Get ZenQuotes' daily quote.
+        const response = await fetch("https://zenquotes.io/api/today/")
+        const data = await response.json()
+
+        return data[0]
     }
 }

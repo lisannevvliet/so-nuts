@@ -167,11 +167,16 @@ app.get("/profile", (_req, res) => {
                 .then(questionnaire_response => {
                     // Check if the files exist.
                     if (questionnaire != undefined && questionnaire_response != undefined) {
-                        // Load the profile page with the questionnaire and questionnaire response.
-                        res.render("profile", {
-                            questionnaire: questionnaire.questions,
-                            questionnaire_response: questionnaire_response.questionResponses
-                        })
+                        // Get ZenQuotes' daily quote.
+                        api.quote()
+                            .then(quote => {
+                                // Load the profile page with the quote, questionnaire and questionnaire response.
+                                res.render("profile", {
+                                    quote: quote,
+                                    questionnaire: questionnaire.questions,
+                                    questionnaire_response: questionnaire_response.questionResponses
+                                })
+                            })
                     }
                 })
         })
