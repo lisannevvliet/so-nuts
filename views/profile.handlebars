@@ -8,31 +8,22 @@
             </svg>
         </button>
     </header>
-    <button class="profile_picture" aria-label="Stel een profielfoto in">
-        {{!-- <input type="file" accept="image/*;capture=camera">--}}
-    </button>
-
+    <button class="profile_picture" aria-label="Stel een profielfoto in"></button>
     <h1>{{name}}</h1>
-
     <blockquote class="quote">
         <strong>Motivatie voor vandaag</strong>
-        <p>
-            {{quote.q}}
-        </p>
+        <p>{{quote.q}}</p>
         <cite>- {{quote.a}}</cite>
     </blockquote>
-
     <section class="grid_two_columns grid_streak">
         <article class="streak_record">
             <p>Hoogste streak</p>
             <strong>{{streak}}</strong>
         </article>
-
         <article class="see_answers">
             <p>Bekijk de door jou ingevulde antwoorden op de vragenlijst</p>
         </article>
     </section>
-
     <h2>Voor jou geselecteerd</h2>
     <section class="fyp_articles">
         <article>
@@ -56,7 +47,6 @@
             <p>Lees meer...</p>
         </article>
     </section>
-
     <section class="questionnaire_answers show_popup hide_state">
         <article>
             <h2>Uw ingevulde antwoorden</h2>
@@ -92,5 +82,4 @@
             {{/each}}
         </article>
     </section>
-
 </main>

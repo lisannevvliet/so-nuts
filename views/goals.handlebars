@@ -1,7 +1,6 @@
 <main class="goals_page">
     <header>
         <h1>{{name}}'{{#ifCond s false}}s{{/ifCond}} doelen</h1>
-
         <form action="/goals" method="post">
             <input type="hidden" class="name" name="name">
             <input type="hidden" class="email" name="email">
@@ -21,22 +20,6 @@
                 </svg>
             </button>
         </form>
-
-        {{!-- <a href="/profile?name={{name}}" aria-label="Naar profielpagina">
-            <svg xmlns="http://www.w3.org/2000/svg" width="34.13" height="34.13" viewBox="0 0 34.13 34.13">
-                <g data-name="Group 188" transform="translate(-343.006 -30)">
-                    <g>
-                        <g>
-                            <circle data-name="Ellipse 12" cx="12" cy="12" r="12" transform="translate(348 38)"
-                                fill="#a9a9a9" />
-                            <path
-                                d="M150.345,63.281A17.065,17.065,0,1,0,167.41,80.346,17.078,17.078,0,0,0,150.345,63.281Zm0,8.731a5.291,5.291,0,1,1-5.291,5.291A5.307,5.307,0,0,1,150.345,72.012Zm0,21.871a13.493,13.493,0,0,1-8.555-3.043,10.9,10.9,0,0,1,17.109,0A13.5,13.5,0,0,1,150.345,93.883Z"
-                                transform="translate(209.726 -33.281)" fill="#ededed" />
-                        </g>
-                    </g>
-                </g>
-            </svg>
-        </a> --}}
     </header>
     <form class="add_goal" action="/add_goals" method="post">
         <h2>Kies uw doel uit</h2>
@@ -48,7 +31,6 @@
             </svg>
         </div>
         <fieldset>
-
             {{#each goals}}
                 <input type="checkbox" id="{{name}}" name="goal" class="goal_input" value="{{name}}">
                 <label for="{{name}}" class="goal_card {{#ifCond category "Beweging" }}exercise">
@@ -69,12 +51,10 @@
             </p>
         </section>
     {{/ifCond}}
-
     <ul class="unordered_goal_list">
         {{#each user_goals}}
             <li {{#ifCond goal.category "Beweging" }} class="exercise">{{else}}>{{/ifCond}}
             <section>
-
                 <article class="three_dots">
                     <button class="dots_button new_button"></button>
                     <div class="dots_content">
@@ -86,7 +66,6 @@
                         </form>
                     </div>
                 </article>
-
                 <div class="confetti_container hide_state">
                     <div class="confetti"></div>
                     <div class="confetti"></div>
@@ -104,8 +83,6 @@
                     <p><span class="repetition_change">{{streak}}</span> van de 21 dagen voltooid</p>
                 </article>
                 <label for="goal_{{id}}">
-                    {{!-- <input type="checkbox" data-index={{id}} name="goal_{{id}}" id="goal_{{id}}" {{#ifCond streak 21}}
-                        checked{{/ifCond}} /> --}}
                     <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
                         <circle class="checkmark_circle {{#ifCond goal.category "Beweging" }}
                             exercise"{{else}}"{{/ifCond}} cx="26" cy="26" r="25" fill="none" />
@@ -130,9 +107,6 @@
             </li>
         {{/each}}
     </ul>
-
-
-
     <div class="button_wrapper">
         <button id="add">
             <svg xmlns="http://www.w3.org/2000/svg" width="13.009" height="13.126" viewBox="0 0 13.009 13.126">
@@ -144,12 +118,3 @@
         </button>
     </div>
 </main>
-{{!-- <label for="time_reminder">Hoelaat wil je een herinnering krijgen?</label>
-<input type="time" id="time_reminder" name="time_reminder" min="06:00" max="23:00"> --}}
-
-
-{{!-- <svg xmlns="http://www.w3.org/2000/svg" width="29.472" height="25.187" viewBox="0 0 29.472 25.187">
-    <path id="Path_62" data-name="Path 62"
-        d="M136.248,105.171l-3.225-4.623a3.393,3.393,0,0,0-5.566,3.883l6,8.6a3.4,3.4,0,0,0,4.725.842,3.354,3.354,0,0,0,1.016-1.131h0l.014-.03a3.429,3.429,0,0,0,.2-.44c1.235-2.657,7.773-16.083,16.906-22.98,0,0-11.5.29-20.074,15.876Z"
-        transform="translate(-126.85 -89.294)" fill="#ebede9" />
-</svg> --}}
