@@ -5,9 +5,8 @@ const handlebars = require("express-handlebars")
 const { createClient } = require("@supabase/supabase-js")
 
 // Import modules.
-const get = require("./modules/get.js")
+const api = require("./modules/api.js")
 const responses = require("./modules/responses.js")
-const post = require("./modules/post.js")
 
 // Initialise Supabase with a service key, to have full access to the data.
 const supabase = createClient("https://depctutsufqakltbwctd.supabase.co", process.env.SERVICE_KEY)
@@ -79,9 +78,9 @@ app.post("/onboarding", (req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", (_req, res) => {
-    get.get("questionnaire", "Questionnaires/2")
+    api.get("questionnaire", "Questionnaires/2")
         .then(questionnaire => {
-            get.get("domains", "Domains")
+            api.get("domains", "Domains")
                 .then(domains => {
                     // Check if the files exist.
                     if (questionnaire != undefined && domains != undefined) {
@@ -101,7 +100,7 @@ app.post("/questionnaire", (req, res) => {
     update_user(req.body.email, { questionnaire: true })
         .then(
             // Transform the answers to a compatible format and send a POST request with them.
-            post.post(responses.responses(req.body.answers))
+            api.post(responses.responses(req.body.answers))
                 .then(
                     // Redirect to the personalized goals page.
                     res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
@@ -168,9 +167,9 @@ app.post("/add_goals", (req, res) => {
 
 // Listen to all GET requests on /profile.
 app.get("/profile", (_req, res) => {
-    get.get("questionnaire", "Questionnaires/2")
+    api.get("questionnaire", "Questionnaires/2")
         .then(questionnaire => {
-            get.get("questionnaire_response", "QuestionnaireResponses/3")
+            api.get("questionnaire_response", "QuestionnaireResponses/3")
                 .then(questionnaire_response => {
                     // Check if the files exist.
                     if (questionnaire != undefined && questionnaire_response != undefined) {
