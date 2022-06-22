@@ -39,6 +39,9 @@ export default function goals() {
             // $("li").classList.add("confetti")
         })
 
+        // Fill in the progress bar.
+        $$("#progress div")[index].style.width = $$(".repetition_change")[index].textContent * 100 / 21 + "%"
+
         // if complete {
         // $("confetti_container").classList.remove("hide_state")
         // }

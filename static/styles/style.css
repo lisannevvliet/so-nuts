@@ -770,6 +770,7 @@ fieldset {
     stroke-miterlimit: 10;
     margin: 10% auto;
     box-shadow: inset 0px 0px 0px var(--main);
+    cursor: pointer;
 }
 
 .checkmark_animation {
