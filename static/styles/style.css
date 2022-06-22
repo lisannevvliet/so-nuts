@@ -25,6 +25,7 @@ main {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    min-width: 400px;
 }
 
 p {
@@ -656,9 +657,9 @@ fieldset {
     line-height: normal;
     /* padding: 1em; */
     width: 100%;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: center;
 }
 
 .unordered_goal_list article h2 {
@@ -698,12 +699,8 @@ fieldset {
     border: none;
 }
 
-.unordered_goal_list li section article {
-    padding-left: 1em;
-}
-
 .unordered_goal_list li section label {
-    padding-right: 3em;
+    padding-right: 2em;
     padding-top: 1em;
 }
 
@@ -1085,4 +1082,42 @@ blockquote p {
     background-color: transparent;
     margin: 0;
     padding: 0;
+}
+
+.dots_button {
+    color: black;
+    padding: 1em;
+    background-image: url(/images/delete_dots.svg);
+    background-size: 1em;
+    background-repeat: no-repeat;
+    width: 1em;
+    margin: 1em;
+    border-radius: 0;
+    /* padding: 0; */
+}
+
+.three_dots {
+    position: relative;
+    display: inline-block;
+}
+
+.dots_content {
+    display: none;
+    margin-top: -3em;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dots_content button {
+    padding: 1em;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.show_state {
+    display: block;
 }

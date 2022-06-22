@@ -43,4 +43,12 @@ export default function goals() {
         // $("confetti_container").classList.remove("hide_state")
         // }
     })
+
+    // You won't fucking believe it it sometimes doesn't show the dots content for the right index. 
+    $$(".three_dots").forEach((element, index) => {
+        element.addEventListener("click", () => {
+            $$(".dots_content")[index].classList.add("show_state")
+        })
+    })
+
 }
