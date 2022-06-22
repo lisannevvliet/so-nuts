@@ -67,6 +67,11 @@ module.exports = {
             .limit(1)
             .single()
 
-        return response.data.streak
+        // Return zero if the user has no goals yet.
+        if (response.data == null) {
+            return 0
+        } else {
+            return response.data.streak
+        }
     }
 }
