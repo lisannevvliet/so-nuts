@@ -1,5 +1,6 @@
-// Import Node.js modules.
+// Import Dotenv.
 require("dotenv").config()
+// Import Supabase.
 const { createClient } = require("@supabase/supabase-js")
 
 // Initialise Supabase with a service key, to have full access to the data.

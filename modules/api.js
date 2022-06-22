@@ -1,4 +1,4 @@
-// Import Node.js modules.
+// Import node-fetch.
 const fetch = require("node-fetch")
 
 module.exports = {
