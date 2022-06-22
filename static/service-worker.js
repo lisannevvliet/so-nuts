@@ -85,13 +85,6 @@ self.addEventListener("fetch", event => {
                                 })
                             return response || fetchPromise
                         })
-                    // Serve the offline page if the HTML is not in the cache and there is no internet.
-                    // .catch(() => {
-                    //     return caches.open("core-cache")
-                    //         .then(cache =>
-                    //             cache.match("/offline")
-                    //         )
-                    // })
                 })
         )
     }
