@@ -1,7 +1,7 @@
 {
   "name": "so-nuts",
   "version": "1.0.0",
-  "description": "",
+  "description": "SO-NUTS is een web applicatie om gewoontes omtrent voeding en beweging aan te passen.",
   "main": "main.js",
   "scripts": {
     "test": "nodemon main.js",

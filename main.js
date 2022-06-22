@@ -22,6 +22,16 @@ express()
     // Compress all responses.
     .use(compression())
 
+    // Cache non-HTML GET requests for one year (see https://ashton.codes/set-cache-control-max-age-1-year/).
+    .use((req, res, next) => {
+        if (req.method == "GET" && !(req.rawHeaders.toString().includes("text/html"))) {
+            res.set("Cache-control", "public, max-age=31536000")
+        }
+
+        // Pass on the request.
+        next()
+    })
+
     // Render static files.
     .use(express.static("static"))
 
