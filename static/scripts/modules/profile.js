@@ -6,7 +6,7 @@ export default function profile() {
     $("#name").textContent = parameters.get("name")
 
     $(".previous_url").addEventListener("click", () => {
-        // Go back to previous URL, which is the personalized goals page. 
+        // Go back to previous URL, which is the goals page. 
         history.back()
     })
 

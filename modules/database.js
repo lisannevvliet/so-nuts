@@ -46,6 +46,12 @@ module.exports = {
             .update(value)
             .eq("id", id)
     },
+    remove_user_goal: async (id) => {
+        await supabase
+            .from("user_goals")
+            .delete()
+            .eq("id", id)
+    },
     read_goals: async () => {
         const response = await supabase
             .from("goals")

@@ -54,7 +54,7 @@ app.post("/", (req, res) => {
                     // Redirect to the onboarding page.
                     res.redirect(`/onboarding?name=${req.body.name}&email=${req.body.email}`)
                 } else {
-                    // Redirect to the personalized goals page.
+                    // Redirect to the goals page.
                     res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
                 }
             }
@@ -96,7 +96,7 @@ app.post("/questionnaire", (req, res) => {
             // Transform the answers to a compatible format and send a POST request with them.
             api.post(responses.responses(req.body.answers))
                 .then(
-                    // Redirect to the personalized goals page.
+                    // Redirect to the goals page.
                     res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
                 )
         )
@@ -128,13 +128,22 @@ app.post("/increase_streak", (req, res) => {
         // Increase the streak by one.
         database.update_user_goal(req.body.id, { streak: parseInt(req.body.streak) + 1 })
             .then(
-                // Redirect to the personalized goals page.
+                // Redirect to the goals page.
                 res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
             )
     } else {
-        // Redirect to the personalized goals page.
+        // Redirect to the goals page.
         res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
     }
+})
+
+// Listen to all POST requests on /increase_streak.
+app.post("/delete_user_goal", (req, res) => {
+    database.remove_user_goal(req.body.id)
+        .then(
+            // Redirect to the goals page.
+            res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
+        )
 })
 
 // Listen to all POST requests on /add_goals.
@@ -145,7 +154,7 @@ app.post("/add_goals", (req, res) => {
                 .then(() => {
                     // Check if the last goal has been added.
                     if (index == req.body.goal.length - 1) {
-                        // Redirect to the personalized goals page.
+                        // Redirect to the goals page.
                         res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
                     }
                 })
@@ -153,7 +162,7 @@ app.post("/add_goals", (req, res) => {
     } else {
         database.add_user_goal(req.body.email, req.body.goal)
             .then(
-                // Redirect to the personalized goals page.
+                // Redirect to the goals page.
                 res.redirect(`/goals?name=${req.body.name}&email=${req.body.email}`)
             )
     }
