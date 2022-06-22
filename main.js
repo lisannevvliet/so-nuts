@@ -72,19 +72,16 @@ app.get("/onboarding", (req, res) => {
 
 // Listen to all GET requests on /questionnaire.
 app.get("/questionnaire", (_req, res) => {
-    api.get("questionnaire", "Questionnaires/2")
+    api.get("Questionnaires/2")
         .then(questionnaire => {
-            api.get("domains", "Domains")
+            api.get("Domains")
                 .then(domains => {
-                    // Check if the files exist.
-                    if (questionnaire != undefined && domains != undefined) {
-                        // Load the questionnaire page with the domains, questionnaire and questionnaire length.
-                        res.render("questionnaire", {
-                            domains: domains,
-                            questionnaire: questionnaire.questions,
-                            length: questionnaire.questions.length - 1
-                        })
-                    }
+                    // Load the questionnaire page with the domains, questionnaire and questionnaire length.
+                    res.render("questionnaire", {
+                        domains: domains,
+                        questionnaire: questionnaire.questions,
+                        length: questionnaire.questions.length - 1
+                    })
                 })
         })
 })
@@ -170,23 +167,20 @@ app.post("/add_goals", (req, res) => {
 
 // Listen to all GET requests on /profile.
 app.get("/profile", (_req, res) => {
-    api.get("questionnaire", "Questionnaires/2")
+    api.get("Questionnaires/2")
         .then(questionnaire => {
-            api.get("questionnaire_response", "QuestionnaireResponses/3")
+            api.get("QuestionnaireResponses/3")
                 .then(questionnaire_response => {
-                    // Check if the files exist.
-                    if (questionnaire != undefined && questionnaire_response != undefined) {
-                        // Get ZenQuotes' daily quote.
-                        api.quote()
-                            .then(quote => {
-                                // Load the profile page with the quote, questionnaire and questionnaire response.
-                                res.render("profile", {
-                                    quote: quote,
-                                    questionnaire: questionnaire.questions,
-                                    questionnaire_response: questionnaire_response.questionResponses
-                                })
+                    // Get ZenQuotes' daily quote.
+                    api.quote()
+                        .then(quote => {
+                            // Load the profile page with the quote, questionnaire and questionnaire response.
+                            res.render("profile", {
+                                quote: quote,
+                                questionnaire: questionnaire.questions,
+                                questionnaire_response: questionnaire_response.questionResponses
                             })
-                    }
+                        })
                 })
         })
 })
