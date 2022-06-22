@@ -1,5 +1,3 @@
-import $ from "./$.js"
-import $$ from "./$$.js"
 import update_view from "./update_view.js"
 import validate from "./validate.js"
 import { save_answer } from "./answers.js"

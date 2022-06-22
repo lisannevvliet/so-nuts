@@ -14,8 +14,18 @@
 <body>
     {{{body}}}
 </body>
-<script type="module" src="scripts/script.js"></script>
+<script>
+    // Return the Element object of the corresponding element.
+    function $(element) {
+        return document.querySelector(element)
+    }
 
+    // Return the Element objects of all corresponding elements.
+    function $$(element) {
+        return document.querySelectorAll(element)
+    }
+</script>
+<script type="module" src="scripts/script.js"></script>
 <style>
     @font-face {
         font-family: 'Nunito';

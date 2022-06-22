@@ -1,5 +1,3 @@
-import $$ from "./$$.js"
-
 export default function validate(index) {
     let valid = false
 

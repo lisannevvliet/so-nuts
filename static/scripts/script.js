@@ -1,4 +1,3 @@
-import $ from "./modules/$.js"
 import questionnaire from "./modules/questionnaire.js"
 import goals from "./modules/goals.js"
 import profile from "./modules/profile.js"

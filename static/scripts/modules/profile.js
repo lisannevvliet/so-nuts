@@ -1,5 +1,3 @@
-import $ from "./$.js"
-
 export default function profile() {
     // Get the URL parameters.
     const parameters = new URLSearchParams(window.location.search)

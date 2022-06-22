@@ -1,6 +1,3 @@
-import $ from "./$.js"
-import $$ from "./$$.js"
-
 let answers = {}
 
 export function save_answer(type, element, index) {

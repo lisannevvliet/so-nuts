@@ -1,5 +1,3 @@
-import $ from "./$.js"
-import $$ from "./$$.js"
 import { load_answers } from "./answers.js"
 
 export default function update_view(index, direction) {
