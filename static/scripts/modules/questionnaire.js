@@ -26,6 +26,11 @@ export default function questionnaire() {
     // Enable the next button if the input field value is valid.
     validate(index)
 
+    // Focus on the input field, if there is any.
+    try {
+        $(`.questionnaire li:nth-child(${index}) input[type=text]`).focus()
+    } catch { }
+
     $$("input[type=text]").forEach(element => {
         element.addEventListener("input", () => {
             save_answer("text", element, index)
@@ -59,6 +64,11 @@ export default function questionnaire() {
             if (validate(index) == true) {
                 index = update_view(index, "next")
 
+                // Focus on the input field, if there is any.
+                try {
+                    $(`.questionnaire li:nth-child(${index}) input[type=text]`).focus()
+                } catch { }
+
                 // Enable the next button if the input field value is valid.
                 validate(index)
             }
@@ -68,6 +78,11 @@ export default function questionnaire() {
     $$(".prev_button").forEach(element => {
         element.addEventListener("click", () => {
             index = update_view(index, "previous")
+
+            // Focus on the input field, if there is any.
+            try {
+                $(`.questionnaire li:nth-child(${index}) input[type=text]`).focus()
+            } catch { }
 
             // Enable the next button if the input field value is valid.
             validate(index)
