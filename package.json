@@ -5,7 +5,17 @@
   "main": "main.js",
   "scripts": {
     "test": "nodemon main.js",
-    "start": "node main.js"
+    "start": "node main.js",
+    "prestart": "npm run build",
+    "build": "npm-run-all build:*",
+    "build:script": "node-minify --compressor terser --input \"source/scripts/script.js\" --output \"static/scripts/script.js\"",
+    "build:answers": "node-minify --compressor terser --input \"source/scripts/modules/answers.js\" --output \"static/scripts/modules/answers.js\"",
+    "build:goals": "node-minify --compressor terser --input \"source/scripts/modules/goals.js\" --output \"static/scripts/modules/goals.js\"",
+    "build:profile": "node-minify --compressor terser --input \"source/scripts/modules/profile.js\" --output \"static/scripts/modules/profile.js\"",
+    "build:questionnaire": "node-minify --compressor terser --input \"source/scripts/modules/questionnaire.js\" --output \"static/scripts/modules/questionnaire.js\"",
+    "build:update_view": "node-minify --compressor terser --input \"source/scripts/modules/update_view.js\" --output \"static/scripts/modules/update_view.js\"",
+    "build:validate": "node-minify --compressor terser --input \"source/scripts/modules/validate.js\" --output \"static/scripts/modules/validate.js\"",
+    "build:style": "node-minify --compressor clean-css --input \"source/styles/style.css\" --output \"static/styles/style.css\""
   },
   "repository": {
     "type": "git",
@@ -18,6 +28,9 @@
   },
   "homepage": "https://github.com/lisannevvliet/so-nuts#readme",
   "dependencies": {
+    "@node-minify/clean-css": "^6.2.0",
+    "@node-minify/cli": "^6.2.0",
+    "@node-minify/terser": "^6.2.0",
     "@supabase/supabase-js": "^1.35.3",
     "compression": "^1.7.4",
     "dotenv": "^16.0.1",
@@ -25,7 +38,8 @@
     "express-handlebars": "^6.0.6",
     "fs": "^0.0.1-security",
     "heroku": "^7.60.2",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "npm-run-all": "^4.1.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
