@@ -32,6 +32,7 @@ export default function goals() {
         if ($$(".repetition_change")[index].textContent == 21) {
             $$(".checkmark_plus")[index].classList.add("hide_plus")
             $$(".checkmark_check_icon")[index].classList.add("checkmark_check_icon_animation")
+            $$(".checkmark")[index].classList.add("no_cursor")
         }
 
         element.addEventListener("click", () => {

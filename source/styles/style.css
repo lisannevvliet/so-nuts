@@ -672,6 +672,10 @@ fieldset {
     cursor: pointer
 }
 
+.no_cursor {
+    cursor: auto
+}
+
 .checkmark_circle {
     fill: var(--main)
 }
@@ -693,6 +697,7 @@ fieldset {
 
 .checkmark_check_icon_animation {
     animation: draw_checkmark .1s cubic-bezier(.65, 0, .45, 1) .3s forwards;
+    cursor: none;
     stroke: var(--secundary);
     stroke-width: 6px
 }
@@ -897,6 +902,7 @@ blockquote p {
     align-items: center;
     background-color: #e7e7e7;
     border-radius: 20px;
+    cursor: pointer;
     flex-direction: row;
     gap: 1em;
     height: auto;
@@ -965,3 +971,4 @@ blockquote p {
     padding: 1em;
     width: 25em;
 }
+
