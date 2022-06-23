@@ -97,8 +97,9 @@ button:disabled {
 }
 
 .next_button.turquoise:disabled {
-    background-color: #c1dfd4;
+    background-color: var(--main_lighter);
 }
+
 
 .white_button {
     background-color: #fff
@@ -123,9 +124,12 @@ button:disabled {
 }
 
 .login_page form {
+    align-content: center;
+    align-items: center;
     background-color: #fff;
     border-radius: 20px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
     height: 40%;
     justify-content: center;
     padding: 2em;
@@ -133,7 +137,7 @@ button:disabled {
     margin-left: auto;
     margin-right: auto;
     margin-top: 6em;
-    width: 80%
+    width: 80%;
 }
 
 .login_page h2 {
@@ -146,7 +150,6 @@ button:disabled {
 .login_page article {
     margin-top: 2.5em;
     position: relative;
-    width: 100%
 }
 
 .user_box input {
@@ -621,7 +624,7 @@ fieldset {
 }
 
 .unordered_goal_list article h2 {
-    font-size: 23px;
+    font-size: 21px;
     font-weight: 600;
     margin: 0;
     padding: 0;
@@ -874,10 +877,6 @@ blockquote p {
     width: auto
 }
 
-.answer {
-    font-weight: 700;
-}
-
 .questionnaire_answers.show_popup {
     flex-direction: column;
     margin: -1em;
@@ -905,7 +904,6 @@ blockquote p {
     align-items: center;
     background-color: #e7e7e7;
     border-radius: 20px;
-    cursor: pointer;
     flex-direction: row;
     gap: 1em;
     height: auto;
@@ -963,10 +961,14 @@ blockquote p {
     background-position: center
 }
 
+.answer {
+    font-weight: 700
+}
+
 .offline img {
     height: 25em;
     margin: 0 auto;
-    width: 25em;
+    width: 25em
 }
 
 .offline p {
@@ -974,4 +976,3 @@ blockquote p {
     padding: 1em;
     width: 25em;
 }
-
