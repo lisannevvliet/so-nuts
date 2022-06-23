@@ -96,6 +96,10 @@ button:disabled {
     background-color: var(--main)
 }
 
+.next_button.turquoise:disabled {
+    background-color: #c1dfd4;
+}
+
 .white_button {
     background-color: #fff
 }
