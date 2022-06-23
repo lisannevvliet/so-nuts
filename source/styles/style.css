@@ -958,6 +958,10 @@ blockquote p {
     width: auto
 }
 
+.answer {
+    font-weight: 700;
+}
+
 .questionnaire_answers.show_popup {
     flex-direction: column;
     margin: -1em;
