@@ -22,7 +22,7 @@ Wanneer mensen met pensioen gaan verandert er veel, ook hun eet- en beweeggewoon
 https://so-nuts.herokuapp.com/
 
 ## Installatie
-Om te bekijken, bezoek de [Heroku app](https://erics-spraakassistent.herokuapp.com/). Om lokale wijzigingen aan te brengen, clone de repository en bewerk de bestanden in een IDE.
+Om te bekijken, bezoek de [Heroku app](https://so-nuts.herokuapp.com/). Om lokale wijzigingen aan te brengen, clone de repository en bewerk de bestanden in een IDE.
 
 ## Gebruikershandleiding en functies
 <!-- ...but how does one use this project? What are its features 🤔 -->
@@ -31,7 +31,6 @@ Om te bekijken, bezoek de [Heroku app](https://erics-spraakassistent.herokuapp.c
 De voltooide taken zijn te vinden in de [commit messages](https://github.com/lisannevvliet/so-nuts/commits/main) en het [project](https://github.com/lisannevvliet/so-nuts/projects/2). De volgende taken konden niet binnen de gestelde tijd worden voltooid, maar zouden leuk zijn om te hebben.
 
 - [ ] Animeer voortgangsbalk.
-- [ ] Ontwerp logo.
 - [ ] Voeg ondersteuning toe voor combinatie van radio buttons en invoerveld.
 - [ ] Implementeer SCSS.
 - [ ] Voeg iets vrolijks toe wanneer doel voltooid is.
