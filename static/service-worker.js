@@ -1,7 +1,7 @@
 // Change this variable to reregister the service worker (a.k.a. revisioning).
 const version = 1
 
-// Cache all static files, as well as the login page.
+// Cache all static files, as well as the login and offline page.
 const files = [
     "/favicon/android-chrome-192x192.png",
     "/favicon/android-chrome-512x512.png",
@@ -45,7 +45,8 @@ const files = [
     "/scripts/modules/validate.js",
     "/scripts/script.js",
     "/styles/style.css",
-    "/"
+    "/",
+    "/offline"
 ]
 
 // Install the service worker.
@@ -82,8 +83,21 @@ self.addEventListener("fetch", event => {
                     // Retrieve the HTML from the dynamic-cache.
                     const cache_response = await cache.match(event.request)
 
+                    console.log("cache_response: " + cache_response)
+
+                    // Retrieve the HTML from the dynamic-cache.
+                    // Serve the offline page if the HTML is not in the cache and there is no internet.
+                    const offline_response = await caches.open("core-cache")
+                        .then(cache => {
+                            console.log(cache.match("/offline"))
+
+                            return cache.match("/offline")
+                        })
+
+                    console.log("offline_response: " + offline_response)
+
                     // Try to retrieve the HTML from the network.
-                    const response = fetch(event.request)
+                    const response = await fetch(event.request)
                         .then(network_response => {
                             // Save the HTML in the dynamic-cache.
                             cache.put(event.request, network_response.clone())
@@ -92,10 +106,15 @@ self.addEventListener("fetch", event => {
                         })
                         // If this fails, use the HTML from the dynamic-cache.
                         .catch(() => {
-                            return cache_response
+                            if (cache_response != undefined) {
+                                return cache_response
+                            } else {
+                                return offline_response
+                            }
                         })
 
-                    return await response
+                    console.log(response)
+                    return response
                 })
         )
     }
