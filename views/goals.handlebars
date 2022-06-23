@@ -33,7 +33,7 @@
         <fieldset>
             {{#each goals}}
                 <input type="checkbox" id="{{name}}" name="goal" class="goal_input" value="{{name}}">
-                <label for="{{name}}" class="goal_card {{#ifCond category "Beweging" }}exercise">
+                <label for="{{name}}" class="goal_card {{#ifCond category " Beweging" }}exercise">
             {{else}}">{{/ifCond}}
                 <img src="{{icon}}" loading="lazy">
                 <h3 {{#ifCond category "Beweging" }} class="exercise">{{else}}>{{/ifCond}} {{name}}</h3>
@@ -46,7 +46,8 @@
     </form>
     {{#ifCond user_goals.length 0}}
         <section class="empty_state">
-            <img src="/images/goals/empty_state.webp" loading="lazy">
+            <img src="/images/goals/empty_state.webp" loading="lazy"
+                alt="Illustraties. Een cartoon van een vrouw met zwart haar en paars shirt aan. Een kalender, een bord met ei wordt en sla en een arm waar de spieren aangespannen zijn.">
             <p>Begin met het aanmaken van doelen! Voor jou samengesteld. Het is aan te raden om er op 2 à 3 te focussen.
             </p>
         </section>
@@ -72,12 +73,12 @@
                 </article>
                 <label for="goal_{{id}}">
                     <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                        <circle class="checkmark_circle {{#ifCond goal.category "Beweging" }}
+                        <circle class="checkmark_circle {{#ifCond goal.category " Beweging" }}
                             exercise"{{else}}"{{/ifCond}} cx="26" cy="26" r="25" fill="none" />
                         <path class="checkmark_plus"
                             d="M158.27,75.663h-6.98v-6.98a2.807,2.807,0,0,0-5.6,0v6.98h-7a2.807,2.807,0,0,0,0,5.6h6.98v7a2.807,2.807,0,1,0,5.6,0v-6.98h7a2.807,2.807,0,0,0,0-5.613Z"
                             transform="translate(-123 -53)" fill="white" />
-                        <path class="checkmark_check_icon {{#ifCond goal.category "Beweging" }}
+                        <path class="checkmark_check_icon {{#ifCond goal.category " Beweging" }}
                             exercise"{{else}}"{{/ifCond}} fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
                     </svg>
                     <form class="increase_streak" action="/increase_streak" method="post">
