@@ -8,6 +8,7 @@
 - [Installatie](#installatie)
 - [Gebruikershandleiding en functies](#gebruikershandleiding-en-functies)
 - [Checklist](#checklist)
+- [Prestatieverbeteringen](#prestatieverbeteringen)
 - [Auteurs](#auteurs)
 - [Licentie](#licentie)
 
@@ -28,6 +29,19 @@ Om te bekijken, bezoek de [Heroku app](https://erics-spraakassistent.herokuapp.c
 
 ## Checklist
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+
+## Prestatieverbeteringen
+- [x] Automatisch minifiëren van CSS en JavaScript bij npm start.
+- [x] Stel HTTP header veld Cache-control in om niet-HTML GET verzoeken gedurende 1 jaar te cachen.
+- [x] Voeg revisie toe aan service worker door het versienummer op te slaan in een variabele.
+- [x] Implementeer compressie door gebruik te maken van de corresponderende Node.js module.
+- [x] Schrijf zo weinig mogelijk client-side JavaScript.
+- [x] Voeg font-display: swap toe aan geïmporteerde fonts in CSS.
+- [x] Controleer of afbeeldingen niet onnodig groot zijn.
+- [x] Gebruik de meest compacte afbeeldingsformaten: WebP en SVG.
+- [x] Verwijder ongebruikte HTML, CSS, JavaScript, lettertypes en afbeeldingen.
+
+[Lighthouse]()
 
 ## Auteurs
 De auteurs van dit project zijn [Farrahton Piers](https://github.com/farrahton) en [Lisanne van Vliet](https://github.com/lisannevvliet).
