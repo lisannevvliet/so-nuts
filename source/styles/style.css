@@ -106,10 +106,6 @@ button:disabled {
     padding: 0
 }
 
-/*  =========
-    login page
-    ========= */
-
 .login_page {
     background-image: url(/images/login/login_background.svg);
     background-repeat: no-repeat;
@@ -180,10 +176,6 @@ button:disabled {
     top: -20px
 }
 
-/* ==========
-    onboarding
-    ========== */
-
 .onboarding section {
     height: 100%;
     overflow: scroll;
@@ -216,12 +208,8 @@ button:disabled {
     font-weight: 600
 }
 
-/*  ==============
-    questionnaire
-    ============ */
-
 .questionnaire_page {
-    background-image: url(/images/questionnaire_background.svg);
+    background-image: url(/images/questionnaire/questionnaire_background.svg);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
@@ -242,10 +230,6 @@ button:disabled {
     height: 100%;
     padding-top: 1em
 }
-
-/*  ============
-    progress bar
-    ============ */
 
 .questionnaire_page .progress_steps {
     counter-reset: step;
@@ -348,11 +332,6 @@ button:disabled {
     visibility: hidden
 }
 
-/*  ============
-    input types
-    ============ */
-
-
 .questionnaire_page button:focus {
     border: 3px solid var(--accent);
     outline: 0
@@ -405,10 +384,6 @@ button:disabled {
 .questionnaire_page .grid_two_columns label {
     width: unset
 }
-
-/*  ========
-    goals page
-    ========== */
 
 .goals_page header {
     display: flex;
@@ -605,7 +580,7 @@ fieldset {
 
 .dots_button {
     padding: 1em;
-    background-image: url(/images/delete_dots.svg);
+    background-image: url(/images/goals/delete_dots.svg);
     background-size: 1em;
     background-position: center;
     background-repeat: no-repeat;
@@ -616,7 +591,7 @@ fieldset {
 
 .three_dots {
     position: relative;
-    display: inline-block;
+    display: inline-block
 }
 
 .dots_content {
@@ -638,7 +613,7 @@ fieldset {
 }
 
 .show_state {
-    display: block;
+    display: block
 }
 
 .unordered_goal_list article h2 {
@@ -669,6 +644,15 @@ fieldset {
     background-color: var(--main);
     border-radius: 50%;
     cursor: pointer
+}
+
+.unordered_goal_list input[type=checkbox].checkmark {
+    background-image: url(/images/goals/check.svg);
+    background-color: var(--main_lighter)
+}
+
+.unordered_goal_list input[type=checkbox]:focus {
+    border: none
 }
 
 .unordered_goal_list li section label {
@@ -738,11 +722,6 @@ fieldset {
     border-bottom-right-radius: 20px
 }
 
-/*  =================
-    exercise styling 
-    =================*/
-
-
 .goals_page form input[type=checkbox].goal_input:checked+.goal_card h3.exercise,
 .goals_page form input[type=checkbox].goal_input:checked+label.exercise {
     background-color: var(--accent_lighter)
@@ -764,10 +743,6 @@ fieldset {
 #progress div.exercise {
     background: var(--accent_lighter)
 }
-
-/*  =================
-    confetti styling 
-    =================*/
 
 .confetti {
     width: 15px;
@@ -861,12 +836,8 @@ fieldset {
     }
 }
 
-/*  ============
-    profile page 
-    ============ */
-
 .profile {
-    background-image: url(/images/profile_swirl.svg);
+    background-image: url(/images/profile/profile_swirl.svg);
     background-repeat: no-repeat;
     background-size: contain;
     height: auto;
@@ -902,7 +873,7 @@ fieldset {
 
 .profile_picture {
     background-color: #a9a9a9;
-    background-image: url(/images/profile_icon.svg);
+    background-image: url(/images/profile/profile_icon.svg);
     background-size: cover;
     border-radius: 50%;
     height: 6em;
@@ -950,7 +921,7 @@ blockquote p {
 
 .streak_record {
     background-color: #e7e7e7;
-    background-image: url(/images/finish.svg);
+    background-image: url(/images/profile/finish.svg);
     border-radius: 20px;
     background-repeat: no-repeat;
     background-size: 8em;
@@ -976,7 +947,7 @@ blockquote p {
 
 .see_answers {
     background-color: #e7e7e7;
-    background-image: url(/images/icons_questionnaire/questionnaire.svg);
+    background-image: url(/images/questionnaire/vragenlijst_icon.svg);
     background-position: bottom right;
     background-repeat: no-repeat;
     background-size: 4em;
@@ -1048,25 +1019,25 @@ blockquote p {
 }
 
 .fyp_articles article:nth-of-type(1):before {
-    background-image: url(/images/fyp/fitness.webp)
+    background-image: url(/images/profile/fitness.webp)
 }
 
 .fyp_articles article:nth-of-type(2):before {
-    background-image: url(/images/fyp/food.webp);
+    background-image: url(/images/profile/food.webp);
     background-position: center
 }
 
 .fyp_articles article:nth-of-type(3):before {
-    background-image: url(/images/fyp/weight.webp);
+    background-image: url(/images/profile/weight.webp);
     background-position: center
 }
 
 .fyp_articles article:nth-of-type(4):before {
-    background-image: url(/images/fyp/avocado.webp);
+    background-image: url(/images/profile/avocado.webp);
     background-position: center
 }
 
 .fyp_articles article:nth-of-type(5):before {
-    background-image: url(/images/fyp/couch.webp);
+    background-image: url(/images/profile/couch.webp);
     background-position: center
 }
