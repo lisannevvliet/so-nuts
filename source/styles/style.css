@@ -1042,6 +1042,14 @@ blockquote p {
     background-position: center
 }
 
+.offline img {
+    height: 25em;
+    margin: 0 auto;
+    width: 25em;
+}
+
 .offline p {
+    margin: 0 auto;
     padding: 1em;
+    width: 25em;
 }
