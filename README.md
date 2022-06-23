@@ -28,7 +28,18 @@ Om te bekijken, bezoek de [Heroku app](https://erics-spraakassistent.herokuapp.c
 <!-- ...but how does one use this project? What are its features 🤔 -->
 
 ## Checklist
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+De voltooide taken zijn te vinden in de [commit messages](https://github.com/lisannevvliet/so-nuts/commits/main) en het [project](https://github.com/lisannevvliet/so-nuts/projects/2). De volgende taken konden niet binnen de gestelde tijd worden voltooid, maar zouden leuk zijn om te hebben.
+
+- [ ] Animeer voortgangsbalk.
+- [ ] Ontwerp logo.
+- [ ] Voeg ondersteuning toe voor combinatie van radio buttons en invoerveld.
+- [ ] Implementeer SCSS.
+- [ ] Voeg iets vrolijks toe wanneer doel voltooid is.
+- [ ] Voeg notificaties toe met service worker.
+- [ ] Implementeer uitdagingen waarbij gebruikers tegen elkaar strijden.
+- [ ] Versleutel formulier-gegevens.
+- [ ] Gebruik lokaal JSON-bestand als Supabase fallback.
+- [ ] Stel zowel naam als e-mailadres in als primaire sleutel.
 
 ## Prestatieverbeteringen
 - [x] Automatisch minifiëren van CSS en JavaScript bij npm start.
