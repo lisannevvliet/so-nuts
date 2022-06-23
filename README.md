@@ -64,6 +64,8 @@ De voltooide taken zijn te vinden in de [commit messages](https://github.com/lis
 - [ ] Versleutel formulier-gegevens.
 - [ ] Gebruik lokaal JSON-bestand als Supabase fallback.
 - [ ] Stel zowel naam als e-mailadres in als primaire sleutel.
+- [ ] Vraag toestemming aan gebruiker om persoonlijke gegevens in local storage op te slaan.
+- [ ] Laad de pagina's in middels een stream.
 
 ## Auteurs
 De auteurs van dit project zijn [Farrahton Piers](https://github.com/farrahton) en [Lisanne van Vliet](https://github.com/lisannevvliet).
