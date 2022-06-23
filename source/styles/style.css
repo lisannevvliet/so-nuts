@@ -697,7 +697,6 @@ fieldset {
 
 .checkmark_check_icon_animation {
     animation: draw_checkmark .1s cubic-bezier(.65, 0, .45, 1) .3s forwards;
-    cursor: none;
     stroke: var(--secundary);
     stroke-width: 6px
 }

@@ -33,12 +33,12 @@ export default function goals() {
             $$(".checkmark_plus")[index].classList.add("hide_plus")
             $$(".checkmark_check_icon")[index].classList.add("checkmark_check_icon_animation")
             $$(".checkmark")[index].classList.add("no_cursor")
+        } else {
+            element.addEventListener("click", () => {
+                // Submit the hidden form.
+                $$(".increase_streak")[index].submit()
+            })
         }
-
-        element.addEventListener("click", () => {
-            // Submit the hidden form.
-            $$(".increase_streak")[index].submit()
-        })
 
         // Fill in the progress bar.
         $$("#progress div")[index].style.width = $$(".repetition_change")[index].textContent * 100 / 21 + "%"
