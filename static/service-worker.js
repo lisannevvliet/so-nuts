@@ -83,18 +83,11 @@ self.addEventListener("fetch", event => {
                     // Retrieve the HTML from the dynamic-cache.
                     const cache_response = await cache.match(event.request)
 
-                    console.log("cache_response: " + cache_response)
-
-                    // Retrieve the HTML from the dynamic-cache.
-                    // Serve the offline page if the HTML is not in the cache and there is no internet.
+                    // Retrieve the offline page from the core-cache.
                     const offline_response = await caches.open("core-cache")
-                        .then(cache => {
-                            console.log(cache.match("/offline"))
-
-                            return cache.match("/offline")
-                        })
-
-                    console.log("offline_response: " + offline_response)
+                        .then(cache =>
+                            cache.match("/offline")
+                        )
 
                     // Try to retrieve the HTML from the network.
                     const response = await fetch(event.request)
@@ -109,11 +102,11 @@ self.addEventListener("fetch", event => {
                             if (cache_response != undefined) {
                                 return cache_response
                             } else {
+                                // If there is no HTML in the dynamic-cache, use the offline page from the core-cache.
                                 return offline_response
                             }
                         })
 
-                    console.log(response)
                     return response
                 })
         )
