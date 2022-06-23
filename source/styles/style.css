@@ -111,7 +111,7 @@ button:disabled {
     ========= */
 
 .login_page {
-    background-image: url(/images/login_bg.svg);
+    background-image: url(/images/login/login_background.svg);
     background-repeat: no-repeat;
     background-size: cover
 }
@@ -221,7 +221,7 @@ button:disabled {
     ============ */
 
 .questionnaire_page {
-    background-image: url(/images/bg.svg);
+    background-image: url(/images/questionnaire_background.svg);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
@@ -669,15 +669,6 @@ fieldset {
     background-color: var(--main);
     border-radius: 50%;
     cursor: pointer
-}
-
-.unordered_goal_list input[type=checkbox].checkmark {
-    background-image: url(/images/goals/check.svg);
-    background-color: var(--main_lighter)
-}
-
-.unordered_goal_list input[type=checkbox]:focus {
-    border: none
 }
 
 .unordered_goal_list li section label {
