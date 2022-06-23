@@ -17,7 +17,13 @@
 Wanneer mensen met pensioen gaan verandert er veel, ook hun eet- en beweeggewoontes. Vaak worden mensen na hun pensioen zwaarder. Dit extra gewicht is met name vetmassa, terwijl de spiermassa juist afneemt. eHealth (zoals applicaties en wearables) is een veel belovende methode om een gepersonaliseerde en aantrekkelijke leefstijlinterventie aan te bieden aan een grote groep mensen, terwijl de kosten laag blijven. Momenteel ontbreekt het aan effectieve, duurzame eet-en beweeginterventies voor mensen die met pensioen gaan. Het project SO-NUTS richt zich op het ontwikkelen van een digitale tool voor mensen die met pensioen gaan. Het doel van deze tool: het stimuleren van een duurzaam beweeg- en voedingspatroon.
 
 ## Posters
-<!-- Add a nice poster image here at the end of the week, showing off your shiny frontend 📸 -->
+![](https://user-images.githubusercontent.com/90243819/175330671-a97a977d-c89c-4be0-9311-01bb321d065c.png)
+![](https://user-images.githubusercontent.com/90243819/175330693-2745f619-835e-420b-a8d4-da75f404c5e9.png)
+![](https://user-images.githubusercontent.com/90243819/175330716-7f583932-91d8-49b2-b6bc-14da27971d5b.png)
+![](https://user-images.githubusercontent.com/90243819/175330724-6b8182b2-1223-4ec7-9798-56b1d426428f.png)
+![](https://user-images.githubusercontent.com/90243819/175330730-e7ef31e2-42b2-4cd9-af10-270c2636a8b5.png)
+![](https://user-images.githubusercontent.com/90243819/175330754-02495580-4e4f-4fb9-95fc-5b399b5547c1.png)
+![](https://user-images.githubusercontent.com/90243819/175330759-f9e77d7f-8262-4ff8-b64d-c1db863b7b82.png)
 
 ## Live demo
 https://so-nuts.herokuapp.com/
@@ -26,7 +32,7 @@ https://so-nuts.herokuapp.com/
 Om te bekijken, bezoek de [Heroku app](https://so-nuts.herokuapp.com/). Om lokale wijzigingen aan te brengen, clone de repository en bewerk de bestanden in een IDE.
 
 ## Gebruikershandleiding en functies
-In de SO-NUTS app kan je een account aanmaken en een vragenlijst invullen. Vervolgens kan je uit een lijst met doelen kiezen op welke je wilt focussen voor 21 dagen. Iedere dag kan je een doel afvinken als je het doel hebt voltooid en wanneer nodig is er de optie om een doel te verwijderen. Als gebruiker heb je ook een profielpagina met daarop een dagelijkse quote voor motivatie. Wil je meer weten? [Kijk op de wiki voor meer uitleg](https://github.com/lisannevvliet/so-nuts/wiki/Design-Rationale#code-uitleg-op-basis-van-de-customer-journey).
+In de SO-NUTS app kan je een account aanmaken en een vragenlijst invullen. Vervolgens kan je uit een lijst met doelen kiezen op welke je wilt focussen voor 21 dagen. Iedere dag kan je een doel afvinken als je het doel hebt voltooid en wanneer nodig is er de optie om een doel te verwijderen. Als gebruiker heb je ook een profielpagina met daarop een dagelijkse quote voor motivatie. Wil je meer weten? Kijk op de [wiki](https://github.com/lisannevvliet/so-nuts/wiki/Design-Rationale#code-uitleg-op-basis-van-de-customer-journey) voor meer uitleg.
 
 ## Database
 ![](https://user-images.githubusercontent.com/92303930/175324872-ed1262a5-718e-4035-a6f5-28f64329ad27.png)
