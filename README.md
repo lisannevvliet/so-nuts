@@ -41,7 +41,7 @@ Om te bekijken, bezoek de [Heroku app](https://erics-spraakassistent.herokuapp.c
 - [x] Gebruik de meest compacte afbeeldingsformaten: WebP en SVG.
 - [x] Verwijder ongebruikte HTML, CSS, JavaScript, lettertypes en afbeeldingen.
 
-[Lighthouse]()
+[Lighthouse](https://github.com/lisannevvliet/so-nuts/files/8968041/Lighthouse.pdf)
 
 ## Auteurs
 De auteurs van dit project zijn [Farrahton Piers](https://github.com/farrahton) en [Lisanne van Vliet](https://github.com/lisannevvliet).
