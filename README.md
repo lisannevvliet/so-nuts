@@ -1,5 +1,5 @@
 # SO-NUTS
-![](https://user-images.githubusercontent.com/90243819/169791205-bda89252-ade9-481a-bc4d-3426172338a6.png)
+![so nuts banner@420x](https://user-images.githubusercontent.com/92303930/175326921-b306735c-4baa-42f6-a451-500ff26e5687.png)
 
 ## Inhoudsopgave
 - [Beschrijving](#beschrijving)
