@@ -57,13 +57,15 @@
             <li {{#ifCond goal.category "Beweging" }} class="exercise">{{else}}>{{/ifCond}}
             <section>
                 <article class="three_dots">
-                    <button class="dots_button new_button"></button>
+                    <button class="dots_button new_button"
+                        aria-label="Drie puntjes voor een dropdown met meer informatie."></button>
                     <div class="dots_content">
                         <form action="/delete_user_goal" method="post">
                             <input type="hidden" name="id" value={{id}}>
                             <input type="hidden" class="name" name="name">
                             <input type="hidden" class="email" name="email">
-                            <button type="submit" class="new_button">Verwijder doel</button>
+                            <button type="submit" class="new_button" aria-label="Verwijder doel.">Verwijder
+                                doel</button>
                         </form>
                     </div>
                 </article>
@@ -97,7 +99,7 @@
         {{/each}}
     </ul>
     <div class="button_wrapper">
-        <button id="add">
+        <button id="add" aria-label="Maak doel aan">
             <svg xmlns="http://www.w3.org/2000/svg" width="13.009" height="13.126" viewBox="0 0 13.009 13.126">
                 <path id="noun-plus-518521"
                     d="M147.66,71.084h-3.638V67.446a1.463,1.463,0,0,0-2.916,0v3.638h-3.647a1.463,1.463,0,0,0,0,2.916H141.1v3.647a1.463,1.463,0,1,0,2.916,0V74.009h3.647a1.463,1.463,0,0,0,0-2.925Z"
