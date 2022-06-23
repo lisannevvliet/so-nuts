@@ -32,7 +32,7 @@ https://so-nuts.herokuapp.com/
 Om te bekijken, bezoek de [Heroku app](https://so-nuts.herokuapp.com/). Om lokale wijzigingen aan te brengen, clone de repository en bewerk de bestanden in een IDE.
 
 ## Gebruikershandleiding en functies
-In de SO-NUTS app kan je een account aanmaken en een vragenlijst invullen. Vervolgens kan je uit een lijst met doelen kiezen op welke je wilt focussen voor 21 dagen. Iedere dag kan je een doel afvinken als je het doel hebt voltooid en wanneer nodig is er de optie om een doel te verwijderen. Als gebruiker heb je ook een profielpagina met daarop een dagelijkse quote voor motivatie. Wil je meer weten? Kijk op de [wiki](https://github.com/lisannevvliet/so-nuts/wiki/Design-Rationale#code-uitleg-op-basis-van-de-customer-journey) voor meer uitleg.
+In de SO-NUTS web app kan je een account aanmaken en een vragenlijst invullen. Vervolgens kan je uit een lijst met doelen kiezen op welke je wilt focussen voor 21 dagen. Iedere dag kan je een doel afvinken als je het doel hebt voltooid en wanneer nodig is er de optie om een doel te verwijderen. Als gebruiker heb je ook een profielpagina met daarop een dagelijkse quote voor motivatie. Wil je meer weten? Kijk op de [wiki](https://github.com/lisannevvliet/so-nuts/wiki/Design-Rationale#code-uitleg-op-basis-van-de-customer-journey) voor meer uitleg.
 
 ## Database
 ![](https://user-images.githubusercontent.com/92303930/175324872-ed1262a5-718e-4035-a6f5-28f64329ad27.png)
