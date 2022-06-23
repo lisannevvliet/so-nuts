@@ -184,7 +184,7 @@ button:disabled {
 
 .onboarding section:before {
     content: "";
-    background-image: url(../images/onboarding/onboarding_1.svg);
+    background-image: url(../images/onboarding/onboarding.svg);
     background-position: center;
     background-size: cover;
     display: block;
