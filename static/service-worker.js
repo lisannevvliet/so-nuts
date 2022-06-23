@@ -25,6 +25,7 @@ const files = [
     "/images/icons/icon-384x384.png",
     "/images/icons/icon-512x512.png",
     "/images/login/login_background.svg",
+    "/images/offline/offline.webp",
     "/images/onboarding/onboarding.svg",
     "/images/profile/avocado.webp",
     "/images/profile/couch.webp",

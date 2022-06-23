@@ -1041,3 +1041,7 @@ blockquote p {
     background-image: url(/images/profile/couch.webp);
     background-position: center
 }
+
+.offline p {
+    padding: 1em;
+}

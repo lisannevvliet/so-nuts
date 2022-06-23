@@ -16,6 +16,7 @@ const increase_streak = require("./routes/increase_streak.js")
 const delete_user_goal = require("./routes/delete_user_goal.js")
 const add_goals = require("./routes/add_goals.js")
 const profile = require("./routes/profile.js")
+const offline = require("./routes/offline.js")
 
 // Initialise Express.
 express()
@@ -55,6 +56,7 @@ express()
     .use("/delete_user_goal", delete_user_goal)
     .use("/add_goals", add_goals)
     .use("/profile", profile)
+    .use("/offline", offline)
 
     // Set and log the port for Express.
     .listen(process.env.PORT, () => {
