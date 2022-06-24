@@ -16,14 +16,9 @@
 ## Beschrijving
 Wanneer mensen met pensioen gaan verandert er veel, ook hun eet- en beweeggewoontes. Vaak worden mensen na hun pensioen zwaarder. Dit extra gewicht is met name vetmassa, terwijl de spiermassa juist afneemt. eHealth (zoals applicaties en wearables) is een veel belovende methode om een gepersonaliseerde en aantrekkelijke leefstijlinterventie aan te bieden aan een grote groep mensen, terwijl de kosten laag blijven. Momenteel ontbreekt het aan effectieve, duurzame eet-en beweeginterventies voor mensen die met pensioen gaan. Het project SO-NUTS richt zich op het ontwikkelen van een digitale tool voor mensen die met pensioen gaan. Het doel van deze tool: het stimuleren van een duurzaam beweeg- en voedingspatroon.
 
-## Posters
-![](https://user-images.githubusercontent.com/90243819/175330671-a97a977d-c89c-4be0-9311-01bb321d065c.png)
-![](https://user-images.githubusercontent.com/90243819/175330693-2745f619-835e-420b-a8d4-da75f404c5e9.png)
-![](https://user-images.githubusercontent.com/90243819/175330716-7f583932-91d8-49b2-b6bc-14da27971d5b.png)
-![](https://user-images.githubusercontent.com/90243819/175330724-6b8182b2-1223-4ec7-9798-56b1d426428f.png)
-![](https://user-images.githubusercontent.com/90243819/175330730-e7ef31e2-42b2-4cd9-af10-270c2636a8b5.png)
-![](https://user-images.githubusercontent.com/90243819/175330754-02495580-4e4f-4fb9-95fc-5b399b5547c1.png)
-![](https://user-images.githubusercontent.com/90243819/175330759-f9e77d7f-8262-4ff8-b64d-c1db863b7b82.png)
+## Poster
+
+![posters](https://user-images.githubusercontent.com/92303930/175498480-2e6a1a88-81fd-475b-89da-0eac2cce4621.png)
 
 ## Live demo
 https://so-nuts.herokuapp.com/
