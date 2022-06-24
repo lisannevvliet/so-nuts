@@ -18,7 +18,7 @@ Wanneer mensen met pensioen gaan verandert er veel, ook hun eet- en beweeggewoon
 
 ## Poster
 
-![posters](https://user-images.githubusercontent.com/92303930/175498480-2e6a1a88-81fd-475b-89da-0eac2cce4621.png)
+![All_screens](https://user-images.githubusercontent.com/92303930/175498895-49d7239c-8e63-4bb6-af12-4a3fdb743d56.png)
 
 ## Live demo
 https://so-nuts.herokuapp.com/
