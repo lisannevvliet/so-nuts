@@ -452,6 +452,7 @@ button:disabled {
     font-weight: 600
 }
 
+
 .hide_state {
     display: none
 }
@@ -459,6 +460,13 @@ button:disabled {
 .empty_state img {
     height: auto;
     width: 100%
+}
+
+.empty_state p {
+    margin: auto;
+    padding: 1em;
+    padding-bottom: 0;
+    max-width: 70%;
 }
 
 fieldset {
