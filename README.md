@@ -64,6 +64,3 @@ De voltooide taken zijn te vinden in de [commit messages](https://github.com/lis
 
 ## Auteurs
 De auteurs van dit project zijn [Farrahton Piers](https://github.com/farrahton) en [Lisanne van Vliet](https://github.com/lisannevvliet).
-
-## Licentie
-Dit project is gelicenseerd onder de [GPL-3.0 licentie](https://github.com/lisannevvliet/so-nuts/blob/main/LICENSE).
